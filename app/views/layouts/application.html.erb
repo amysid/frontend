@@ -13,6 +13,11 @@
   </head>
 
   <body>
+    <div class="wrapper">
+      <%= render 'layouts/en_header' %>
+      <%= render 'layouts/en_side_menu_layout'%>
     <%= yield %>
+    </div>
+    <!-- put yield in a div Wrapper class beacuse all header and navbar define in wrapper class -->
   </body>
 </html>
