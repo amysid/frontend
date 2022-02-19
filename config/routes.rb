@@ -6,4 +6,7 @@ Rails.application.routes.draw do
  resources :sessions
  resources :homes
  resources :books
+ resources :booths
+ resources :operations
+ resources :categories
 end
