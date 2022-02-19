@@ -14,14 +14,14 @@
 
   <body>
     <div class="wrapper">
-      <% if true %>
+      <% if params["locale"].blank? || params[:locale] == "en" %>
         <%= render 'layouts/en_header' %>
         <%= render 'layouts/en_side_menu_layout'%>
         <section class="section-container">
           <%= yield %>
         </section>
         <%= render 'layouts/footer'%>
-      <% else %>
+      <% elsif params[:locale] == "ar" %>
         <%= render 'layouts/ar_header' %>
         <%= render 'layouts/ar_side_menu_layout'%>
         <section class="section-container-R">
