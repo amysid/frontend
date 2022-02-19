@@ -4,21 +4,23 @@
     <div class="card card-flat rounded-top-left rounded-bottom-right">
       <div class="card-header text-center pt-4 pb-1"><a href="#"><img class="block-center rounded" src="/assets/logo.jpg" alt="Image"></a></div>
       <div class="card-body">
-        <h3 class="text-center py-2 login-text">Welcome to the audio library booth system</h3>
-        <form class="mb-3" id="loginForm" novalidate>
-          <div class="form-group">
-            <div class="input-group with-focus"><input class="form-control bg-grey text-right" id="exampleInputEmail1" type="email" placeholder="Username" autocomplete="off" required>                      
+        <h3 class="text-center py-2 login-text">Welcome to the audio library booth system</h3> <%= form_with url: sessions_path, class:"mb-3", id:"loginForm" do |f| %>
+            <div class="form-group">
+              <div class="input-group with-focus">
+                <%= f.text_field :email, class: "form-control bg-grey text-right", id: "exampleInputEmail1", placeholder: "Username",autocomplete: "off", required: true %>                    
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group with-focus"><input class="form-control bg-grey text-right" id="exampleInputPassword1" type="password" placeholder="Password" required>
+            <div class="form-group">
+              <div class="input-group with-focus">
+                <%= f.password_field :password, class: "form-control bg-grey text-right",id: "exampleInputPassword1", required: true, placeholder: "Password" %>
+              </div>
             </div>
-          </div>
-          <div class="clearfix">
-            <!--<div class="checkbox c-checkbox float-left mt-0"><label><input type="checkbox" value="" name="remember"><span class="fa fa-check"></span> Remember Me</label></div>-->
-            <div class="text-center for-text mt-4"><a class="" href="recover.html">Forgot password?</a></div>
-          </div><button class="btn btn-block btn-danger btn-login mt-4" type="submit">Login</button>
-        </form>
+            <div class="clearfix">
+              <!--<div class="checkbox c-checkbox float-left mt-0"><label><input type="checkbox" value="" name="remember"><span class="fa fa-check"></span> Remember Me</label></div>-->
+              <div class="text-center for-text mt-4"><a class="" href="recover.html">Forgot password?</a></div>
+            </div>
+            <%= f.submit :login, class: "btn btn-block btn-danger btn-login mt-4" %>
+          <% end %>
        <!--  <p class="pt-3 text-center">Need to Signup?</p><a class="btn btn-block btn-secondary" href="register.html">Register Now</a>-->
       </div>
     </div><!-- END card-->
