@@ -13,23 +13,28 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      <% if params["locale"].blank? || params[:locale] == "en" %>
-        <%= render 'layouts/en_header' %>
-        <%= render 'layouts/en_side_menu_layout'%>
-        <section class="section-container">
-          <%= yield %>
-        </section>
-        <%= render 'layouts/footer'%>
-      <% elsif params[:locale] == "ar" %>
-        <%= render 'layouts/ar_header' %>
-        <%= render 'layouts/ar_side_menu_layout'%>
-        <section class="section-container-R">
-          <%= yield %>
-        </section>
-        <%= render 'layouts/footer'%>
+    <% if not params[:controller] == "sessions"%>
+    <%# if current_user.present? %>
+      <div class="wrapper">
+        <% if params["locale"].blank? || params[:locale] == "en" %>
+          <%= render 'layouts/en_header' %>
+          <%= render 'layouts/en_side_menu_layout'%>
+          <section class="section-container">
+            <%= yield %>
+          </section>
+          <%= render 'layouts/footer'%>
+        <% elsif params[:locale] == "ar" %>
+          <%= render 'layouts/ar_header' %>
+          <%= render 'layouts/ar_side_menu_layout'%>
+          <section class="section-container-R">
+            <%= yield %>
+          </section>
+          <%= render 'layouts/footer'%>
+        <% end %>
+      </div>
+      <% else %>
+        <%= yield %>
       <% end %>
-    </div>
     <!-- put yield in a div Wrapper class beacuse all header and navbar define in wrapper class -->
     <!-- And also section-container is contain different class for css so that's why section is also define here -->
   </body>
