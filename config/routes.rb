@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :booths
     resources :operations
     resources :categories
+    resources :users
   end
 end

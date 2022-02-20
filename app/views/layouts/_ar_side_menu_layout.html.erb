@@ -24,33 +24,20 @@
         <!-- END user info-->
         <!-- Iterates over all sidebar items-->
         <li class="nav-heading "><span data-localize="sidebar.heading.HEADER">Main Navigation</span></li>
-        <li class=" "><a href="index.html" title="Dashboard">
-          <em class="fa fa-desktop"></em><span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
-        </a>
-          
+        <li class=" ">
+          <%= link_to "<em class='fa fa-desktop'></em><span data-localize='sidebar.nav.DASHBOARD'>#{t('dashboard')}</span>".html_safe, homes_path, title: t('dashboard') %> 
         </li>
-        <li class=" "><a href="add-user.html" title="Widgets">
-          <em class="fa fa-user"></em><span data-localize="sidebar.nav.WIDGETS">Users</span>
-        </a>
+        <li class=" ">
+          <%= link_to "<em class='fa fa-user'></em><span>#{t('users')}</span>".html_safe, users_path, title: t('users')%>
         </li>
-        <li class="active"><a href="add-book.html" title="Layouts">
-          <em class="fa fa-book"></em><span>Audio Books</span></a>
+        <li class="active">
+          <%= link_to "<em class='fa fa-book'></em><span>#{t('audio_books')}</span>".html_safe, books_path, title: t('audio_books')%>
         </li>
-        <li class=" "><a href="booths.html" title="Layouts">
-          <em class="fa fa-building"></em><span>Booths</span></a>
+        <li class=" ">
+          <%= link_to "<em class='fa fa-building'></em><span>#{t('booths')}</span>".html_safe, booths_path, title: t('booths')%>
         </li>
-        <li class=" "><a href="operation.html" title="Elements">
-          <em class="fa fa-project-diagram"></em><span data-localize="sidebar.nav.element.ELEMENTS">Operations</span>
-           <!-- <i class="angle fa fa-chevron-right"></i>-->
-        </a>
-           <!-- <ul class="sidebar-nav sidebar-subnav collapse" id="elements">
-            <li class="sidebar-subnav-header">Elements</li>
-            <li class=" "><a href="buttons.html" title="Buttons"><span data-localize="sidebar.nav.element.BUTTON">Buttons</span></a></li>
-            <li class=" "><a href="notifications.html" title="Notifications"><span data-localize="sidebar.nav.element.NOTIFICATION">Notifications</span></a></li>
-            <li class=" "><a href="sweetalert.html" title="Sweet Alert"><span>Sweet Alert</span></a></li>
-            <li class=" "><a href="carousel.html" title="Carousel"><span data-localize="sidebar.nav.element.INTERACTION">Carousel</span></a></li>
-            <li class=" "><a href="spinners.html" title="Spinners"><span data-localize="sidebar.nav.element.SPINNER">Spinners</span></a></li>                            
-          </ul>-->
+        <li class=" ">
+          <%= link_to "<em class='fa fa-project-diagram'></em><span data-localize='sidebar.nav.element.ELEMENTS'>#{t('operations')}</span>".html_safe, operations_path, title: t('operations')%>
         </li>
         <li class=" "><a href="#forms" title="Forms" data-toggle="collapse">
           <em class="fa fa-file-code"></em><span data-localize="sidebar.nav.form.FORM">Reports</span>
@@ -63,10 +50,9 @@
             <li class=" "><a href="time.html" title="Cropper"><span>Time Table</span></a></li>
           </ul>
         </li>
-        <li class=" "><a href="category.html" title="Charts">
-          <em class="fa fa-cog"></em><span data-localize="sidebar.nav.chart.CHART">Category</span>
-        </a>
-           
+        <li class=" ">
+          <%= link_to "<em class='fa fa-cog'></em><span>#{t('category')}</span>
+          <i class='angle fa fa-chevron-right'></i>".html_safe, categories_path, title: t('category')%> 
         </li>
 
         <!-- <li class=" "><a href="#multilevel" title="Multilevel" data-toggle="collapse"><em class="far fa-folder-open"></em><span>Multilevel</span></a>

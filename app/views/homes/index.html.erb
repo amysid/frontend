@@ -1,5 +1,174 @@
-<h1>Homes#index</h1>
-<p>Find me in app/views/homes/index.html.erb</p>
-  <li>
-        <%= link_to "<em class='fa fa-sign-out-alt'></em> #{t('logout')}".html_safe, session_path(id: @current_user.id), method: :delete, data: { confirm: t('logout_confirm_msg') } %>
-      </li>
+<div class="content-wrapper">
+  <div class="content-heading">
+    <div class="ml-auto">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+          </ol>
+        </nav>
+      </div>
+  </div><!-- START cards box-->
+    <!-- START cards box-->
+    <div class="row">
+      <div class="col-xl-4 col-md-6">
+        <!-- START card-->
+        <div class="card flex-row align-items-center align-items-stretch border-0">
+          <!--  <div class="col-4 d-flex align-items-center bg-orange-dark justify-content-center rounded-left"><em class="icon-cloud-upload fa-3x"></em></div>-->
+          <div class="col-12 py-1 bg-orange text-center">
+            <div class="box-text">Listening</div>
+            <div class="h3 mt-0 mb-2">64913</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-md-6">
+        <!-- START card-->
+        <div class="card flex-row align-items-center align-items-stretch border-0">
+          <div class="col-12 py-1 bg-bluee text-center">
+            <div class="box-text">Books</div>
+            <div class="h3 mt-0 mb-2">351</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-6 col-md-12">
+        <!-- START card-->
+        <div class="card flex-row align-items-center align-items-stretch border-0">
+          <div class="col-12 py-1 bg-warning text-center">
+            <div class="box-text">Booths</div>
+            <div class="h3 mt-0 mb-2">15</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- END cards box-->
+    <div class="row">
+      <!-- START dashboard main content-->
+      <div class="col-xl-4">
+        <!-- START chart-->
+        <div class="row">
+          <div class="col-xl-12">
+            <!-- START card-->
+            <div class="card card-default card-demo p-3" id="Div1">
+              <h5 class="text-center mt-2 mb-4">Device connection status</h5>
+              <table class="table text-center border">
+                <tbody>
+                  <tr>
+                    <td class="text-success">Online</td>
+                    <td>Mark</td>
+                  </tr>
+                  <tr>
+                    <td class="text-success">Online</td>
+                    <td>Mark</td>
+                  </tr>
+                    <tr>
+                    <td class="text-success">Online</td>
+                    <td>Mark</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- END card-->
+          </div>
+        </div>
+      </div>
+      <!-- END dashboard main content-->
+      <div class="col-xl-4">
+        <!-- START chart-->
+        <div class="row">
+          <div class="col-xl-12">
+            <!-- START card-->
+            <div class="card card-default" id="cardChart5">
+        <div class="card-body">
+          <h5>Listen by category</h5>
+           <div class="chart-pie flot-chart" style="padding: 0px; position: relative;">
+             <canvas class="flot-base" width="479" height="215" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 436.193px; height: 215px;"></canvas>
+             <canvas class="flot-overlay" width="479" height="215" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 436.193px; height: 215px;"></canvas>
+             <div class="legend">
+               <div style="position: absolute; width: 58.5085px; height: 107.045px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div>
+               <table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454">
+                 <tbody>
+                   <tr>
+                     <td class="legendColorBox">
+                       <div style="border:1px solid #ccc;padding:1px">
+                         <div style="width:4px;height:0;border:5px solid #4acab4;overflow:hidden"></div>
+                       </div>
+                     </td>
+                     <td class="legendLabel">Stories</td>
+                   </tr>
+                   <tr>
+                     <td class="legendColorBox">
+                       <div style="border:1px solid #ccc;padding:1px">
+                         <div style="width:4px;height:0;border:5px solid #ffea88;overflow:hidden"></div>
+                       </div>
+                     </td>
+                     <td class="legendLabel">Novels</td>
+                   </tr>
+                   <tr>
+                     <td class="legendColorBox">
+                       <div style="border:1px solid #ccc;padding:1px">
+                         <div style="width:4px;height:0;border:5px solid #ff8153;overflow:hidden"></div>
+                       </div>
+                     </td>
+                     <td class="legendLabel">Children's Books</td>
+                   </tr>
+                   <tr>
+                     <td class="legendColorBox">
+                       <div style="border:1px solid #ccc;padding:1px">
+                         <div style="width:4px;height:0;border:5px solid #878bb6;overflow:hidden"></div>
+                       </div>
+                     </td>
+                     <td class="legendLabel">Poetry</td>
+                   </tr>
+                   <tr>
+                     <td class="legendColorBox">
+                       <div style="border:1px solid #ccc;padding:1px">
+                         <div style="width:4px;height:0;border:5px solid #b2d767;overflow:hidden"></div>
+                       </div>
+                     </td>
+                     <td class="legendLabel">Religion</td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+             <div class="pieLabelBackground" style="position: absolute; width: 23.2102px; height: 21.2784px; top: 18.3608px; left: 203.244px; background-color: rgb(34, 34, 34); opacity: 0.8;"></div>
+             <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 18.3608px; left: 203.244px;">
+               <div class="flot-pie-label">8%</div>
+             </span>
+             <div class="pieLabelBackground" style="position: absolute; width: 28.1818px; height: 21.2784px; top: 51.3608px; left: 251.758px; background-color: rgb(34, 34, 34); opacity: 0.8;"></div>
+             <span class="pieLabel" id="pieLabel1" style="position: absolute; top: 51.3608px; left: 251.758px;">
+               <div class="flot-pie-label">11%</div>
+             </span>
+             <div class="pieLabelBackground" style="position: absolute; width: 28.1818px; height: 21.2784px; top: 159.361px; left: 263.758px; background-color: rgb(34, 34, 34); opacity: 0.8;"></div>
+             <span class="pieLabel" id="pieLabel2" style="position: absolute; top: 159.361px; left: 263.758px;">
+               <div class="flot-pie-label">25%</div>
+             </span>
+             <div class="pieLabelBackground" style="position: absolute; width: 28.1818px; height: 21.2784px; top: 208.361px; left: 139.758px; background-color: rgb(34, 34, 34); opacity: 0.8;"></div>
+             <span class="pieLabel" id="pieLabel3" style="position: absolute; top: 208.361px; left: 139.758px;">
+               <div class="flot-pie-label">21%</div>
+             </span>
+             <div class="pieLabelBackground" style="position: absolute; width: 28.1818px; height: 21.2784px; top: 65.3608px; left: 87.7584px; background-color: rgb(34, 34, 34); opacity: 0.8;"></div>
+             <span class="pieLabel" id="pieLabel4" style="position: absolute; top: 85.3594px; left: 94.1248px;">
+               <div class="flot-pie-label">14%</div>
+             </span>
+           </div>
+        </div>
+       </div>
+            <!-- END card-->
+          </div>
+        </div>
+      </div>
+      <!-- START dashboard sidebar-->
+      <!-- END dashboard sidebar-->
+      <aside class="col-xl-4">
+        <!-- START loader widget-->
+        <div class="card card-default">
+          <div class="card-body">
+            
+          </div>
+        </div>
+        <!-- END loader widget-->
+         
+      </aside>
+    </div>
+</div>

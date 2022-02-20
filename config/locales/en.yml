@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  user_name: "Username"
+  password: "Password"
+  login: "login"
+  forgot_password: "Forgot password?"
+  dashboard: "Dashboard"
+  users: "users"
+  audio_books: "Audio Books"
+  booths: "Booths"
+  operations: "Operations"
+  category: "Category"
+  logout_confirm_msg: "Are You sure you want to logout?"
