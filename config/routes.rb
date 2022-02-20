@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :operations
     resources :categories
     resources :users
+    get 'change_password/:auth_token',to: 'sessions#change_password', as: "change_password"
+    get 'login', to: "sessions#new"
   end
 end
