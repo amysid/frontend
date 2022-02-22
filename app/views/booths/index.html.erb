@@ -21,29 +21,34 @@
               <thead>
                 <tr>
                   <th class="text-danger">#</th>
-                  <th class="text-danger">Booth Name</th>
-                  <th class="text-danger">City</th>
-                  <th class="text-danger">Address</th>
-                  <th class="text-danger">Coordinates</th>
-                  <th class="text-danger">Listening</th>
-                  <th class="text-danger">Status</th>
-                  <th class="text-danger">Last Listening</th>
-                  <th class="text-danger">Setting</th>
+                  <th class="text-danger"><%= t('booth_name')%></th>
+                  <th class="text-danger"><%= t('city') %></th>
+                  <th class="text-danger"><%= t('address')%></th>
+                  <th class="text-danger"><%= t('coordinates')%></th>
+                  <th class="text-danger"><%= t('listening')%></th>
+                  <th class="text-danger"><%= t('status') %></th>
+                  <th class="text-danger"><%= t('last_listening') %></th>
+                  <th class="text-danger"><%= t('setting') %></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="text-danger">1</td>
-                  <td>Riyadh 1</td>
-                  <td>Riyadh</td>
-                  <td>Riyadh Park</td>
-                  <td>24.7070803,46.6905646</td>
-                  <td>2012</td>
-                  <td>
-                    <label>Active</label></td>
-                  <td>11-06-2021 11:51 PM</td>
-                  <td><a href="" data-toggle="modal" data-target="#update-booth"><i class="fa fa-cog fa-2x text-danger"></i></a></td>
-                </tr>
+                <% if @booths.blank? %>
+                  <tr><%= t('no_record_present') %></tr>
+                <% else %>
+                  <% @booths.each_with_index do |booth, i|%>
+                    <tr>
+                      <td class="text-danger"><%= i%></td>
+                      <td><%= booth.name %></td>
+                      <td><%= booth.city %></td>
+                      <td><%= booth.address %></td>
+                      <td><%= booth.latitude %>,<%= booth.longitude%></td>
+                      <td><%= booth.listening_count%></td>
+                      <td><%= booth.status rescue nil %></td>
+                      <td><%= booth.status rescue nil%></td>
+                      <td><a href="" data-toggle="modal" data-target="#update-booth"><i class="fa fa-cog fa-2x text-danger"></i></a></td>
+                    </tr>
+                  <% end %>
+                <% end %>
               </tbody>
             </table>
           </div>
@@ -74,6 +79,7 @@
     </div>
 <!--   </section>
 </div> -->
+<% if false %>
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -226,3 +232,4 @@
     </div>
   </div>
 </div>
+<% end %>

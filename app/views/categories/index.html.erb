@@ -18,30 +18,35 @@
           <thead>
             <tr>                                 
               <th class="text-danger">#</th>
-              <th class="text-danger">Category Name</th>   
-               <th class="text-danger">Booth Location</th>
-               <th class="text-danger">Date of Category Creation</th>
-              <th class="text-danger">Setting</th>
+              <th class="text-danger"><%= t('category_name') %></th>   
+               <th class="text-danger"><%= t('booth_location') %></th>
+               <th class="text-danger"><%= t('data_of_category_creation') %></th>
+              <th class="text-danger"><%= t('setting') %></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="text-danger">1</td>
-              <td>Category Name</td>
-               <td>
-                <div class="pl-2 pr-2">
-                  <select class="custom-select custom-select-sm text-center">
-                <option selected="">Riyadh</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-                </div>
-              </td>
-              <td>11-06-2021 11:51 PM</td>
-               <td><a href="" data-toggle="modal" data-target="#cat-setting"><i class="fa fa-cog fa-2x text-danger"></i></a></td>
-            </tr>
-            
+            <% if @categories.blank? %>
+              <tr><%= t('no_record_present') %></tr>
+            <% else %>
+              <% @categories.each_with_index do |category, i|%>
+                <tr>
+                  <td class="text-danger"><%= i %></td>
+                  <td><%= category.name %></td>
+                  <td>
+                    <div class="pl-2 pr-2">
+                      <select class="custom-select custom-select-sm text-center">
+                        <option selected="">Riyadh</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td><%= category.created_at %></td>
+                  <td><a href="" data-toggle="modal" data-target="#cat-setting"><i class="fa fa-cog fa-2x text-danger"></i></a></td>
+                </tr>
+              <% end %>
+            <% end %>
           </tbody>
         </table>
       </div>

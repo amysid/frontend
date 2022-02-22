@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Audio</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <%= render 'layouts/ar_header' %>
+      <%= render 'layouts/ar_side_menu_layout'%>
+      <section class="section-container-R">
+        <%= yield %>
+      </section>
+      <%= render 'layouts/footer'%>
+    </div>
+  </body>
+</html>

@@ -55,4 +55,16 @@ en:
   last_login: "Last Login"
   setting: "Setting"
   no_record_present: "No Record Found!"
+  category_name: "Category Name"
+  booth_location: "Booth Location"
+  data_of_category_creation: "Date of Category Creation"
+  booth_name: "Booth Name"
+  city: "City"
+  address: "Address"
+  coordinates: "Coordinates"
+  listening: "Listening"
+  last_listening: "Last Listening"
+  adding_booth: "Adding Booth"
+  communicate_with: "Communicate With"
+
 
