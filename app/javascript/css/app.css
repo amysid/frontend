@@ -15,11 +15,11 @@ body, html { height: 100%; }
     .wrapper .aside-container-R .aside-inner { padding-top: 64px; height: 100%; width: 220px; overflow: hidden;border-left: 1px solid #DBDBDB; }
         .wrapper .aside-container .nav-floating { left: inherit; margin-left: 220px; z-index: 1110; min-width: 190px; overflow: auto; }
          .wrapper .aside-container-R .nav-floating { left: inherit; margin-left: 220px; z-index: 1110; min-width: 190px; overflow: auto; }
-    .wrapper .section-container { position: relative; height: 100%; margin-left: 0; z-index: 111; background-color: #fff; margin-bottom: 60px!important; }
-    .wrapper .section-container-R { position: relative; height: 100%; margin-left: 0; z-index: 111; background-color: #fff; margin-bottom: 60px!important; }
+    .wrapper .section-container { position: relative; height: 100%; margin-left: 0; background-color: #fff; margin-bottom: 60px!important; }
+    .wrapper .section-container-R { position: relative; height: 100%; margin-left: 0; background-color: #fff; margin-bottom: 60px!important; }
     .wrapper .footer-container { position: absolute; left: 0; right: 0; bottom: 0; height: 41px; border-top: 1px solid #ddd; padding: 10px 20px; z-index: 109; font-size: .875rem; }
         .wrapper .footer-container p { margin: 0; }
-.modal-open .wrapper { z-index: 0; }
+/*.modal-open .wrapper { z-index: 0; }*/
 .content-wrapper { padding: 15px; width: 100%; border-top: 1px solid rgba(0,0,0,.15); margin-top: -1px; }
     .content-wrapper .unwrap { margin: -15px; }
 .breadcrumb-item a {color:#fff; }
