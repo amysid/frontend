@@ -1,5 +1,7 @@
 class BoothsController < ApplicationController
   before_action :logged_in?
+  before_action :ensure_user_and_category_present, only: [:create, :update]
+
   def index
     @booth = Booth.new
     @booths = Booth.all
@@ -8,6 +10,8 @@ class BoothsController < ApplicationController
   def create
     @booth = Booth.new(booth_params)
     if @booth.save
+      @booth.users << @user
+      @booth.categories << @category
       redirect_to booths_path, notice: "Booth Create Successfully!"
     else
       redirect_to booths_path, alert: @booth.errors.full_messages
@@ -22,5 +26,13 @@ class BoothsController < ApplicationController
     longitude = coordinate.split(",").second
     params[:booth].merge!({latitude: latitude, longitude: longitude})
     params.require(:booth).permit(:name, :city, :address, :phone_number, :latitude, :longitude)
+  end
+
+  def ensure_user_and_category_present
+    @user = User.find_by(id:params[:booth][:user_id])
+    @category = Category.find_by(id: params[:booth][:category_id])
+    if @user.blank? || @category.blank?
+      redirect_to booths_path, alert: t("user_category_record_errors")
+    end
   end
 end

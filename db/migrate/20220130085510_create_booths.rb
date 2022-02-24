@@ -9,6 +9,7 @@ class CreateBooths < ActiveRecord::Migration[6.1]
       t.float :longitude
       t.string :location
       t.string :phone_number
+      t.integer :status, default: 0
       t.integer :listening_count,  default: 0
       
       t.timestamps

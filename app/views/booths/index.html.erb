@@ -79,77 +79,75 @@
     </div>
 <!--   </section>
 </div> -->
-<% if false %>
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <h4 class="modal-title text-center" id="myModalLabel">Adding Booth</h4>
+        <h4 class="modal-title text-center" id="myModalLabel"><%= t('adding_booth') %></h4>
         <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-
+        <%= form_with model: @booth do|f| %>
         <div class="mt-3">
           <div class="form-group row">
-            <label for="example-text-input" class="col-md-2 col-form-label text-center">Name</label>
+            <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('name')%></label>
             <div class="col-md-10">
-              <input class="form-control text-center" type="email" placeholder="Riyadh Park">
+              <%= f.text_field :name, class: "form-control text-center", placeholder: t('name') %>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="example-text-input" class="col-md-2 col-form-label text-center">City</label>
+            <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('city')%></label>
             <div class="col-md-10">
-              <select class="custom-select custom-select-sm text-center">
-                <option selected="">Riyadh</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+              <%= f.select :city, options_for_select(["Delhi","Lucknow"]), {include_blank: true},class: "custom-select custom-select-sm text-center" %>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="example-text-input" class="col-md-2 col-form-label text-center">Address</label>
+            <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('address')%></label>
             <div class="col-md-10">
-              <input class="form-control text-center" type="email" placeholder="Riyadh park, second floor behind Nando’s Restaurant">
+              <%= f.text_field :address, class: "form-control text-center", placeholder: t("address") %>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="example-text-input" class="col-md-2 col-form-label text-center">Coordinates</label>
+            <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('coordinates')%></label>
             <div class="col-md-10">
-              <input class="form-control text-center" type="email" placeholder="24.7070803,46.6905646">
+              <%= f.text_field :coordinate, class: "form-control text-center", placeholder: t("coordinates") %>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="example-text-input" class="col-md-2 col-form-label text-center">Communicate with</label>
+            <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('communicate_with')%></label>
             <div class="col-md-10">
-              <input class="form-control text-center" type="email" placeholder="Mohamed shihri">
+              <!-- <input class="form-control text-center" type="email" placeholder="Mohamed shihri"> -->
+              <%= f.select :user_id, options_for_select(User.all.pluck(:full_name, :id)), { include_blank: true},class: "custom-select custom-select-sm text-center" %>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="example-text-input" class="col-md-2 col-form-label text-center">Phone number</label>
+            <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('phone_number')%></label>
             <div class="col-md-10">
-              <input class="form-control text-center" type="email" placeholder="0509050803">
+              <%= f.text_field :phone_number, class: "form-control text-center", placeholder: "0509050803" %>
             </div>
           </div>
 
           <div class="form-group row">
-             <label for="example-text-input" class="col-md-2 col-form-label text-center">Category Name</label>
+             <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('category_name')%></label>
             <div class="col-md-10">
-              <input class="form-control text-center" type="email" placeholder="Category Name">
+              <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id)), { include_blank: true},class: "custom-select custom-select-sm text-center" %>
             </div>
              
           </div>
 
           <div class="form-group row">
             <div class="col-md-12 text-center">
-              <button class="btn btn-labeled btn-secondary-blue btn-rdius btn-rdius-13 font-bold" type="button">Add <span class="btn-label btn-label-right"><i class="fa fa-plus"></i></span></button>
+              <%= button_tag( :class => "btn btn-labeled btn-secondary-blue btn-rdius btn-rdius-13 font-bold") do %>
+                Add <span class='btn-label btn-label-right'><i class='fa fa-plus'></i></span>
+              <% end %>
             </div>
           </div>
 
         </div>
+        <% end %>
       </div>
 
     </div>
@@ -232,4 +230,3 @@
     </div>
   </div>
 </div>
-<% end %>
