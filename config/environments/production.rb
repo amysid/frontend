@@ -117,4 +117,16 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true #Needed if this is dev env. file
+  config.action_mailer.smtp_settings = {
+    address:                 'smtp.gmail.com',
+    port:                     587,
+    domain:                   'localhost',
+    user_name:                 'developmenttest127@gmail.com',
+    password:                  'dev@123456789',
+    authentication:           'plain',
+    enable_starttls_auto:    true
+  }
 end
