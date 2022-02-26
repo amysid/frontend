@@ -45,3 +45,13 @@
     <!-- And also section-container is contain different class for css so that's why section is also define here -->
   </body>
 </html>
+<script type="text/javascript">
+  $(document).ready(function(){
+  $(".sidebar-nav>li").each(function() {
+    var navItem = $(this);
+    if (navItem.find("a").attr("href") == location.pathname) {
+      navItem.addClass("active");
+    }
+  });
+});
+</script>
