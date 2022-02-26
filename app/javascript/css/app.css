@@ -1574,7 +1574,7 @@ body .jvectormap-zoomout { top: 30px; }
             .plan .plan-features > li:last-child { padding-bottom: 0; }
     .plan .plan-feature-disable { color: #f05050!important; }
 .login-bg { 
-   background: url(/assets/login-bg.png);
+   background: url(./login-bg.png);
     background-size: cover;
     background-position: center center;
 }
