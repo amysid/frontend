@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :ensure_user_present?, only: [:show, :update]
   def index
     @user = User.new
-    @users = User.all
+    per_page = params[:per_page] || 10
+    @users = User.all.order('created_at desc').paginate(page: params[:page], per_page: per_page)
   end
 
   def new

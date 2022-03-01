@@ -2,7 +2,8 @@ class CategoriesController < ApplicationController
   before_action :logged_in?
   def index
     @category = Category.new
-    @categories = Category.all.includes(:booths)
+    per_page = params[:per_page] || 10
+    @categories = Category.all.includes(:booths).order('created_at desc').paginate(page: params[:page], per_page: per_page)
   end
 
   def create

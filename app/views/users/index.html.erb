@@ -63,19 +63,17 @@
           <div>
             <nav>
               <ul class="pagination pagination-sm">
-                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item active"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                <li class="page-item">
+                <%= will_paginate @users %>
+                </li>
               </ul>
             </nav>
           </div>
+          <% if false %>
           <div class="ml-auto">
             <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
           </div>
+          <% end %>
         </div>
       </div>
 

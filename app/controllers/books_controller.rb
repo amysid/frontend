@@ -4,7 +4,8 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @book.book_files.build
-    @books = Book.all
+    per_page = params[:per_page] || 10
+    @books = Book.all.order('created_at desc').paginate(page: params[:page], per_page: per_page)
   end
   
   def create

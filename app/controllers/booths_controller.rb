@@ -4,7 +4,8 @@ class BoothsController < ApplicationController
 
   def index
     @booth = Booth.new
-    @booths = Booth.all
+    per_page = params[:per_page] || 10
+    @booths = Booth.all.order('created_at desc').paginate(page: params[:page], per_page: per_page)
   end
 
   def create

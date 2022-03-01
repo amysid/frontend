@@ -1747,3 +1747,7 @@ div.dataTables_wrapper div.dataTables_filter {
         margin: 0 auto;
     }
         .dataTables_scroll { width: 100%; }
+
+.langbtn a{margin: 20px 10px 10px 10px;
+display: block;
+color: #000;}
