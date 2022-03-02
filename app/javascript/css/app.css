@@ -1751,3 +1751,5 @@ div.dataTables_wrapper div.dataTables_filter {
 .langbtn a{margin: 20px 10px 10px 10px;
 display: block;
 color: #000;}
+
+.hide { display: none!important; }

@@ -144,6 +144,7 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
+                    <% if false %>
                     <input type="file" name="img[]" class="file">
                     <div class="input-group mb-3">
                       <div class="input-group-append">
@@ -151,6 +152,11 @@
                       </div>
                       <%= bk.file_field :book_cover_file, class: "form-control bg-white", placeholder: "upload file" %>
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
+                    </div>
+                    <% end %>
+                    <%= bk.file_field :book_cover_file,id: "book-cover-field", class: "", placeholder: "upload file" %>
+                    <div class="upload-preview" style="margin-top: 10px;">
+                      <img style="width: 50%; height: 50%;"/>
                     </div>
                   </div>
                 </div>
@@ -162,6 +168,7 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
+                    <% if false %>
                     <input type="file" name="img[]" class="file">
                     <div class="input-group mb-3">
                       <div class="input-group-append">
@@ -170,6 +177,8 @@
                       <%= bk.file_field :audio, class: "form-control bg-white", placeholder: "upload file" %>
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
+                    <% end %>
+                    <%= bk.file_field :audio, class: "", placeholder: "upload file" %>
                   </div>
                 </div>
               </div>
@@ -193,6 +202,7 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
+                    <% if false %>
                     <input type="file" name="img[]" class="file">
                     <div class="input-group mb-3">
                       <div class="input-group-append">
@@ -201,6 +211,8 @@
                       <%= bk.file_field :short_audio_file, class: "form-control bg-white", placeholder: "upload file" %>
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
+                    <% end %>
+                    <%= bk.file_field :short_audio_file, class: "", placeholder: "upload file" %>
                   </div>
                 </div>
               </div>
@@ -327,3 +339,19 @@ exacerbates it, including depression, ulcers, colitis and heart disease"></texta
       </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var preview = $(".upload-preview img");
+
+    $("#book-cover-field").change(function(event){
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+           preview.attr("src", image_base64);
+       };
+       reader.readAsDataURL(file);
+    });
+  });
+</script>

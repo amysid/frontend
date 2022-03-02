@@ -24,22 +24,22 @@
         <!-- END user info-->
         <!-- Iterates over all sidebar items-->
         <li class="nav-heading "><span data-localize="sidebar.heading.HEADER">Main Navigation</span></li>
-        <li class="">
+        <li class="<%= accessible?('homes-index') ? '' : 'hide' %>">
           <%= link_to "<em class='fa fa-desktop'></em><span data-localize='sidebar.nav.DASHBOARD'>#{t('dashboard')}</span>".html_safe, homes_path, title: t('dashboard') %>
         </li>
-        <li class=" ">
+        <li class="<%= accessible?('users-index') ? '' : 'hide' %>">
           <%= link_to "<em class='fa fa-user'></em><span>#{t('users')}</span>".html_safe, users_path, title: t('users')%>
         </li>
-        <li class="">
+        <li class="<%= accessible?('books-index') ? '' : 'hide' %>">
           <%= link_to "<em class='fa fa-book'></em><span>#{t('audio_books')}</span>".html_safe, books_path, title: t('audio_books')%>
         </li>
-        <li class=" ">
+        <li class="<%= accessible?('booths-index') ? '' : 'hide' %>">
           <%= link_to "<em class='fa fa-building'></em><span>#{t('booths')}</span>".html_safe, booths_path, title: t('booths')%>
         </li>
-        <li class=" ">
+        <li class="<%= accessible?('operations-index') ? '' : 'hide' %>">
         <%= link_to "<em class='fa fa-project-diagram'></em><span data-localize='sidebar.nav.element.ELEMENTS'>#{t('operations')}</span>".html_safe, operations_path, title: t('operations')%>
         </li>
-        <li class=" "><a href="#report" title="Report" data-toggle="collapse">
+        <li class="<%= accessible?('reports-index') ? '' : 'hide' %>"><a href="#report" title="Report" data-toggle="collapse">
           <em class="fa fa-file-code"></em><span data-localize="sidebar.nav.form.FORM">Reports</span>
           <i class="angle fa fa-chevron-right"></i>
         </a>
@@ -50,7 +50,7 @@
             <li class=" "><a href="time.html" title="Cropper"><span>Time Table</span></a></li>
           </ul>
         </li>
-        <li class=" ">
+        <li class="<%= accessible?('categoies-index') ? '' : 'hide' %>">
           <%= link_to "<em class='fa fa-cog'></em><span>#{t('category')}</span>
           <i class='angle fa fa-chevron-right'></i>".html_safe, categories_path, title: t('category')%>
         </li>
