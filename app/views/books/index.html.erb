@@ -355,3 +355,10 @@ exacerbates it, including depression, ulcers, colitis and heart disease"></texta
     });
   });
 </script>
+
+<!-- This syntex we can use to display the image and audio -->
+<!-- 
+<img src="<%#= rails_blob_path(@af.book_cover_file , only_path: true) %>">
+<audio  controls="controls" src="<%#= rails_blob_path(@bf.audio, only_path: true) if @bf.audio.present? %>"></audio>
+<img src="<%#= rails_blob_path(@bf.book_cover_file , only_path: true) %>">
+ -->

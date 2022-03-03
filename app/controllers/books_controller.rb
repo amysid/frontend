@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :logged_in?
+  include Rails.application.routes.url_helpers
   # before_action :ensure_category_present?, only: [:create, :update]
   def index
     @book = Book.new
