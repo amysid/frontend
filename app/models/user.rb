@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :books,dependent: :destroy
   has_and_belongs_to_many :booths
 
-  # after_create :send_invitation
+  after_create :send_invitation
 
   def accessible_features
     if self.role == "operator"
