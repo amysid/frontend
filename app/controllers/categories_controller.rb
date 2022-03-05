@@ -12,19 +12,24 @@ class CategoriesController < ApplicationController
       message = t('category_created_successfully')
       redirect_to categories_path, notice: message
     else
-      redirect_to booths_path, alert: @booth.errors.full_messages
+      redirect_to categories_path, alert: @booth.errors.full_messages
     end
   end
 
+  def edit
+    @category = Category.find_by(id: params[:id])
+  end
+
   def update
-    @category = Category.find_by(params[:id])
-    redirect_to booths_path, alert: t("no_record_present")
+    @category = Category.find_by(id: params[:id])
+    redirect_to categories_path, alert: t("no_record_present") if @category.blank?
+     
 
     if @category.update(category_params) 
       message = t('category_updated_successfully')
       redirect_to categories_path, notice: message 
     else
-      redirect_to booths_path, alert: @booth.errors.full_messages
+      redirect_to categories_path, alert: @booth.errors.full_messages
     end
   end
 
