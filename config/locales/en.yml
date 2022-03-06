@@ -88,4 +88,6 @@ en:
   authority_designation: "Authority/ Designation"
   create_password: "Create Password"
   category_destroy_message: "Category Destroy Successfully!"
+  update_booth: "Update Booth"
+  booth_destroy_message: "Booth Destroy Successfully!"
 

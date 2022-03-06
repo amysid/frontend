@@ -5,13 +5,19 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|ar/ do 
     resources :sessions
     resources :homes
-    resources :books
-    resources :booths
+    resources :books do 
+      get :setting, on: :member
+    end
+    resources :booths do
+      get :setting, on: :member
+    end
     resources :operations
     resources :categories  do
       get :setting, on: :member
     end
-    resources :users
+    resources :users do 
+      get :setting, on: :member      
+    end
     get 'change_password/:auth_token',to: 'sessions#change_password', as: "change_password"
     get 'login', to: "sessions#new"
   end

@@ -1,0 +1,3 @@
+$("#booth-action").html("");
+$("#booth-action").html("<%= j render partial: "action_modal", locals: { booth: @booth}  %>")
+$("#booth-action-modal").modal("show");

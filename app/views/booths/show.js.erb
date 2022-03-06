@@ -1,0 +1,5 @@
+$(".modal-backdrop").remove();
+$("#booth-action").html("");
+$("#detail-modal").html("");
+$("#detail-modal").html("<%= j render partial: "detail", locals: { booth: @booth}  %>")
+$("#booth-detail-modal").modal("show");
