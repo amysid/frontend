@@ -38,8 +38,8 @@
                     </div>
                   </td>
                   <td><%= category.created_at %></td>
-                  <td><a href="" data-toggle="modal" data-target="#cat-setting"><i class="fa fa-cog fa-2x text-danger"></i></a>
-                    <%= link_to "fa-pencil".html_safe, edit_category_path(id:category.id) ,remote: true%>
+                  <td>
+                    <%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_category_path(id:category.id) ,remote: true%>
                   </td>
                 </tr>
               <% end %>
@@ -109,3 +109,5 @@
 </div>
 
 <div id="edit-modal"></div>
+<div id="category-action"></div>
+<div id="detail-modal"></div>

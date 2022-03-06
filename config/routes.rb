@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :books
     resources :booths
     resources :operations
-    resources :categories
+    resources :categories  do
+      get :setting, on: :member
+    end
     resources :users
     get 'change_password/:auth_token',to: 'sessions#change_password', as: "change_password"
     get 'login', to: "sessions#new"

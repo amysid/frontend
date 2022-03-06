@@ -16,7 +16,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @category = Category.find_by(id: params[:id])
+  end
+
   def edit
+    @category = Category.find_by(id: params[:id])
+  end
+
+  def setting
     @category = Category.find_by(id: params[:id])
   end
 
@@ -29,7 +37,17 @@ class CategoriesController < ApplicationController
       message = t('category_updated_successfully')
       redirect_to categories_path, notice: message 
     else
-      redirect_to categories_path, alert: @booth.errors.full_messages
+      redirect_to categories_path, alert: @category.errors.full_messages
+    end
+  end
+
+  def destroy
+    @category = Category.find_by(id: params[:id])
+    if @category.destroy
+      message = t("category_destroy_message")
+      redirect_to categories_path, notice: message
+    else
+      redirect_to categories_path, alert: @category.errors.full_messages
     end
   end
 

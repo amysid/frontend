@@ -87,4 +87,5 @@ en:
   book_updated_successfully: "Book Updated Successfully"
   authority_designation: "Authority/ Designation"
   create_password: "Create Password"
+  category_destroy_message: "Category Destroy Successfully!"
 

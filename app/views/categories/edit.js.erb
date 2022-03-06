@@ -1,3 +1,5 @@
-$("#edit-modal").html("")
+$(".modal-backdrop").remove();
+$("#category-action").html("");
+$("#edit-modal").html("");
 $("#edit-modal").html("<%= j render partial: "edit_form_in_modal", locals: { category: @category}  %>")
 $("#category-edit-modal").modal("show");

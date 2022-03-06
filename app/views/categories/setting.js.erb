@@ -1,0 +1,3 @@
+$("#category-action").html("");
+$("#category-action").html("<%= j render partial: "action_modal", locals: { category: @category}  %>")
+$("#cat-action-modal").modal("show");
