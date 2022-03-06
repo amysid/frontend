@@ -13,6 +13,15 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def setting
+    @user = User.find_by(id: params[:id])
   end
 
   def create
@@ -24,11 +33,30 @@ class UsersController < ApplicationController
     render 'new'
   end
 
+  def change_status
+    @user = User.find_by(id: params[:id])
+    status = @user.status == "Active" ? "Blocked" : "Active"
+    @user.update(status: status)
+    message = "User updated successfully!"
+    redirect_to users_path, notice: message
+  end
+
   def update
     if not @user.update(user_params)
       flash[:alert] = @user.errors.full_messages
     end
-    return redirect_to @user
+    message = "User updated successfully!"
+    return redirect_to users_path, notice: message
+  end
+
+  def destroy
+    @user = User.find_by(id: params[:id])
+    if @user.destroy
+      message = t("user_destroy_message")
+      redirect_to users_path, notice: message
+    else
+      redirect_to users_path, alert: @user.errors.full_messages
+    end
   end
 
   private
@@ -44,7 +72,7 @@ class UsersController < ApplicationController
   def ensure_user_present?
     if @user.blank?
       message = t('user_not_present')
-      redirect_to homes_path, alert: message
+      redirect_to users_path, alert: message
     end
   end
 

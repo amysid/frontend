@@ -1,0 +1,3 @@
+$("#user-action").html("");
+$("#user-action").html("<%= j render partial: "action_modal", locals: { user: @user}  %>")
+$("#user-action-modal").modal("show");

@@ -90,4 +90,5 @@ en:
   category_destroy_message: "Category Destroy Successfully!"
   update_booth: "Update Booth"
   booth_destroy_message: "Booth Destroy Successfully!"
+  update_user: "Update User"
 

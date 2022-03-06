@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
   private
   
   def login
-    @user.update(last_login_at: Time.now)
+    @user.update(last_login_at: Time.now, status: "Active")
     session[:user_id] = @user.id
   end
 

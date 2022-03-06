@@ -16,7 +16,8 @@ Rails.application.routes.draw do
       get :setting, on: :member
     end
     resources :users do 
-      get :setting, on: :member      
+      get :setting, on: :member
+      get :change_status, on: :member      
     end
     get 'change_password/:auth_token',to: 'sessions#change_password', as: "change_password"
     get 'login', to: "sessions#new"

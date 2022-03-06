@@ -1,0 +1,5 @@
+$(".modal-backdrop").remove();
+$("#user-action").html("");
+$("#detail-modal").html("");
+$("#detail-modal").html("<%= j render partial: "detail", locals: { user: @user}  %>")
+$("#user-detail-modal").modal("show");

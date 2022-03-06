@@ -41,16 +41,16 @@
                 <td><%= user.mobile %></td>
                 <td><%= user.role %></td>
                 <td>
-                  <% if user.status == 1 %>
+                  <% if user.status == "Active" %>
                     <label class="badge badge-green">Active</label> 
-                  <% elsif user.status == 0 %>
-                    <label class="badge badge-danger">Blocked</label>
+                  <% elsif user.status == "Invited" %>
+                    <label class="badge badge-warning">Invited</label>
                   <% else %>
-                    <label class="badge badge-green">In Active</label>
+                    <label class="badge badge-danger">Blocked</label>
                   <% end %>
                 </td>
                 <td><%= user.last_login_at %></td>
-                <td><i class="fa fa-cog fa-2x text-danger"></i></td>
+                <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_user_path(id: user.id) ,remote: true%></td>
               </tr>
               <% end %>
             <% end %>
@@ -121,7 +121,7 @@
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('status') %></label>
             <div class="col-md-10">
-              <% status_options = ["select menu", "Confirm to Activate", "Block user"] %>
+              <% status_options =  User.statuses.keys %>
               <%= f.select :user_id, options_for_select(status_options), { include_blank: true},class: "custom-select custom-select-sm text-center" %>
             </div>
           </div>
@@ -150,3 +150,6 @@
     </div>
   </div>
 </div>
+<div id="edit-modal"></div>
+<div id="user-action"></div>
+<div id="detail-modal"></div>
