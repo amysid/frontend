@@ -29,7 +29,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+ar:
   hello: "Hello world"
   user_name: "Username"
   password: "Password"
@@ -37,7 +37,7 @@ en:
   update_password: "Update Password"
   login: "login"
   forgot_password: "Forgot password?"
-  dashboard: "Dashboard"
+  dashboard: "ATUl"
   users: "users"
   audio_books: "Audio Books"
   booths: "Booths"

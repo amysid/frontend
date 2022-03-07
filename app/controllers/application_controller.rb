@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_user_authorized!
-
+  include Rails.application.routes.url_helpers
+  
   helper ApplicationHelper
     def current_user
     @current_user = User.find_by(id: session[:user_id])

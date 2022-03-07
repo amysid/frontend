@@ -1,0 +1,5 @@
+$(".modal-backdrop").remove();
+$("#book-action").html("");
+$("#edit-modal").html("");
+$("#edit-modal").html("<%= j render partial: "edit_form_in_modal", locals: { book: @book}  %>")
+$("#book-edit-modal").modal("show");

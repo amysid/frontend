@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   before_action :logged_in?
-  include Rails.application.routes.url_helpers
   # before_action :ensure_category_present?, only: [:create, :update]
   def index
     @book = Book.new
@@ -18,6 +17,29 @@ class BooksController < ApplicationController
       redirect_to books_path, alert: @book.errors.full_messages
     end
   end
+
+  def update
+    @book = Book.find_by(id: params[:id])
+    if @book.update(book_params)
+      # @book.categories << @category
+      redirect_to books_path, notice: t("book_created_successfully")
+    else
+      redirect_to books_path, alert: @book.errors.full_messages
+    end
+  end
+
+  def show
+    @book = Book.includes(:book_files).find_by(id: params[:id])
+  end
+
+  def edit
+    @book = Book.includes(:book_files).find_by(id: params[:id])
+  end
+
+  def setting
+    @book = Book.includes(:book_files).find_by(id: params[:id])
+  end
+
 
   private
 

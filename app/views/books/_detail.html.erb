@@ -1,0 +1,80 @@
+<div class="modal fade" id="book-detail-modal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('book_title')%></label>
+          <div class="col-md-6">
+            <%= @book.title %>
+          </div>                           
+        </div>
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('author_name')%></label>
+          <div class="col-md-6">
+            <%= @book.author_name %>
+          </div>                           
+        </div>
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('category')%></label>
+          <div class="col-md-6">
+            <%= @book.category&.name %>
+          </div>                           
+        </div>
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('duration_of_the_book_in_minutes')%></label>
+          <div class="col-md-6">
+            <%= @book.book_duration %>
+          </div>                           
+        </div>
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('listening')%></label>
+          <div class="col-md-6">
+            <%= @book.listen_count %>
+          </div>                           
+        </div>
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('status')%></label>
+          <div class="col-md-6">
+            <%= @book.status %>
+          </div>                           
+        </div>
+        <h4>Audio Book Files</h4>
+
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('book_cover')%></label>
+          <% @book.book_files.each do |bf| %>
+            <div class="col-md-6">
+              <img src="<%= rails_blob_path(bf.book_cover_file , only_path: true) if bf.book_cover_file.present? %>" class="book-cover-img">
+            </div> 
+          <% end %>                          
+        </div>
+
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('audio_file')%></label>
+          <% @book.book_files.each do |bf| %>
+            <div class="col-md-6">
+              <audio  controls="controls" src="<%= rails_blob_path(bf.audio, only_path: true) if bf.audio.present? %>"></audio>
+            </div> 
+          <% end %>                          
+        </div>
+
+        <div class="row">
+          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('short_audio')%></label>
+          <% @book.book_files.each do |bf| %>
+            <div class="col-md-6">
+              <audio  controls="controls" src="<%= rails_blob_path(bf.short_audio, only_path: true) if bf.short_audio.present? %>"></audio>
+            </div> 
+          <% end %>                          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .book-cover-img{
+    width: 70%;
+    height: 70%;
+  }
+</style>
