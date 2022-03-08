@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :homes
     resources :books do 
       get :setting, on: :member
+      get :change_status, on: :member
     end
     resources :booths do
       get :setting, on: :member

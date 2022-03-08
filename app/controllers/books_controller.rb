@@ -40,6 +40,12 @@ class BooksController < ApplicationController
     @book = Book.includes(:book_files).find_by(id: params[:id])
   end
 
+  def change_status
+    @book = Book.includes(:book_files).find_by(id: params[:id])
+    status = @book.status == "Published" ? "UnPublished" : "Published"
+    @book.update(status: status)
+    redirect_to books_path, notice: t("book_updated_successfully")
+  end
 
   private
 

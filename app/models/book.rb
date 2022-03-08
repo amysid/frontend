@@ -3,6 +3,7 @@ class Book < ApplicationRecord
   # has_and_belongs_to_many :categories
   belongs_to :category
   belongs_to :user, optional: true
+  enum status: ["UnPublished", "Published"]
   
   def book_files_attributes=(book_files_attributes)
     book_files_attributes.each do |i, book_file_attribute|

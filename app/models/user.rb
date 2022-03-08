@@ -14,8 +14,8 @@ class User < ApplicationRecord
       feature = ["homes-index", "books-index", "books-show", "books-create","books-update",
                 "books-setting", "books-edit", "books-destroy"]
       return feature
-    elsif self.role == "approver"
-      return ["homes-index"]
+    elsif self.role == "Approver"
+      return ["homes-index","books-index", "books-setting", "books-change_status"]
     else
       return []
     end
