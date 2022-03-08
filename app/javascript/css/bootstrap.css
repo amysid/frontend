@@ -1253,6 +1253,7 @@ a.close.disabled { pointer-events: none; }
         .modal-dialog-scrollable .modal-content { max-height: calc(100vh - 3.5rem); }
     .modal-dialog-centered { min-height: calc(100% - 3.5rem); }
         .modal-dialog-centered:before { height: calc(100vh - 3.5rem); height: min-content; }
+    .modal-xs { max-width: 350px; }
     .modal-sm { max-width: 450px; }
 }
 

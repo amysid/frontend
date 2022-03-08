@@ -68,14 +68,14 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= bk.file_field :book_cover_file,id: "book-cover-field", class: "", placeholder: "upload file" %>
+                    <%= bk.file_field :book_cover_file,id: "book-cover-field", class: "mb-1", placeholder: "upload file" %>
                     <% bf = book.book_files.first if book.book_files.present? %>
                      <% if bf.book_cover_file.present? %>
                         <img src="<%= rails_blob_path(bf.book_cover_file , only_path: true) %>" style="width: 50%; height: 50%;" class="existing-img" >
                     <% end %>
-                    <div class="upload-preview" style="margin-top: 10px;">
+                    <!-- <div class="upload-preview" style="margin-top: 10px;">
                       <img style="width: 50%; height: 50%;"/>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -96,7 +96,7 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= bk.file_field :audio, class: "", placeholder: "upload file" %>
+                    <%= bk.file_field :audio, class: "mb-2", placeholder: "upload file" %>
                     <% if bf.audio.present? %>
                        <audio  controls="controls" src="<%= rails_blob_path(bf.audio, only_path: true)  %>" style="width: 70%;"></audio>
                     <% end %>
@@ -133,7 +133,7 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= bk.file_field :short_audio_file, class: "", placeholder: "upload file" %>
+                    <%= bk.file_field :short_audio_file, class: "mb-2", placeholder: "upload file" %>
                     <% if bf.audio.present? %>
                        <audio  controls="controls" src="<%= rails_blob_path(bf.short_audio_file, only_path: true)  %>" style="width: 70%;"></audio>
                     <% end %>

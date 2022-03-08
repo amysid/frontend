@@ -1709,3 +1709,6 @@ button.close-R {    position: absolute;
 .close-L {    position: absolute;
     right: 25px;
     top: 12px; }
+
+    .font-17{font-size: 17px}
+    .text-black{color:#000;}

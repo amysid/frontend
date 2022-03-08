@@ -1,35 +1,36 @@
 <div class="modal fade" id="user-detail-modal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-mdd">
     <div class="modal-content">
       <div class="modal-body">
+        <h4 class="modal-title text-center" id="H1">User Details</h4>
         <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('user_name')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label font-17"><%= t('user_name')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @user.full_name %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('email')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label font-17"><%= t('email')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @user.email %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('phone_number')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label font-17"><%= t('phone_number')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @user.mobile %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('authority')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label font-17"><%= t('authority')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @user.role %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('status')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label font-17"><%= t('status')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @user.status %>
           </div>                           
         </div>
@@ -39,3 +40,9 @@
     </div>
   </div>
 </div>
+
+<style type="text/css">
+  .modal-mdd {max-width: 500px;}
+   .font-17{font-size: 17px}
+    .text-black{color:#000;}
+</style>

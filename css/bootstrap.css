@@ -1249,11 +1249,13 @@ a.close.disabled { pointer-events: none; }
 
 @media (min-width:576px) {
     .modal-dialog { max-width: 690px; margin: 1.75rem auto; }
+
     .modal-dialog-scrollable { max-height: calc(100% - 3.5rem); }
         .modal-dialog-scrollable .modal-content { max-height: calc(100vh - 3.5rem); }
     .modal-dialog-centered { min-height: calc(100% - 3.5rem); }
         .modal-dialog-centered:before { height: calc(100vh - 3.5rem); height: min-content; }
     .modal-sm { max-width: 450px; }
+    .modal-mdd { max-width: 690px;}
 }
 
 @media (min-width:992px) {

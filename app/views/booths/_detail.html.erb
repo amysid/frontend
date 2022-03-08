@@ -1,47 +1,48 @@
 <div class="modal fade" id="booth-detail-modal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-mdd">
     <div class="modal-content">
       <div class="modal-body">
+        <h4 class="modal-title text-center" id="H1">Booth Details</h4>
         <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('booth_name')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label "><%= t('booth_name')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @booth.name %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('city')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label "><%= t('city')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @booth.city %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('communicate_with')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label "><%= t('communicate_with')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @booth.communicate_with %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('address')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label "><%= t('address')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @booth.address %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('coordinates')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label "><%= t('coordinates')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= booth.latitude %>,<%= booth.longitude%>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('listening')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label "><%= t('listening')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @booth.listening_count %>
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('status')%></label>
-          <div class="col-md-6">
+          <label for="example-text-input" class="col-md-4 col-form-label "><%= t('status')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
             <%= @booth.status %>
           </div>                           
         </div>
@@ -51,3 +52,8 @@
     </div>
   </div>
 </div>
+<style type="text/css">
+  .modal-mdd {max-width: 500px;}
+   .font-17{font-size: 17px}
+    .text-black{color:#000;}
+</style>
