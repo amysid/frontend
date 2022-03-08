@@ -63,7 +63,7 @@
           <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('short_audio')%></label>
           <% @book.book_files.each do |bf| %>
             <div class="col-md-6">
-              <audio  controls="controls" src="<%= rails_blob_path(bf.short_audio, only_path: true) if bf.short_audio.present? %>"></audio>
+              <audio  controls="controls" src="<%= rails_blob_path(bf.short_audio_file, only_path: true) if bf.short_audio_file.present? %>"></audio>
             </div> 
           <% end %>                          
         </div>

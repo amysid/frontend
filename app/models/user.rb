@@ -11,7 +11,8 @@ class User < ApplicationRecord
 
   def accessible_features
     if self.role == "operator"
-      feature = ["homes-index", "books-index", "books-show", "books-create","books-update"]
+      feature = ["homes-index", "books-index", "books-show", "books-create","books-update",
+                "books-setting", "books-edit", "books-destroy"]
       return feature
     elsif self.role == "approver"
       return ["homes-index"]
