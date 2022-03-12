@@ -27,10 +27,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      return redirect_to homes_path
+      return redirect_to users_path
     end
     flash[:alert] = @user.errors.full_messages
-    render 'new'
+    return redirect_to users_path
   end
 
   def change_status
