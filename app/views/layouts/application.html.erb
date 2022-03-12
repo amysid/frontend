@@ -21,7 +21,7 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <% if not params[:controller] == "sessions"%>
+    <% if not params[:controller] == "sessions" ||  params["controller"].start_with?("web") %>
     <%# if current_user.present? %>
       <div class="wrapper">
         <% if params["locale"].blank? || params[:locale] == "en" %>

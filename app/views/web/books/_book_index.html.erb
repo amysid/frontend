@@ -1,0 +1,38 @@
+<div class="row" style="margin-left: 200px;">
+  <center>
+    <%= form_with scope: :book, url: web_booth_books_path(booth_id: @booth.number), local: :fasle, method: :get do |f|%>
+    <%= f.label :Name%>
+    <%= f.text_field :name, placeholder: "search by Book Name", class: "form-control"%>
+    <%= f.submit :search, class: "btn btn-labeled btn-secondary-blue" %>
+    <% end %>
+  </center>
+</div>
+<div class="row">
+  <div class="col-xl-12 col-md-6">  
+    <div class="table-responsive mt-3">
+      <table class="table table-bordered table-hover" id="table-ext-1">
+        <thead>
+          <tr>
+            <th>Book Name</th>
+            <th>Author name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @books.blank? %>
+            <tr><%= t('no_record_present') %></tr>
+          <% else %>
+            <% @books.each_with_index do |book, i|%>
+              <tr>
+                <td><%= book.title %></td>
+                <td><%= book.author_name %></td>
+                <td><%= link_to "show", web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> 
+<%= link_to "Back", web_booth_path(id: booth.number), clas: "btn"%>

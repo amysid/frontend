@@ -1,0 +1,3 @@
+$(".booth-show").html('')
+$(".book-show-page").html("")
+$(".book-index-page").html("<%= j render partial: "book_index", locals: { books: @books, booth: @booth}  %>")

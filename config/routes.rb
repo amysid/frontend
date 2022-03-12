@@ -22,5 +22,11 @@ Rails.application.routes.draw do
     end
     get 'change_password/:auth_token',to: 'sessions#change_password', as: "change_password"
     get 'login', to: "sessions#new"
+
+    namespace :web  do
+      resources :booths, only: [:index, :show]  do
+        resources :books, only: [:index, :show]
+      end
+    end
   end
 end
