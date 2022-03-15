@@ -1,11 +1,16 @@
-<div class="row" style="margin-left: 200px;">
-  <center>
-    <%= form_with scope: :book, url: web_booth_books_path(booth_id: @booth.number), local: :fasle, method: :get do |f|%>
-    <%= f.label :Name%>
-    <%= f.text_field :name, placeholder: "search by Book Name", class: "form-control"%>
-    <%= f.submit :search, class: "btn btn-labeled btn-secondary-blue" %>
-    <% end %>
-  </center>
+<div class="search-area">
+  <%= form_tag web_booth_books_path(booth_id: @booth.number), remote: true, method: :get  do %>
+    <div class="form-group row">
+      <div class="col-sm-9 no-right-padding">
+        <%= text_field_tag :book, params[:book], placeholder: "Enter Book name", autofocus: true, class: "form-control form-control-lg" %>
+      </div>
+      <div class="col-sm-3 no-left-padding">
+        <%= button_tag type: :submit, class: "btn btn-success" do %>
+          <em class="fa fa-search"></em>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <div class="row">
   <div class="col-xl-12 col-md-6">  

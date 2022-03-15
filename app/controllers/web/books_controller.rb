@@ -3,8 +3,11 @@ class Web::BooksController < ApplicationController
   before_action :fetch_categories
   
   def index
-    byebug if params[:book].present? && params[:book][:name].present?
-    @books = Book.where(category_id: @categories.pluck(:id))
+    if params[:book].present?
+      @books = Book.where(category_id: @categories.pluck(:id)).where("books.title LIKE ?", "%#{params[:book]}%")
+    else
+      @books = Book.where(category_id: @categories.pluck(:id))
+    end
   end
 
   def show
