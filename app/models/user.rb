@@ -12,10 +12,11 @@ class User < ApplicationRecord
   def accessible_features
     if self.role == "operator"
       feature = ["homes-index", "books-index", "books-show", "books-create","books-update",
-                "books-setting", "books-edit", "books-destroy"]
+                "books-setting", "books-edit", "books-destroy", "booths-index", "booths-create",
+               "booths-show", "booths-edit", "booths-destroy", "booths-setting", "booths-update"]
       return feature
     elsif self.role == "Approver"
-      return ["homes-index","books-index", "books-setting", "books-change_status"]
+      return ["homes-index","books-index", "books-edit", "books-show", "books-update","books-setting", "books-change-status"]
     else
       return []
     end
