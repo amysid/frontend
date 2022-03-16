@@ -65,6 +65,15 @@
   <% end %>                          
 </div>
 
+<div class="qr-code">
+  <div class="row">
+    <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t("QRCode") %></label>
+    <div class="col-md-7 col-form-label text-black font-17">
+      <%= @qr_code.as_svg( offset: 0, color: "000", shape_rendering: 'crispEdges', module_size: 6, standalone: true ).html_safe %>
+    </div>
+  </div>
+</div>
+
 <center><%= link_to "Back", web_booth_books_path(booth_id: @booth.number), class: "btn btn-block btn-danger btn-login mt-4", remote: true %></center>
 
 
