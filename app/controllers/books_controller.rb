@@ -51,7 +51,7 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author_name, :book_duration, :body,
-      :user_id, :category_id, book_files_attributes: [:book_cover_file, :audio, :short_audio_file]
+      :user_id, :category_id, book_files_attributes: [:id, :book_cover_file, :audio, :short_audio_file, :_destroy]
     )
   end
 

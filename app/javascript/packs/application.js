@@ -20,7 +20,8 @@ var jQuery = require('jquery')
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
-// import js file here 
+// import js file here
+import "/public/javascripts/nested_form.js" 
 import "../vendor/modernizr/modernizr.custom.js"
 import "../vendor/js-storage/js.storage.js"
 import "../vendor/i18next/i18next.js"
