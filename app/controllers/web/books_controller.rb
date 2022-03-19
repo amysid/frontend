@@ -22,7 +22,7 @@ class Web::BooksController < ApplicationController
   end
 
   def update_listen_count
-    byebug
+    render json: {message: "successfully save count"}
   end
 
   private
