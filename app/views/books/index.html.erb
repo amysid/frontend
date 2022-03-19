@@ -49,7 +49,7 @@
                   <td><%= book.listen_count %></td>
                   <td>
                       <label><%= book.status %></label></td>
-                  <td>11-06-2021 11:51 P</td>
+                  <td><%= book.last_listening_at %></td>
                   <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_book_path(id: book.id) ,remote: true%></td>
                 </tr>
               <% end %>

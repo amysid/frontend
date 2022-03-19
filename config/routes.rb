@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resources :booths, only: [:index, :show]  do
         resources :books, only: [:index, :show] do
           get :media_files, on: :member
+          get :update_listen_count, on: :member
         end
       end
     end

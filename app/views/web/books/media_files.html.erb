@@ -11,7 +11,7 @@
   <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('audio_file')%></label>
   <% @book.book_files.each do |bf| %>
     <div class="col-md-7 col-form-label text-black font-17">
-      <audio  controls="controls" src="<%= rails_blob_path(bf.audio, only_path: true) if bf.audio.present? %>"></audio>
+      <audio  controls="controls" id="audio-file" src="<%= rails_blob_path(bf.audio, only_path: true) if bf.audio.present? %>"></audio>
     </div> 
   <% end %>                          
 </div>
@@ -20,7 +20,53 @@
   <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('short_audio')%></label>
   <% @book.book_files.each do |bf| %>
     <div class="col-md-7 col-form-label text-black font-17">
-      <audio  controls="controls" src="<%= rails_blob_path(bf.short_audio_file, only_path: true) if bf.short_audio_file.present? %>"></audio>
+      <audio  controls="controls"  src="<%= rails_blob_path(bf.short_audio_file, only_path: true) if bf.short_audio_file.present? %>"></audio>
     </div> 
   <% end %>                          
 </div>
+
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+    $("#audio-file").trigger(function(){
+      debugger
+      var input = this;
+      if( input.paused == true){
+        console.log("music paused");
+      }
+
+      if( input.ended ){
+        console.log("music ended");
+      }
+    });
+  });
+</script> -->
+
+<script type="text/javascript">
+
+$("audio").on({
+  pause:function(){ // the audio is paused!
+    var current_time = this.currentTime
+    var file_duration = this.duration
+    $.ajax({
+      url : '<%= update_listen_count_web_booth_book_path(booth_id: @booth.number, id: @book.id) %>',
+      type : 'GET',
+      data : {
+          'current_time' : current_time,
+          'file_duration': file_duration
+      },
+      dataType:'json',
+      success : function(data) {              
+        console.log('Data: '+data);
+      },
+      error : function(request,error)
+      {
+        console.log("their is some issue");
+      }
+    })
+  },
+})
+
+function pause() {
+  $("audio").trigger("pause");
+}
+</script>

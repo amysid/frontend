@@ -18,6 +18,11 @@ class Web::BooksController < ApplicationController
 
   def media_files
     @book = Book.where(id: params[:id]).includes(:book_files).first
+    @book.update(last_listening_at: Time.now)
+  end
+
+  def update_listen_count
+    byebug
   end
 
   private
