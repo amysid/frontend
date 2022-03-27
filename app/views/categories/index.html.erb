@@ -18,9 +18,11 @@
           <thead>
             <tr>                                 
               <th class="text-danger">#</th>
-              <th class="text-danger"><%= t('category_name') %></th>   
-               <th class="text-danger"><%= t('booth_location') %></th>
-               <th class="text-danger"><%= t('data_of_category_creation') %></th>
+              <th class="text-danger"><%= t('category_name') %></th> 
+              <th class="text-danger"><%= t('arabic_name') %></th>
+              <th class="text-danger"><%= t('icon') %></th>  
+              <th class="text-danger"><%= t('booth_location') %></th>
+              <th class="text-danger"><%= t('data_of_category_creation') %></th>
               <th class="text-danger"><%= t('setting') %></th>
             </tr>
           </thead>
@@ -32,6 +34,8 @@
                 <tr>
                   <td class="text-danger"><%= i %></td>
                   <td><%= category.name %></td>
+                  <td><%= category.arabic_name %></td>
+                  <td><img src="<%= rails_blob_path(category.icon , only_path: true) if category.icon.present? %>" class="cat-icon-img"></td>
                   <td>
                     <div class="pl-2 pr-2">
                       <%= select_tag t('booth'), options_for_select(category.booths.pluck(:name, :id)), class: "custom-select custom-select-sm text-center"%>
@@ -50,26 +54,12 @@
 
       <div class="card-footer">
     <div class="d-flex">
-     <% if false %>
-     <div>
-         <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>                      
-     </div>
-     <% end %>
-     <div class="ml-auto">
-      <nav>
+      <div class="ml-auto">
+        <nav>
           <ul class="pagination pagination-sm">
-           <% if false %>
-           <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-           <li class="page-item"><a class="page-link" href="#">1</a></li>
-           <li class="page-item"><a class="page-link" href="#">2</a></li>
-           <li class="page-item"><a class="page-link" href="#">3</a></li>
-           <li class="page-item"><a class="page-link" href="#">4</a></li>
-           <li class="page-item active"><a class="page-link" href="#">5</a></li>
-           <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-           <% end %>
             <%= will_paginate @categories%>
           </ul>
-         </nav>
+        </nav>
      </div>
     </div>
    </div>
@@ -77,37 +67,16 @@
   </div>
   <!-- END cards box-->
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-body">
-        <h4 class="modal-title text-center" id="myModalLabel">Add Category</h4>
-        <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
-        <div class="mt-3">
-          <%= form_with model: @category do |f| %>
-          <div class="form-group row">
-               <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('add_category')%></label>
-            <div class="col-md-9">
-              <%= f.text_field :name, class:"form-control text-center", placeholder: t('category_name') %>
-            </div>                         
-          </div>
-
-          <div class="form-group row">
-            <div class="col-md-12 text-center">
-              <%= button_tag( :class => "btn btn-labeled btn-secondary-blue btn-rdius btn-rdius-13 font-bold") do %>
-                <%= t('add')%> <span class='btn-label btn-label-right'><i class='fa fa-plus'></i></span>
-              <% end %>
-            </div>
-          </div>
-          <% end %>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
+<%= render 'form_modal'%>
 
 <div id="edit-modal"></div>
 <div id="category-action"></div>
 <div id="detail-modal"></div>
+
+<style>
+  .cat-icon-img {
+    width: 35px;
+    height: 35px;
+  }
+</style>

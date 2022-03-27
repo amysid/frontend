@@ -8,8 +8,8 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :reason_for_rejection
       t.integer :status, default: 0
       t.integer :listen_count, default: 0
-      t.references :user
-      t.references :category 
+      t.datetime :last_listening_at
+      
       t.timestamps
     end
   end

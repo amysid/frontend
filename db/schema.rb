@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_19_030934) do
+ActiveRecord::Schema.define(version: 2022_02_24_033607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +44,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_030934) do
   end
 
   create_table "book_files", force: :cascade do |t|
-    t.string "book_cover"
-    t.string "audio_file"
-    t.string "short_audio"
     t.bigint "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -61,13 +58,9 @@ ActiveRecord::Schema.define(version: 2022_03_19_030934) do
     t.string "reason_for_rejection"
     t.integer "status", default: 0
     t.integer "listen_count", default: 0
-    t.bigint "user_id"
-    t.bigint "category_id"
+    t.datetime "last_listening_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "last_listening_at"
-    t.index ["category_id"], name: "index_books_on_category_id"
-    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "books_categories", id: false, force: :cascade do |t|
@@ -82,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_030934) do
     t.string "name"
     t.string "city"
     t.string "address"
+    t.string "communicate_with"
     t.float "latitude"
     t.float "longitude"
     t.string "location"
@@ -90,8 +84,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_030934) do
     t.integer "listening_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "communicate_with"
-    t.string "string"
     t.index ["number"], name: "index_booths_on_number"
   end
 
@@ -111,6 +103,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_030934) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.string "arabic_name"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

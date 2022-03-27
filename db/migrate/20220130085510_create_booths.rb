@@ -5,6 +5,7 @@ class CreateBooths < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :city
       t.string :address
+      t.string :communicate_with
       t.float :latitude
       t.float :longitude
       t.string :location

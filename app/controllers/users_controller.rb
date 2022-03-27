@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.password = rand(10000..90000).to_s
     if @user.save
       return redirect_to users_path
     end
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:full_name, :mobile, :email, :gender, :role, :status, :password)
+    params.require(:user).permit(:full_name, :mobile, :email, :gender, :role)
   end
 
   def set_user

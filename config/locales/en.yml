@@ -92,4 +92,6 @@ en:
   booth_destroy_message: "Booth Destroy Successfully!"
   update_user: "Update User"
   update_book: "Update Book"
+  arabic_name: "Arabic Name"
+  icon: "Icon"
 
