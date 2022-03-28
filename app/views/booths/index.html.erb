@@ -139,8 +139,8 @@
 
           <div class="form-group row">
              <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('category_name')%></label>
-            <div class="col-md-10">
-              <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id)), { include_blank: true},class: "custom-select custom-select-sm text-center" %>
+            <div class="col-md-10" data-controller='select2'>
+              <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id)), { include_blank: true},{multiple: true, id: "category-dropdown", style: "width: 33.75em;"} %>
             </div>
              
           </div>
@@ -164,3 +164,9 @@
 <div id="edit-modal"></div>
 <div id="booth-action"></div>
 <div id="detail-modal"></div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#category-dropdown").select2();
+  })
+</script>

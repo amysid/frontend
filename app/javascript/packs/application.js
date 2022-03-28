@@ -20,6 +20,9 @@ var jQuery = require('jquery')
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
+import select2 from 'select2';
+import 'select2/dist/css/select2.css';
+
 // import js file here
 import "/public/javascripts/nested_form.js" 
 import "../vendor/modernizr/modernizr.custom.js"
