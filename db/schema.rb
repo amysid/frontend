@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_033607) do
   end
 
   create_table "operations", force: :cascade do |t|
-    t.integer "number"
+    t.string "number"
     t.string "listening_status"
     t.datetime "listening_time"
     t.string "rating"

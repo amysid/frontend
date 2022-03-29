@@ -95,4 +95,10 @@ en:
   arabic_name: "Arabic Name"
   icon: "Icon"
   booth_not_found: "Booth Not found!"
+  category_names: "Category Names"
+  operation_number: "Operation Number"
+  listening_status: "Listening Status"
+  listening_time: "Listening time"
+  ratings: "Ratings"
+  notes: "Notes"
 

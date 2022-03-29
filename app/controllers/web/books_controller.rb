@@ -4,15 +4,17 @@ class Web::BooksController < ApplicationController
 
   def index
     if params[:book].present?
-      @books = Book.where(category_id: @categories.pluck(:id)).where("books.title LIKE ?", "%#{params[:book]}%")
+      @books = @booth.books.where("books.title LIKE ?", "%#{params[:book]}%")
     else
-      @books = Book.where(category_id: @categories.pluck(:id))
+      @books = @booth.books
     end
   end
 
   def show
     @book = Book.where(id: params[:id]).first
-    path = media_files_web_booth_book_url(booth_id: @booth.number, id: @book)
+    operation = Operation.create(booth_id: @booth.id, book_id: @book.id)
+    
+    path = media_files_web_operation_url(id: operation.number)
     @qr_code = RQRCode::QRCode.new(path)
   end
 

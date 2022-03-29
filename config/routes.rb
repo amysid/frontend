@@ -22,14 +22,14 @@ Rails.application.routes.draw do
     end
     get 'change_password/:auth_token',to: 'sessions#change_password', as: "change_password"
     get 'login', to: "sessions#new"
-    get 'web/books/:number', to: "operations#show"
 
     namespace :web  do
       resources :booths, only: [:index, :show]  do
-        resources :books, only: [:index, :show] do
-          get :media_files, on: :member
-          get :update_listen_count, on: :member
-        end
+        resources :books, only: [:index, :show]
+      end
+      resources :operations, only: [] do
+        get :media_files, on: :member
+        get :update_listen_count, on: :member
       end
     end
   end

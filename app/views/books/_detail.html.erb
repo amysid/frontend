@@ -17,9 +17,9 @@
           </div>                           
         </div>
         <div class="row">
-          <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('category')%></label>
+          <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('category_names')%></label>
           <div class="col-md-7 col-form-label text-black font-17">
-            <%= @book.category&.name %>
+            <%= @book.categories.pluck(:name).join(", ") %>
           </div>                           
         </div>
         <div class="row">
