@@ -3,8 +3,8 @@
       <div class="ml-auto">
           <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item"><a href="#">Library</a></li>
+                  <li class="breadcrumb-item"><a href="#"><%= t('home') %></a></li>
+                  <li class="breadcrumb-item"><a href="#"><%= t('library') %></a></li>
               </ol>
           </nav>
       </div>
@@ -94,7 +94,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <h4 class="modal-title text-center" id="myModalLabel">Adding Book</h4>
+        <h4 class="modal-title text-center" id="myModalLabel"><%= t('adding_book') %></h4>
         <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
         <div class="mt-3">
@@ -185,7 +185,10 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= bk.file_field :audio, class: "", placeholder: "upload file" %>
+                    <%= bk.file_field :audio, class: "", id: "book-audio-field", placeholder: "upload file" %>
+                    <div class="upload-audio-preview" style="margin-top: 10px;">
+                      <audio style="width: 50%; height: 50%;" controls="controls"></audio>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -199,7 +202,7 @@
               <div class="row">
                 <div class="col-lg-12 text-center">
                   <%= button_tag( :class => "btn btn-labeled btn-secondary-blue btn-rdius btn-rdius-13 font-bold") do %>
-                    Add <span class='btn-label btn-label-right'><i class='fa fa-plus'></i></span>
+                    <%= t('add') %> <span class='btn-label btn-label-right'><i class='fa fa-plus'></i></span>
                   <% end %>
                 </div>
               </div>
@@ -243,7 +246,27 @@
   $(document).ready(function(){
     $("#category-dropdown").select2()
 
+
+  function computeLength(file) {
+    return new Promise((resolve) => {
+      var objectURL = URL.createObjectURL(file);
+      var mySound = new Audio([objectURL]);
+      mySound.addEventListener(
+        "canplaythrough",
+        () => {
+          URL.revokeObjectURL(objectURL);
+          resolve({
+            file,
+            duration: mySound.duration
+          });
+        },
+        100,
+      );
+    });  
+  }
+
     var preview = $(".upload-preview img");
+    var audio_preview = $(".upload-audio-preview audio")
 
     $("#book-cover-field").change(function(event){
        var input = $(event.currentTarget);
@@ -255,5 +278,19 @@
        };
        reader.readAsDataURL(file);
     });
+
+    $("#book-audio-field").change(function(event){
+      var audio_input = $(event.currentTarget);
+      var file = audio_input[0].files[0]
+      var reader = new FileReader();
+      reader.onload = function(e){
+        audio_base64 = e.target.result;
+        audio_preview.attr("src", audio_base64);
+      };
+      reader.readAsDataURL(file);
+      debugger
+      var length = computeLength(file)
+    })
+
   });
 </script>

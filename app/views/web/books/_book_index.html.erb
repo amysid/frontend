@@ -2,7 +2,7 @@
   <%= form_tag web_booth_books_path(booth_id: @booth.number), remote: true, method: :get  do %>
     <div class="form-group row">
       <div class="col-sm-9 no-right-padding">
-        <%= text_field_tag :book, params[:book], placeholder: "Enter Book name", autofocus: true, class: "form-control form-control-lg" %>
+        <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control form-control-lg" %>
       </div>
       <div class="col-sm-3 no-left-padding">
         <%= button_tag type: :submit, class: "btn btn-success" do %>
@@ -18,9 +18,9 @@
       <table class="table table-bordered table-hover" id="table-ext-1">
         <thead>
           <tr>
-            <th>Book Name</th>
-            <th>Author name</th>
-            <th>Action</th>
+            <th><%= t("book_name") %></th>
+            <th><%= t('author_name') %></th>
+            <th><%= t('action') %></th>
           </tr>
         </thead>
         <tbody>
@@ -40,4 +40,4 @@
     </div>
   </div>
 </div> 
-<%= link_to "Back", web_booth_path(id: booth.number), clas: "btn"%>
+<%= link_to t("back"), web_booth_path(id: booth.number), clas: "btn"%>

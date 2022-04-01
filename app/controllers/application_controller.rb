@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_user_authorized!
+  before_action :set_locale
+
   include Rails.application.routes.url_helpers
   
   helper ApplicationHelper
@@ -9,6 +11,11 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     redirect_to new_session_path unless current_user.present?
+  end
+
+  def set_locale
+    I18n.locale = :en
+    I18n.locale = params[:locale]
   end
 
   def ensure_user_authorized!

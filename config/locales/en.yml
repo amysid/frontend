@@ -101,4 +101,23 @@ en:
   listening_time: "Listening time"
   ratings: "Ratings"
   notes: "Notes"
+  booth: "Booth"
+  add_booth: "Add Booth"
+  booth_details: "Booth Details"
+  user: "User"
+  staff_management: "Staff Management"
+  user_details: "User Details"
+  home: "Home"
+  library: "Library"
+  adding_book: "Adding Book"
+  book_details: "Book Details"
+  category_details: "Category Details"
+  number: "Number"
+  action: "Action"
+  book_name: "Book Name"
+  enter_book_name: "Enter Book Name"
+  qr_code: "Qr Code"
+  back: "Back"
+
+
 

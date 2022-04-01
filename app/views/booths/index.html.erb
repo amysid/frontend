@@ -6,7 +6,7 @@
         <div class="ml-auto">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Booth</a></li>
+              <li class="breadcrumb-item"><a href="#"><%= t('booth') %></a></li>
             </ol>
           </nav>
         </div>
@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-xl-12 col-md-6">
           <!-- START card-->
-          <button class="btn btn-labeled btn-secondary-blue btn-lg btn-rdius btn-rdius-13 font-bold" type="button" data-toggle="modal" data-target="#myModal">Add Booth <span class="btn-label btn-label-right"><i class="fa fa-plus"></i></span></button>
+          <button class="btn btn-labeled btn-secondary-blue btn-lg btn-rdius btn-rdius-13 font-bold" type="button" data-toggle="modal" data-target="#myModal"><%= t('add_booth') %> <span class="btn-label btn-label-right"><i class="fa fa-plus"></i></span></button>
           <div class="table-responsive mt-3">
             <table class="table table-bordered table-hover" id="table-ext-1">
               <thead>
@@ -148,7 +148,7 @@
           <div class="form-group row">
             <div class="col-md-12 text-center">
               <%= button_tag( :class => "btn btn-labeled btn-secondary-blue btn-rdius btn-rdius-13 font-bold") do %>
-                Add <span class='btn-label btn-label-right'><i class='fa fa-plus'></i></span>
+                <%= t('add') %> <span class='btn-label btn-label-right'><i class='fa fa-plus'></i></span>
               <% end %>
             </div>
           </div>
