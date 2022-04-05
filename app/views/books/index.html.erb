@@ -187,13 +187,12 @@
                     <% end %>
                     <%= bk.file_field :audio, class: "", id: "book-audio-field", placeholder: "upload file" %>
                     <div class="upload-audio-preview" style="margin-top: 10px;">
-                      <audio style="width: 50%; height: 50%;" controls="controls"></audio>
+                      <audio  controls="controls" id="audio-atul"></audio>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
 
           <div class="form-group row">
@@ -246,25 +245,6 @@
   $(document).ready(function(){
     $("#category-dropdown").select2()
 
-
-  function computeLength(file) {
-    return new Promise((resolve) => {
-      var objectURL = URL.createObjectURL(file);
-      var mySound = new Audio([objectURL]);
-      mySound.addEventListener(
-        "canplaythrough",
-        () => {
-          URL.revokeObjectURL(objectURL);
-          resolve({
-            file,
-            duration: mySound.duration
-          });
-        },
-        100,
-      );
-    });  
-  }
-
     var preview = $(".upload-preview img");
     var audio_preview = $(".upload-audio-preview audio")
 
@@ -288,9 +268,6 @@
         audio_preview.attr("src", audio_base64);
       };
       reader.readAsDataURL(file);
-      debugger
-      var length = computeLength(file)
-    })
-
+    });
   });
 </script>
