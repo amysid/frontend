@@ -23,7 +23,7 @@ window.$ = window.jQuery = jQuery;
 import select2 from 'select2';
 import 'select2/dist/css/select2.css';
 
-// import js file here
+// import admin js file here
 import "/public/javascripts/nested_form.js" 
 import "../vendor/modernizr/modernizr.custom.js"
 import "../vendor/js-storage/js.storage.js"
@@ -35,9 +35,15 @@ import "../vendor/popper.js/dist/umd/popper.js"
 import "../vendor/bootstrap/dist/js/bootstrap.js"
 import "../vendor/jquery-slimscroll/jquery.slimscroll.js"
 import "../vendor/moment/min/moment-with-locales.js"
+// admin js end here
 
+// web js start here
+import "../web_vendor/jquery/dist/jquery.js"
+import "../web_vendor/bootstrap/dist/js/bootstrap.js"
+import "../website-assets/js/script.js"
+// web js end here
 
-// import css file here
+// import admin css file here
 import "../vendor/parsleyjs/dist/parsley.js"
 import "../vendor/@fortawesome/fontawesome-free/css/regular.css"
 import "../vendor/@fortawesome/fontawesome-free/css/solid.css"
@@ -48,12 +54,18 @@ import "../vendor/whirl/dist/whirl.css"
 // import "../vendor/weather-icons/css/weather-icons.css"
 import "../css/bootstrap.css"
 import "../css/app.css"
+// admin css end here
 
+// Website css
 
+import "../website-assets/css/bootstrap.css"
+import "../web_vendor/@fortawesome/fontawesome-free/css/brands.css"
+// import "../web_vendor/@fortawesome/fontawesome-free/css/regular.css"
+// import "../web_vendor/@fortawesome/fontawesome-free/css/solid.css"
+import "../web_vendor/@fortawesome/fontawesome-free/css/fontawesome.css"
+import "../website-assets/css/style.css"
 
-
-
-
+// website css end here
 
 
 // Note: their is some url is used in css file under verdor folder and 

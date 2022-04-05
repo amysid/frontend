@@ -1,3 +1,4 @@
+<% if false %>
 <div class="booth-show">
   <div class="row">
     <div class="col-xl-12 col-md-6">  
@@ -11,6 +12,42 @@
     </div>
   </div>
 </div>
+<% end %>
 
 <div class="book-index-page"></div>
 <div class="book-show-page"></div>
+
+<div class="booth-show">
+<section class="login-wrapper">
+    <div class="login-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="login-box col-md-12">
+                <div class="theme-form login-form text-center">
+                    <div>
+                        <img src="/assets/web-logo.jpg">
+                        <h1>مكتبة الكتب الصوتية</h1>
+                        <h1 class="mt-5">Audiobooks Library</h1>
+                    </div>
+
+                    <div class="form-group button-sec">
+                        <%= link_to "Start", web_booth_books_path(booth_id: @booth.number), class: "btn btn-primary mr-4 btn-theme", remote: true %>
+                        <%= link_to "ابدأ الخدمة", web_booth_books_path(booth_id: @booth.number), class: "btn btn-primary ml-4 btn-theme", remote: true %>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
+                <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
