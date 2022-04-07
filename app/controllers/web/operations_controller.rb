@@ -1,4 +1,4 @@
-class Web::OperationsController < ApplicationController
+class Web::OperationsController < Web::WebApplicationController
   before_action :set_operation
 
   def media_files

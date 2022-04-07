@@ -1,4 +1,4 @@
-class Web::BoothsController < ApplicationController
+class Web::BoothsController < Web::WebApplicationController
   before_action :set_booth, only: [:show]
   def index
     @booths = Booth.all.order("created_at desc")

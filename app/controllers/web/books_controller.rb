@@ -1,4 +1,4 @@
-class Web::BooksController < ApplicationController
+class Web::BooksController < Web::WebApplicationController
   before_action :set_booth
   before_action :fetch_categories
 
