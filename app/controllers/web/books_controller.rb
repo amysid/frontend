@@ -4,10 +4,13 @@ class Web::BooksController < Web::WebApplicationController
 
   def index
     if params[:book].present?
-      @books = @booth.books.where("books.title LIKE ?", "%#{params[:book]}%")
+      @books = @booth.books.where("books.title LIKE ?", "%#{params[:book]}%").order('created_at desc')
     else
-      @books = @booth.books
+      @books = @booth.books.order('created_at desc')
     end
+    book_ids_from_operation = Operation.where(booth_id: @booth.id).pluck(:book_ids)
+    @trending_books = @books.where(id: book_ids_from_operation)
+    @trending_books = @books if @trending_books.blank?
   end
 
   def show
