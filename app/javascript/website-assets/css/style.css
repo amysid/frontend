@@ -17,6 +17,7 @@ footer { background: #F7F7F7;
     border: 2px solid #B0B0B0 ;
 }
 
+
 .btn-footer {padding: 7px 15px;
     border-radius: 10px;
     font-size: 26px; }
@@ -424,7 +425,7 @@ footer { background: #F7F7F7;
     border-radius: 25px;
     height: 3.3em;
     font-size: 2.1em;
-    padding-left: 84px;
+    padding-left: 84px!important;
 }
 .has-search .form-control-feedback {
         width: 6.375rem;
@@ -450,7 +451,7 @@ footer { background: #F7F7F7;
 }
     .checkout-product-img {
     vertical-align: middle;
-    max-height: 628px;
+    max-height: 628px!important;
     /* max-width: 388px; */
     display: inline-block;
 }
@@ -632,7 +633,7 @@ footer { background: #F7F7F7;
         padding:20em 0 0;
     }
     .avatar-logo {
-        margin-bottom:3em;
+        margin-bottom:6em;
     }
     .main {
         background: none;
@@ -682,6 +683,20 @@ footer { background: #F7F7F7;
     .login-overlay {
         height: 1070px;
     }
+    .pjKQH {
+     margin-left: 6em!important;
+    margin-bottom: 3em!important;
+    margin-top: 4em!important;
+    }
+    ._2r0fh h1 {
+       font-size: 3.5em!important;
+    font-weight: 700!important;
+    margin-bottom: 0.9em!important;
+    }
+    .avatar-logo img {
+    width:470px!important;
+}
+
 }
 @media screen and (min-width: 3840px) {
     .checkout-product-img {
@@ -693,6 +708,7 @@ footer { background: #F7F7F7;
     .section-products .single-product {
     margin: 0 3em 8em;
 }
+    .container-catkbf { max-width: 5200px!important; }
 }
 .login-overlay {
         height: 970px;
@@ -847,4 +863,28 @@ footer { background: #F7F7F7;
 .css-1jx6fr9 {
     padding: 1em 0;
     color: #fff;
+}
+.avatar-logo img {
+    width:270px;
+}
+
+.pjKQH { 
+    max-width: 100%;
+    margin: 0.8em 6em 2em;
+}
+
+._2r0fh h1 {
+   font-size: 1.5em;
+    font-weight: 500;
+        margin-bottom: 1em;
+}
+
+.btn-search-cat-head {
+  background: #edf4f3;
+    color: #000;
+    padding: 9px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-right: 11px;
+    letter-spacing: 1px;
 }

@@ -31,5 +31,6 @@ import "../web_vendor/@fortawesome/fontawesome-free/css/fontawesome.css"
 import "../website-assets/css/bootstrap.css"
 import "../website-assets/css/style.css"
 import "../website-assets/css/scroller.css"
+import "../website-assets/css/audio-player.css"
 
 // website css end here

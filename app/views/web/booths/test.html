@@ -1,48 +1,3 @@
-<div class="search-area">
-  <%= form_tag web_booth_books_path(booth_id: @booth.number), remote: true, method: :get  do %>
-    <div class="form-group row">
-      <div class="col-sm-9 no-right-padding">
-        <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control form-control-lg" %>
-      </div>
-      <div class="col-sm-3 no-left-padding">
-        <%= button_tag type: :submit, class: "btn btn-success" do %>
-          <em class="fa fa-search"></em>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
-<div class="row">
-  <div class="col-xl-12 col-md-6">  
-    <div class="table-responsive mt-3">
-      <table class="table table-bordered table-hover" id="table-ext-1">
-        <thead>
-          <tr>
-            <th><%= t("book_name") %></th>
-            <th><%= t('author_name') %></th>
-            <th><%= t('action') %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @books.blank? %>
-            <tr><%= t('no_record_present') %></tr>
-          <% else %>
-            <% @books.each_with_index do |book, i|%>
-              <tr>
-                <td><%= book.title %></td>
-                <td><%= book.author_name %></td>
-                <td><%= link_to "show", web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true %></td>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div> 
-<%= link_to t("back"), web_booth_path(id: booth.number), clas: "btn"%>
-
-<% if false %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1322,4 +1277,3 @@
 </body>
 
 </html>
-<% end%>
