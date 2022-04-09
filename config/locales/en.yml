@@ -115,9 +115,14 @@ en:
   number: "Number"
   action: "Action"
   book_name: "Book Name"
-  enter_book_name: "Enter Book Name"
+  enter_book_name: "Search by book, author or topic"
   qr_code: "Qr Code"
   back: "Back"
-
+  categories: "Categories"
+  trending_now: "Trending now"
+  added_recently: "Added recently"
+  overview: "Overview"
+  time: "Time"
+  author: "Author"
 
 

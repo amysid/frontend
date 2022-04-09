@@ -13,3 +13,11 @@ Booth
 
 
 toke: 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
+
+
+
+web
+
+Book Index: 1. close icon (reset)
+            2. back url
+            3. category image and category click data

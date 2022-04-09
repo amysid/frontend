@@ -1,3 +1,4 @@
+<% if false %>
 <div class="search-area">
   <%= form_tag web_booth_books_path(booth_id: @booth.number), remote: true, method: :get  do %>
     <div class="form-group row">
@@ -41,1285 +42,378 @@
   </div>
 </div> 
 <%= link_to t("back"), web_booth_path(id: booth.number), clas: "btn"%>
-
-<% if false %>
+<% end %>
+<% if true %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <meta charset="UTF-8">
-
-    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-    <meta name="apple-mobile-web-app-title" content="CodePen">
-
-    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-
-    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
-
-
-    <title></title>
-    <% if false %>
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/solid.css">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/fontawesome.css">
-
-    <link rel='stylesheet' href="website-assets/css/bootstrap.css">
-    <link href="website-assets/css/style.css" rel="stylesheet" />
-    <link href="website-assets/css/scroller.css" rel="stylesheet" />
-    <% end %>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+  <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+  <title></title>
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <div class="_1R8mR">
-            <div class="container">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-md-12 text-center">
-                        <div class="avatar-logo">
-                            <img src="/assets/web-logo.jpg">
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-md-12">
-                        <div class="search-wrapper mt-5">
-                            <form class="form-group has-search ">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="focus" required class="form-control search-box" placeholder="Search by book, author or topic" />
-                                <button class="close-icon" type="reset">
-                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+  <div class="main-wrapper">
+    <div class="_1R8mR">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-12 text-center">
+            <div class="avatar-logo">
+              <img src="/assets/web-logo.jpg">
             </div>
-            <div class="cat_1R8mR ">
-                <div class="pjKQH">
-                    <div class="_2r0fh">
-                        <h1>Categories</h1>
-                        <div data-spy="scroll" data-target="#secondary-nav" data-offset="55">
-  
-<header id="secondary-nav" class="secondary-nav" style="top:0;">
-<ul class="vam nav scroll dragger scroller">
-    <li class="nav-item">
-      <a href="#" class="nav-link btn btn-search-cat-head" data-id="overview" aria-controls="overview"><i class="fa fa-trophy" aria-hidden="true"></i> Self development</a>
-    </li>
-    <li class="nav-item"><a href="#mdo" class="nav-link btn btn-search-cat-head"><i class="fa fa-file" aria-hidden="true"></i> Articles</a></li>
-    <li class="nav-item"><a href="#one" class="nav-link btn btn-search-cat-head"><i class="fa fa-comments" aria-hidden="true"></i>  Social relationship</a></li>
-    <li class="nav-item"><a href="#three" class="nav-link btn btn-search-cat-head"><i class="fa fa-users" aria-hidden="true"></i> Resale/Investor Flats</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head"><i class="fa fa-book" aria-hidden="true"></i> Philosophy</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head"><i class="fa fa-child" aria-hidden="true"></i> Children’s books</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link  btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-    <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-</ul>
-  
-</div>
-</header>
-  
-</div>
-                    </div>
-                </div>
-
-                <div class="pjKQH">
-                    <div class="_2r0fh">
-                        <h1>Trending now</h1>
-                        <div class="frame basic" id="basic">
-                            <ul class="clearfix">
-                                <li>
-                                     <div id="Div4" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div2" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div3" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div5" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div6" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div7" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div8" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div9" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div10" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div11" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div12" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div13" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div14" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div15" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div16" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div17" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div18" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div19" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div20" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div21" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div22" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div23" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div24" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div25" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div26" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div27" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div28" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div29" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div30" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div31" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">Sherlock Holmes the real suspect</h3>
-                                <h4 class="product-old-price mt-3 mb-4">Joanne Kathleen Rowling</h4>
-                                
-                            </div>
-                        </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pjKQH">
-                    <div class="_2r0fh">
-                        <h1>Added recently</h1>
-                        <div class="frame basic" id="Div1">
-                            <ul class="clearfix">
-                                <li>
-                                     <div id="Div32" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div33" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div34" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div35" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div36" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div37" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div38" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div39" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div40" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div41" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div42" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                          
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div43" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div44" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div45" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div46" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div47" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div48" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div49" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div50" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div51" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div52" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div53" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div54" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div55" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div56" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div57" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                            
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div58" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div59" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                           
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div60" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                          
-                        </div>
-                                </li>
-                                <li>
-                                    <div id="Div61" class="single-product">
-                            <div class="part-1">
-                                <span class="checkout-product-img">
-                                    <a href="">
-                                        <img src="/assets/81EbEWM54ML.jpg" class="rounded" />
-                                    </a>
-                                </span>
-                                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
-                            </div>
-                        </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-
-
-
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
-                        <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
-                        <a href="#" class="btn btn-light-grey btn-footer">اللغة العربية</a>
-                    </div>
-                </div>
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-12">
+            <div class="search-wrapper mt-5">
+              <%= form_tag web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search", method: :get  do %>
+                <span class="fa fa-search form-control-feedback"></span>
+                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box" %>
+                <%= button_tag type: :reset, class: "close-icon" do %>
+                  <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
             </div>
-        </footer>
+          </div>
+        </div>
+      </div>
+      <div class="cat_1R8mR ">
+        <div class="pjKQH">
+          <div class="_2r0fh">
+            <h1><%= t('categories') %></h1>
+            <div data-spy="scroll" data-target="#secondary-nav" data-offset="55">
+  
+              <header id="secondary-nav" class="secondary-nav" style="top:0;">
+                <ul class="vam nav scroll dragger scroller">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link btn btn-search-cat-head" data-id="overview" aria-controls="overview"><i class="fa fa-trophy" aria-hidden="true"></i> Self development</a>
+                  </li>
+                  <li class="nav-item"><a href="#mdo" class="nav-link btn btn-search-cat-head"><i class="fa fa-file" aria-hidden="true"></i> Articles</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
+                  <%= @categories.each do |category| %>
+                    <li class="nav-item"><%= link_to category.name, root_path, class: "nav-link btn btn-search-cat-head" %></li>
+                  <% end %>
+                </ul>  
+              </header>
+            </div> 
+          </div>
+        </div>
+      </div>
+
+      <div class="pjKQH">
+        <div class="_2r0fh">
+          <h1><%= t('trending_now')%></h1>
+          <div class="frame basic" id="basic">
+            <ul class="clearfix">
+              <% @trending_books.each do |book|%>
+                <li>
+                  <div id="Div4" class="single-product">
+                    <div class="part-1">
+                      <span class="checkout-product-img">
+                       <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>  
+                          <% img_url = book.book_files.first.book_cover_file.url %>
+                          <img src="<%= img_url %>" class="rounded" />
+                        <% end %>
+                      </span>
+                      <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> 30 min</span>
+                    </div>
+                    <div class="part-2">
+                      <h3 class="product-title"><%= book.title %></h3>
+                      <h4 class="product-old-price mt-3 mb-4"><%= book.author_name %></h4>
+                      
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pjKQH">
+        <div class="_2r0fh">
+          <h1><%= t('added_recently') %></h1>
+          <div class="frame basic" id="Div1">
+            <ul class="clearfix">
+              <% @books.each do |book|%>
+                <li>
+                  <div id="Div32" class="single-product">
+                    <div class="part-1">
+                      <span class="checkout-product-img">
+                        <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>  
+                          <% img_url = book.book_files.first.book_cover_file.url %>
+                          <img src="<%= img_url %>" class="rounded" />
+                        <% end %>
+                      </span>
+                      <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i> <%= book.book_duration %> min</span>
+                    </div>            
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-
-    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
-    <% if false %>
-    <script src="vendor/jquery/dist/jquery.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="website-assets/js/plugins.js"></script>
-    <script src='website-assets/js/sly.min.js'></script>
-    <% end %>
-    <script id="rendered-js">
-        jQuery(function ($) {
-            'use strict';
-
-            // -------------------------------------------------------------
-            //   Basic Navigation
-            // -------------------------------------------------------------
-            (function () {
-                var $frame = $('.basic');
-                var $slidee = $frame.children('ul').eq(0);
-                var $wrap = $frame.parent();
-
-                // Call Sly on frame
-                $frame.sly({
-                    horizontal: 1,
-                    itemNav: 'basic',
-                    smart: 1,
-                    activateOn: 'click',
-                    mouseDragging: 1,
-                    touchDragging: 1,
-                    releaseSwing: 1,
-                    startAt: 0,
-                    scrollBar: $wrap.find('.scrollbar'),
-                    scrollBy: 1,
-                    pagesBar: $wrap.find('.pages'),
-                    activatePageOn: 'click',
-                    speed: 300,
-                    elasticBounds: 1,
-                    easing: 'easeOutExpo',
-                    dragHandle: 1,
-                    dynamicHandle: 1,
-                    clickBar: 1,
-
-                    // Buttons
-                    forward: $wrap.find('.forward'),
-                    backward: $wrap.find('.backward'),
-                    prev: $wrap.find('.prev'),
-                    next: $wrap.find('.next'),
-                    prevPage: $wrap.find('.prevPage'),
-                    nextPage: $wrap.find('.nextPage')
-                });
-
-
-                // To Start button
-                $wrap.find('.toStart').on('click', function () {
-                    var item = $(this).data('item');
-                    // Animate a particular item to the start of the frame.
-                    // If no item is provided, the whole content will be animated.
-                    $frame.sly('toStart', item);
-                });
-
-                // To Center button
-                $wrap.find('.toCenter').on('click', function () {
-                    var item = $(this).data('item');
-                    // Animate a particular item to the center of the frame.
-                    // If no item is provided, the whole content will be animated.
-                    $frame.sly('toCenter', item);
-                });
-
-                // To End button
-                $wrap.find('.toEnd').on('click', function () {
-                    var item = $(this).data('item');
-                    // Animate a particular item to the end of the frame.
-                    // If no item is provided, the whole content will be animated.
-                    $frame.sly('toEnd', item);
-                });
-
-                // Add item
-                $wrap.find('.add').on('click', function () {
-                    $frame.sly('add', '<li>' + $slidee.children().length + '</li>');
-                });
-
-                // Remove item
-                $wrap.find('.remove').on('click', function () {
-                    $frame.sly('remove', -1);
-                });
-            })();
-        });
-        //# sourceURL=pen.js
-    </script>
-
-      <script id="Script2" >
-          (function (window, document, undefined) {
-              'use strict';
-
-              // Select nav items that have submenus
-              var hasSubmenu = document.querySelectorAll('[data-id]');
-              var visible = 'visible';
-              var i = 0;
-
-              // Show the submenu by toggling the relevant class names
-              function showSubmenu(event) {
-                  // We lose reference of this when filtering the nav items
-                  var self = this;
-
-                  // Select the relevant submenu, by the data-id attribute
-                  var submenu = document.getElementById(self.dataset.id);
-
-                  // Probably best to prevent clicks through
-                  event.preventDefault();
-                  if (!$(submenu).hasClass(visible)) {
-                      $('.nav-link').removeClass(visible);
-                      $('.submenu').removeClass(visible);
-                  }
-
-                  self.classList.toggle(visible);
-                  submenu.classList.toggle(visible);
-              }
-
-              // Remove the active class
-              function removeChildClass(el) {
-                  // Check if it exists, then remove
-                  if (el.classList.contains(visible)) {
-                      el.classList.remove(visible);
-                  }
-              }
-
-              // On clicks show submenus
-              for (i = 0; i < hasSubmenu.length; i++) {
-                  if (window.CP.shouldStopExecution(0)) break;
-                  hasSubmenu[i].addEventListener('click', showSubmenu);
-              } window.CP.exitedLoop(0);
-          })(window, document);
-
-
-          /*---------- DRAGGER ----------*/
-          $(document).ready(function () {
-              $('.dragger').mousedown(function (event) {
-                  $(this).
-                  data('down', true).
-                  data('x', event.clientX).
-                  data('scrollLeft', this.scrollLeft).
-                  addClass("dragging");
-
-                  return false;
-              }).mouseup(function (event) {
-                  $(this).
-                  data('down', false).
-                  removeClass("dragging");
-              }).mousemove(function (event) {
-                  if ($(this).data('down') == true) {
-                      this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
-                  }
-              }).mousewheel(function (event, delta) {
-                  this.scrollLeft -= delta * 30;
-              }).css({
-                  'overflow': 'hidden',
-                  'cursor': '-moz-grab'
-              });
-
-              $(window).mouseout(function (event) {
-                  if ($('.team-form-data').data('down')) {
-                      try {
-                          if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
-                              $('.team-form-data').data('down', false);
-                          }
-                      } catch (e) { }
-                  }
-              });
-          });
-
-
-          /*---------- SCROLLER ----------*/
-          jQuery(function ($) {
-              $.fn.hScroll = function (amount) {
-                  amount = amount || 120;
-                  $(this).bind("DOMMouseScroll mousewheel", function (event) {
-                      var oEvent = event.originalEvent,
-                      direction = oEvent.detail ? oEvent.detail * -amount : oEvent.wheelDelta,
-                      position = $(this).scrollLeft();
-                      position += direction > 0 ? -amount : amount;
-                      $(this).scrollLeft(position);
-                      event.preventDefault();
-                  });
-              };
-          });
-
-          $(document).ready(function () {
-              $('.scroller').hScroll(); // You can pass (optionally) scrolling amount
-          });
-
-          /*---- ANCHOR LINK ANIMATION WITH OFFSET ----*/
-          $(".secondary-nav a[href^='#']").on('click', function (event) {
-              var target = this.hash;
-
-              event.preventDefault();
-
-              var navOffset = $('.secondary-nav').height();
-
-              return $('html, body').animate({
-                  scrollTop: $(this.hash).offset().top - navOffset
-              },
-              300, function () {
-                  return window.history.pushState(null, null, target);
-              });
-          });
-
-          $(".secondary-nav li").click(function () {
-              centerLI(this, '.vam');
-              // Dropdown Toggle
-              if (!$(this).hasClass('dropdown')) {
-                  $('.nav-link').removeClass('visible');
-                  $('.submenu').removeClass('visible');
-              }
-          });
-
-          //http://stackoverflow.com/a/33296765/350421
-          function centerLI(target, outer) {
-              var out = $(outer);
-              var tar = $(target);
-              var x = out.width() - 50;
-              var y = tar.outerWidth(true);
-              var z = tar.index();
-              var q = 0;
-              var m = out.find('li');
-              for (var i = 0; i < z; i++) {
-                  if (window.CP.shouldStopExecution(1)) break;
-                  q += $(m[i]).outerWidth(true);
-              }
-              //out.scrollLeft(Math.max(0, q - (x - y)/2));
-              window.CP.exitedLoop(1); out.animate({
-                  scrollLeft: Math.max(0, q - (x - y) / 2)
-              },
-              500);
-
-          }
-
-          // Dropdown Close on Body click
-          $(document).mouseup(function (e) {
-              var container = $("#secondary-nav");
-
-              // if the target of the click isn't the container nor a descendant of the container
-              if (!container.is(e.target) && container.has(e.target).length === 0) {
-                  $('.nav-link').removeClass('visible');
-                  $('.submenu').removeClass('visible');
-              }
-          });
-          //# sourceURL=pen.js
-    </script>
-
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
+          <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
+          <a href="#" class="btn btn-light-grey btn-footer">اللغة العربية</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>
-<% end%>
+
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+<script id="rendered-js">
+  jQuery(function ($) {
+    'use strict';
+
+    // -------------------------------------------------------------
+    //   Basic Navigation
+    // -------------------------------------------------------------
+    (function () {
+      var $frame = $('.basic');
+      var $slidee = $frame.children('ul').eq(0);
+      var $wrap = $frame.parent();
+
+      // Call Sly on frame
+      $frame.sly({
+        horizontal: 1,
+        itemNav: 'basic',
+        smart: 1,
+        activateOn: 'click',
+        mouseDragging: 1,
+        touchDragging: 1,
+        releaseSwing: 1,
+        startAt: 0,
+        scrollBar: $wrap.find('.scrollbar'),
+        scrollBy: 1,
+        pagesBar: $wrap.find('.pages'),
+        activatePageOn: 'click',
+        speed: 300,
+        elasticBounds: 1,
+        easing: 'easeOutExpo',
+        dragHandle: 1,
+        dynamicHandle: 1,
+        clickBar: 1,
+
+        // Buttons
+        forward: $wrap.find('.forward'),
+        backward: $wrap.find('.backward'),
+        prev: $wrap.find('.prev'),
+        next: $wrap.find('.next'),
+        prevPage: $wrap.find('.prevPage'),
+        nextPage: $wrap.find('.nextPage')
+      });
+
+
+      // To Start button
+      $wrap.find('.toStart').on('click', function () {
+        var item = $(this).data('item');
+        // Animate a particular item to the start of the frame.
+        // If no item is provided, the whole content will be animated.
+        $frame.sly('toStart', item);
+      });
+
+      // To Center button
+      $wrap.find('.toCenter').on('click', function () {
+        var item = $(this).data('item');
+        // Animate a particular item to the center of the frame.
+        // If no item is provided, the whole content will be animated.
+        $frame.sly('toCenter', item);
+      });
+
+      // To End button
+      $wrap.find('.toEnd').on('click', function () {
+        var item = $(this).data('item');
+        // Animate a particular item to the end of the frame.
+        // If no item is provided, the whole content will be animated.
+        $frame.sly('toEnd', item);
+      });
+
+      // Add item
+      $wrap.find('.add').on('click', function () {
+        $frame.sly('add', '<li>' + $slidee.children().length + '</li>');
+      });
+
+      // Remove item
+      $wrap.find('.remove').on('click', function () {
+        $frame.sly('remove', -1);
+      });
+    })();
+  });
+  //# sourceURL=pen.js
+</script>
+
+  <script id="Script2" >
+    (function (window, document, undefined) {
+      'use strict';
+
+      // Select nav items that have submenus
+      var hasSubmenu = document.querySelectorAll('[data-id]');
+      var visible = 'visible';
+      var i = 0;
+
+      // Show the submenu by toggling the relevant class names
+      function showSubmenu(event) {
+        // We lose reference of this when filtering the nav items
+        var self = this;
+
+        // Select the relevant submenu, by the data-id attribute
+        var submenu = document.getElementById(self.dataset.id);
+
+        // Probably best to prevent clicks through
+        event.preventDefault();
+        if (!$(submenu).hasClass(visible)) {
+          $('.nav-link').removeClass(visible);
+          $('.submenu').removeClass(visible);
+        }
+
+        self.classList.toggle(visible);
+        submenu.classList.toggle(visible);
+      }
+
+      // Remove the active class
+      function removeChildClass(el) {
+        // Check if it exists, then remove
+        if (el.classList.contains(visible)) {
+          el.classList.remove(visible);
+        }
+      }
+
+      // On clicks show submenus
+      for (i = 0; i < hasSubmenu.length; i++) {
+        if (window.CP.shouldStopExecution(0)) break;
+        hasSubmenu[i].addEventListener('click', showSubmenu);
+      } window.CP.exitedLoop(0);
+    })(window, document);
+
+
+    /*---------- DRAGGER ----------*/
+    $(document).ready(function () {
+      $('.dragger').mousedown(function (event) {
+        $(this).
+        data('down', true).
+        data('x', event.clientX).
+        data('scrollLeft', this.scrollLeft).
+        addClass("dragging");
+
+        return false;
+      }).mouseup(function (event) {
+        $(this).
+        data('down', false).
+        removeClass("dragging");
+      }).mousemove(function (event) {
+        if ($(this).data('down') == true) {
+          this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
+        }
+      }).mousewheel(function (event, delta) {
+        this.scrollLeft -= delta * 30;
+      }).css({
+        'overflow': 'hidden',
+        'cursor': '-moz-grab'
+      });
+
+      $(window).mouseout(function (event) {
+        if ($('.team-form-data').data('down')) {
+          try {
+            if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
+              $('.team-form-data').data('down', false);
+            }
+          } catch (e) { }
+        }
+      });
+    });
+
+
+    /*---------- SCROLLER ----------*/
+    jQuery(function ($) {
+      $.fn.hScroll = function (amount) {
+        amount = amount || 120;
+        $(this).bind("DOMMouseScroll mousewheel", function (event) {
+          var oEvent = event.originalEvent,
+          direction = oEvent.detail ? oEvent.detail * -amount : oEvent.wheelDelta,
+          position = $(this).scrollLeft();
+          position += direction > 0 ? -amount : amount;
+          $(this).scrollLeft(position);
+          event.preventDefault();
+        });
+      };
+    });
+
+    $(document).ready(function () {
+      $('.scroller').hScroll(); // You can pass (optionally) scrolling amount
+    });
+
+    /*---- ANCHOR LINK ANIMATION WITH OFFSET ----*/
+    $(".secondary-nav a[href^='#']").on('click', function (event) {
+      var target = this.hash;
+
+      event.preventDefault();
+
+      var navOffset = $('.secondary-nav').height();
+
+      return $('html, body').animate({
+        scrollTop: $(this.hash).offset().top - navOffset
+      },
+      300, function () {
+        return window.history.pushState(null, null, target);
+      });
+    });
+
+    $(".secondary-nav li").click(function () {
+      centerLI(this, '.vam');
+      // Dropdown Toggle
+      if (!$(this).hasClass('dropdown')) {
+        $('.nav-link').removeClass('visible');
+        $('.submenu').removeClass('visible');
+      }
+    });
+
+    //http://stackoverflow.com/a/33296765/350421
+    function centerLI(target, outer) {
+      var out = $(outer);
+      var tar = $(target);
+      var x = out.width() - 50;
+      var y = tar.outerWidth(true);
+      var z = tar.index();
+      var q = 0;
+      var m = out.find('li');
+      for (var i = 0; i < z; i++) {
+        if (window.CP.shouldStopExecution(1)) break;
+        q += $(m[i]).outerWidth(true);
+      }
+      //out.scrollLeft(Math.max(0, q - (x - y)/2));
+      window.CP.exitedLoop(1); out.animate({
+        scrollLeft: Math.max(0, q - (x - y) / 2)
+      },
+      500);
+
+    }
+
+    // Dropdown Close on Body click
+    $(document).mouseup(function (e) {
+      var container = $("#secondary-nav");
+
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        $('.nav-link').removeClass('visible');
+        $('.submenu').removeClass('visible');
+      }
+    });
+    //# sourceURL=pen.js
+</script>
+<% end %>
