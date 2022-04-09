@@ -94,7 +94,7 @@
                   </li>
                   <li class="nav-item"><a href="#mdo" class="nav-link btn btn-search-cat-head"><i class="fa fa-file" aria-hidden="true"></i> Articles</a></li>
                   <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
-                  <%= @categories.each do |category| %>
+                  <% @categories.each do |category| %>
                     <li class="nav-item"><%= link_to category.name, root_path, class: "nav-link btn btn-search-cat-head" %></li>
                   <% end %>
                 </ul>  
