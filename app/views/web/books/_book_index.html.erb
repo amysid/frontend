@@ -95,7 +95,7 @@
                   <li class="nav-item"><a href="#mdo" class="nav-link btn btn-search-cat-head"><i class="fa fa-file" aria-hidden="true"></i> Articles</a></li>
                   <li class="nav-item"><a href="#" class="nav-link btn btn-search-cat-head">Developer</a></li>
                   <% @categories.each do |category| %>
-                    <li class="nav-item"><%= link_to category.name, root_path, class: "nav-link btn btn-search-cat-head" %></li>
+                    <li class="nav-item"><%= link_to category.name, web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link btn btn-search-cat-head", remote: true %></li>
                   <% end %>
                 </ul>  
               </header>
