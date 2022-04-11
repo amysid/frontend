@@ -125,5 +125,9 @@ en:
   time: "Time"
   author: "Author"
   play_book_preview: "Play book preview"
+  top_matches: "Top matches"
+  all: "All"
+  short_audiobooks: "Short audiobooks"
+  long_audiobook: "Long audiobook"
 
 

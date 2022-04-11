@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+  <div class="main-wrapper">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 text-center">
+          <div class="avatar-logo">
+            <img src="<%= asset_url('web-logo.jpg')%>">
+          </div>
+        </div>
+      </div>
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-12">
+            <div class="search-wrapper mt-5">
+              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search", method: :get  do %>
+                <span class="fa fa-search form-control-feedback"></span>
+                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box" %>
+                <%= button_tag type: :reset, class: "close-icon" do %>
+                  <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12">
+          <div class="search-tag mt-3">
+            <%= link_to search_web_booth_books_path(booth_id: @booth.number, type: "all"), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
+              <i class="fas fa-check"></i><%= t('all') %>
+            <% end %>
+            <%= link_to t('short_audiobooks'),search_web_booth_books_path(booth_id: @booth.number, type: "short"), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
+            <%= link_to t('long_audiobooks'),search_web_booth_books_path(booth_id: @booth.number, type: "long"), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fb-product_wrap-3 section-products">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="fb-section_title-2">
+              <h2><%= t('top_matches') %></h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <% if @books.blank? %>
+            No record found
+          <% else %>
+            <% @books.each do |book| %>
+              <div class="col-md-6 col-lg-4 col-xl-3">
+                <div id="Div4" class="single-product">
+                  <div class="part-1">
+                    <span class="checkout-product-img">
+                      <% img_url = book.book_files.first.book_cover_file.url %>
+                      <a href="">
+                        <img src="<%= img_url %>" class="rounded" />
+                      </a>
+                    </span>
+                    <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= book.book_duration%> min</span>
+                  </div>
+                  <div class="part-2">
+                    <h3 class="product-title"><%= book.title %></h3>
+                    <h4 class="product-old-price mt-3 mb-4"><%= book.author_name %></h4>
+                    <h6 class="author"><%= book.categories.pluck(:name).join(", ") %></h6>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-left">
+            <a href="#" class="btn btn-light-grey btn-footer"><i class="fas fa-arrow-left"></i></a>
+          </div>
+          <div class="col-md-6 text-right">
+            <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
+            <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
+            <a href="#" class="btn btn-light-grey btn-footer">اللغة العربية</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

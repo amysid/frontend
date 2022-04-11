@@ -25,7 +25,9 @@ Rails.application.routes.draw do
 
     namespace :web  do
       resources :booths, only: [:index, :show]  do
-        resources :books, only: [:index, :show]
+        resources :books, only: [:index, :show] do
+          get :search, on: :collection
+        end
       end
       resources :operations, only: [] do
         get :media_files, on: :member
