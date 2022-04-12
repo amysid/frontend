@@ -170,8 +170,9 @@
                 <div class="right qr-code">
                   <div class="bg-white qr-bgiio">
                     <div class="qr-image-grid-imageContainer">
-                      <%= qr_url = @qr_code.as_svg( offset: 0, color: "000", shape_rendering: 'crispEdges', module_size: 6, standalone: true ).html_safe %>
-                      <!-- <img src="/assets/QR_code.png" /> -->
+                      <%#= qr_url = @qr_code.as_svg( offset: 0, color: "000", shape_rendering: 'crispEdges', module_size: 4, standalone: true ).html_safe %>
+                      <!-- <img src="" /> -->
+                      <%= image_tag "data:image/png;base64,#{Base64.encode64(@qr_png.to_s).gsub("\n", "")}" %>
                     </div>
                   </div>
                 </div>
