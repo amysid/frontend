@@ -118,6 +118,17 @@ ar:
   enter_book_name: "AR Enter Book Name"
   qr_code: "AR Qr Code"
   back: "AR Back"
+  categories: "AR Categories"
+  trending_now: "AR Trending now"
+  added_recently: "AR Added recently"
+  overview: "AR Overview"
+  time: "AR Time"
+  author: "AR Author"
+  play_book_preview: "AR Play book preview"
+  top_matches: "AR Top matches"
+  all: "AR All"
+  short_audiobooks: "AR Short audiobooks"
+  long_audiobook: "AR Long audiobook"
 
 
 

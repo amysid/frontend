@@ -249,11 +249,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 text-left">
-            <a href="#" class="btn btn-light-grey btn-footer"><i class="fas fa-arrow-left"></i></a>
+            <%= link_to  web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer", remote: true do%>
+              <i class="fas fa-arrow-left"></i>
+            <% end %>
           </div>
           <div class="col-md-6 text-right">
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
+            <% lang = params[:locale] == "ar" ? "English" : "Arabic" %>
+            <% locale = params[:locale] == "ar" ? "en" : "ar" %>
+            <%= link_to "#{lang}", web_booth_book_path(booth_id: @booth.number, id: book.id, locale: locale), remote: true, class: "btn btn-light-grey btn-footer"  %>
             <a href="#" class="btn btn-light-grey btn-footer">اللغة العربية</a>
           </div>
         </div>
