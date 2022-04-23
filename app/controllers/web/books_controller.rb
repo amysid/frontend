@@ -22,6 +22,13 @@ class Web::BooksController < Web::WebApplicationController
       book_ids = @categories.pluck(:book_id)
       @books = @books.where(id: book_ids)
     end
+    if params[:type] == "all"
+     @books = @books
+    elsif params[:type] == "short"
+      @books = @books.where("book_duration < ?", 5)
+    elsif params[:type] == "long"
+      @books = @books.where("book_duration > ?", 5)
+    end
   end
 
   def show

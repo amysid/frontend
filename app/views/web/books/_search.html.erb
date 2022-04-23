@@ -26,11 +26,11 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-md-12">
           <div class="search-tag mt-3">
-            <%= link_to search_web_booth_books_path(booth_id: @booth.number, type: "all"), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
+            <%= link_to search_web_booth_books_path(booth_id: @booth.number, type: "all", book: params[:book], category_id: params[:category_id]), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
               <i class="fas fa-check"></i><%= t('all') %>
             <% end %>
-            <%= link_to t('short_audiobooks'),search_web_booth_books_path(booth_id: @booth.number, type: "short"), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
-            <%= link_to t('long_audiobooks'),search_web_booth_books_path(booth_id: @booth.number, type: "long"), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
+            <%= link_to t('short_audiobooks'),search_web_booth_books_path(booth_id: @booth.number, type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
+            <%= link_to t('long_audiobooks'),search_web_booth_books_path(booth_id: @booth.number, type: "long", book: params[:book], category_id: params[:category_id]), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
           </div>
         </div>
       </div>
