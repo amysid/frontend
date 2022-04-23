@@ -98,7 +98,7 @@ en:
   category_names: "Category Names"
   operation_number: "Operation Number"
   listening_status: "Listening Status"
-  listening_time: "Listening time"
+  listening_time: "Listening time (In Minutes)"
   ratings: "Ratings"
   notes: "Notes"
   booth: "Booth"
