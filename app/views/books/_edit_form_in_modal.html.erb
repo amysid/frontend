@@ -27,7 +27,7 @@
             <div class="col-md-4">
               <div class="row">
                 <div class="col-lg-12">
-                  <%= f.text_field :book_duration, class: "form-control text-center", placeholder: t('book_duration') %>
+                  <%= f.text_field :book_duration, class: "form-control text-center update-book-duration", placeholder: t('book_duration'), disabled: true %>
                 </div>
               </div>
             </div>
@@ -68,11 +68,15 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= bk.file_field :book_cover_file,id: "book-cover-field", class: "mb-1", placeholder: "upload file" %>
+                    <%= bk.file_field :book_cover_file,id: "update-book-cover-field", class: "mb-1", placeholder: "upload file" %>
                     <% bf = book.book_files.first if book.book_files.present? %>
-                     <% if bf.book_cover_file.present? %>
-                        <img src="<%= rails_blob_path(bf.book_cover_file , only_path: true) %>" style="width: 50%; height: 50%;" class="existing-img" >
+                    <% src = nil %>
+                    <% if bf.book_cover_file.present? %>
+                      <% src = rails_blob_path(bf.book_cover_file , only_path: true) %>
                     <% end %>
+                    <div class="update-upload-preview" style="margin-top: 10px;">
+                      <img style="width: 50%; height: 50%;" src=<%= src %>/>
+                    </div>
                     <!-- <div class="upload-preview" style="margin-top: 10px;">
                       <img style="width: 50%; height: 50%;"/>
                     </div> -->
@@ -96,10 +100,14 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= bk.file_field :audio, class: "mb-2", placeholder: "upload file" %>
+                    <%= bk.file_field :audio, class: "mb-2", placeholder: "upload file", id: "update-book-audio-field"%>
+                    <% audio_src = nil %>
                     <% if bf.audio.present? %>
-                       <audio  controls="controls" src="<%= rails_blob_path(bf.audio, only_path: true)  %>" style="width: 70%;"></audio>
+                      <% audio_src = rails_blob_path(bf.audio, only_path: true) %>
                     <% end %>
+                    <div class="update-upload-audio-preview" style="margin-top: 10px;">
+                      <audio  controls="controls" src="<%= audio_src %>" id="update_long_audio"></audio>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -133,11 +141,14 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= bk.file_field :short_audio_file, class: "mb-2", placeholder: "upload file" %>
+                    <%= bk.file_field :short_audio_file, class: "mb-2", placeholder: "upload file", id: "update-book-short-audio-field" %>
+                    <% short_audio_src = nil %>
                     <% if bf.short_audio_file.present? %>
-                       <audio  controls="controls" src="<%= rails_blob_path(bf.short_audio_file, only_path: true)  %>" style="width: 70%;"></audio>
+                      <% short_audio_src = rails_blob_path(bf.short_audio_file, only_path: true) %>
                     <% end %>
-
+                    <div class="update-upload-short-audio-preview" style="margin-top: 10px;">
+                      <audio  controls="controls" id="update_short_audio"></audio>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -152,8 +163,54 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $("#update-category-dropdown").select2();
-  })
+
+    var preview = $(".update-upload-preview img");
+    var audio_preview = $(".update-upload-audio-preview audio")
+    var short_audio_preview = $(".update-upload-short-audio-preview audio")
+
+
+    $("#update-book-cover-field").change(function(event){
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+           preview.attr("src", image_base64);
+       };
+       reader.readAsDataURL(file);
+    });
+
+    $("#update-book-audio-field").change(function(event){
+      var audio_input = $(event.currentTarget);
+      var file = audio_input[0].files[0]
+      var reader = new FileReader();
+      reader.onload = function(e){
+        audio_base64 = e.target.result;
+        audio_preview.attr("src", audio_base64);
+      };
+      reader.readAsDataURL(file);
+      setTimeout(function() {
+        // duration in second
+        var duration = $("#update_long_audio")[0].duration;
+        var duration_in_min = duration / 60
+        $(".update-book-duration").val(parseFloat(duration_in_min.toFixed(2)));
+      }, 2000);
+    });
+
+    $("#update-book-short-audio-field").change(function(event){
+      var audio_input = $(event.currentTarget);
+      var file = audio_input[0].files[0]
+      var reader = new FileReader();
+      reader.onload = function(e){
+        audio_base64 = e.target.result;
+        short_audio_preview.attr("src", audio_base64);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
 </script>

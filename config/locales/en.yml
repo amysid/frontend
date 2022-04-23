@@ -76,7 +76,7 @@ en:
   book_title: "Book title"
   author_name: "Author Name"
   duration_of_the_book_in_minutes: "Duration of the book in minutes"
-  book_duration: "Book duration"
+  book_duration: "Book duration (in Minutes)"
   about_the_book: "About the Book"
   audio_book_files: "Audio Book Files"
   book_cover: "Book Cover"
