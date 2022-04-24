@@ -22,7 +22,7 @@ class BooksController < ApplicationController
     end
   end
 
-  def update
+  def update 
     if @book.update(book_params)
       @book.categories << @new_categories
       redirect_to books_path, notice: t("book_created_successfully")

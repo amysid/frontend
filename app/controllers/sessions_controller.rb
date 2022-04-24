@@ -6,15 +6,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-      @user = User.find_by(email: params[:email])
-      if !!@user && @user.authenticate(params[:password])
-        @user.update(last_login_at: Time.now)
-      	session[:user_id] = @user.id
-        redirect_to homes_path
-      else
-      	massage = "Something went wrong"
-      	redirect_to root_path, notice: massage
-      end
+    @user = User.find_by(email: params[:email])
+    if !!@user && @user.authenticate(params[:password])
+      @user.update(last_login_at: Time.now)
+      session[:user_id] = @user.id
+      redirect_to homes_path
+    else
+      massage = "Something went wrong"
+      redirect_to root_path, notice: massage
+    end
   end
 
   def show

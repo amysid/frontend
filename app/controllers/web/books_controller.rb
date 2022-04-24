@@ -44,10 +44,10 @@ class Web::BooksController < Web::WebApplicationController
       color: "black",
       file: nil,
       fill: "white",
-      module_px_size: 6,
+      module_px_size: 7,
       resize_exactly_to: false,
       resize_gte_to: false,
-      size: 120
+      size: 140
     )
   end
 
