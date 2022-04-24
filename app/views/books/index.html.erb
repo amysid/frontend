@@ -50,7 +50,7 @@
                     </div>
                   </td>
                   <td><%= book.book_duration %></td>
-                  <td><%= book.listen_count %></td>
+                  <td><%= total_time_in_minute(book) %></td>
                   <td>
                       <label><%= book.status %></label></td>
                   <td><%= book.last_listening_at %></td>

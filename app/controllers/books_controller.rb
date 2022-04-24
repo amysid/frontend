@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @book.book_files.build
     per_page = params[:per_page] || 10
-    @books = Book.all.order('created_at desc').paginate(page: params[:page], per_page: per_page)
+    @books = Book.all.includes(:operations).order('created_at desc').paginate(page: params[:page], per_page: per_page)
   end
   
   def create

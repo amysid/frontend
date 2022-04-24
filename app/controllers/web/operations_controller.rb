@@ -9,7 +9,7 @@ class Web::OperationsController < Web::WebApplicationController
   def update_listen_count
     current_listen_time = params[:current_time].to_f
     total_time = params[:file_duration].to_f
-    listen_time = current_listen_time.to_f / 60
+    listen_time = current_listen_time.to_f
     @operation.update(listening_time: Time.now, listening_status: listen_time)
     render json: {message: "successfully save count"}
   end
