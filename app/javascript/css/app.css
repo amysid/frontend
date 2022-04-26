@@ -1755,3 +1755,6 @@ color: #000;}
 .hide { display: none!important; }
 
 .search-area { width: 50%; margin-left: 20%; margin-top: 3%;}
+.modal-lgg {
+    max-width: 950px;
+}

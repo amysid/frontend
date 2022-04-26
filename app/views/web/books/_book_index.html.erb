@@ -70,7 +70,7 @@
         <div class="row justify-content-center align-items-center">
           <div class="col-md-12">
             <div class="search-wrapper mt-5">
-              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search", method: :get  do %>
+              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search posR", method: :get  do %>
                 <span class="fa fa-search form-control-feedback"></span>
                 <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box" %>
                 <%= button_tag type: :reset, class: "close-icon" do %>
@@ -88,7 +88,7 @@
             <div data-spy="scroll" data-target="#secondary-nav" data-offset="55">
   
               <header id="secondary-nav" class="secondary-nav" style="top:0;">
-                <ul class="vam nav scroll dragger scroller">
+                <ul class="vam nav dragger scroller">
                   <% @categories.each do |category| %>
                     <!-- <li class="nav-item"><%#= link_to category.name, web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link btn btn-search-cat-head", remote: true %></li> -->
                     <li class="nav-item">

@@ -384,7 +384,7 @@ footer { background: #F7F7F7;
     border-radius: 5px !important;
 }
 
-.checkout-product-img a img {width:100%; }
+.checkout-product-img a img {width:100%;height: 500px; }
 .black {color:#0F2837; }
 .author {
     font-size: 16px;
@@ -454,6 +454,7 @@ footer { background: #F7F7F7;
     max-height: 628px!important;
     /* max-width: 388px; */
     display: inline-block;
+    height: 500px;
 }
     .section-products .single-product .part-1 {
     position: relative;
@@ -483,14 +484,7 @@ footer { background: #F7F7F7;
     font-size: 2.4em!important;
     margin-right: 1em;
 }
-    .close-icon {
-    top: 18%;
-    right: 38px;
-    width: 4.375rem rem;
-    height: 4.375rem;
-    line-height: 4.495rem;
-    font-size: 46px;
-}
+    
     .detail-info h2 {
     font-size: 4em;
         margin-bottom: 1em;
@@ -601,14 +595,14 @@ footer { background: #F7F7F7;
     }
 
     .book-scan-cd .left h3 {
-          font-size: 2.9rem;
-    line-height: 1.6em;
+          font-size: 4rem!important;
+    line-height: 1.6em!important;
     }
     .book-scan-cd .left .css-f4kgqr { 
             padding: 0;
     list-style: none;
     color: #fff;
-    font-size: 2.3em;
+    font-size: 2.5em!important;
     margin-top: 1em;
     line-height: 2.8em;
     }
@@ -697,6 +691,17 @@ footer { background: #F7F7F7;
     width:470px!important;
 }
 
+.close-icon {
+    top: 11%;
+    right: 38px;
+    width: 4.375rem rem;
+    height: 4.375rem;
+    line-height: 4.495rem;
+    font-size: 46px;
+}
+.btn-search-cat-head{
+    border-radius:10px ;
+}
 }
 @media screen and (min-width: 3840px) {
     .checkout-product-img {
@@ -704,6 +709,7 @@ footer { background: #F7F7F7;
     max-height: 894px;
     /* max-width: 388px; */
     display: inline-block;
+    
 }
     .section-products .single-product {
     margin: 0 3em 8em;
@@ -887,4 +893,13 @@ footer { background: #F7F7F7;
     font-weight: 600;
     margin-right: 11px;
     letter-spacing: 1px;
+}
+
+.posR{
+    position: relative;
+}
+
+.btn-search-cat-head img{
+    width: 35px;
+    margin-right: 20px;
 }
