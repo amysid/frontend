@@ -63,5 +63,8 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.7'
 gem 'rqrcode', '~> 2.1', '>= 2.1.1'
 gem 'cloudinary', '~> 1.22'
 gem 'nested_form'
+gem "chartkick"
+gem "groupdate"
+
 
 
