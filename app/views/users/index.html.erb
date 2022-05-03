@@ -35,7 +35,7 @@
             <% else %>
               <% @users.each_with_index do |user, i|%>
               <tr>
-                <td class="text-danger"><%= i %></td>
+                <td class="text-danger"><%= (@users.offset + i + 1) %></td>
                 <td class="text-center"><%= user.full_name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.mobile %></td>

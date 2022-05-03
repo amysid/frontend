@@ -40,7 +40,7 @@
             <% else %>
               <% @books.each_with_index do|book, i|  %>
                 <tr>
-                  <td class="text-danger"><%= i%></td>
+                  <td class="text-danger"><%= (@books.offset + i + 1)%></td>
                   <td><%= book.title %></td>
                   <td class="text-center"><%= book.author_name %>
                   </td>

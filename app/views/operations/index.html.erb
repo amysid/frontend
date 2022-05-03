@@ -32,7 +32,7 @@
             <% else %>
               <% @operations.each_with_index do|operation, i|  %>
                 <tr>
-                  <td class="text-danger"><%= i %></td>
+                  <td class="text-danger"><%= (@operations.offset + i + 1) %></td>
                   <td><%= operation.number %></td>
                   <td><%= operation.booth.name %></td>
                   <td><%= operation.book.title %></td>

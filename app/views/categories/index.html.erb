@@ -32,7 +32,7 @@
             <% else %>
               <% @categories.each_with_index do |category, i|%>
                 <tr>
-                  <td class="text-danger"><%= i %></td>
+                  <td class="text-danger"><%= (@categories.offset + i + 1) %></td>
                   <td><%= category.name %></td>
                   <td><%= category.arabic_name %></td>
                   <td><img src="<%= rails_blob_path(category.icon , only_path: true) if category.icon.present? %>" class="cat-icon-img"></td>

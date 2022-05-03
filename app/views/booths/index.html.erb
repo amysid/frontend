@@ -37,7 +37,7 @@
                 <% else %>
                   <% @booths.each_with_index do |booth, i|%>
                     <tr>
-                      <td class="text-danger"><%= i%></td>
+                      <td class="text-danger"><%= (@booths.offset + i + 1)%></td>
                       <td><%= booth.name %></td>
                       <td><%= booth.city %></td>
                       <td><%= booth.address %></td>
