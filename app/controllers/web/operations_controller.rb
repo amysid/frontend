@@ -1,5 +1,6 @@
 class Web::OperationsController < Web::WebApplicationController
   before_action :set_operation
+  layout false
 
   def media_files
     @book = @operation.book
