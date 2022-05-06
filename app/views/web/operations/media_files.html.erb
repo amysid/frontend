@@ -29,11 +29,7 @@
 
 $("audio").on({
   pause:function(){ // the audio is paused!
-    var pause_time = this.currentTime
-    pause_time = Number(pause_time)
-    var minute = Math.floor( pause_time % 3600 / 60);
-    var second = Math.floor(pause_time % 3600 % 60);
-    var current_time = Number(minute + "." + second);
+    var current_time = this.currentTime
     var file_duration = this.duration
     $.ajax({
       url : '<%= update_listen_count_web_operation_path(id: @operation.number) %>',

@@ -42,9 +42,9 @@
                       <td><%= booth.city %></td>
                       <td><%= booth.address %></td>
                       <td><%= booth.latitude %>,<%= booth.longitude%></td>
-                      <td><%= booth.listening_count%></td>
+                      <td><%= listening_count_for(booth) %></td>
                       <td><%= booth.status rescue nil %></td>
-                      <td><%= booth.status rescue nil%></td>
+                      <td><%= booth.operations.last.created_at rescue nil%></td>
                       <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_booth_path(id: booth.id) ,remote: true%></td>
                     </tr>
                   <% end %>

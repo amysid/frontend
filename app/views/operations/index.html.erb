@@ -37,7 +37,7 @@
                   <td><%= operation.booth.name %></td>
                   <td><%= operation.book.title %></td>
                   <td><%= operation.booth.city %></td>
-                  <td><%= operation.listening_status.to_s.gsub(".",":") %></td>
+                  <td><%= Time.at(operation.listening_status.to_f).utc.strftime("%H:%M:%S") %></td>
                   <td><%= operation.listening_time %></td>
                   <td><%= operation.rating %></td>
                   <td><%= operation.note %></td>
