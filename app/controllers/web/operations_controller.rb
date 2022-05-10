@@ -15,6 +15,11 @@ class Web::OperationsController < Web::WebApplicationController
     render json: {message: "successfully save count"}
   end
 
+  def save_feedback
+    @operation.update(rating: params[:feedback][:rating], note: params[:feedback][:note])
+    redirect_to media_files_web_operation_path(id: @operation.number), notice: t("feedback save successfully")
+  end
+
   private
 
   def set_operation

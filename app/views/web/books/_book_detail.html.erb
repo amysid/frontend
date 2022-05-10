@@ -103,7 +103,7 @@
             <div class="image-grid-container common-clearfix">
               <div class="image-grid-col50">
                 <div class="image-grid-imageContainer">
-                  <% img_url = @book.book_files.first.book_cover_file.url %>
+                  <% img_url = @book.book_files.first.book_cover_file.url rescue nil  %>
                   <div class="image-grid-image" style="background-image: url(<%= img_url %>);"></div>
                   <div class="image-grid-skeletonLoader"></div>
                 </div>
