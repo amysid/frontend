@@ -12,7 +12,7 @@ Booth
 1. can select multiple category
 
 
-toke: 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
+toke: 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
 
 
 
