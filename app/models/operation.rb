@@ -4,4 +4,6 @@ class Operation < ApplicationRecord
   belongs_to :booth, dependent: :destroy
   belongs_to :book, dependent: :destroy
   has_many :categories, through: :booth
+  enum language: ["English", "Arabic"] 
+
 end

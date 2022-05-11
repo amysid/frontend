@@ -4,5 +4,5 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :categories, dependent: :destroy
   accepts_nested_attributes_for :book_files 
   enum status: ["UnPublished", "Published"]
-  
+  enum audio_type: ["Short", "Long"] 
 end

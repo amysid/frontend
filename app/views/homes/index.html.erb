@@ -108,7 +108,7 @@
       <div class="card card-default" id="cardChart5">
         <div class="card-body">
           <h5>Service Evaluation</h5>
-          <%= pie_chart  @category_group %>
+          <%= column_chart @rating_wise_group  %>
         </div>
       </div>
     </div>
@@ -120,6 +120,37 @@
         <div class="card-body">
           <h5>Top 5 Book</h5>
           <%= bar_chart @book_details %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card card-default card-demo p-3" id="Div1">
+            <h5 class="text-center mt-2 mb-4">Listening Duration</h5>
+            <%= pie_chart @book_listening_type %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4">
+      <div class="card card-default" id="cardChart5">
+        <div class="card-body">
+          <h5>Service Evaluation</h5>
+          <%= pie_chart  @category_group %>
+        </div>
+      </div>
+    </div>
+
+    <!-- START dashboard sidebar-->
+    <!-- END dashboard sidebar-->
+    <div class="col-xl-4">
+      <div class="card card-default" id="cardChart5">
+        <div class="card-body">
+          <h5>Book Listening Language</h5>
+          <%= pie_chart @book_language_detail %>
         </div>
       </div>
     </div>

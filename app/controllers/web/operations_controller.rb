@@ -4,7 +4,8 @@ class Web::OperationsController < Web::WebApplicationController
 
   def media_files
     @book = @operation.book
-    @book.update(last_listening_at: Time.now)
+    language = params[:locale] == "en" ? "English" : "Arabic"
+    @book.update(last_listening_at: Time.now, language: language)
   end
 
   def update_listen_count
@@ -13,6 +14,11 @@ class Web::OperationsController < Web::WebApplicationController
     listen_time = current_listen_time.to_f
     @operation.update(listening_time: Time.now, listening_status: listen_time)
     render json: {message: "successfully save count"}
+  end
+
+  def save_feedback
+    @operation.update(rating: params[:feedback][:rating], note: params[:feedback][:note])
+    redirect_to media_files_web_operation_path(id: @operation.number), notice: t("feedback save successfully")
   end
 
   private

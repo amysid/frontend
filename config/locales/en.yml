@@ -129,5 +129,6 @@ en:
   all: "All"
   short_audiobooks: "Short audiobooks"
   long_audiobook: "Long audiobook"
+  audio_type: "Audio Type"
 
 

@@ -1,3 +1,6 @@
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +39,9 @@
             <div id="Div8" class="single-product">
               <div class="part-1">
                 <span class="checkout-product-img">
+                  <% img_url = @book.book_files.first.book_cover_file.url rescue nil %>
                   <a href="">
-                    <img src="/assets/book-1.jpg" class="rounded">
+                    <img src="<%= img_url %>" class="rounded">
                   </a>
                 </span>
 
@@ -50,11 +54,11 @@
       <div class="row">
         <div class="col-md-12">
           <div class="part-2" id="Mpart2">
-            <h3 class="product-title">Harry potter and the half blood prince story</h3>
+            <h3 class="product-title"><%= @book.title %></h3>
             <div class="author-de text-center mt-3 mb-4">
               <div class="fu3kk d-flex justify-content-center">
-                <div>J. K. Rowling</div>
-               <div>J. K. Rowling</div>
+                <div><%= @book.author_name %></div>
+               <div><%= @book.author_name %></div>
                </div>
              </div>
 
@@ -68,15 +72,36 @@
              <div class="player">
                 <div class="info mt-5">
                   <div class="button-items">
+                    <% audio_url = @book.book_files.first.audio.url rescue nil %>
                     <audio id="music" preload="auto" loop="false">
-                      <source src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3?dl=1" type="audio/mp3">
-                      <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg">
+                      <source src="<%= audio_url %>" type="audio/mp3">
                     </audio>
                     <div id="slider">
                       <div id="elapsed"></div>
                     </div>
                     <p id="timer">0:00</p>
                     <div class="controls">
+
+                      <button class="btn-backward">
+                        <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                          <g>
+                              <path d="M325.125,319.5c-5.737,0-9.563-1.913-13.388-5.737l-76.5-76.5c-7.65-7.65-7.65-19.125,0-26.775l76.5-76.5
+c7.65-7.65,19.125-7.65,26.775,0c7.649,7.65,7.649,19.125,0,26.775L275.4,223.875l63.113,63.112c7.649,7.65,7.649,19.125,0,26.775
+C334.688,317.587,330.862,319.5,325.125,319.5z" />
+                          </g>
+                          <g>
+                              <path d="M306,204.75h-19.125c-11.475,0-19.125,7.65-19.125,19.125S275.4,243,286.875,243H306
+c105.188,0,191.25,86.063,191.25,191.25S411.188,625.5,306,625.5s-191.25-86.063-191.25-191.25c0-0.25,0.008-0.5,0.009-0.75h-38.25
+c0,0.25-0.009,0.5-0.009,0.75c0,1.201,0.009,2.399,0.028,3.596C78.466,562.43,180.976,663.75,306,663.75
+c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" />
+                          </g>
+                          <text transform="matrix(1 0 0 1 137.0063 546.2256)">
+                              <tspan x="0" y="0" font-family="'Arial-BoldMT'" font-size="294.6757" letter-spacing="-40">1</tspan>
+                              <tspan x="123.219" y="0" font-family="'Arial-BoldMT'" font-size="294.6757">0</tspan>
+                          </text>
+                        </svg>
+                      </button>
+
                       <span class="expend">
                         <svg class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
                           <g>
@@ -110,9 +135,32 @@
                           </g>
                         </svg>
                       </span>
+
+                      <button class="btn-forward">
+                        <svg version="1.1" id="Svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                          <g>
+                            <path d="M235.237,313.763c-7.649-7.65-7.649-19.125,0-26.775l63.113-63.112l-63.113-63.112c-7.649-7.65-7.649-19.125,0-26.775
+    c7.65-7.65,19.125-7.65,26.775,0l76.5,76.5c7.649,7.65,7.649,19.125,0,26.775l-76.5,76.5c-3.825,3.825-7.65,5.737-13.388,5.737
+    S239.063,317.587,235.237,313.763z" />
+                          </g>
+                          <g>
+                            <path d="M306,204.75h19.125c11.475,0,19.125,7.65,19.125,19.125S336.6,243,325.125,243H306c-105.188,0-191.25,86.063-191.25,191.25
+    S200.813,625.5,306,625.5s191.25-86.063,191.25-191.25c0-0.25-0.008-0.5-0.009-0.75h38.25c0.001,0.25,0.009,0.5,0.009,0.75
+    c0,1.201-0.01,2.399-0.027,3.596C533.533,562.43,431.024,663.75,306,663.75c-126.225,0-229.5-103.275-229.5-229.5
+    C76.5,308.025,179.775,204.75,306,204.75z" />
+                          </g>
+                          <text transform="matrix(1 0 0 1 154.9946 548.2256)">
+                            <tspan x="0" y="0" font-family="'Arial-BoldMT'" font-size="294.6757" letter-spacing="-40">1</tspan>
+                            <tspan x="123.219" y="0" font-family="'Arial-BoldMT'" font-size="294.6757">0</tspan>
+                          </text>
+                        </svg>
+                      </button>
+
                     </div>
                     <div class="audio-no">
-                      <label>x1</label>
+                      <!-- <label>x1</label> -->
+                      <%= select_tag "play_speed", options_for_select([0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2], :selected=>1), {:class =>"playbackrate"} %>
+
                     </div>
                   </div>
                 </div>
@@ -594,13 +642,16 @@
               </div>
             </div>
           </div>
-          <div class="comment">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-          <div class="btn-comment mt-4">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary btn-rating">Save changes</button>
-          </div>
+          <%= form_with scope: :feedback, url: save_feedback_web_operation_path(id: @operation.number), method: :put do |f| %>
+            <%= f.text_field :rating, type: "hidden", id: "rating-field"%>
+            <div class="comment">
+              <%= f.text_area :note, class: "form-control", id: "exampleFormControlTextarea1", rows:"3"%>
+            </div>
+            <div class="btn-comment mt-4">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= f.submit :"Save changes", class: "btn btn-primary btn-rating"%>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -646,7 +697,6 @@
 
      pauseButton.onclick = function () {
        music.pause();
-       debugger
        playButton.style.visibility = "visible";
        pause.style.visibility = "hidden";
        var current_time = music.currentTime
@@ -673,4 +723,53 @@
        duration = music.duration;
      }, false);
      //# sourceURL=pen.js
+
+
+     $(".btn-forward").click(function(){
+      var music = $("#music")[0]
+      if( music.currentTime < music.duration ){
+        music.currentTime += 10
+      }
+     });
+
+    $(".btn-backward").click(function(){
+      var music = $("#music")[0]
+      if( music.currentTime > 0 ){
+        music.currentTime -= 10
+      }
+     });
+
+    $(".playbackrate").change(function(){
+      value = $(this).val()
+      var music = $("#music")[0]
+      music.playbackRate = value;
+    });
+
+    $("#rating-1").change(function(){
+      $("#rating-field").val(1);
+    });
+
+    $("#rating-2").change(function(){
+      $("#rating-field").val(2);
+    })
+    $("#rating-3").change(function(){
+      $("#rating-field").val(3);
+    })
+    
+    $("#rating-4").change(function(){
+      $("#rating-field").val(4);
+    })
+    
+    $("#rating-5").change(function(){
+      $("#rating-field").val(5);
+    })
+
+
+    setTimeout(function(){
+      $(".alert").hide();
+    }, 1000);  
   </script>
+
+
+
+  <!-- playbackRate for speed-->
