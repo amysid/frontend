@@ -5,7 +5,8 @@ class Web::OperationsController < Web::WebApplicationController
   def media_files
     @book = @operation.book
     language = params[:locale] == "en" ? "English" : "Arabic"
-    @book.update(last_listening_at: Time.now, language: language)
+    @operation.update(language: language)
+    @book.update(last_listening_at: Time.now)
   end
 
   def update_listen_count
