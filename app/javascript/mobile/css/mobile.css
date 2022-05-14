@@ -105,7 +105,7 @@
 }
 
 .main-content {
-    padding: 3em 0;
+    padding: 1.8em 0;
 }
 
 .button-left {
@@ -179,6 +179,7 @@
 }*/
     .checkout-product-img a img {
         width: 100%;
+        height: 300px;
     }
 
 .mb-22 {
@@ -327,7 +328,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center; /*box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);*/
+    align-items: center; /*box-shadow:background-color: #6f1946; 0 4px 30px rgba(0, 0, 0, 0.05);*/
 }
 
 @media only screen and (max-width: 600px) {
@@ -342,14 +343,46 @@
 .audio-no {
     position:relative;
 }
-    .audio-no label {
+    .audio-no label{
         background: #8C2843;
         /* width: 34px; */
         color: #fff;
         border-radius: 16px;
-        padding: 3px 15px;
+       
         font-size: 20px;
         position: absolute;
         right: 0;
         top: -4em;
+        width: 20%;
+        border: 0;
     }
+
+    .btn-backward, .btn-forward{
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+.controls button svg{
+    fill:#fff;
+}
+.custom-select{
+    color: #fff;
+    background: transparent;
+    border: 0;
+}
+body{
+    background-color: #6f1946;
+    overflow: hidden;
+}
+
+.custom-select{
+    width: 85%;
+}
+
+@media only screen and (max-width: 500px){
+body {
+    background-color: #6f1946;
+    height: 100vh;
+    overflow: hidden;
+}}
