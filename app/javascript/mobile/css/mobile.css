@@ -376,9 +376,6 @@ body{
     overflow: hidden;
 }
 
-.custom-select{
-    width: 85%;
-}
 
 @media only screen and (max-width: 500px){
 body {
