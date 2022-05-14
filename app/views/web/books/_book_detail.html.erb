@@ -99,7 +99,7 @@
     <div class="book-detail">
       <div class="container">
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-6 pr-0">
             <div class="image-grid-container common-clearfix">
               <div class="image-grid-col50">
                 <div class="image-grid-imageContainer">
@@ -111,7 +111,7 @@
             </div>
           </div>
 
-          <div class="col-md-7">
+          <div class="col-md-6 pl-0">
             <div class="detail-info pr-30 pl-30">
               <h2 class="title-detail"><%= @book.title %></h2>
               <div class="short-desc mb-30">
@@ -248,19 +248,18 @@
       <div class="footer-bottom">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 text-left">
+          <div class="col-md-3 text-left">
             <%= link_to  web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer", remote: true do%>
               <i class="fas fa-arrow-left"></i>
             <% end %>
           </div>
-          <div class="col-md-6 text-right">
+          <div class="col-md-9 text-right">
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
-            <% lang = params[:locale] == "ar" ? "English" : "Arabic" %>
+            <% lang = params[:locale] == "ar" ? "English" : "اللغة العربية " %>
             <% locale = params[:locale] == "ar" ? "en" : "ar" %>
             <%= link_to "#{lang}", web_booth_book_path(booth_id: @booth.number, id: book.id, locale: locale), remote: true, class: "btn btn-light-grey btn-footer"  %>
-            <a href="#" class="btn btn-light-grey btn-footer">اللغة العربية</a>
-          </div>
+            </div>
         </div>
       </div>
         </div>

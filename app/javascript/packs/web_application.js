@@ -32,5 +32,6 @@ import "../website-assets/css/bootstrap.css"
 import "../website-assets/css/style.css"
 import "../website-assets/css/scroller.css"
 import "../website-assets/css/audio-player.css"
+import "../website-assets/css/main.css"
 
 // website css end here

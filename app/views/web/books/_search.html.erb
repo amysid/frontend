@@ -13,13 +13,18 @@
         <div class="row justify-content-center align-items-center">
           <div class="col-md-12">
             <div class="search-wrapper mt-5">
-              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search posR", method: :get  do %>
-                <span class="fa fa-search form-control-feedback"></span>
-                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box" %>
-                <%= button_tag type: :reset, class: "close-icon" do %>
+ <form class="form-group has-search position-relat">
+                <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search position-relat", method: :get  do %>
+                           <span class="input-group-text">
+                                <i class="fa fa-search"></i>
+                            </span>
+                           <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box" %>
+                             <span class="input-group-text close-icon-1">
+                                 <%= button_tag type: :reset, class: "close-icon" do %>
                   <i class="fa fa-times-circle" aria-hidden="true"></i>
                 <% end %>
-              <% end %>
+                            </span>
+                        <% end %>
             </div>
           </div>
         </div>
@@ -51,7 +56,7 @@
             No record found
           <% else %>
             <% @books.each do |book| %>
-              <div class="col-md-6 col-lg-4 col-xl-3">
+              <div class="col-md-6 col-lg-3 col-xl-3">
                 <div id="Div4" class="single-product">
                   <div class="part-1">
                     <span class="checkout-product-img">
@@ -78,10 +83,10 @@
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-md-6 text-left">
+          <div class="col-md-3 text-left">
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fas fa-arrow-left"></i></a>
           </div>
-          <div class="col-md-6 text-right">
+          <div class="col-md-9 text-right">
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
             <a href="#" class="btn btn-light-grey btn-footer">اللغة العربية</a>

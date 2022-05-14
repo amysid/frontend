@@ -70,13 +70,19 @@
         <div class="row justify-content-center align-items-center">
           <div class="col-md-12">
             <div class="search-wrapper mt-5">
-              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search posR", method: :get  do %>
-                <span class="fa fa-search form-control-feedback"></span>
-                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box" %>
-                <%= button_tag type: :reset, class: "close-icon" do %>
+              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search position-relat", method: :get  do %>
+                           <span class="input-group-text">
+                                <i class="fa fa-search"></i>
+                            </span>
+                          
+                            <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box" %>
+                             <span class="input-group-text close-icon-1">
+                                
+                                <%= button_tag type: :reset, class: "close-icon" do %>
                   <i class="fa fa-times-circle" aria-hidden="true"></i>
                 <% end %>
-              <% end %>
+                            </span>
+                         <% end %>
             </div>
           </div>
         </div>
@@ -92,7 +98,7 @@
                   <% @categories.each do |category| %>
                     <!-- <li class="nav-item"><%#= link_to category.name, web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link btn btn-search-cat-head", remote: true %></li> -->
                     <li class="nav-item">
-                        <%= link_to search_web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link btn btn-search-cat-head", remote: true  do %>
+                        <%= link_to search_web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link mb-3 btn btn-search-cat-head", remote: true  do %>
                           <% cat_url = category.icon.url %>
                           <img src="<%= cat_url%>" /><%= category.name%>
                         <% end %>
@@ -159,10 +165,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <footer>
+       <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-right">
@@ -173,6 +176,10 @@
       </div>
     </div>
   </footer>
+    </div>
+  </div>
+
+ 
 </body>
 </html>
 
