@@ -60,7 +60,7 @@
             <div class="author-de text-center mt-2 mb-2">
               <div class="fu3kk d-flex justify-content-center">
                 <div><%= @book.author_name %></div>
-               <div><%= @book.author_name %></div>
+               <div><%= @book.categories.first.name rescue nil %></div>
                </div>
              </div>
 
@@ -144,7 +144,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
 
                     </div>
                     <div class="audio-no">
-                       <label> <%= select_tag "play_speed", options_for_select([0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2], :selected=>1), {:class =>"playbackrate browser-default custom-select"} %>
+                       <label> <%= select_tag "play_speed", options_for_select([["0.25x", 0.25],["0.5x", 0.5], ["0.7x", 0.75], ["1x", 1], ["1.25x", 1.25],["1.50x", 1.50],["1.75x", 1.75], ["2x", 2]], :selected=>1), {:class =>"playbackrate browser-default custom-select"} %>
                        </label> 
 
                     </div>
