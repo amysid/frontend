@@ -195,8 +195,8 @@
 
         <div class="button-items">
           <% sort_audio_url = @book.book_files.first.short_audio_file.url %>
-          <audio id="music" preload="auto" loop="false">
-            <source src="<%= sort_audio_url %>">
+          <audio id="music" preload="auto">
+            <source src="<%=  sort_audio_url %>">
            <!--  <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg"> -->
           </audio>
           <div id="slider">
@@ -204,12 +204,25 @@
           </div>
           <p id="timer">0:00</p>
           <div class="controls">
-            <span class="expend">
-              <svg class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
+            <button class="btn-backward">
+              <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
                 <g>
-                  <polygon points="4.9,4.3 9,4.3 9,11.6 21.4,4.3 21.4,20.7 9,13.4 9,20.7 4.9,20.7" />
+                    <path d="M325.125,319.5c-5.737,0-9.563-1.913-13.388-5.737l-76.5-76.5c-7.65-7.65-7.65-19.125,0-26.775l76.5-76.5
+c7.65-7.65,19.125-7.65,26.775,0c7.649,7.65,7.649,19.125,0,26.775L275.4,223.875l63.113,63.112c7.649,7.65,7.649,19.125,0,26.775
+C334.688,317.587,330.862,319.5,325.125,319.5z" />
                 </g>
-              </svg></span>
+                <g>
+                    <path d="M306,204.75h-19.125c-11.475,0-19.125,7.65-19.125,19.125S275.4,243,286.875,243H306
+c105.188,0,191.25,86.063,191.25,191.25S411.188,625.5,306,625.5s-191.25-86.063-191.25-191.25c0-0.25,0.008-0.5,0.009-0.75h-38.25
+c0,0.25-0.009,0.5-0.009,0.75c0,1.201,0.009,2.399,0.028,3.596C78.466,562.43,180.976,663.75,306,663.75
+c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" />
+                </g>
+                <text transform="matrix(1 0 0 1 137.0063 546.2256)">
+                    <tspan x="0" y="0" font-family="'Arial-BoldMT'" font-size="294.6757" letter-spacing="-40">1</tspan>
+                    <tspan x="123.219" y="0" font-family="'Arial-BoldMT'" font-size="294.6757">0</tspan>
+                </text>
+              </svg>
+            </button>
 
             <svg id="play" viewBox="0 0 25 25" xml:space="preserve">
               <defs>
@@ -228,13 +241,32 @@
                 <rect x="14" y="4.6" width="3.9" height="15.7" />
               </g>
             </svg>
-
-            <span class="expend">
-              <svg class="step-foreward" viewBox="0 0 25 25" xml:space="preserve">
+            <button class="btn-forward">
+              <svg version="1.1" id="Svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
                 <g>
-                  <polygon points="20.7,4.3 16.6,4.3 16.6,11.6 4.3,4.3 4.3,20.7 16.7,13.4 16.6,20.7 20.7,20.7" />
+                  <path d="M235.237,313.763c-7.649-7.65-7.649-19.125,0-26.775l63.113-63.112l-63.113-63.112c-7.649-7.65-7.649-19.125,0-26.775
+c7.65-7.65,19.125-7.65,26.775,0l76.5,76.5c7.649,7.65,7.649,19.125,0,26.775l-76.5,76.5c-3.825,3.825-7.65,5.737-13.388,5.737
+S239.063,317.587,235.237,313.763z" />
                 </g>
-              </svg></span>
+                <g>
+                  <path d="M306,204.75h19.125c11.475,0,19.125,7.65,19.125,19.125S336.6,243,325.125,243H306c-105.188,0-191.25,86.063-191.25,191.25
+S200.813,625.5,306,625.5s191.25-86.063,191.25-191.25c0-0.25-0.008-0.5-0.009-0.75h38.25c0.001,0.25,0.009,0.5,0.009,0.75
+c0,1.201-0.01,2.399-0.027,3.596C533.533,562.43,431.024,663.75,306,663.75c-126.225,0-229.5-103.275-229.5-229.5
+C76.5,308.025,179.775,204.75,306,204.75z" />
+                </g>
+                <text transform="matrix(1 0 0 1 154.9946 548.2256)">
+                  <tspan x="0" y="0" font-family="'Arial-BoldMT'" font-size="294.6757" letter-spacing="-40">1</tspan>
+                  <tspan x="123.219" y="0" font-family="'Arial-BoldMT'" font-size="294.6757">0</tspan>
+                </text>
+              </svg>
+            </button>
+
+            <div class="audio-no">
+              <label> <%= select_tag "play_speed", options_for_select([["0.25x", 0.25],["0.5x", 0.5], ["0.7x", 0.75], ["1x", 1], ["1.25x", 1.25],["1.50x", 1.50],["1.75x", 1.75], ["2x", 2]], :selected=>1), {:class =>"playbackrate browser-default custom-select"} %>
+              </label> 
+
+            </div>
+
           </div>
         </div>
       </div>
@@ -265,6 +297,7 @@
         </div>
     </footer>
   </div>
+
   <script id="rendered-js">
     var music = document.getElementById("music");
     var playButton = document.getElementById("play");
@@ -308,6 +341,27 @@
     music.addEventListener("canplaythrough", function () {
       duration = music.duration;
     }, false);
+
+    $(".btn-forward").click(function(){
+      var music = $("#music")[0]
+      if( music.currentTime < music.duration ){
+        music.currentTime += 10
+      }
+     });
+
+    $(".btn-backward").click(function(){
+      var music = $("#music")[0]
+      if( music.currentTime > 0 ){
+        music.currentTime -= 10
+      }
+    });
+
+    $(".playbackrate").change(function(){
+      value = $(this).val()
+      var music = $("#music")[0]
+      music.playbackRate = value;
+    });
+
     //# sourceURL=pen.js
   </script>
 </body>
