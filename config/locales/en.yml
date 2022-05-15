@@ -130,5 +130,6 @@ en:
   short_audiobooks: "Short audiobooks"
   long_audiobook: "Long audiobook"
   audio_type: "Audio Type"
+  book_deleted_successfully: "Book Delete Successfully!"
 
 

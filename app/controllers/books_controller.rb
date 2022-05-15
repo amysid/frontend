@@ -46,6 +46,11 @@ class BooksController < ApplicationController
     redirect_to books_path, notice: t("book_updated_successfully")
   end
 
+  def destroy
+    @book.destroy
+    redirect_to books_path, notice: t("book_deleted_successfully")
+  end
+
   private
 
   def book_params

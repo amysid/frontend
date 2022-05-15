@@ -130,6 +130,8 @@ ar:
   short_audiobooks: "AR Short audiobooks"
   long_audiobook: "AR Long audiobook"
   audio_type: "AR Audio Type"
+  book_deleted_successfully: "AR Book Delete Successfully!"
+
 
 
 
