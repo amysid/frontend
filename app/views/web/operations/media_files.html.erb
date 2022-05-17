@@ -76,7 +76,7 @@
                   <div class="button-items">
                     <% audio_url = @book.book_files.first.audio.url rescue nil %>
                     <audio id="music" preload="auto">
-                      <source src="<%= "http://res.cloudinary.com/dqxuefovm/video/upload/4dpi1rubvbq5yo2zsndlj7izwacw.mp3" %>" type="audio/mp3">
+                      <source src="<%= audio_url %>" type="audio/mp3">
                     </audio>
                     <div id="slider">
                       <div id="elapsed"></div>
