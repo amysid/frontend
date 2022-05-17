@@ -76,7 +76,7 @@
                   <div class="button-items">
                     <% audio_url = @book.book_files.first.audio.url rescue nil %>
                     <audio id="music" preload="auto">
-                      <source src="<%= audio_url %>" type="audio/mp3">
+                      <source src="<%= "http://res.cloudinary.com/dqxuefovm/video/upload/4dpi1rubvbq5yo2zsndlj7izwacw.mp3" %>" type="audio/mp3">
                     </audio>
                     <div id="slider">
                       <div id="elapsed"></div>
@@ -758,47 +758,31 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
       $(".alert").hide();
     }, 1000);
 
-
-    $(window).bind("beforeunload", function(){
-      var current_time = music.currentTime
-      var file_duration = music.duration
-      $.ajax({
-        url : '<%= update_listen_count_web_operation_path(id: @operation.number) %>',
-        type : 'GET',
-        data : {
-          'current_time' : current_time,
-          'file_duration': file_duration
-        },
-        dataType:'json',
-        success : function(data) {              
-        console.log('Data: '+data.message);
-        },
-        error : function(request,error)
-        {
-        console.log("their is some issue");
-        }
-      })
-    }); 
+    $(document).on('visibilitychange', function() {
+      if (document.visibilityState == 'hidden') {
+        var current_time = music.currentTime
+        var file_duration = music.duration
+        $.ajax({
+          url : '<%= update_listen_count_web_operation_path(id: @operation.number) %>',
+          type : 'GET',
+          data : {
+            'current_time' : current_time,
+            'file_duration': file_duration
+          },
+          dataType:'json',
+          success : function(data) {              
+          console.log('Data: '+data.message);
+          },
+          error : function(request,error)
+          {
+          console.log("their is some issue");
+          }
+        })
+      }
+    });
 
     $(window).on('pagehide', function() {
-      var current_time = music.currentTime
-      var file_duration = music.duration
-      $.ajax({
-        url : '<%= update_listen_count_web_operation_path(id: @operation.number) %>',
-        type : 'GET',
-        data : {
-          'current_time' : current_time,
-          'file_duration': file_duration
-        },
-        dataType:'json',
-        success : function(data) {              
-        console.log('Data: '+data.message);
-        },
-        error : function(request,error)
-        {
-        console.log("their is some issue");
-        }
-      })
+      
     });
 
   </script>
