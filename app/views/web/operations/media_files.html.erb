@@ -779,6 +779,28 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
         }
       })
     }); 
+
+    $(window).on('pagehide', function() {
+      var current_time = music.currentTime
+      var file_duration = music.duration
+      $.ajax({
+        url : '<%= update_listen_count_web_operation_path(id: @operation.number) %>',
+        type : 'GET',
+        data : {
+          'current_time' : current_time,
+          'file_duration': file_duration
+        },
+        dataType:'json',
+        success : function(data) {              
+        console.log('Data: '+data.message);
+        },
+        error : function(request,error)
+        {
+        console.log("their is some issue");
+        }
+      })
+    });
+
   </script>
 
 
