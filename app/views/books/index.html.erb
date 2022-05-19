@@ -29,6 +29,7 @@
               <th class="text-danger"><%= t('duration_of_the_book_in_minutes') %></th>
               <th class="text-danger"><%= t('listening') %></th>
               <th class="text-danger"><%= t('status') %></th>
+              <th class="text-danger"><%= t('language') %></th>
               <th class="text-danger"><%= t('last_listening') %></th>
               <th class="text-danger"><%= t('setting') %></th>
 
@@ -53,6 +54,7 @@
                   <td><%= total_time_in_minute(book) %></td>
                   <td>
                       <label><%= book.status %></label></td>
+                  <td><%= book.language %></td>
                   <td><%= book.last_listening_at %></td>
                   <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_book_path(id: book.id) ,remote: true%></td>
                 </tr>
@@ -140,6 +142,13 @@
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('audio_type') %></label>
             <div class="col-md-10">
               <%= f.select :audio_type, options_for_select([["Short",'Short'],["Long", "Long"]]), { include_blank: true}, {class: "form-control"} %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label"><%= t('language') %></label>
+            <div class="col-md-10">
+              <%= f.select :language, options_for_select([["English",'English'],["Arabic", "Arabic"]]), { include_blank: true}, {class: "form-control"} %>
             </div>
           </div>
 

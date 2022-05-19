@@ -26,7 +26,7 @@
         <div class="col-12 mx-auto">
           <div class="text-center">
             <% if @operation.rating.blank? and @operation.note.blank? %>
-              <div class="btn-group w-80">
+              <div class="btn-group rating-btn w-80">
                 <button type="button" class="btn btn-secondary text-left btn-lg btn-block" data-toggle="modal" data-target="#bottom_modal"><i class="fa fa-star"></i>Rate your experience</button>
                 <span class="button-left"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
               </div>
@@ -628,13 +628,13 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
               </div>
             </div>
           </div>
-          <%= form_with scope: :feedback, url: save_feedback_web_operation_path(id: @operation.number), method: :put do |f| %>
+          <%= form_with scope: :feedback, html: {id: "rating_form"}, url: save_feedback_web_operation_path(id: @operation.number), method: :put do |f| %>
             <%= f.text_field :rating, type: "hidden", id: "rating-field"%>
             <div class="comment">
               <%= f.text_area :note, class: "form-control", id: "exampleFormControlTextarea1", rows:"3"%>
             </div>
             <div class="btn-comment mt-4">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" id="close-btn" data-dismiss="modal">Close</button>
               <%= f.submit :"Save changes", class: "btn btn-primary btn-rating"%>
             </div>
           <% end %>
@@ -781,8 +781,22 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
       }
     });
 
-    $(window).on('pagehide', function() {
-      
+    $("#rating_form").submit(function(event){
+      event.preventDefault()
+      $.ajax({
+          url : '<%= save_feedback_web_operation_path(id: @operation.number) %>',
+          type : 'put',
+          data : $('form').serialize(),
+          success : function(data) {              
+           alert("data save")
+           $("#close-btn").click();
+           $(".rating-btn").html("");
+          },
+          error : function(request,error)
+          {
+           alert("their is some issue");
+          }
+        })
     });
 
   </script>
