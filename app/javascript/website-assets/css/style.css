@@ -21,6 +21,7 @@
 }
 .logo {
     width:373px;
+    margin-bottom: 2em;
 }
 .login-form {
     padding: 30px;
@@ -465,14 +466,7 @@ footer {
         width: 100%;
     }
 
-        .image-grid-container:before {
-            content: "";
-            background: #f4ab9c;
-            height: 85%;
-            width: 95%;
-            position: absolute;
-            left: -101px;
-        }
+        
 
     .image-grid-col50 {
         width: 88.5%;
@@ -483,16 +477,7 @@ footer {
         margin-top: 13%;
     }
 
-    .image-grid-imageContainer {
-        height: 0;
-        padding-top: 133.33333333333331%;
-        overflow: hidden;
-        position: relative;
-        border: 0;
-        margin-left: -80px;
-        border-radius: 6px;
-        box-shadow: rgb(99 99 99 / 39%) 0 6px 18px 0;
-    }
+   
 
     .image-grid-image {
         position: absolute;
@@ -536,14 +521,7 @@ footer {
         margin: 6em 3em;
     }
 
-    .book-detail-2-mini {
-        background: #f7f7f7;
-        margin: 4em 0;
-        padding: 3em 0;
-        border-radius: 10px;
-        box-shadow: rgb(99 99 99 / 39%) 0 2px 9px 0;
-        border-radius: 2em;
-    }
+   
 
     .author-main p, .category p, .time p {
         font-size: 28px;
@@ -556,13 +534,7 @@ footer {
         font-weight: 700;
     }
 
-    .qr-bgiio {
-        width: 100%;
-        float: left;
-        margin-bottom: 1%;
-        position: relative;
-        border-radius: 15px;
-    }
+    
 
     .qr-image-grid-imageContainer {
         overflow: hidden;
@@ -588,7 +560,7 @@ footer {
     }
 
     .css-f4kgqr li i {
-        font-size: 50px;
+        font-size: 25px;
         padding-right: 20px;
     }
 
@@ -710,12 +682,6 @@ footer {
     height: 930px;
 }
 
-.login-overlay {
-    background: url(../../website-assets/img/login-bg.jpg);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-}
 
 .lin35 {
     line-height: 3.5em;
@@ -787,15 +753,6 @@ footer {
     will-change: transform;
 }
 
-.image-grid-container:before {
-    content: "";
-    background: #f4ab9c;
-    height: 95%;
-    width: 95%;
-    position: absolute;
-    left: -101px;
-}
-
 .main {
     background: 0 0;
     padding: 0;
@@ -820,14 +777,7 @@ footer {
     margin-bottom: 30px;
 }
 
-.book-detail-2-mini {
-    background: #f7f7f7;
-    margin: 4em 0;
-    padding: 3em 0;
-    border-radius: 10px;
-    box-shadow: rgb(99 99 99 / 39%) 0 2px 9px 0;
-    border-radius: 2em;
-}
+
 
 .book-scan-cd .left h3 {
     font-size: 2rem;
@@ -847,13 +797,7 @@ footer {
     padding-right: 20px;
 }
 
-.qr-bgiio {
-    width: 100%;
-    float: left;
-    margin-bottom: 1%;
-    position: relative;
-    border-radius: 15px;
-}
+
 
 .qr-image-grid-imageContainer {
     overflow: hidden;
@@ -920,4 +864,8 @@ footer {
 .login-wrapper {
     height:1920px;
     min-height:1920px;
+}
+
+.btn-light-grey img {
+    width: 43px;
 }
