@@ -26,63 +26,24 @@
             <div class="right">
                 <div class="tickerListContainer">
                     <div class="tickerList">
+                        <% (0..3).each do |x|%>
                         <div>
+                            <% book = @books.order("RANDOM()").first %>
                             <div class="book-cov6h6">
                                 <a href="#">
-                                    <% img_url = Book.first.book_files.first.book_cover_file.url %>
+                                    <% img_url = book.book_files.first.book_cover_file.url %>
                                     <img src="<%= img_url %>"  />
                                 </a>
                             </div>
+                            <% book = @books.order("RANDOM()").first %>
                             <div class="book-cov6h6">
                                 <a href="#">
-                                <% img_url = Book.second.book_files.first.book_cover_file.url %>
+                                <% img_url = book.book_files.first.book_cover_file.url %>
                                 <img src="<%= img_url %>"  />
                                 </a>
                             </div>
                         </div>
-                        <div>
-                            <div class="book-cov6h6">
-                                <a href="#">
-                                <% img_url = Book.last.book_files.first.book_cover_file.url %>
-                                <img src="<%= img_url %>"  />
-                                </a>
-                            </div>
-                            <div class="book-cov6h6">
-                                <a href="#">
-                                <% img_url = Book.last.book_files.first.book_cover_file.url %>
-                                <img src="<%= img_url %>"  />
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                           
-                            <div class="book-cov6h6">
-                                <a href="#">
-                                <% img_url = Book.first.book_files.first.book_cover_file.url %>
-                                <img src="<%= img_url %>"  />
-                                </a>
-                            </div>
-                            <div class="book-cov6h6">
-                                <a href="#">
-                                <% img_url = Book.last.book_files.first.book_cover_file.url %>
-                                <img src="<%= img_url %>"  />
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="book-cov6h6">
-                                <a href="#">
-                                <% img_url = Book.last.book_files.first.book_cover_file.url %>
-                                <img src="<%= img_url %>"  />
-                                </a>
-                            </div>
-                            <div class="book-cov6h6">
-                                <a href="#">
-                                <% img_url = Book.last.book_files.first.book_cover_file.url %>
-                                <img src="<%= img_url %>"  />
-                                </a>
-                            </div>
-                        </div>
+                        <% end %>
                     </div>
                 </div>
             </div>

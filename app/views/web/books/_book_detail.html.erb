@@ -180,34 +180,26 @@ C76.5,308.025,179.775,204.75,306,204.75z" />
         
       </div>
       <div class="footer-bottom">
-    
-      <div class="container">
-      <div class="row align-items-center">
-      <div class="col-md-3">
-                    
-                  </div>
-                  <div class="col-md-9 text-right">
-                          <a href="#" class="btn btn-light-grey btn-footer">
-                              <img src="<%= asset_url('back.png') %>">
-
-                          </a>
-                          <a href="#" class="btn btn-light-grey btn-footer">
-                              <img src="<%= asset_url('eng.png') %>">
-                     
-                          </a>
-                          <a href="#" class="btn btn-light-grey btn-footer">
-                              <img src="<%= asset_url('access.png') %>">
-
-                          </a>
-                          <a href="#" class="btn btn-light-grey btn-footer">
-                              <img src="<%= asset_url('baby.png') %>">
-
-                          </a>
-                  </div>
-          
-      </div>
-  </div>
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-3"></div>
+            <div class="col-md-9 text-right">
+              <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('back.png') %>">
+              <% end %>
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="<%= asset_url('eng.png') %>">
+              </a>
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="<%= asset_url('access.png') %>">
+              </a>
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="<%= asset_url('baby.png') %>">
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </footer>
   </div>
 

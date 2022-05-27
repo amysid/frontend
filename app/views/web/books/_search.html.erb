@@ -84,7 +84,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3 text-left">
-            <a href="#" class="btn btn-light-grey btn-footer"><i class="fas fa-arrow-left"></i></a>
+            <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <i class="fas fa-arrow-left"></i>
+            <% end %>
           </div>
           <div class="col-md-9 text-right">
             <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
