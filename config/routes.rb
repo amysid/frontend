@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resources :booths, only: [:index, :show]  do
         resources :books, only: [:index, :show] do
           get :search, on: :collection
+          get :category_search, on: :collection
         end
       end
       resources :operations, only: [] do

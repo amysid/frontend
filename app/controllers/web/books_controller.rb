@@ -18,11 +18,6 @@ class Web::BooksController < Web::WebApplicationController
       book_ids = @booth.books.pluck(:book_id)
       @books = Book.includes(:book_files).where(id: book_ids, language: language, status: "Published").order('created_at desc')
       @books = @books.includes(:book_files).where("books.title ILIKE ? OR books.author_name ILIKE ?  OR books.body ILIKE ?", "%#{params[:book]}%", "%#{params[:book]}%", "%#{params[:book]}%" ).order('created_at desc')
-    elsif params[:category_id].present?
-      book_ids = @booth.books.pluck(:book_id)
-      @books = Book.includes(:book_files).where(id: book_ids, language: language, status: "Published").order('created_at desc')
-      book_ids = @categories.pluck(:book_id)
-      @books = @books.where(id: book_ids)
     end
     if params[:type] == "all"
      @books = @books
@@ -30,6 +25,28 @@ class Web::BooksController < Web::WebApplicationController
       @books = @books.where(audio_type: "Short")
     elsif params[:type] == "long"
       @books = @books.where(audio_type: "Long")
+    end
+  end
+
+  def category_search
+    language = params[:locale] == "ar" ? "Arabic" : "English" 
+    if params[:category_id].present?
+      book_ids = @booth.books.pluck(:book_id)
+      @books = Book.includes(:book_files).where(id: book_ids, language: language, status: "Published")
+      book_ids = @categories.pluck(:book_id)
+      @books = @books.where(id: book_ids)
+      @total_books = @books.count || 0
+      total_time = @books.pluck(:book_duration).sum
+      @total_time = Time.at(total_time).utc.strftime("%Hh %M min")
+      @total_author_count = @books.pluck(:author_name).uniq.count || 0
+      
+      if params[:type] == "all"
+        @books = @books
+      elsif params[:type] == "short"
+        @books = @books.where(audio_type: "Short")
+      elsif params[:type] == "long"
+        @books = @books.where(audio_type: "Long")
+      end
     end
   end
 

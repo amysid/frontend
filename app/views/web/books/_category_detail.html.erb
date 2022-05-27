@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <style>
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+      }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, .5);
+      box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    }
+    .w-17 {
+      width:17%;
+    }
+    .topS-scroll {
+      -ms-overflow-style: none;
+       scrollbar-width: none;
+      overflow-y: scroll;
+      height: 1150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper main">
+    <div class="css-1jx6fr9 bg-hh mb-5">
+      <div class="css-1jx6fr9 icon text-center">
+        <% category_url = @categories.first.icon.url%>
+        <div>
+          <img src="<%= category_url %>" class="w-17 mt-4"/>
+        </div>
+        <h1><%= @categories.first.name %></h1>
+      </div>
+
+      <div class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="book-detail-2-mini row m-5">
+                <div class="col-md-4">
+                  <div class="time text-center text-black">
+                    <p>Audiobooks</p>
+                    <h5><%= @total_books %></h5>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="author-main text-center text-black">
+                    <p>Total streaming time</p>
+                    <h5><%= @total_time %></h5>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="category text-center text-black">
+                    <p>Authors</p>
+                    <h5><%= @total_author_count %></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-tag mb-4">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-12">
+            <div class="search-tag">
+            <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, type: "all", book: params[:book], category_id: params[:category_id]), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
+              <i class="fas fa-check"></i><%= t('all') %>
+            <% end %>
+            <%= link_to t('short_audiobooks'),category_search_web_booth_books_path(booth_id: @booth.number, type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
+            <%= link_to t('long_audiobooks'),category_search_web_booth_books_path(booth_id: @booth.number, type: "long", book: params[:book], category_id: params[:category_id]), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
+          </div>
+          </div>
+        </div>
+      </div>       
+    </div>
+
+    <div class="fb-product_wrap-3 pt-4 section-products topS-scroll">
+      <div class="container">
+        <div class="row">
+          <% if @books.blank? %>
+            No Record Found
+          <% else %>
+          <% @books.each do |book| %>
+          <div class="col-md-6 col-lg-3 col-xl-3 mb-4">
+            <div id="Div4" class="single-product">
+              <div class="part-1">
+                <span class="checkout-product-img">
+                  <% img_url = book.book_files.first.book_cover_file.url %>
+                  <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>
+                    <img src="<%= img_url %>" class="rounded" />
+                  <% end %>
+                </span>
+                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> min</span>
+              </div>
+              <div class="part-2">
+                <h3 class="product-title"><%= book.title %></h3>
+                <h4 class="product-old-price mt-3 mb-4"><%= book.author_name %></h4>
+                <h6 class="author"><%= book.categories.pluck(:name).join(", ") %></</h6>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+   <footer>
+     <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <a href="">
+              <img src="website-assets/img/footer-logo.png" class="img-fluid" />
+            </a>
+          </div>
+            <div class="col-md-9 text-right">
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="website-assets/img/footer-icon/back.png" />
+              </a>
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="website-assets/img/footer-icon/eng.png" />
+              </a>
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="website-assets/img/footer-icon/access.png" />
+              </a>
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="website-assets/img/footer-icon/baby.png" />
+              </a>
+            </div>
+          </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
