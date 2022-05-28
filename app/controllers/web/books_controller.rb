@@ -63,7 +63,7 @@ class Web::BooksController < Web::WebApplicationController
       color: "black",
       file: nil,
       fill: "white",
-      module_px_size: 7,
+      module_px_size: 10,
       resize_exactly_to: false,
       resize_gte_to: false,
       size: 140

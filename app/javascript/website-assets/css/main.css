@@ -16472,11 +16472,6 @@ border-radius: 24px;
             width: 100%;
         }
 
-    .book-scan-cd .left h3 {
-        font-size: 1.8rem!important;
-        line-height: 1.6em!important;
-    }
-
     .book-scan-cd .left .css-f4kgqr {
         padding: 0;
         list-style: none;
@@ -16615,7 +16610,7 @@ border-radius: 24px;
     .book-scan-cd .left {
         box-sizing: border-box;
        width: 76%;
-    padding-right: 1%;
+    padding-right: 7%;
     }
 
     .book-scan-cd .right {
@@ -16694,7 +16689,7 @@ border-radius: 24px;
 .book-detail-2-mini {
     background: #f7f7f7;
     margin: 5em 0 0;
-    padding: 2em 0;
+    padding: 2.5em 0;
     border-radius: 18px;
     box-shadow: 0 2px 9px 0 rgba(99,99,99,.39);
     color: #0f2837;
@@ -16735,6 +16730,7 @@ border: 2px solid #fff;
 
     .qr-image-grid-imageContainer img {
         width: 100%;
+        border-radius: 40px;
     }
 
 .footer-bottom .btn-light-grey {
@@ -17175,8 +17171,8 @@ header.secondary-nav {
 
 #play {
     padding: 0 3px;
-    width: 100px;
-height: 120px;
+    width: 120px;
+    height: 120px;
     x: 0;
     y: 0;
     enable-background: new 0 0 25 25;
@@ -17235,10 +17231,10 @@ height: 120px;
     x: 0;
 y: 0;
 enable-background: new 0 0 25 25;
-width: 79px;
+width: 120px;
 height: 120px;
 position: absolute;
-margin-left: -96px;
+margin-left: -128px;
 cursor: pointer;
 }
 
@@ -17359,3 +17355,11 @@ cursor: pointer;
     .controls button svg{fill: #fff;
         width: 106px;
         height: 81px;}
+
+.qr-bgiio {
+    width: 100%;
+    float: left;
+    margin-bottom: 1%;
+    position: relative;
+    border-radius: 40px;
+}
