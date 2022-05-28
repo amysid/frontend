@@ -28,17 +28,16 @@
                     <div class="tickerList">
                         <% (0..3).each do |x|%>
                         <div>
-                            <% book = @books.order("RANDOM()").first %>
+                            <% books = @books.order("RANDOM()") %>
                             <div class="book-cov6h6">
                                 <a href="#">
-                                    <% img_url = book.book_files.first.book_cover_file.url %>
+                                    <% img_url = books.first.book_files.first.book_cover_file.url %>
                                     <img src="<%= img_url %>"  />
                                 </a>
                             </div>
-                            <% book = @books.order("RANDOM()").first %>
                             <div class="book-cov6h6">
                                 <a href="#">
-                                <% img_url = book.book_files.first.book_cover_file.url %>
+                                <% img_url = books.second.book_files.first.book_cover_file.url %>
                                 <img src="<%= img_url %>"  />
                                 </a>
                             </div>
