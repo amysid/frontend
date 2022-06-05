@@ -2407,8 +2407,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 
     .btn-primary.focus, .btn-primary:focus, .btn-primary:hover {
         color: #fff;
-        background: #032337;
-    border: #032337;
+        background: #F79421;
+    border: #F79421;
     }
 
     .btn-primary.focus, .btn-primary:focus {
@@ -2417,14 +2417,14 @@ a.btn.disabled, fieldset:disabled a.btn {
 
     .btn-primary.disabled, .btn-primary:disabled {
         color: #fff;
-        background: #032337;
-    border: #032337;
+        background: #F79421;
+    border: #F79421;
     }
 
     .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
         color: #fff;
-        background: #032337;
-        border: #032337;
+        background: #F79421;
+        border: #F79421;
     }
 
         .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
@@ -15937,8 +15937,8 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 .btn-theme {
-    background: #032337;
-    border: #032337;
+    background: #F79421;
+    border: #F79421;
     width: 40%;
     font-size: 43px;
     padding: 13px 20px;
@@ -15958,8 +15958,8 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 footer {
-    background: #f7f7f7;
-    padding: 15px 0;
+    background: #032235;
+    padding: 10px 0;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -17363,3 +17363,22 @@ cursor: pointer;
     position: relative;
     border-radius: 40px;
 }
+.first {
+    position: absolute;
+    width: 100%;
+    padding: 9px;
+    bottom: 0;
+}
+
+.discount-1, .wishlist {
+    background-color: #fe302f;
+    padding: 4px 10px;
+    text-transform: inherit;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    color: #fff;
+}
+
+    .discount-1 i {
+        margin-right: 5px;
+    }
