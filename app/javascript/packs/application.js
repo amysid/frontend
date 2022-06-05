@@ -50,6 +50,7 @@ import "../vendor/@fortawesome/fontawesome-free/css/fontawesome.css"
 // import "../vendor/animate.css/animate.css"
 import "../vendor/whirl/dist/whirl.css"
 // import "../vendor/weather-icons/css/weather-icons.css"
+import "../css/bootstrap-datepicker.css"
 import "../css/bootstrap.css"
 import "../css/app.css"
 // admin css end here

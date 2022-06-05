@@ -1,4 +1,4 @@
-<!-- sidebar-->
+ <!-- sidebar-->
 <aside class="aside-container" id="side-menu">
   <!-- START Sidebar (left)-->
   <div class="aside-inner">
@@ -39,7 +39,10 @@
         <li class="<%= accessible?('operations-index') ? '' : 'hide' %>">
         <%= link_to "<em class='fa fa-project-diagram'></em><span data-localize='sidebar.nav.element.ELEMENTS'>#{t('operations')}</span>".html_safe, operations_path, title: t('operations')%>
         </li>
-        <li class="<%= accessible?('reports-index') ? '' : 'hide' %>"><a href="#report" title="Report" data-toggle="collapse">
+        <li class="<%= accessible?('reports-index') ? '' : 'hide' %>">
+          <%= link_to "<em class='fa fa-file-code'></em><span data-localize='sidebar.nav.element.ELEMENTS'>#{t('report')}</span>".html_safe, reports_path, title: t('report')%>
+        </li>
+<!--         <li class="<%= accessible?('reports-index') ? '' : 'hide' %>"><a href="#report" title="Report" data-toggle="collapse">
           <em class="fa fa-file-code"></em><span data-localize="sidebar.nav.form.FORM">Reports</span>
           <i class="angle fa fa-chevron-right"></i>
         </a>
@@ -49,7 +52,7 @@
             <li class=" "><a href="day-report.html" title="xEditable"><span>Day Table</span></a></li>
             <li class=" "><a href="time.html" title="Cropper"><span>Time Table</span></a></li>
           </ul>
-        </li>
+        </li> -->
         <li class="<%= accessible?('categoies-index') ? '' : 'hide' %>">
           <%= link_to "<em class='fa fa-cog'></em><span>#{t('category')}</span>
           <i class='angle fa fa-chevron-right'></i>".html_safe, categories_path, title: t('category')%>

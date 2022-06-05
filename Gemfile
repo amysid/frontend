@@ -65,6 +65,7 @@ gem 'cloudinary', '~> 1.22'
 gem 'nested_form'
 gem "chartkick"
 gem "groupdate"
+gem 'httparty'
 
 
 
