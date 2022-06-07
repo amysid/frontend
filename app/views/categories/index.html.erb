@@ -20,7 +20,8 @@
               <th class="text-danger">#</th>
               <th class="text-danger"><%= t('category_name') %></th> 
               <th class="text-danger"><%= t('arabic_name') %></th>
-              <th class="text-danger"><%= t('icon') %></th>  
+              <th class="text-danger"><%= t('icon') %></th>
+              <th class="text-danger"><%= t('white_icon') %></th>  
               <th class="text-danger"><%= t('booth_location') %></th>
               <th class="text-danger"><%= t('data_of_category_creation') %></th>
               <th class="text-danger"><%= t('setting') %></th>
@@ -36,6 +37,7 @@
                   <td><%= category.name %></td>
                   <td><%= category.arabic_name %></td>
                   <td><img src="<%= rails_blob_path(category.icon , only_path: true) if category.icon.present? %>" class="cat-icon-img"></td>
+                  <td><img src="<%= rails_blob_path(category.white_icon , only_path: true) if category.white_icon.present? %>" class="cat-icon-img"></td>
                   <td>
                     <div class="pl-2 pr-2">
                       <%= select_tag t('booth'), options_for_select(category.booths.pluck(:name, :id)), class: "custom-select custom-select-sm text-center"%>

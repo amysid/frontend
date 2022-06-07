@@ -23,11 +23,25 @@
           <div class="form-group row">
                <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('icon')%></label>
             <div class="col-md-9">
-              <%= f.file_field :icon, id: "category-icon"%>
+              <%= f.file_field :icon, id: "update-category-icon"%>
             </div>                         
           </div>
-          <div class="upload-preview" style="margin-top: 10px;">
-            <img style="width: 30%; height: 30%;"/>
+          <div class="update-upload-preview" style="margin-top: 10px;">
+            <% url = nil %>
+            <% url = @category.icon.url if @category.icon.present? %>
+            <img  src= "<%= url %>" style="width: 30%; height: 30%;"/>
+          </div>
+
+          <div class="form-group row">
+               <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('white_icon')%></label>
+            <div class="col-md-9">
+              <%= f.file_field :white_icon, id: "update-category-white-icon"%>
+            </div>                         
+          </div>
+          <div class="update-upload-white-preview" style="margin-top: 10px;">
+            <% url = nil %>
+            <% url = @category.white_icon.url if @category.white_icon.present? %>
+            <img src="<%= url %>" style="width: 30%; height: 30%;"/>
           </div>
 
           <div class="form-group row">
@@ -44,3 +58,33 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var preview = $(".update-upload-preview img");
+    var white_preview = $(".update-upload-white-preview img")
+
+    $("#update-category-icon").change(function(event){
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+           preview.attr("src", image_base64);
+       };
+       reader.readAsDataURL(file);
+    });
+
+    $("#update-category-white-icon").change(function(event){
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+           white_preview.attr("src", image_base64);
+       };
+       reader.readAsDataURL(file);
+    });
+  });
+</script>

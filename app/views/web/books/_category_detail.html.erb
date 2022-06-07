@@ -28,9 +28,11 @@
   <div class="main-wrapper main">
     <div class="css-1jx6fr9 bg-hh mb-5">
       <div class="css-1jx6fr9 icon text-center">
-        <% category_url = @categories.first.icon.url%>
+        <% url = nil %>
+        <% url = @categories.first.white_icon.url if @categories.first.white_icon.present? %>
+        <% url = @categories.first.icon.url if url.blank? && @categories.first.icon.present? %>
         <div>
-          <img src="<%= category_url %>" class="w-17 mt-4"/>
+          <img src="<%= url %>" class="w-17 mt-4"/>
         </div>
         <h1><%= @categories.first.name %></h1>
       </div>
