@@ -11,9 +11,21 @@
           </div>                           
         </div>
         <div class="row">
+          <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('book_arabic_title')%></label>
+          <div class="col-md-7 col-form-label text-black font-17">
+            <%= @book.arabic_title %>
+          </div>                           
+        </div>
+        <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('author_name')%></label>
           <div class="col-md-7 col-form-label text-black font-17">
             <%= @book.author_name %>
+          </div>                           
+        </div>
+        <div class="row">
+          <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('author_arabic_name')%></label>
+          <div class="col-md-7 col-form-label text-black font-17">
+            <%= @book.arabic_author_name %>
           </div>                           
         </div>
         <div class="row">

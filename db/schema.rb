@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_024518) do
+ActiveRecord::Schema.define(version: 2022_06_07_172839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(version: 2022_05_19_024518) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "audio_type", default: 0
     t.integer "language", default: 0
+    t.string "arabic_author_name"
+    t.string "arabic_title"
+    t.string "arabic_body"
   end
 
   create_table "books_categories", id: false, force: :cascade do |t|

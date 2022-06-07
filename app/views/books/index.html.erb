@@ -24,6 +24,8 @@
             <tr>
               <th class="text-danger">#</th>
               <th class="text-danger"><%= t('book_title')%></th>
+              <th class="text-danger"><%= t('book_arabic_title')%></th>
+              <th class="text-danger"><%= t('book_arabic_author_name')%></th>
               <th class="text-danger"><%= t('author_name') %></th>
               <th class="text-danger"><%= t('category') %></th>
               <th class="text-danger"><%= t('duration_of_the_book_in_minutes') %></th>
@@ -43,6 +45,8 @@
                 <tr>
                   <td class="text-danger"><%= (@books.offset + i + 1)%></td>
                   <td><%= book.title %></td>
+                  <td><%= book.arabic_title %></td>
+                  <td><%= book.arabic_author_name %></td>
                   <td class="text-center"><%= book.author_name %>
                   </td>
                   <td>
@@ -109,12 +113,28 @@
           </div>
 
           <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label"><%= t('book_arabic_title') %></label>
+            <div class="col-md-10">
+              <%= f.text_field :arabic_title, class: "form-control text-center",placeholder: t('book_arabic_title') %>
+            </div>
+          </div>
+
+          <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('author_name') %></label>
             <div class="col-md-10">
               <%= f.text_field :author_name, class:"form-control text-center", placeholder: t('author_name') %>
               <%#= f.select :user_id, options_for_select(User.all.pluck(:full_name, :id)), { include_blank: true},class: "custom-select custom-select-sm" %>
             </div>
           </div>
+
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label"><%= t('book_arabic_author_name') %></label>
+            <div class="col-md-10">
+              <%= f.text_field :arabic_author_name, class:"form-control text-center", placeholder: t('book_arabic_author_name') %>
+              <%#= f.select :user_id, options_for_select(User.all.pluck(:full_name, :id)), { include_blank: true},class: "custom-select custom-select-sm" %>
+            </div>
+          </div>
+
 
           <div class="form-group row">
             <label class="col-md-2 col-form-label pr-0"><%= t('book_duration') %></label>
@@ -156,6 +176,13 @@
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('about_the_book') %></label>
             <div class="col-md-10">
               <%= f.text_area :body, class: "form-control text-center", placeholder: t('about_the_book') %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label"><%= t('about_the_book_arabic') %></label>
+            <div class="col-md-10">
+              <%= f.text_area :arabic_body, class: "form-control text-center", placeholder: t('about_the_book_arabic') %>
             </div>
           </div>
 

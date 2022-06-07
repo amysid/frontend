@@ -132,5 +132,8 @@ en:
   audio_type: "Audio Type"
   book_deleted_successfully: "Book Delete Successfully!"
   white_icon: "White Icon"
+  book_arabic_title: "Arabic Title"
+  book_arabic_author_name: "Arabic Author Name"
+  about_the_book_arabic: "About the Book in Arabic"
 
 
