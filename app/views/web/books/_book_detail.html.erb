@@ -188,7 +188,7 @@ Open the link in your mobile browser and enjoy</li>
 
         <div class="button-items">
           <% sort_audio_url = @book.book_files.first.short_audio_file.url %>
-          <audio id="music" preload="auto">
+          <audio id="music" autoplay="true" preload="auto">
             <source src="<%=  sort_audio_url %>">
            <!--  <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg"> -->
           </audio>
