@@ -7,11 +7,11 @@
         <div class="row">
           <div class="col-md-7">
             <div class="detail-info-R pr-30 pl-30">
-              <h2 class="title-detail"><%= @book.title %></h2>
+              <h2 class="title-detail"><%= @book.arabic_title %></h2>
               <div class="short-desc mb-30">
                 <h4><%= t('overview') %></h4>
                 <p class="font-lg mt-4">
-                  <%= @book.body %>
+                  <%= @book.arabic_body %>
                 </p>
               </div>
             </div>
@@ -45,14 +45,14 @@
               <div class="col-md-4">
                 <div class="author-main text-center">
                   <p><%= t('author') %></p>
-                  <h5><%= @book.author_name %></h5>
+                  <h5><%= @book.arabic_author_name %></h5>
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="category text-center">
                   <p><%= t('category') %></p>
-                  <h5><%= @book.categories.pluck(:name).join(", ") %></h5>
+                  <h5><%= @book.categories.pluck(:arabic_name).join(", ") %></h5>
                 </div>
               </div>
             </div>
@@ -152,20 +152,30 @@
       </div>
       <div class="footer-bottom">
         <div class="container">
-          <div class="row">
-            <div class="col-md-6 text-left">
-              <% lang = params[:locale] == "ar" ? "English" : "Arabic" %>
-              <% locale = params[:locale] == "ar" ? "en" : "ar" %>
-              <%= link_to "#{lang}", web_booth_book_path(booth_id: @booth.number, id: book.id, locale: locale), remote: true, class: "btn btn-light-grey btn-footer"  %>
-            <a href="#" class="btn btn-light-grey ml-3 btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-light-grey ml-3 btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
+          <div class="row align-items-center">
+            <div class="col-md-3"></div>
+            <div class="col-md-9 text-right">
+              <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('back-white.png') %>">
+              <% end %>
+
+              <% if params[:locale] == "en" || params[:locale] == nil %>
+                <%= link_to web_booth_book_path(booth_id: @booth.number, id: @book.id, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('arabic.png') %>">
+                <% end %>
+              <% else %>
+                <%= link_to web_booth_book_path(booth_id: @booth.number, id: @book.id,locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('eng-white.png') %>">
+                <% end %>
+              <% end %>
+              
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="<%= asset_url('access-white.png') %>">
+              </a>
+              <a href="#" class="btn btn-light-grey btn-footer">
+                <img src="<%= asset_url('baby-white.png') %>">
+              </a>
             </div>
-            <div class="col-md-6 text-right">
-              <%= link_to  web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer", remote: true do%>
-              <i class="fas fa-arrow-left"></i>
-            <% end %>
-            </div>
-            
           </div>
         </div>
       </div>

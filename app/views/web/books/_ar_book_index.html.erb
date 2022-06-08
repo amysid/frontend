@@ -71,7 +71,7 @@
                   <li class="nav-item">
                     <%= link_to search_web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link btn btn-search-cat-head", remote: true  do %>
                           <% cat_url = category.icon.url %>
-                          <img src="<%= cat_url%>" /><%= category.name%>
+                          <img src="<%= cat_url%>" /><%= category.arabic_name%>
                         <% end %>
                   </li>
                   <% end %>
@@ -102,8 +102,8 @@
                       <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= book.book_duration %> min</span>
                     </div>
                     <div class="part-2">
-                      <h3 class="product-title"><%= book.title %></h3>
-                      <h4 class="product-old-price mt-3 mb-4"><%= book.author_name %></h4>
+                      <h3 class="product-title"><%= book.arabic_title %></h3>
+                      <h4 class="product-old-price mt-3 mb-4"><%= book.arabic_author_name %></h4>
 
                     </div>
                   </div>
@@ -138,17 +138,40 @@
         </div>
       </div>
     </main>
-    <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-left">
-          <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
-          <a href="#" class="btn btn-light-grey btn-footer"><i class="fa fa-baby" aria-hidden="true"></i></a>
-          <a href="#" class="btn btn-light-grey btn-footer">اللغة العربية</a>
+    <footer class="pt-0">
+      <div class="footer-overley"></div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
+            </a>
+          </div>
+          <div class="col-md-9 text-right">
+            <%= link_to web_booth_path(id: booth.number, locale: :en), class:"btn btn-light-grey btn-footer" do %>
+                <img src="<%= asset_url('back-white.png') %>">
+            <% end %>
+
+            <% if params[:locale] == "en" || params[:locale] == nil %>
+              <%= link_to web_booth_books_path(booth_id: @booth.number, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('arabic.png') %>">
+              <% end %>
+            <% else %>
+              <%= link_to web_booth_books_path(booth_id: @booth.number, locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('eng-white.png') %>">
+              <% end %>
+            <% end %>
+
+            <a href="#" class="btn btn-light-grey btn-footer">
+              <img src="<%= asset_url('access-white.png') %>">
+            </a>
+            <a href="#" class="btn btn-light-grey btn-footer">
+              <img src="<%= asset_url('baby-white.png') %>">
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   </div>
   <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
 </body>
