@@ -77,7 +77,7 @@
             <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, type: "all", book: params[:book], category_id: params[:category_id]), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
               <i class="fas fa-check"></i><%= t('all') %>
             <% end %>
-            <%= link_to t('short_audiobooks'),category_search_web_booth_books_path(booth_id: @booth.number, type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
+            <%= link_to t('book_summary'),category_search_web_booth_books_path(booth_id: @booth.number, type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
             <%= link_to t('long_audiobooks'),category_search_web_booth_books_path(booth_id: @booth.number, type: "long", book: params[:book], category_id: params[:category_id]), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
           </div>
           </div>
@@ -126,11 +126,18 @@
           </div>
           <div class="col-md-9 text-right">
             <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
-                <img src="<%= asset_url('back-white.png') %>">
+              <img src="<%= asset_url('back-white.png') %>">
+            <% end %>
+            <% if params[:locale] == "en" || params[:locale] == nil %>
+              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: @categories.first.id, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('arabic.png') %>">
               <% end %>
-            <a href="#" class="btn btn-light-grey btn-footer">
-              <img src="<%= asset_url('eng-white.png') %>">
-            </a>
+            <% else %>
+              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: @categories.first.id), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('eng-white.png') %>">
+              <% end %>
+            <% end %>
+
             <a href="#" class="btn btn-light-grey btn-footer">
               <img src="<%= asset_url('access-white.png') %>">
             </a>

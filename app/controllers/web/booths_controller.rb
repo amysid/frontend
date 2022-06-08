@@ -5,7 +5,7 @@ class Web::BoothsController < Web::WebApplicationController
   end
 
   def show
-    @books = @booth.books.limit(8)
+    @books = @booth.books.limit(8).shuffle
   end
   private
 
