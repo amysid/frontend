@@ -151,7 +151,11 @@
       <div class="footer-bottom">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+              <a href="">
+                <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
+              </a>
+            </div>
             <div class="col-md-9 text-right">
               <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('back-white.png') %>">

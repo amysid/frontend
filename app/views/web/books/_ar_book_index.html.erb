@@ -72,8 +72,8 @@
                         </span>
                         <div class="first">
                           <div class="d-flex justify-content-between align-items-center">
-                            <span class="discount-1"><i class="fa fa-headphones" aria-hidden="true"></i>><%= book.book_duration %> min</span>
-                            <span class="wishlist">E</span>
+                           <span class="discount-1"><%= book.language.to_s.at(0) %></span>
+                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
                           </div>
                         </div>
                       </div>
@@ -107,8 +107,8 @@
                         </span>
                          <div class="first">
                           <div class="d-flex justify-content-between align-items-center">
-                            <span class="discount-1">E</span>
-                            <span class="wishlist"><%= book.book_duration %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                            <span class="discount-1"><%= book.language.to_s.at(0) %></span>
+                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
                           </div>
                         </div>
                       </div>
@@ -127,7 +127,7 @@
         <div class="row align-items-center">
           <div class="col-md-3">
             <a href="">
-              <img class="img-fluid" src="website-assets/img/img/logo-footer.png">
+              <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
             </a>
           </div>
           <div class="col-md-9 text-right">
