@@ -2,40 +2,9 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title></title>
-  <style>
-    .main .trending { position: relative; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; width: 100%; height: auto; /*padding: 1rem 0; margin: 2.5rem 0;*/ cursor: default; overflow: scroll hidden; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-padding: 0px 1.25rem; scrollbar-width: none; direction: rtl; }
-
-      .main .trending::-webkit-scrollbar { display: none; }
-
-      .main .trending.active { cursor: grab; cursor: -webkit-grab; }
-
-      .main .trending .card { width: 10rem; height: auto; flex: 0 0 auto; margin: 0 0 0 1.02rem; border: 0; }
-
-      .main .trending .card-image { position: relative; display: block; width: 100%; height: auto; padding-top: 110%; }
-
-        .main .trending .card-image img.responsive { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
-
-      .main .trending .card-inner { width: 100%; height: auto; padding: 1rem; }
-
-
-
-    .main .scrollRecent { position: relative; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; width: 100%; height: auto; /*padding: 1rem 0; margin: 2.5rem 0;*/ cursor: default; overflow: scroll hidden; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-padding: 0px 1.25rem; scrollbar-width: none; direction: rtl; }
-
-      .main .scrollRecent::-webkit-scrollbar { display: none; }
-
-      .main .scrollRecent.active { cursor: grab; cursor: -webkit-grab; }
-
-      .main .scrollRecent .card { width: 10rem; height: auto; flex: 0 0 auto; margin: 0 0 0 1.02rem; border: 0; }
-
-      .main .scrollRecent .card-image { position: relative; display: block; width: 100%; height: auto; padding-top: 110%; }
-
-        .main .scrollRecent .card-image img.responsive { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
-
-      .main .scrollRecent .card-inner { width: 100%; height: auto; padding: 1rem; }
-  </style>
 </head>
 <body>
-  <div class="main-wrapper right-scroll">
+  <div class="main-wrapper" id="right-scroll">
     <div class="_1R8mR">
       <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -48,91 +17,105 @@
         <div class="row justify-content-center align-items-center">
           <div class="col-md-12">
             <div class="search-wrapper mt-5 mb-5">
-              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search-R position-relat", method: :get  do %>
-                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box-right search-box text-right" %>
-                <span class="fa fa-search form-control-feedback"></span>
-                <%= button_tag type: :reset, class: "close-icon" do %>
+              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search position-relat", method: :get  do %>
+                <span class="input-group-text close-icon-1">
+                  <%= button_tag type: :reset, class: "close-icon" do %>
                   <i class="fa fa-times-circle" aria-hidden="true"></i>
-                <% end %>
-             
+                  <% end %>
+                </span>
+                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box text-right" %>
+                <span class="input-group-text">
+                  <i class="fa fa-search"></i>
+                </span>
               <% end %>
             </div>
           </div>
         </div>
       </div>
+
       <div class="cat_1R8mR ">
         <div class="pjKQH-Right">
           <div class="_2r0fh">
             <h1 class="text-right"><%= t('categories') %></h1>
-            <div data-spy="scroll" data-target="#secondary-nav" data-offset="55">
-              <header id="secondary-nav" class="secondary-nav right" style="top: 0;">
-                <ul class="vam nav scroll dragger scroller pr-0">
-                  <% @categories.each do |category| %>
+            <header id="secondary-nav" class="secondary-nav right" style="top: 0;">
+              <ul class="vam nav arbic-text">
+                <% @categories.each do |category| %>
                   <li class="nav-item">
                     <%= link_to search_web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link btn btn-search-cat-head", remote: true  do %>
                           <% cat_url = category.icon.url %>
                           <img src="<%= cat_url%>" /><%= category.arabic_name%>
                         <% end %>
                   </li>
-                  <% end %>
-                </ul>
-              </header>
-            </div>
-
+                <% end %>
+              </ul>
+            </header>
           </div>
         </div>
       </div>
     </div>
     <main class="main">
-      <div class="cat_1R8mR ">
-        <div class="_2r0fh">
-          <div class="container container-R">
+       <div class="cat_1R8mR ">
+        <div class="pjKQH-Right">
+          <div class="_2r0fh">      
             <h1 class="text-right"><%= t('trending_now')%></h1>
-            <div class="trending frame">
-              <% @trending_books.each do |book|%>
-                <div class="card">
-                  <div id="Div4" class="single-product">
-                    <div class="part-1">
-                      <span class="checkout-product-img">
-                        <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>  
-                          <% img_url = book.book_files.first.book_cover_file.url %>
-                          <img src="<%= img_url %>" class="rounded" />
-                        <% end %>
-                      </span>
-                      <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= book.book_duration %> min</span>
+            <div class="frame arabic" id="basic">
+              <ul class="clearfix">
+                <% @trending_books.each do |book|%>
+                  <li>
+                    <div id="Div4" class="single-product">
+                      <div class="part-1">
+                        <span class="checkout-product-img">
+                          <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %> 
+                            <% img_url = book.book_files.first.book_cover_file.url %>
+                            <img src="<%= img_url %>" class="rounded" />
+                          <% end %>
+                        </span>
+                        <div class="first">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <span class="discount-1"><i class="fa fa-headphones" aria-hidden="true"></i>><%= book.book_duration %> min</span>
+                            <span class="wishlist">E</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="part-2">
+                        <h3 class="product-title"><%= book.arabic_title %></h3>
+                        <h4 class="product-old-price mt-3 mb-4"><%= book.arabic_author_name %></h4>
+                      </div>
                     </div>
-                    <div class="part-2">
-                      <h3 class="product-title"><%= book.arabic_title %></h3>
-                      <h4 class="product-old-price mt-3 mb-4"><%= book.arabic_author_name %></h4>
-
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+                  </li>
+                <% end %>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="cat_1R8mR ">
-        <div class="_2r0fh">
-          <div class="container container-R">
+     <div class="cat_1R8mR ">
+       <div class="pjKQH-Right">
+         <div class="_2r0fh">       
             <h1 class="text-right"><%= t('added_recently') %></h1>
-            <div class="scrollRecent frame">
-              <% @books.each do |book|%>
-                <div class="card">
-                  <div id="Div32" class="single-product">
-                    <div class="part-1">
-                      <span class="checkout-product-img">
-                        <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>  
+            <div class="frame arabic-1" id="Div1">
+              <ul class="clearfix">
+                <% @books.each do |book|%>
+                  <li>
+                    <div id="Div32" class="single-product">
+                      <div class="part-1">
+                        <span class="checkout-product-img">
+                          <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>  
                           <% img_url = book.book_files.first.book_cover_file.url %>
-                          <img src="<%= img_url %>" class="rounded" />
-                        <% end %>
-                      </span>
-                      <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= book.book_duration %>min</span>
-                    </div>     
-                  </div>
-                </div>
-              <% end %>
+                            <img src="<%= img_url %>" class="rounded" />
+                          <% end %>
+                        </span>
+                         <div class="first">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <span class="discount-1">E</span>
+                            <span class="wishlist"><%= book.book_duration %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
             </div>
           </div>
         </div>
@@ -144,7 +127,7 @@
         <div class="row align-items-center">
           <div class="col-md-3">
             <a href="">
-              <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
+              <img class="img-fluid" src="website-assets/img/img/logo-footer.png">
             </a>
           </div>
           <div class="col-md-9 text-right">
@@ -169,10 +152,101 @@
               <img src="<%= asset_url('baby-white.png') %>">
             </a>
           </div>
+
         </div>
       </div>
     </footer>
   </div>
+
+
+
   <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+  <script src="https://darsa.in/sly/examples/js/vendor/plugins.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Sly/1.6.1/sly.min.js'></script>
+  <script id="rendered-js">
+    jQuery(function ($) {
+      'use strict';
+
+      // -------------------------------------------------------------
+      //   Basic Navigation
+      // -------------------------------------------------------------
+      (function () {
+        var $frame = $('#basic');
+        var $slidee = $frame.children('ul').eq(0);
+        var $wrap = $frame.parent();
+        let _count = $('.arabic-1').find('ul li')?.length - 1 ?? 0 ;
+        console.log('_count :'+ _count);
+        // Call Sly on frame
+        $frame.sly({
+          horizontal: 1,
+          itemNav: 'basic',
+          smart: 1,
+          activateOn: 'click',
+          mouseDragging: 1,
+          touchDragging: 1,
+          releaseSwing: 1,
+          startAt: _count ,
+          scrollBar: $wrap.find('.scrollbar'),
+          scrollBy: 1,
+          pagesBar: $wrap.find('.pages'),
+          activatePageOn: 'click',
+          speed: 300,
+          elasticBounds: 1,
+          easing: 'easeOutExpo',
+          dragHandle: 1,
+          dynamicHandle: 1,
+          clickBar: 1,
+
+          // Buttons
+          forward: $wrap.find('.forward'),
+          backward: $wrap.find('.backward'),
+          prev: $wrap.find('.prev'),
+          next: $wrap.find('.next'),
+          prevPage: $wrap.find('.prevPage'),
+          nextPage: $wrap.find('.nextPage') });
+      })();
+
+      // -------------------------------------------------------------
+      //   Basic Navigation
+      // -------------------------------------------------------------
+      (function () {
+        var $frame = $('#Div1');
+        var $slidee = $frame.children('ul').eq(0);
+        var $wrap = $frame.parent();
+        let _count = $('.arabic').find('ul li')?.length - 1 ?? 0 ;
+        console.log('_count :'+ _count);
+        // Call Sly on frame
+        $frame.sly({
+          horizontal: 1,
+          itemNav: 'basic',
+          smart: 1,
+          activateOn: 'click',
+          mouseDragging: 1,
+          touchDragging: 1,
+          releaseSwing: 1,
+          startAt: _count ,
+          scrollBar: $wrap.find('.scrollbar'),
+          scrollBy: 1,
+          pagesBar: $wrap.find('.pages'),
+          activatePageOn: 'click',
+          speed: 300,
+          elasticBounds: 1,
+          easing: 'easeOutExpo',
+          dragHandle: 1,
+          dynamicHandle: 1,
+          clickBar: 1,
+
+          // Buttons
+          forward: $wrap.find('.forward'),
+          backward: $wrap.find('.backward'),
+          prev: $wrap.find('.prev'),
+          next: $wrap.find('.next'),
+          prevPage: $wrap.find('.prevPage'),
+          nextPage: $wrap.find('.nextPage') });
+      })();
+
+    });
+    //# sourceURL=pen.js
+  </script>
 </body>
 </html>
