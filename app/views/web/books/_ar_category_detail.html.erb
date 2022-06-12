@@ -65,29 +65,35 @@
     <div class="fb-product_wrap-3 section-products topS-scroll" id="category-sect089">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-lg-3 col-xl-3">
-            <div id="Div4" class="single-product">
-              <div class="part-1">
-                <span class="checkout-product-img">
-                  <% img_url = book.book_files.first.book_cover_file.url %>
-                  <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>
-                    <img src="<%= img_url %>" class="rounded" />
-                  <% end %>
-                </span>
-                <div class="first">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="discount-1">E</span>
-                    <span class="wishlist"><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+          <% if @books.blank? %>
+            No Record Found
+          <% else %>
+          <% @books.each do |book| %>
+            <div class="col-md-6 col-lg-3 col-xl-3">
+              <div id="Div4" class="single-product">
+                <div class="part-1">
+                  <span class="checkout-product-img">
+                    <% img_url = book.book_files.first.book_cover_file.url %>
+                    <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>
+                      <img src="<%= img_url %>" class="rounded" />
+                    <% end %>
+                  </span>
+                  <div class="first">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="discount-1">E</span>
+                      <span class="wishlist"><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="part-2">
-                <h3 class="product-title text-right"><%= book.arabic_title %></h3>
-                <h4 class="product-old-price text-right mt-3 mb-4"><%= book.arabic_author_name %></h4>
-                <h6 class="author text-right"><%= book.categories.pluck(:arabic_name).join(", ") %></h6>
+                <div class="part-2">
+                  <h3 class="product-title text-right"><%= book.arabic_title %></h3>
+                  <h4 class="product-old-price text-right mt-3 mb-4"><%= book.arabic_author_name %></h4>
+                  <h6 class="author text-right"><%= book.categories.pluck(:arabic_name).join(", ") %></h6>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -113,7 +119,7 @@
                 <img src="<%= asset_url('eng-white.png') %>">
               <% end %>
             <% end %>
-                        
+
             <a href="#" class="btn btn-light-grey btn-footer">
               <img src="website-assets/img/img/footer-icon/access-white.png">
             </a>
