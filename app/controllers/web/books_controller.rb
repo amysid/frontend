@@ -20,9 +20,9 @@ class Web::BooksController < Web::WebApplicationController
     if params[:type] == "all"
      @books = @books
     elsif params[:type] == "short"
-      @books = @books.where(audio_type: "Short")
+      @books = @books.where(audio_type: "Short") if @books.present?
     elsif params[:type] == "long"
-      @books = @books.where(audio_type: "Long")
+      @books = @books.where(audio_type: "Long") if @books.present?
     end
   end
 

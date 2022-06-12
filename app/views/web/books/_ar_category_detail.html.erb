@@ -1,40 +1,14 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <title></title>
-  <style>
-    ::-webkit-scrollbar {
-        -webkit-appearance: none;
-        width: 7px;
-      }
-
-    ::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: rgba(0, 0, 0, .5);
-      box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-    }
-    .w-17 {
-      width:17%;
-    }
-    .topS-scroll {
-      -ms-overflow-style: none;
-       scrollbar-width: none;
-      overflow-y: scroll;
-      height: 1150px;
-    }
-  </style>
-</head>
 <body>
   <div class="main-wrapper main">
-    <div class="css-1jx6fr9 bg-hh mb-5">
+    <div class="css-1jx6fr9 bg-hh mb-3">
       <div class="css-1jx6fr9 icon text-center">
-        <% url = nil %>
-        <% url = @categories.first.white_icon.url if @categories.first.white_icon.present? %>
-        <% url = @categories.first.icon.url if url.blank? && @categories.first.icon.present? %>
         <div>
+          <% url = nil %>
+          <% url = @categories.first.white_icon.url if @categories.first.white_icon.present? %>
+          <% url = @categories.first.icon.url if url.blank? && @categories.first.icon.present? %>
           <img src="<%= url %>" class="w-17 mt-4"/>
         </div>
-        <h1><%= @categories.first.name %></h1>
+        <h1><%= @categories.first.arabic_name %></h1>
       </div>
 
       <div class="">
@@ -69,30 +43,29 @@
       </div>
     </div>
 
-    <div class="search-tag mb-4">
+    <div class="search-tag">
       <div class="container">
         <div class="row justify-content-center align-items-center">
           <div class="col-md-12">
-            <div class="search-tag">
-              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, type: "all", book: params[:book], category_id: params[:category_id]), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
-                <i class="fas fa-check"></i><%= t('all') %>
-              <% end %>
-              <%= link_to t('book_summary'),category_search_web_booth_books_path(booth_id: @booth.number, type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
-              <%= link_to t('long_audiobooks'),category_search_web_booth_books_path(booth_id: @booth.number, type: "long", book: params[:book], category_id: params[:category_id]), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
+            <div class="search-tag mt-3 d-flex">
+              <div class="ml-auto">
+                <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, type: "all", book: params[:book], category_id: params[:category_id]), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
+                  <i class="fas fa-check"></i><%= t('all') %>
+                <% end %>
+                <%= link_to t('book_summary'),category_search_web_booth_books_path(booth_id: @booth.number, type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
+                <%= link_to t('long_audiobooks'),category_search_web_booth_books_path(booth_id: @booth.number, type: "long", book: params[:book], category_id: params[:category_id]), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
+              </div>
             </div>
           </div>
         </div>
-      </div>       
+      </div>
+
     </div>
 
-    <div class="fb-product_wrap-3 pt-4 section-products topS-scroll">
+    <div class="fb-product_wrap-3 section-products topS-scroll" id="category-sect089">
       <div class="container">
         <div class="row">
-          <% if @books.blank? %>
-            No Record Found
-          <% else %>
-          <% @books.each do |book| %>
-          <div class="col-md-6 col-lg-3 col-xl-3 mb-4">
+          <div class="col-md-6 col-lg-3 col-xl-3">
             <div id="Div4" class="single-product">
               <div class="part-1">
                 <span class="checkout-product-img">
@@ -101,17 +74,20 @@
                     <img src="<%= img_url %>" class="rounded" />
                   <% end %>
                 </span>
-                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> min</span>
+                <div class="first">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="discount-1">E</span>
+                    <span class="wishlist"><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                  </div>
+                </div>
               </div>
               <div class="part-2">
-                <h3 class="product-title"><%= book.title %></h3>
-                <h4 class="product-old-price mt-3 mb-4"><%= book.author_name %></h4>
-                <h6 class="author"><%= book.categories.pluck(:name).join(", ") %></</h6>
+                <h3 class="product-title text-right"><%= book.arabic_title %></h3>
+                <h4 class="product-old-price text-right mt-3 mb-4"><%= book.arabic_author_name %></h4>
+                <h6 class="author text-right"><%= book.categories.pluck(:arabic_name).join(", ") %></h6>
               </div>
             </div>
           </div>
-          <% end %>
-          <% end %>
         </div>
       </div>
     </div>
@@ -137,17 +113,17 @@
                 <img src="<%= asset_url('eng-white.png') %>">
               <% end %>
             <% end %>
+                        
+            <a href="#" class="btn btn-light-grey btn-footer">
+              <img src="website-assets/img/img/footer-icon/access-white.png">
+            </a>
+            <a href="#" class="btn btn-light-grey btn-footer">
+              <img src="website-assets/img/img/footer-icon/baby-white.png">
+            </a>
+          </div>
 
-            <a href="#" class="btn btn-light-grey btn-footer">
-              <img src="<%= asset_url('access-white.png') %>">
-            </a>
-            <a href="#" class="btn btn-light-grey btn-footer">
-              <img src="<%= asset_url('baby-white.png') %>">
-            </a>
-          </div>  
         </div>
-    </div>
+      </div>
     </footer>
   </div>
 </body>
-</html>

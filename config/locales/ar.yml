@@ -131,6 +131,17 @@ ar:
   long_audiobook: "AR Long audiobook"
   audio_type: "AR Audio Type"
   book_deleted_successfully: "AR Book Delete Successfully!"
+  white_icon: "AR White Icon"
+  book_arabic_title: "AR Arabic Title"
+  book_arabic_author_name: "AR Arabic Author Name"
+  about_the_book_arabic: "AR About the Book in Arabic"
+  book_summary: "AR Book Summary"
+  audio_books: "AR Audiobooks"
+  total_streaming_time: "AR Total streaming time"
+  authors: "AR Authors"
+  long_audiobooks: "AR Long AudioBooks"
+
+
 
 
 
