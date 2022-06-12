@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         resources :books, only: [:index, :show] do
           get :search, on: :collection
           get :category_search, on: :collection
+          get :accessibility_mode, on: :collection
         end
       end
       resources :operations, only: [] do

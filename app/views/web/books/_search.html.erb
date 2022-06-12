@@ -103,9 +103,10 @@
               <% end %>
             <% end %>
 
-            <a href="#" class="btn btn-light-grey btn-footer">
-                <img src="<%= asset_url('access-white.png') %>">
-            </a>
+            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class:"btn btn-light-grey btn-footer" do %>
+              <img src="<%= asset_url('access-white.png') %>">
+            <% end %>
+
             <a href="#" class="btn btn-light-grey btn-footer">
                 <img src="<%= asset_url('baby-white.png') %>">
             </a>

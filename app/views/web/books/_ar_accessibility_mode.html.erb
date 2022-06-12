@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <style>
+    .access-overlay { height: 1227px; }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper" id="right-scroll">
+    <div class="_1R8mR">
+      <div class="access-overlay">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-12 text-center">
+            <div class="avatar-logo">
+              <img src="<%= asset_url('logo-new.png') %>" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main class="main">
+    <div id="content-rd" class="content light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+             <h2 class="text-right">الكتب الصوتية</h2>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <% if @books.blank? %>
+            No Record Found
+          <% else %>
+          <% @books.each do |book| %>                
+            <div class="col-md-6 col-lg-3 col-xl-3">
+              <div id="Div4" class="single-product">
+                <div class="part-1">
+                  <span class="checkout-product-img">
+                    <% img_url = book.book_files.first.book_cover_file.url %>
+                    <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>
+                      <img src="<%= img_url %>" class="rounded" />
+                    <% end %>
+                  </span>
+                  <div class="first">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                      <span class="discount-1"><%= book.language.to_s.at(0) %></span>
+                      <span class="wishlist"><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="part-2">
+                  <h3 class="product-title text-right"><%= book.arabic_title %></h3>
+                  <h4 class="product-old-price text-right mt-3 mb-4"><%= book.arabic_author_name %></h4>
+                  <h6 class="author text-right"><%= book.categories.pluck(:arabic_name).join(", ") %></h6>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </main>
+    <footer class="pt-0">
+      <div class="container">
+        <div class="row align-items-center">
+                   <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
+            </a>
+          </div>
+          <div class="col-md-9 text-right">
+            <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <img src="<%= asset_url('back-white.png') %>">
+            <% end %>
+            <% if params[:locale] == "en" || params[:locale] == nil %>
+              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: @categories.first.id, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('arabic.png') %>">
+              <% end %>
+            <% else %>
+              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: @categories.first.id), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <img src="<%= asset_url('eng-white.png') %>">
+              <% end %>
+            <% end %>
+
+            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class:"btn btn-light-grey btn-footer" do %>
+              <img src="<%= asset_url('access-white.png') %>">
+            <% end %>
+
+            <a href="#" class="btn btn-light-grey btn-footer">
+              <img src="<%= asset_url('baby-white.png') %>">
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+
+  <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+  <script src="https://darsa.in/sly/examples/js/vendor/plugins.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Sly/1.6.1/sly.min.js'></script>
+  <script id="rendered-js">
+    jQuery(function ($) {
+      'use strict';
+
+      // -------------------------------------------------------------
+      //   Basic Navigation
+      // -------------------------------------------------------------
+      (function () {
+        var $frame = $('#basic');
+        var $slidee = $frame.children('ul').eq(0);
+        var $wrap = $frame.parent();
+        let _count = $('.arabic-1').find('ul li')?.length - 1 ?? 0 ;
+        console.log('_count :'+ _count);
+        // Call Sly on frame
+        $frame.sly({
+          horizontal: 1,
+          itemNav: 'basic',
+          smart: 1,
+          activateOn: 'click',
+          mouseDragging: 1,
+          touchDragging: 1,
+          releaseSwing: 1,
+          startAt: _count ,
+          scrollBar: $wrap.find('.scrollbar'),
+          scrollBy: 1,
+          pagesBar: $wrap.find('.pages'),
+          activatePageOn: 'click',
+          speed: 300,
+          elasticBounds: 1,
+          easing: 'easeOutExpo',
+          dragHandle: 1,
+          dynamicHandle: 1,
+          clickBar: 1,
+
+          // Buttons
+          forward: $wrap.find('.forward'),
+          backward: $wrap.find('.backward'),
+          prev: $wrap.find('.prev'),
+          next: $wrap.find('.next'),
+          prevPage: $wrap.find('.prevPage'),
+          nextPage: $wrap.find('.nextPage') });
+      })();
+
+      // -------------------------------------------------------------
+      //   Basic Navigation
+      // -------------------------------------------------------------
+      (function () {
+        var $frame = $('#Div1');
+        var $slidee = $frame.children('ul').eq(0);
+        var $wrap = $frame.parent();
+        let _count = $('.arabic').find('ul li')?.length - 1 ?? 0 ;
+        console.log('_count :'+ _count);
+        // Call Sly on frame
+        $frame.sly({
+          horizontal: 1,
+          itemNav: 'basic',
+          smart: 1,
+          activateOn: 'click',
+          mouseDragging: 1,
+          touchDragging: 1,
+          releaseSwing: 1,
+          startAt: _count ,
+          scrollBar: $wrap.find('.scrollbar'),
+          scrollBy: 1,
+          pagesBar: $wrap.find('.pages'),
+          activatePageOn: 'click',
+          speed: 300,
+          elasticBounds: 1,
+          easing: 'easeOutExpo',
+          dragHandle: 1,
+          dynamicHandle: 1,
+          clickBar: 1,
+
+          // Buttons
+          forward: $wrap.find('.forward'),
+          backward: $wrap.find('.backward'),
+          prev: $wrap.find('.prev'),
+          next: $wrap.find('.next'),
+          prevPage: $wrap.find('.prevPage'),
+          nextPage: $wrap.find('.nextPage') });
+      })();
+
+    });
+    //# sourceURL=pen.js
+  </script>
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script>
+    (function ($) {
+      $(window).on("load", function () {
+
+        $.mCustomScrollbar.defaults.scrollButtons.enable = true; //enable scrolling buttons by default
+        $.mCustomScrollbar.defaults.axis = "yx"; //enable 2 axis scrollbars by default
+
+        $("#content-l").mCustomScrollbar();
+
+        $("#content-d").mCustomScrollbar({ theme: "dark" });
+
+        $("#content-l2").mCustomScrollbar({ theme: "light-2" });
+
+        $("#content-d2").mCustomScrollbar({ theme: "dark-2" });
+
+        $("#content-l3").mCustomScrollbar({ theme: "light-3" });
+
+        $("#content-d3").mCustomScrollbar({ theme: "dark-3" });
+
+        $("#content-ltk").mCustomScrollbar({ theme: "light-thick" });
+
+        $("#content-dtk").mCustomScrollbar({ theme: "dark-thick" });
+
+        $("#content-ltn").mCustomScrollbar({ theme: "light-thin" });
+
+        $("#content-dtn").mCustomScrollbar({ theme: "dark-thin" });
+
+        $("#content-m").mCustomScrollbar({ theme: "minimal" });
+
+        $("#content-md").mCustomScrollbar({ theme: "minimal-dark" });
+
+        $("#content-i").mCustomScrollbar({ theme: "inset" });
+
+        $("#content-id").mCustomScrollbar({ theme: "inset-dark" });
+
+        $("#content-i2").mCustomScrollbar({ theme: "inset-2" });
+
+        $("#content-i2d").mCustomScrollbar({ theme: "inset-2-dark" });
+
+        $("#content-i3").mCustomScrollbar({ theme: "inset-3" });
+
+        $("#content-i3d").mCustomScrollbar({ theme: "inset-3-dark" });
+
+        $("#content-r").mCustomScrollbar({ theme: "rounded" });
+
+        $("#content-rd").mCustomScrollbar({ theme: "rounded-dark" });
+
+        $("#content-rds").mCustomScrollbar({ theme: "rounded-dots" });
+
+        $("#content-rdsd").mCustomScrollbar({ theme: "rounded-dots-dark" });
+
+        $("#content-3d").mCustomScrollbar({ theme: "3d" });
+
+        $("#content-3dd").mCustomScrollbar({ theme: "3d-dark" });
+
+        $("#content-3dt").mCustomScrollbar({ theme: "3d-thick" });
+
+        $("#content-3dtd").mCustomScrollbar({ theme: "3d-thick-dark" });
+
+        $(".all-themes-switch a").click(function (e) {
+          e.preventDefault();
+          var $this = $(this),
+      rel = $this.attr("rel"),
+      el = $(".content");
+          switch (rel) {
+            case "toggle-content":
+              el.toggleClass("expanded-content");
+              break;
+          }
+        });
+
+      });
+    })(jQuery);
+  </script>
+</body>
+</html>

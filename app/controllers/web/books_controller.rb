@@ -67,6 +67,11 @@ class Web::BooksController < Web::WebApplicationController
     )
   end
 
+  def accessibility_mode
+    book_ids = @booth.books.pluck(:book_id)
+    @books = Book.includes(:book_files).where(id: book_ids, status: "Published").order('created_at desc')
+  end
+
   def media_files
     @book = Book.where(id: params[:id]).includes(:book_files).first
     @book.update(last_listening_at: Time.now)

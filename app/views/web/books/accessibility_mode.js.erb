@@ -1,0 +1,7 @@
+$(".booth-show").html('')
+$(".book-show-page").html("")
+<% if params[:locale] == "ar" %>
+    $(".book-index-page").html("<%= j render partial: "ar_accessibility_mode", locals: { books: @books, booth: @booth}  %>")
+<% else %>
+  $(".book-index-page").html("<%= j render partial: "accessibility_mode", locals: { books: @books, booth: @booth}  %>")
+<% end %>
