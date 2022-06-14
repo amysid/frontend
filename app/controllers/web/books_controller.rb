@@ -72,6 +72,14 @@ class Web::BooksController < Web::WebApplicationController
     @books = Book.includes(:book_files).where(id: book_ids, status: "Published").order('created_at desc')
   end
 
+  def children_mode
+    @children_category = Category.where(name: "Children’s books").first
+    cat_book_ids = @children_category.books.pluck(:id)
+    book_ids = @booth.books.pluck(:book_id) & cat_book_ids
+    
+    @books = Book.includes(:book_files).where(id: book_ids, status: "Published").order('created_at desc')
+  end
+
   def media_files
     @book = Book.where(id: params[:id]).includes(:book_files).first
     @book.update(last_listening_at: Time.now)

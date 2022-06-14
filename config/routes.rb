@@ -31,6 +31,7 @@ Rails.application.routes.draw do
           get :search, on: :collection
           get :category_search, on: :collection
           get :accessibility_mode, on: :collection
+          get :children_mode, on: :collection
         end
       end
       resources :operations, only: [] do

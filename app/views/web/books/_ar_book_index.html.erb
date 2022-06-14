@@ -148,9 +148,9 @@
             <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class: "btn btn-light-grey btn-footer" do %>
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
-            <a href="#" class="btn btn-light-grey btn-footer">
+           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer", remote: true do %>
               <img src="<%= asset_url('baby-white.png') %>">
-            </a>
+            <% end %>
           </div>
 
         </div>

@@ -124,9 +124,9 @@
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
             
-            <a href="#" class="btn btn-light-grey btn-footer">
-              <img src="website-assets/img/img/footer-icon/baby-white.png">
-            </a>
+           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer", remote: true do %>
+              <img src="<%= asset_url('baby-white.png') %>">
+            <% end %>
           </div>
 
         </div>

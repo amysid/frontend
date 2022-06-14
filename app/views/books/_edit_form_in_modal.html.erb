@@ -254,6 +254,7 @@
 
     $("#update-book-form").submit(function(e){
       var duration = $("#update_long_audio")[0].duration;
+      duration = duration || 0
       $(".update-book-duration").val(duration);
     });
 
