@@ -19,7 +19,7 @@ import "../web_vendor/jquery/dist/jquery.js"
 import "../web_vendor/bootstrap/dist/js/bootstrap.js"
 import "../website-assets/js/plugins.js"
 import "../website-assets/js/sly.min.js"
-import "../website-assets/js/h-scroll/jquery.mCustomScrollbar.concat.min.js"
+// import "../website-assets/js/h-scroll/jquery.mCustomScrollbar.concat.min.js"
 // web js end here
 
 // Website css
