@@ -216,9 +216,7 @@ footer {
             color: #444;
         }
 
-    .section-products .single-product {
-        margin: 0 23px 20px;
-    }
+
 
         .section-products .single-product .part-1 {
             position: relative;
@@ -414,10 +412,6 @@ footer {
         position: relative;
         margin-bottom: 20px;
         overflow: hidden;
-    }
-
-    .section-products .single-product {
-        margin: 0 3em 8em;
     }
 
         .section-products .single-product .part-1 .discount, .section-products .single-product .part-1 .new {
@@ -669,9 +663,7 @@ footer {
         display: inline-block;
     }
 
-    .section-products .single-product {
-        margin: 0 3em 8em;
-    }
+    
 
     .container-catkbf {
         max-width: 5200px!important;
@@ -864,6 +856,7 @@ footer {
 .login-wrapper {
     height:1920px;
     min-height:1920px;
+    position: relative;
 }
 
 .btn-light-grey img {
