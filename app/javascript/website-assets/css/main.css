@@ -85,6 +85,7 @@ body {
     color: #656565;
     text-align: left;
     background-color: #fff;
+    overflow:hidden;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -17382,3 +17383,4 @@ cursor: pointer;
     .discount-1 i {
         margin-right: 5px;
     }
+    .section-products.topS-scroll .checkout-product-img{display:block;}
