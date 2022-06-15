@@ -16266,6 +16266,8 @@ footer {
    height:307px;
 }
 
+.section-products.topS-scroll .checkout-product-img a img {height:358px;}
+
 .black {
     color: #0f2837;
 }
@@ -17384,3 +17386,7 @@ cursor: pointer;
         margin-right: 5px;
     }
     .section-products.topS-scroll .checkout-product-img{display:block;}
+    .section-products.topS-scroll .first{position: absolute;
+        width: 100%;
+        padding: 20px 8px;
+        bottom: 0;}
