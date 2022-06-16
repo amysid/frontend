@@ -41,7 +41,7 @@
               <ul class="vam nav arbic-text">
                 <% @categories.each do |category| %>
                   <li class="nav-item">
-                    <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link btn btn-search-cat-head", remote: true  do %>
+                    <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link mb-3 btn btn-search-cat-head", remote: true  do %>
                           <% cat_url = category.icon.url %>
                           <img src="<%= cat_url%>" /><%= category.arabic_name%>
                         <% end %>
