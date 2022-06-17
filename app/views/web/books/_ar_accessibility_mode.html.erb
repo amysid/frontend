@@ -87,11 +87,11 @@
               <% end %>
             <% end %>
 
-            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class:"btn btn-light-grey btn-footer" do %>
+            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
 
-           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer", remote: true do %>
+           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
               <img src="<%= asset_url('baby-white.png') %>">
             <% end %>
           </div>
@@ -269,3 +269,8 @@
   </script>
 </body>
 </html>
+<style>
+.isDisabled {
+  pointer-events: none;
+}
+</style>
