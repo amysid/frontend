@@ -101,7 +101,7 @@
                     <img src="<%= img_url %>" class="rounded" />
                   <% end %>
                 </span>
-                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> min</span>
+                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> minutes </span>
               </div>
               <div class="part-2">
                 <h3 class="product-title"><%= book.title %></h3>

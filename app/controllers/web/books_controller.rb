@@ -34,7 +34,7 @@ class Web::BooksController < Web::WebApplicationController
       @books = @books.where(id: book_ids)
       @total_books = @books.count || 0
       total_time = @books.pluck(:book_duration).sum
-      @total_time = Time.at(total_time).utc.strftime("%Hh %M min")
+      @total_time = Time.at(total_time).utc.strftime("%Hh %M minute")
       @total_author_count = @books.pluck(:author_name).uniq.count || 0
       
       if params[:type] == "all"

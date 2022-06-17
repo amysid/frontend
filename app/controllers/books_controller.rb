@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   def update 
     if @book.update(book_params)
       @book.categories << @new_categories
-      redirect_to books_path, notice: t("book_created_successfully")
+      redirect_to books_path, notice: t("book_updated_successfully")
     else
       redirect_to books_path, alert: @book.errors.full_messages
     end
@@ -54,7 +54,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :arabic_author_name, :arabic_title, :arabic_body, :author_name, :book_duration, :body,
+    params.require(:book).permit(:title, :language, :arabic_author_name, :arabic_title, :arabic_body, :author_name, :book_duration, :body,
       :user_id, book_files_attributes: [:id, :book_cover_file, :audio, :short_audio_file, :_destroy]
     )
   end
