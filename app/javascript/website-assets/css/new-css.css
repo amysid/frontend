@@ -18027,3 +18027,10 @@ header.secondary-nav.right {
 .css-f4kgqr-R li svg {
         margin-left: 12px;
 }
+
+.arbic-text .btn-search-cat-head img {
+    width: 35px;
+    height: 35px;
+    margin-left: 9px;
+    margin-right: 0;
+}
