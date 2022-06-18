@@ -184,35 +184,80 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
                       </div>
                       <p id="timer">0:00</p>
                       <div class="controls">
-                        <span class="expend">
-                          <svg class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
+                        <button class="btn-backward">
+                          <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
                             <g>
-                              <polygon points="4.9,4.3 9,4.3 9,11.6 21.4,4.3 21.4,20.7 9,13.4 9,20.7 4.9,20.7" />
+                                <path d="M325.125,319.5c-5.737,0-9.563-1.913-13.388-5.737l-76.5-76.5c-7.65-7.65-7.65-19.125,0-26.775l76.5-76.5
+            c7.65-7.65,19.125-7.65,26.775,0c7.649,7.65,7.649,19.125,0,26.775L275.4,223.875l63.113,63.112c7.649,7.65,7.649,19.125,0,26.775
+            C334.688,317.587,330.862,319.5,325.125,319.5z" />
                             </g>
-                          </svg></span>
-
-                        <svg id="play" viewBox="0 0 25 25" xml:space="preserve">
-                          <defs>
-                            <rect x="-49.5" y="-132.9" width="446.4" height="366.4" />
-                          </defs>
-                          <g>
-                            <circle fill="none" cx="12.5" cy="12.5" r="10.8" />
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.7,6.9V18c0,0,0.2,1.4,1.8,0l8.1-4.8c0,0,1.2-1.1-1-2L9.8,6.5 C9.8,6.5,9.1,6,8.7,6.9z" />
-                          </g>
-                        </svg>
-                        <svg id="pause" viewBox="0 0 25 25" xml:space="preserve">
-                          <g>
-                            <rect x="6" y="4.6" width="3.8" height="15.7" />
-                            <rect x="14" y="4.6" width="3.9" height="15.7" />
-                          </g>
-                        </svg>
-
-                        <span class="expend">
-                          <svg class="step-foreward" viewBox="0 0 25 25" xml:space="preserve">
                             <g>
-                              <polygon points="20.7,4.3 16.6,4.3 16.6,11.6 4.3,4.3 4.3,20.7 16.7,13.4 16.6,20.7 20.7,20.7" />
+                                <path d="M306,204.75h-19.125c-11.475,0-19.125,7.65-19.125,19.125S275.4,243,286.875,243H306
+            c105.188,0,191.25,86.063,191.25,191.25S411.188,625.5,306,625.5s-191.25-86.063-191.25-191.25c0-0.25,0.008-0.5,0.009-0.75h-38.25
+            c0,0.25-0.009,0.5-0.009,0.75c0,1.201,0.009,2.399,0.028,3.596C78.466,562.43,180.976,663.75,306,663.75
+            c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" />
                             </g>
-                          </svg></span>
+                            <text transform="matrix(1 0 0 1 137.0063 546.2256)">
+                                <tspan x="0" y="0" font-family="'Arial-BoldMT'" font-size="294.6757" letter-spacing="-40">1</tspan>
+                                <tspan x="123.219" y="0" font-family="'Arial-BoldMT'" font-size="294.6757">0</tspan>
+                            </text>
+                          </svg>
+                        </button>
+
+                          <svg id="play" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                            <path id="Video_Play" fill="#ffffff" d="M50,0.667C22.754,0.667,0.667,22.754,0.667,50c0,27.245,22.087,49.333,49.333,49.333
+    c27.245,0,49.333-22.088,49.333-49.333C99.29,22.772,77.227,0.711,50,0.667z M70.758,51.657L39.186,71.391
+    c-0.311,0.188-0.664,0.296-1.026,0.315c-0.331,0.002-0.656-0.081-0.948-0.237c-0.628-0.353-1.019-1.014-1.026-1.736V30.267
+    c0.007-0.72,0.398-1.383,1.026-1.737c0.619-0.377,1.396-0.377,2.013,0l31.574,19.733c0.914,0.551,1.213,1.738,0.661,2.654
+    c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
+          </svg>
+           <svg id="pause" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px"
+                                                    height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                                    <g id="Layer_1" display="none">
+                                                        <path id="Path1" display="inline" fill="#ffffff" d="M50,0.667C22.754,0.667,0.667,22.754,0.667,50
+    c0,27.245,22.087,49.333,49.333,49.333c27.245,0,49.333-22.088,49.333-49.333C99.29,22.772,77.227,0.711,50,0.667z M70.758,51.657
+    L39.186,71.391c-0.311,0.188-0.664,0.296-1.026,0.315c-0.331,0.002-0.656-0.081-0.948-0.237c-0.628-0.353-1.019-1.014-1.026-1.736
+    V30.267c0.007-0.72,0.398-1.383,1.026-1.737c0.619-0.377,1.396-0.377,2.013,0l31.574,19.733c0.914,0.551,1.213,1.738,0.661,2.654
+    c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
+                                                    </g>
+                                                    <g id="Layer_2">
+                                                        <g id="Icons">
+                                                            <g id="Outlined" transform="translate(-170.000000, -1040.000000)">
+                                                                <g id="Av" transform="translate(100.000000, 852.000000)">
+                                                                    <g id="Outlined-_x2F_-AV-_x2F_-pause_x5F_circle_x5F_filled" transform="translate(68.000000, 186.000000)">
+                                                                        <g>
+                                                                            <polygon id="Path" fill="none" points="-6.999,-7.333 111.667,-7.333 111.667,111.333 -6.999,111.333            " />
+                                                                            <path id="_xD83D__xDD39_-Icon-Color" fill="#ffffff" d="M52.334,2.556C25.043,2.556,2.89,24.707,2.89,52
+              c0,27.291,22.153,49.444,49.444,49.444c27.291,0,49.444-22.153,49.444-49.444C101.778,24.707,79.625,2.556,52.334,2.556z
+               M47.389,71.778H37.5V32.223h9.889V71.778z M67.168,71.778h-9.889V32.223h9.889V71.778z" />
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+
+                        <button class="btn-forward">
+                          <svg version="1.1" id="Svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                            <g>
+                              <path d="M235.237,313.763c-7.649-7.65-7.649-19.125,0-26.775l63.113-63.112l-63.113-63.112c-7.649-7.65-7.649-19.125,0-26.775
+            c7.65-7.65,19.125-7.65,26.775,0l76.5,76.5c7.649,7.65,7.649,19.125,0,26.775l-76.5,76.5c-3.825,3.825-7.65,5.737-13.388,5.737
+            S239.063,317.587,235.237,313.763z" />
+                            </g>
+                            <g>
+                              <path d="M306,204.75h19.125c11.475,0,19.125,7.65,19.125,19.125S336.6,243,325.125,243H306c-105.188,0-191.25,86.063-191.25,191.25
+            S200.813,625.5,306,625.5s191.25-86.063,191.25-191.25c0-0.25-0.008-0.5-0.009-0.75h38.25c0.001,0.25,0.009,0.5,0.009,0.75
+            c0,1.201-0.01,2.399-0.027,3.596C533.533,562.43,431.024,663.75,306,663.75c-126.225,0-229.5-103.275-229.5-229.5
+            C76.5,308.025,179.775,204.75,306,204.75z" />
+                            </g>
+                            <text transform="matrix(1 0 0 1 154.9946 548.2256)">
+                              <tspan x="0" y="0" font-family="'Arial-BoldMT'" font-size="294.6757" letter-spacing="-40">1</tspan>
+                              <tspan x="123.219" y="0" font-family="'Arial-BoldMT'" font-size="294.6757">0</tspan>
+                            </text>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -227,9 +272,9 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-3">
-              <a href="">
+              <%= link_to web_booth_path(id: @booth.number) do %>
                 <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
-              </a>
+              <% end %>
             </div>
             <div class="col-md-9 text-right">
               <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
@@ -299,6 +344,26 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
     music.addEventListener("canplaythrough", function () {
       duration = music.duration;
     }, false);
+
+    $(".btn-forward").click(function(){
+      var music = $("#music")[0]
+      if( music.currentTime < music.duration ){
+        music.currentTime += 10
+      }
+     });
+
+    $(".btn-backward").click(function(){
+      var music = $("#music")[0]
+      if( music.currentTime > 0 ){
+        music.currentTime -= 10
+      }
+    });
+
+    $(".playbackrate").change(function(){
+      value = $(this).val()
+      var music = $("#music")[0]
+      music.playbackRate = value;
+    });
     //# sourceURL=pen.js
   </script>
 </body>
