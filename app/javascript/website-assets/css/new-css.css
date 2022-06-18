@@ -18034,3 +18034,7 @@ header.secondary-nav.right {
 }
 
 .left-arabic{padding-left: 7%;}
+.image-grid-container-R .image-grid-col50{
+    margin-right: 0;
+    margin-left: 6%;
+}
