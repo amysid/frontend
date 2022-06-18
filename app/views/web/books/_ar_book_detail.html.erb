@@ -21,8 +21,7 @@
               <div class="image-grid-col50">
                 <div class="image-grid-imageContainer">
                   <% img_url = @book.book_files.first.book_cover_file.url %>
-                  <div class="image-grid-image" style="background-image: url(<%= img_url %>);"></div>
-                  <div class="image-grid-skeletonLoader"></div>
+                  <img class="big-img" src="<%= img_url %>">
                 </div>
               </div>
             </div>
@@ -76,8 +75,84 @@
                 <div class="left-arabic text-right">
                   <h3 class="text-white"><%= t('get_the_full') %></h3>
                   <ul class="css-f4kgqr-R">
-                    <li><%= t('scan')%> <i class="fa fa-qrcode" aria-hidden="true"></i></li>
-                    <li><%= t('open_the_link')%><i class="fa fa-play" aria-hidden="true"></i> </li>
+                    <li><%= t('scan')%><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px"
+                    height="25px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                 <g id="G1">
+                   <path fill="none" d="M-2.608-2.63h104.715v104.715H-2.608V-2.63z"/>
+                   <path fill="#ffffff" d="M67.202,71.543V67.18H54.113V54.09h13.089v8.728h8.727v8.726h-4.362v8.725h-8.728v8.729h-8.726V75.905
+                     h8.726v-4.362H67.202z M89.019,88.997H71.566v-8.729h8.725v-8.725h8.728V88.997z M10.481,10.459h34.905v34.905H10.481V10.459z
+                      M19.208,19.186v17.452H36.66V19.186H19.208z M54.113,10.459h34.905v34.905H54.113V10.459z M62.839,19.186v17.452h17.452V19.186
+                     H62.839z M10.481,54.09h34.905v34.907H10.481V54.09z M19.208,62.817v17.45H36.66v-17.45H19.208z M75.929,54.09h13.09v8.728h-13.09
+                     V54.09z M23.571,23.548h8.727v8.727h-8.727V23.548z M23.571,67.18h8.727v8.726h-8.727V67.18z M67.202,23.548h8.727v8.727h-8.727
+                     V23.548z"/>
+                 </g>
+                 <g id="G2">
+                   <g id="G3">
+                     <g id="Rounded" transform="translate(-548.000000, -3434.000000)">
+                       <g id="Navigation" transform="translate(100.000000, 3378.000000)">
+                         <g id="_x2D_Round-_x2F_-Navigation-_x2F_-arrow_x5F_back_x5F_ios" transform="translate(442.000000, 54.000000)">
+                           <g>
+                             <polygon id="Polygon1" fill="none" points="13.069,-8.136 31.184,9.456 13.591,27.57 -4.523,9.979             "/>
+                             <path id="Path3" fill="#ffffff" d="M23.421,6.303c-0.01-0.729-0.606-1.309-1.335-1.298L9.722,5.186
+                               C9.143,5.194,8.68,5.67,8.689,6.25L8.87,18.614c0.011,0.729,0.608,1.307,1.337,1.297c0.728-0.011,1.307-0.606,1.296-1.334
+                               l-0.15-10.78l10.786-0.158C22.853,7.627,23.439,7.024,23.421,6.303z"/>
+                           </g>
+                         </g>
+                       </g>
+                     </g>
+                   </g>
+                   <g id="Icons_2_">
+                     <g id="Rounded_2_" transform="translate(-548.000000, -3434.000000)">
+                       <g id="Navigation_2_" transform="translate(100.000000, 3378.000000)">
+                         <g id="_x2D_Round-_x2F_-Navigation-_x2F_-arrow_x5F_back_x5F_ios_2_" transform="translate(442.000000, 54.000000)">
+                           <g>
+                             <polygon id="Path_2_" fill="none" points="98.99,113.059 80.875,95.467 98.468,77.353 116.582,94.943            "/>
+                             <path id="_xD83D__xDD39_-Icon-Color_2_" fill="#ffffff" d="M88.639,98.62c0.011,0.729,0.606,1.308,1.336,1.297l12.362-0.182
+                               c0.58-0.008,1.042-0.483,1.034-1.064l-0.182-12.362c-0.011-0.729-0.607-1.307-1.336-1.297
+                               c-0.729,0.011-1.308,0.606-1.297,1.334l0.15,10.78L89.92,97.284C89.207,97.294,88.62,97.898,88.639,98.62z"/>
+                           </g>
+                         </g>
+                       </g>
+                     </g>
+                   </g>
+                   <g id="Icons_1_">
+                     <g id="Rounded_1_" transform="translate(-548.000000, -3434.000000)">
+                       <g id="Navigation_1_" transform="translate(100.000000, 3378.000000)">
+                         <g id="_x2D_Round-_x2F_-Navigation-_x2F_-arrow_x5F_back_x5F_ios_1_" transform="translate(442.000000, 54.000000)">
+                           <g>
+                             <polygon id="Path_1_" fill="none" points="-4.523,95.398 13.136,77.352 31.184,95.014 13.526,113.06             "/>
+                             <path id="_xD83D__xDD39_-Icon-Color_1_" fill="#ffffff" d="M9.955,85.103c-0.73,0.008-1.312,0.603-1.303,1.33l0.135,12.363
+                               c0.005,0.58,0.479,1.046,1.06,1.039l12.365-0.137c0.727-0.008,1.31-0.6,1.301-1.329c-0.009-0.729-0.602-1.31-1.33-1.303
+                               l-10.781,0.108L11.285,86.39C11.277,85.677,10.677,85.087,9.955,85.103z"/>
+                           </g>
+                         </g>
+                       </g>
+                     </g>
+                   </g>
+                   <g id="Icons_3_">
+                     <g id="Rounded_3_" transform="translate(-548.000000, -3434.000000)">
+                       <g id="Navigation_3_" transform="translate(100.000000, 3378.000000)">
+                         <g id="_x2D_Round-_x2F_-Navigation-_x2F_-arrow_x5F_back_x5F_ios_3_" transform="translate(442.000000, 54.000000)">
+                           <g>
+                             <polygon id="Path_3_" fill="none" points="116.584,9.734 98.712,27.572 80.872,9.698 98.743,-8.138            "/>
+                             <path id="_xD83D__xDD39_-Icon-Color_3_" fill="#ffffff" d="M101.983,19.858c0.73,0.001,1.318-0.585,1.319-1.314l0.011-12.364
+                               c0.002-0.581-0.467-1.051-1.048-1.053L89.899,5.12c-0.728,0-1.316,0.584-1.316,1.314c0,0.729,0.587,1.317,1.314,1.318
+                               l10.781,0.018l-0.009,10.787C100.668,19.269,101.262,19.866,101.983,19.858z"/>
+                           </g>
+                         </g>
+                       </g>
+                     </g>
+                   </g>
+                 </g>
+                 </svg></li>
+                    <li><%= t('open_the_link')%><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    width="25px" height="25px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <path id="Path2" fill="#ffffff" d="M50,0.667C22.754,0.667,0.667,22.754,0.667,50c0,27.245,22.087,49.333,49.333,49.333
+c27.245,0,49.333-22.088,49.333-49.333C99.29,22.772,77.227,0.711,50,0.667z M70.758,51.657L39.186,71.391
+c-0.311,0.188-0.664,0.296-1.026,0.315c-0.331,0.002-0.656-0.081-0.948-0.237c-0.628-0.353-1.019-1.014-1.026-1.736V30.267
+c0.007-0.72,0.398-1.383,1.026-1.737c0.619-0.377,1.396-0.377,2.013,0l31.574,19.733c0.914,0.551,1.213,1.738,0.661,2.654
+c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
+                </svg> </li>
                   </ul>
                 </div>
                  

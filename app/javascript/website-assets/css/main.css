@@ -16408,7 +16408,7 @@ border-radius: 24px;
     }
 
     .image-grid-imageContainer {
-        height: 577px;
+        height: 676px;
         overflow: hidden;
         border-radius: 6px;
         box-shadow: 0 6px 18px 0 rgba(99,99,99,.39);
@@ -16670,8 +16670,8 @@ border-radius: 24px;
 }
 
 .image-grid-col50 {
-    width: 426px;
-    height: 568px;
+    width: 470px;
+    height: 676px;
     float: right;
     margin-bottom: 1%;
     position: relative;
@@ -16692,7 +16692,7 @@ border-radius: 24px;
 .book-detail-2-mini {
     background: #f7f7f7;
     margin: 5em 0 0;
-    padding: 2.5em 0;
+    padding: 1.7em 0;
     border-radius: 18px;
     box-shadow: 0 2px 9px 0 rgba(99,99,99,.39);
     color: #0f2837;
