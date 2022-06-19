@@ -287,7 +287,7 @@ C76.5,308.025,179.775,204.75,306,204.75z" />
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-3">
-              <%= link_to web_booth_path(id: @booth.number) do %>
+              <%= link_to web_booth_path(id: @booth.number), id: "stop-music" do %>
                 <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
               <% end %>
             </div>
@@ -383,6 +383,11 @@ C76.5,308.025,179.775,204.75,306,204.75z" />
       music.playbackRate = value;
     });
 
+    $("#stop-music").click(function(event){
+      event.preventDefault()
+      $("#music")[0].pause();
+      window.location.reload();
+    })
     //# sourceURL=pen.js
   </script>
 </body>

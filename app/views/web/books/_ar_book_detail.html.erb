@@ -364,6 +364,12 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
       var music = $("#music")[0]
       music.playbackRate = value;
     });
+
+    $("#stop-music").click(function(event){
+      event.preventDefault()
+      $("#music")[0].pause();
+      window.location.reload();
+    })
     //# sourceURL=pen.js
   </script>
 </body>
