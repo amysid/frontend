@@ -101,7 +101,12 @@
                     <img src="<%= img_url %>" class="rounded" />
                   <% end %>
                 </span>
-                <span class="discount"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book.book_duration).utc.strftime("%H:%M:%S") %> minutes </span>
+                <div class="first">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="discount-1"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %></span>
+                    <span class="wishlist"><%= book.language.to_s.at(0) %></span>
+                </div>
+                </div>
               </div>
               <div class="part-2">
                 <h3 class="product-title"><%= book.title %></h3>

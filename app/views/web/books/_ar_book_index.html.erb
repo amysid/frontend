@@ -72,8 +72,12 @@
                         </span>
                         <div class="first">
                           <div class="d-flex justify-content-between align-items-center">
-                           <span class="discount-1"><%= book.language.to_s.at(0) %></span>
-                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                           <%if book.language == "English"%>
+                              <span class="discount-1">E</span>
+                            <%else%>
+                              <span class="discount-1">ع</span>
+                            <%end%>
+                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
                           </div>
                         </div>
                       </div>
@@ -107,8 +111,12 @@
                         </span>
                          <div class="first">
                           <div class="d-flex justify-content-between align-items-center">
-                            <span class="discount-1"><%= book.language.to_s.at(0) %></span>
-                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                            <%if book.language == "English"%>
+                              <span class="discount-1">E</span>
+                            <%else%>
+                              <span class="discount-1">ع</span>
+                            <%end%>
+                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
                           </div>
                         </div>
                       </div>
