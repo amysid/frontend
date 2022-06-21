@@ -321,12 +321,15 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
       var playPercent = timelineWidth * (music.currentTime / duration);
       playhead.style.width = playPercent + "px";
 
-      var secondsIn = Math.floor(music.currentTime / duration / 3.5 * 100);
-      if (secondsIn <= 9) {
-        timer.innerHTML = "0:0" + secondsIn;
-      } else {
-        timer.innerHTML = "0:" + secondsIn;
+      var total_minutes = Math.floor(music.duration / 60);
+      var total_seconds = Math.floor(music.duration % 60);
+
+      var minutes = Math.floor(music.currentTime / 60);
+      var seconds = Math.floor(music.currentTime % 60);
+      if (seconds < 10) {
+        seconds = '0' + String(seconds);
       }
+      timer.innerHTML = minutes + ':' + seconds + "/" + total_minutes + ":" + total_seconds;
     }
 
     playButton.onclick = function () {
@@ -371,6 +374,10 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
       window.location.reload();
     })
     //# sourceURL=pen.js
+    $(music).bind("ended", function(){
+      playButton.style.visibility = "visible";
+      pause.style.visibility = "hidden";
+    });
   </script>
 </body>
 </html>

@@ -389,6 +389,11 @@ C76.5,308.025,179.775,204.75,306,204.75z" />
       window.location.reload();
     })
     //# sourceURL=pen.js
+    $(music).bind("ended", function(){
+      playButton.style.visibility = "visible";
+      pause.style.visibility = "hidden";
+    });
+
   </script>
 </body>
 </html>
