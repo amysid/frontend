@@ -34,23 +34,24 @@
               <tr><%= t('no_record_present')%></tr>
             <% else %>
               <% @users.each_with_index do |user, i|%>
+              <% user = user["attributes"]%>
               <tr>
-                <td class="text-danger"><%= (@users.offset + i + 1) %></td>
-                <td class="text-center"><%= user.full_name %></td>
-                <td><%= user.email %></td>
-                <td><%= user.mobile %></td>
-                <td><%= user.role %></td>
+                <td class="text-danger"><%= (i + 1) %></td>
+                <td class="text-center"><%= user["full_name"] %></td>
+                <td><%= user["email"] %></td>
+                <td><%= user["mobile"] %></td>
+                <td><%= user["role"] %></td>
                 <td>
-                  <% if user.status == "Active" %>
+                  <% if user["status"] == "Active" %>
                     <label class="badge badge-green">Active</label> 
-                  <% elsif user.status == "Invited" %>
+                  <% elsif user["status"] == "Invited" %>
                     <label class="badge badge-warning">Invited</label>
                   <% else %>
                     <label class="badge badge-danger">Blocked</label>
                   <% end %>
                 </td>
-                <td><%= user.last_login_at %></td>
-                <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_user_path(id: user.id) ,remote: true%></td>
+                <td><%= user["last_login_at"] %></td>
+                <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_user_path(id: user["id"]) ,remote: true%></td>
               </tr>
               <% end %>
             <% end %>
@@ -64,7 +65,7 @@
             <nav>
               <ul class="pagination pagination-sm">
                 <li class="page-item">
-                <%= will_paginate @users %>
+                <%#= will_paginate @users %>
                 </li>
               </ul>
             </nav>

@@ -6,10 +6,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email])
-    if !!@user && @user.authenticate(params[:password])
-      @user.update(last_login_at: Time.now)
-      session[:user_id] = @user.id
+    url = "https://audiolibrarybackend.herokuapp.com/api/login"
+    headers = {"Content-Type": "application/json", multipart: true, body: params.as_json}
+    response = HTTParty.post(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? && response_body.dig("token").present?
+      session[:user_id] = response_body.dig("id")
+      session[:token] = response_body.dig("token") 
       redirect_to homes_path
     else
       massage = "Something went wrong"
