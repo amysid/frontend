@@ -7,13 +7,20 @@
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label"><%= t('category_name')%></label>
           <div class="col-md-6 col-form-label text-black font-17">
-            <%= @category.name %>
+            <%= @category["name"] %>
           </div>                           
         </div>
         <div class="row">
+          <label for="example-text-input" class="col-md-4 col-form-label"><%= t('category_arabic_name')%></label>
+          <div class="col-md-6 col-form-label text-black font-17">
+            <%= @category["arabic_name"] %>
+          </div>                           
+        </div>
+
+        <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label"><%= t('booth_location')%></label>
           <div class="col-md-6 col-form-label text-black font-17">
-            <%= select_tag t('booth'), options_for_select(category.booths.pluck(:name, :id)), class: "custom-select custom-select-sm text-center"%>
+            <%#= select_tag t('booth'), options_for_select(category.booths.pluck(:name, :id)), class: "custom-select custom-select-sm text-center"%>
           </div>                           
         </div>
       </div>

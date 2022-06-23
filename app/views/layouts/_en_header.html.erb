@@ -58,7 +58,7 @@
                     <a href="javascript: void(0);" class="dropdown-item d-block"><i class="fa fa-cog align-middle mr-2"></i>Settings </a>
                     <a href="javascript: void(0);" class="dropdown-item"><i class="fa fa-lock align-middle mr-2"></i>Lock screen </a> -->
                     <div class="dropdown-divider"></div>
-                    <%= link_to "<i class='fa fa-sign-out-alt align-middle text-danger mr-2'></i> #{t('logout')}".html_safe, session_path(id: @current_user.id), method: :delete, data: { confirm: t('logout_confirm_msg') }, class: "dropdown-item text-danger" %>
+                    <%= link_to "<i class='fa fa-sign-out-alt align-middle text-danger mr-2'></i> #{t('logout')}".html_safe, session_path(id: @current_user["id"]), method: :delete, data: { confirm: t('logout_confirm_msg') }, class: "dropdown-item text-danger" %>
                 </div>
             </li>
         </ul>

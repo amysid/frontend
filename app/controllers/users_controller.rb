@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :ensure_user_present?, except: [:index, :create]
   def index
     @user = User.new
-    url = "https://audiolibrarybackend.herokuapp.com/api/users"
+    url = "#{ENV["API_BASE_URL"]}/api/users"
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    url = "https://audiolibrarybackend.herokuapp.com/api/users"
+    url = "#{ENV["API_BASE_URL"]}/api/users"
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    url = "https://audiolibrarybackend.herokuapp.com/api/users/#{params[:id]}"
+    url = "#{ENV["API_BASE_URL"]}/api/users/#{params[:id]}"
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
     response = HTTParty.put(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    url = "https://audiolibrarybackend.herokuapp.com/api/users/#{params[:id]}"
+    url = "#{ENV["API_BASE_URL"]}/api/users/#{params[:id]}"
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?

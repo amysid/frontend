@@ -55,7 +55,7 @@
           <a href="javascript: void(0);" class="dropdown-item d-block">Settings <i class="icon-settings align-middle ml-1"></i></a>
           <a href="javascript: void(0);" class="dropdown-item">Lock screen <i class="icon-lock align-middle ml-1"></i></a> -->
           <div class="dropdown-divider"></div>
-         <%= link_to "#{t('logout')} <i class='icon-power align-middle mr-1 text-danger'></i>".html_safe, session_path(id: @current_user.id), method: :delete, data: { confirm: t('logout_confirm_msg') }, class: "dropdown-item text-danger" %>
+         <%= link_to "#{t('logout')} <i class='icon-power align-middle mr-1 text-danger'></i>".html_safe, session_path(id: @current_user["id"]), method: :delete, data: { confirm: t('logout_confirm_msg') }, class: "dropdown-item text-danger" %>
         </div>
       </li>
     </ul>
