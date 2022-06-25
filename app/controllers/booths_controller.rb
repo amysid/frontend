@@ -1,24 +1,28 @@
 class BoothsController < ApplicationController
   before_action :logged_in?
   before_action :ensure_user_and_category_present, only: [:create, :update]
+  before_action :fetch_categories, only: [:index, :edit]
   before_action :set_booth, except: [:new, :create, :index]
   before_action :ensure_booth_present?, except: [:new, :create, :index]
-  before_action :update_category_record, only: [:update]
 
   def index
     @booth = Booth.new
-    per_page = params[:per_page] || 10
-    @booths = Booth.all.includes(:operations).order('created_at desc').paginate(page: params[:page], per_page: per_page)
+    url = "#{ENV["API_BASE_URL"]}/api/booths"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("booths").dig("data").present?
+      @booths =  response_body["booths"]["data"]
+    end
   end
 
   def create
-    @booth = Booth.new(booth_params)
-    if @booth.save
-      # @booth.users << @user
-      @booth.categories << @categories
-      redirect_to booths_path, notice: "Booth Create Successfully!"
-    else
-      redirect_to booths_path, alert: @booth.errors.full_messages
+    url = "#{ENV["API_BASE_URL"]}/api/booths"
+    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
+    response = HTTParty.post(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("booth").dig("data").present?
+      redirect_to booths_path
     end
   end
 
@@ -32,12 +36,12 @@ class BoothsController < ApplicationController
   end
 
   def update
-    if @booth.update(booth_params)
-      # @booth.users << @user
-      @booth.categories << @new_categories
-      redirect_to booths_path, notice: "Booth Update Successfully!"
-    else
-      redirect_to booths_path, alert: @booth.errors.full_messages
+    url = "#{ENV["API_BASE_URL"]}/api/booths/#{params[:id]}"
+    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
+    response = HTTParty.put(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("booth").dig("data").present?
+      redirect_to booths_path
     end
   end
 
@@ -69,7 +73,13 @@ class BoothsController < ApplicationController
   end
 
   def set_booth
-    @booth = Booth.find_by(id: params[:id])
+    url = "#{ENV["API_BASE_URL"]}/api/booths/#{params[:id]}"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("booth").dig("data").present?
+      @booth = response_body["booth"]["data"]["attributes"]
+    end
   end
 
   def ensure_booth_present?
@@ -77,11 +87,5 @@ class BoothsController < ApplicationController
       redirect_to booths_path, alert: t("booth_not_found")
     end
   end
-
-  def update_category_record
-    existing_category_id = @booth.category_ids
-    category_ids_for_remove = existing_category_id - @categories.pluck(:id)
-    @booth.category_ids -= category_ids_for_remove
-    @new_categories = @categories.where.not(id: existing_category_id)
-  end
+  
 end

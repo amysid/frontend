@@ -7,6 +7,19 @@ class ApplicationController < ActionController::Base
   include Rails.application.routes.url_helpers
   include HTTParty
 
+  def fetch_categories
+    url = "#{ENV["API_BASE_URL"]}/api/categories"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? && response_body.dig("categories").present? && response_body.dig("categories").dig("data").present?
+      @categories =  response_body["categories"]["data"]
+    end
+    @category_options = @categories.map do |c|
+      next if c["attributes"].blank?
+      [c["attributes"]["name"], c["attributes"]["id"]]
+    end.compact 
+  end
 
   helper ApplicationHelper
   

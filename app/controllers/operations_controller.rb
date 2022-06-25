@@ -2,7 +2,12 @@ class OperationsController < ApplicationController
   before_action :logged_in?
   
   def index
-    per_page = params[:per_page] || 10
-    @operations = Operation.all.includes(:book, :booth).order('created_at desc').paginate(page: params[:page], per_page: per_page)
+    url = "#{ENV["API_BASE_URL"]}/api/operations"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("operations").dig("data").present?
+      @operations =  response_body["operations"]["data"]
+    end
   end
 end

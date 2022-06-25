@@ -1,4 +1,4 @@
-<!-- <div class="wrapper">
+    <!-- <div class="wrapper">
   <section class="section-container"> -->
     <!-- Page content-->
     <div class="content-wrapper">
@@ -36,16 +36,17 @@
                   <tr><%= t('no_record_present') %></tr>
                 <% else %>
                   <% @booths.each_with_index do |booth, i|%>
+                    <% booth = booth["attributes"] %>
                     <tr>
-                      <td class="text-danger"><%= (@booths.offset + i + 1)%></td>
-                      <td><%= booth.name %></td>
-                      <td><%= booth.city %></td>
-                      <td><%= booth.address %></td>
-                      <td><%= booth.latitude %>,<%= booth.longitude%></td>
-                      <td><%= listening_count_for(booth) %></td>
-                      <td><%= booth.status rescue nil %></td>
-                      <td><%= booth.operations.last.created_at rescue nil%></td>
-                      <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_booth_path(id: booth.id) ,remote: true%></td>
+                      <td class="text-danger"><%= ( i + 1)%></td>
+                      <td><%= booth["name"] %></td>
+                      <td><%= booth["city"] %></td>
+                      <td><%= booth["address"] %></td>
+                      <td><%= booth["latitude"] %>,<%= booth["longitude"] %></td>
+                      <td><%= booth["listening_count_for"] %></td>
+                      <td><%= booth["status"] rescue nil %></td>
+                      <td><%= booth["last_listening"] %></td>
+                      <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_booth_path(id: booth["id"]) ,remote: true%></td>
                     </tr>
                   <% end %>
                 <% end %>
@@ -72,7 +73,7 @@
                     <li class="page-item active"><a class="page-link" href="#">5</a></li>
                     <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                     <% end %>
-                    <%= will_paginate @booths%>
+                    <%#= will_paginate @booths%>
                   </ul>
                 </nav>
               </div>
@@ -140,7 +141,7 @@
           <div class="form-group row">
              <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('category_name')%></label>
             <div class="col-md-10" data-controller='select2'>
-              <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id)), { include_blank: true},{multiple: true, id: "category-dropdown", style: "width: 33.75em;"} %>
+              <%= f.select :category_id, options_for_select(@category_options), { include_blank: true},{multiple: true, id: "category-dropdown", style: "width: 33.75em;"} %>
             </div>
              
           </div>

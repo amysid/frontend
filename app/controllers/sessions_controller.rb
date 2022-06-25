@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 	before_action :logged_in?, only: [:destroy]
   before_action :logged_out?, only: [:new, :create]
+ 
   def new
   	@user = User.new
   end
@@ -11,7 +12,6 @@ class SessionsController < ApplicationController
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? && response_body.dig("token").present?
-      byebug
       session[:user] = response_body.as_json(except: ["token"])
       session[:token] = response_body.dig("token") 
       redirect_to homes_path
@@ -26,8 +26,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-	session[:user_id] = nil
-	flash[:success] = t('logout_successfull')
+  	session[:user] = nil
+    sessions[:token] = nil
+  	flash[:success] = t('logout_successfull')
     redirect_to root_path
   end
   

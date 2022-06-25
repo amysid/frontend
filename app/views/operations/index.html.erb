@@ -31,16 +31,17 @@
               <tr><%= t('no_record_present') %></tr>
             <% else %>
               <% @operations.each_with_index do|operation, i|  %>
+                <% operation = operation["attributes"] %>
                 <tr>
-                  <td class="text-danger"><%= (@operations.offset + i + 1) %></td>
-                  <td><%= operation.number %></td>
-                  <td><%= operation.booth.name %></td>
-                  <td><%= operation.book.title %></td>
-                  <td><%= operation.booth.city %></td>
-                  <td><%= Time.at(operation.listening_status.to_f).utc.strftime("%H:%M:%S") %>/ <%= Time.at(operation.book.book_duration.to_f).utc.strftime("%H:%M:%S") %></td>
-                  <td><%= operation.listening_time %></td>
-                  <td><%= operation.rating %></td>
-                  <td><%= operation.note %></td>
+                  <td class="text-danger"><%= ( i + 1) %></td>
+                  <td><%= operation["number"] %></td>
+                  <td><%= operation["booth_name"] %></td>
+                  <td><%= operation["title"] %></td>
+                  <td><%= operation["city"] %></td>
+                  <td><%= operation["listening_status"] %></td>
+                  <td><%= operation["listening_time"] %></td>
+                  <td><%= operation["rating"] %></td>
+                  <td><%= operation["note"] %></td>
                 </tr>
               <% end %>
             <% end %>
@@ -53,7 +54,7 @@
           <div class="ml-auto">
             <nav>
               <ul class="pagination pagination-sm">
-                <%= will_paginate @operations %>
+                <%#= will_paginate @operations %>
               </ul>
             </nav>
           </div>

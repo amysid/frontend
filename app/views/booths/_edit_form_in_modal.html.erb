@@ -6,32 +6,32 @@
         <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
         <div class="mt-3">
-          <%= form_with scope: :booth, url: booth_path(id: @booth.id), method: :put do |f| %>
+          <%= form_with scope: :booth, url: booth_path(id: @booth["id"]), method: :put do |f| %>
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('name')%></label>
             <div class="col-md-10">
-              <%= f.text_field :name, class: "form-control text-center", placeholder: t('name') %>
+              <%= f.text_field :name, value: @booth["name"], class: "form-control text-center", placeholder: t('name') %>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('city')%></label>
             <div class="col-md-10">
-              <%= f.text_field :city, class: "form-control text-center", placeholder: t('city')%>
+              <%= f.text_field :city, value: @booth["city"], class: "form-control text-center", placeholder: t('city')%>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('address')%></label>
             <div class="col-md-10">
-              <%= f.text_field :address, class: "form-control text-center", placeholder: t("address") %>
+              <%= f.text_field :address, value: @booth["address"], class: "form-control text-center", placeholder: t("address") %>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('coordinates')%></label>
             <div class="col-md-10">
-              <%= f.text_field :coordinate, class: "form-control text-center", placeholder: t("coordinates") %>
+              <%= f.text_field :coordinate, value: "#{@booth["latitude"]},#{@booth["longitude"]}", class: "form-control text-center", placeholder: t("coordinates") %>
             </div>
           </div>
 
@@ -39,21 +39,21 @@
             <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('communicate_with')%></label>
             <div class="col-md-10">
               <!-- <input class="form-control text-center" type="email" placeholder="Mohamed shihri"> -->
-             <%= f.text_field :communicate_with, class: "form-control text-center", placeholder: t("communicate_with") %>
+             <%= f.text_field :communicate_with, value: @booth["communicate_with"], class: "form-control text-center", placeholder: t("communicate_with") %>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('phone_number')%></label>
             <div class="col-md-10">
-              <%= f.text_field :phone_number, class: "form-control text-center", placeholder: "0509050803" %>
+              <%= f.text_field :phone_number, value: @booth["phone_number"], class: "form-control text-center", placeholder: "0509050803" %>
             </div>
           </div>
 
           <div class="form-group row">
              <label for="example-text-input" class="col-md-2 col-form-label text-center"><%= t('category_name')%></label>
             <div class="col-md-10" data-controller='select2'>
-              <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id), selected: booth&.categories&.pluck(:id)), { include_blank: true},{multiple: true, id: "update-category-dropdown", style: "width: 33.75em;"} %>
+              <%= f.select :category_id, options_for_select(@category_options, selected: @booth["selected_category_id"]), { include_blank: true},{multiple: true, id: "update-category-dropdown", style: "width: 33.75em;"} %>
             </div>
              
           </div>
