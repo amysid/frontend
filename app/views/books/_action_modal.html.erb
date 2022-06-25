@@ -6,11 +6,11 @@
 
         <div class="mt-3">
           
-            <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_book_path(id: book.id) ,remote: true, class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-edit') ? '' : 'hide' }", title: "Edit"%>
-            <%= link_to "<i class='fa fa-eye'></i>".html_safe, book_path(id: book.id) ,remote: true, class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-show') ? '' : 'hide' }", title: "Show"%>
-            <%= link_to "<i class='fa fa-trash'></i>".html_safe, book_path(id: book.id) ,method: "delete", remote: true, class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-destroy') ? '' : 'hide' }"%>
-            <% title = book.status == "Published" ? "UnPublished" : "Published" %>
-            <%= link_to "<i class='fa fa-book'></i>".html_safe, change_status_book_path(id: book.id), class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-change-status') ? '' : 'hide' }", title: "#{title} book"%>
+            <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_book_path(id: book["id"]) ,remote: true, class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-edit') ? '' : 'hide' }", title: "Edit"%>
+            <%= link_to "<i class='fa fa-eye'></i>".html_safe, book_path(id: book["id"]) ,remote: true, class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-show') ? '' : 'hide' }", title: "Show"%>
+            <%= link_to "<i class='fa fa-trash'></i>".html_safe, book_path(id: book["id"]) ,method: "delete", remote: true, class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-destroy') ? '' : 'hide' }"%>
+            <% title = book["status"] == "Published" ? "UnPublished" : "Published" %>
+            <%= link_to "<i class='fa fa-book'></i>".html_safe, change_status_book_path(id: book["id"]), class: "btn btn-secondary-blue modal-link-space #{ accessible?('books-change-status') ? '' : 'hide' }", title: "#{title} book"%>
         </div>
       </div>
 

@@ -1,33 +1,38 @@
 class BooksController < ApplicationController
   before_action :logged_in?
-  before_action :ensure_category_present?, only: [:create, :update]
   before_action :set_book, except: [:new, :create, :index]
   before_action :ensure_book_present?, except: [:new, :create, :index]
-  before_action :update_category_record, only: [:update]
+  before_action :fetch_categories, only: [:index, :edit]
 
   def index
     @book = Book.new
     @book.book_files.build
-    per_page = params[:per_page] || 10
-    @books = Book.all.includes(:operations).order('created_at desc').paginate(page: params[:page], per_page: per_page)
+    url = "#{ENV["API_BASE_URL"]}/api/books"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("books").dig("data").present?
+      @books =  response_body["books"]["data"]
+    end
   end
   
   def create
-    @book = Book.new(book_params)
-    if @book.save
-      @book.categories << @categories
-      redirect_to books_path, notice: t("book_created_successfully")
-    else
-      redirect_to books_path, alert: @book.errors.full_messages
+    url = "#{ENV["API_BASE_URL"]}/api/books"
+    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
+    response = HTTParty.post(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("book").dig("data").present?
+      redirect_to books_path
     end
   end
 
   def update 
-    if @book.update(book_params)
-      @book.categories << @new_categories
-      redirect_to books_path, notice: t("book_updated_successfully")
-    else
-      redirect_to books_path, alert: @book.errors.full_messages
+    url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}"
+    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
+    response = HTTParty.put(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("book").dig("data").present?
+      redirect_to books_path
     end
   end
 
@@ -60,7 +65,13 @@ class BooksController < ApplicationController
   end
 
   def set_book
-    @book = Book.find_by(id: params[:id])
+    url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("book").dig("data").present?
+      @book = response_body["book"]["data"]["attributes"]
+    end
   end
 
   def ensure_book_present?
