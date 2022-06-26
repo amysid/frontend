@@ -51,7 +51,7 @@
             <div class="col-md-4">
               <div class="row">
                 <div class="col-lg-12" data-controller="select2">
-                  <%= f.select :category_ids, options_for_select(Category.all.pluck(:name, :id), selected: book&.categories&.pluck(:id)), { include_blank: true},{multiple: true, id: "update-category-dropdown", style: "width: 33.75em;"} %>
+                  <%= f.select :category_ids, options_for_select(@category_options, selected: book["selected_categories_id"]), { include_blank: true},{multiple: true, id: "update-category-dropdown", style: "width: 33.75em;"} %>
                 </div>
               </div>
             </div>
@@ -61,7 +61,7 @@
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('language') %></label>
             <div class="col-md-10">
-              <%= f.select :audio_type, options_for_select([["Short",'Short'],["Long", "Long"]], selected: book.audio_type), { include_blank: true}, {class: "form-control"} %>
+              <%= f.select :audio_type, options_for_select([["Short",'Short'],["Long", "Long"]], selected: book["audio_type"]), { include_blank: true}, {class: "form-control"} %>
             </div>
           </div>
 
@@ -69,7 +69,7 @@
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('audio_type') %></label>
             <div class="col-md-10">
-              <%= f.select :language, options_for_select([["English",'English'],["Arabic", "Arabic"]], selected: book.language), { include_blank: true}, {class: "form-control"} %>
+              <%= f.select :language, options_for_select([["English",'English'],["Arabic", "Arabic"]], selected: book["language"]), { include_blank: true}, {class: "form-control"} %>
             </div>
           </div>
 
@@ -86,7 +86,8 @@
               <%= f.text_area :arabic_body, class: "form-control text-center", placeholder: t('about_the_book_arabic') %>
             </div>
           </div>
-
+          <% if false %>
+          <!-- Note: Need to check this  -->
           <h4 class="modal-title text-center mb-4" id="H1"><%= t('audio_book_files') %></h4>
           <%= f.fields_for :book_files do |bk| %>
           <div class="form-group row">
@@ -151,7 +152,7 @@
             </div>
 
           </div>
-
+          <% end %>
           <div class="form-group row">
             <label class="col-md-2 col-form-label"></label>
             <div class="col-md-4">
@@ -178,10 +179,12 @@
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
+                    <% if false %>
                     <%= bk.file_field :short_audio_file, class: "mb-2", placeholder: "upload file", id: "update-book-short-audio-field" %>
                     <% short_audio_src = nil %>
                     <% if bf.short_audio_file.present? %>
                       <% short_audio_src = rails_blob_path(bf.short_audio_file, only_path: true) %>
+                    <% end %>
                     <% end %>
                     <div class="update-upload-short-audio-preview" style="margin-top: 10px;">
                       <audio  controls="controls" id="update_short_audio"></audio>

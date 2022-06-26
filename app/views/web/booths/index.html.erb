@@ -14,10 +14,11 @@
             <tr><%= t('no_record_present') %></tr>
           <% else %>
             <% @booths.each_with_index do |booth, i|%>
+              <% booth = booth["attributes"] %>
               <tr>
-                <td><%= booth.name %></td>
-                <td><%= booth.number %></td>
-                <td><%= link_to "Show", web_booth_path(id: booth.number) %></td>
+                <td><%= booth["name"] %></td>
+                <td><%= booth["number"] %></td>
+                <td><%= link_to "Show", web_booth_path(id: booth["number"]) %></td>
               </tr>
             <% end %>
           <% end %>

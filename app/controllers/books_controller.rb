@@ -46,9 +46,13 @@ class BooksController < ApplicationController
   end
 
   def change_status
-    status = @book.status == "Published" ? "UnPublished" : "Published"
-    @book.update(status: status)
-    redirect_to books_path, notice: t("book_updated_successfully")
+    url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}/change_status"
+    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
+    response = HTTParty.get(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("book").dig("data").present?
+      redirect_to books_path
+    end
   end
 
   def destroy
