@@ -1,14 +1,16 @@
 class Web::BooksController < Web::WebApplicationController
   before_action :set_booth
-  before_action :fetch_categories
+  before_action :fetch_categories, only: :index
 
   def index
-    book_ids = @booth.books.pluck(:book_id)
-    @books = Book.includes(:book_files).where(id: book_ids, status: "Published").order('created_at desc')
-
-    book_ids_from_operation = Operation.where(booth_id: @booth.id).pluck(:book_id)
-    @trending_books = @books.where(id: book_ids_from_operation)
-    @trending_books = @books if @trending_books.blank?
+    url = "#{ENV["API_BASE_URL"]}/web_api/booths/#{params[:booth_id]}/books"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("books").present? && response_body.dig("trending_books").present?
+      @books = response_body["books"]["data"] rescue []
+      @trending_books = response_body["trending_books"]["data"] rescue []
+    end
   end
 
   def search 
@@ -92,14 +94,29 @@ class Web::BooksController < Web::WebApplicationController
   private
 
   def set_booth
-    @booth = Booth.find_by(number: params[:booth_id])
-    redirect_to web_booth_path(id: @booth.number), notice: "Invali Booth" if @booth.blank?
+    url = "#{ENV["API_BASE_URL"]}/web_api/booths/#{params[:booth_id]}"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("booth").dig("data").present?
+      @booth = response_body["booth"]["data"]["attributes"]
+    end
+  end
+
+  def ensure_booth_present?
+    if @booth.blank?
+      redirect_to booths_path, alert: t("booth_not_found")
+    end
   end
 
   def fetch_categories
-    @categories = @booth.categories
-    if params[:category_id].present?
-      @categories = @categories.includes(:books).where(id: params[:category_id])
-    end
+    url = "#{ENV["API_BASE_URL"]}/web_api/booths/#{params[:booth_id]}/categories"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("categories").present?
+      @categories = response_body["categories"]["data"]
+    end 
   end
+
 end

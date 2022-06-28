@@ -17,7 +17,7 @@
         <div class="row justify-content-center align-items-center">
           <div class="col-md-12">
             <div class="search-wrapper mt-5 mb-5">
-              <%= form_tag search_web_booth_books_path(booth_id: @booth.number), remote: true, class: "form-group has-search position-relat", method: :get  do %>
+              <%= form_tag search_web_booth_books_path(booth_id: @booth["number"]), remote: true, class: "form-group has-search position-relat", method: :get  do %>
                 <span class="input-group-text close-icon-1">
                   <%= button_tag type: :reset, class: "close-icon" do %>
                   <i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -40,10 +40,11 @@
             <header id="secondary-nav" class="secondary-nav right" style="top: 0;">
               <ul class="vam nav arbic-text">
                 <% @categories.each do |category| %>
+                  <% category = category["attributes"]  %>
                   <li class="nav-item">
-                    <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: category.id), class: "nav-link mb-3 btn btn-search-cat-head", remote: true  do %>
-                          <% cat_url = category.icon.url %>
-                          <img src="<%= cat_url%>" /><%= category.arabic_name%>
+                    <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: category["id"]), class: "nav-link mb-3 btn btn-search-cat-head", remote: true  do %>
+                          <% cat_url = category.icon.url rescue nil%>
+                          <img src="<%= cat_url%>" /><%= category["arabic_name"]%>
                         <% end %>
                   </li>
                 <% end %>
@@ -61,29 +62,30 @@
             <div class="frame arabic" id="basic">
               <ul class="clearfix">
                 <% @trending_books.each do |book|%>
+                  <% book = book["attributes"] %>
                   <li>
                     <div id="Div4" class="single-product">
                       <div class="part-1">
                         <span class="checkout-product-img">
-                          <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %> 
-                            <% img_url = book.book_files.first.book_cover_file.url %>
+                          <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %> 
+                            <% img_url = book.book_files.first.book_cover_file.url  rescue nil%>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>
                         <div class="first">
                           <div class="d-flex justify-content-between align-items-center">
-                           <%if book.language == "English"%>
+                           <%if book["language"] == "English"%>
                               <span class="discount-1">E</span>
                             <%else%>
                               <span class="discount-1">ع</span>
                             <%end%>
-                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                            <span class="wishlist"><%= Time.at(book["book_duration"].to_f).utc.strftime("%H:%M:%S") %> <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
                           </div>
                         </div>
                       </div>
                       <div class="part-2">
-                        <h3 class="product-title"><%= book.arabic_title %></h3>
-                        <h4 class="product-old-price mt-3 mb-4"><%= book.arabic_author_name %></h4>
+                        <h3 class="product-title"><%= book["arabic_title"] %></h3>
+                        <h4 class="product-old-price mt-3 mb-4"><%= book["arabic_author_name"] %></h4>
                       </div>
                     </div>
                   </li>
@@ -100,23 +102,24 @@
             <div class="frame arabic-1" id="Div1">
               <ul class="clearfix">
                 <% @books.each do |book|%>
+                  <% book = book["attributes"] %>
                   <li>
                     <div id="Div32" class="single-product">
                       <div class="part-1">
                         <span class="checkout-product-img">
-                          <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>  
-                          <% img_url = book.book_files.first.book_cover_file.url %>
+                          <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %>  
+                          <% img_url = book.book_files.first.book_cover_file.url rescue nil %>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>
                          <div class="first">
                           <div class="d-flex justify-content-between align-items-center">
-                            <%if book.language == "English"%>
+                            <%if book["language"] == "English"%>
                               <span class="discount-1">E</span>
                             <%else%>
                               <span class="discount-1">ع</span>
                             <%end%>
-                            <span class="wishlist"><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %> <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                            <span class="wishlist"><%= Time.at(book["book_duration"].to_f).utc.strftime("%H:%M:%S") %> <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
                           </div>
                         </div>
                       </div>
@@ -134,29 +137,29 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-3">
-            <%= link_to web_booth_path(id: @booth.number) do %>
+            <%= link_to web_booth_path(id: @booth["number"]) do %>
               <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
             <% end %>
           </div>
           <div class="col-md-9 text-right">
-            <%= link_to web_booth_path(id: booth.number, locale: :en), class:"btn btn-light-grey btn-footer" do %>
+            <%= link_to web_booth_path(id: booth["number"], locale: :en), class:"btn btn-light-grey btn-footer" do %>
                 <img src="<%= asset_url('back-white.png') %>">
             <% end %>
 
             <% if params[:locale] == "en" || params[:locale] == nil %>
-              <%= link_to web_booth_books_path(booth_id: @booth.number, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('arabic.png') %>">
               <% end %>
             <% else %>
-              <%= link_to web_booth_books_path(booth_id: @booth.number, locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('eng-white.png') %>">
               <% end %>
             <% end %>
 
-            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class: "btn btn-light-grey btn-footer isDisabled" do %>
+            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class: "btn btn-light-grey btn-footer isDisabled" do %>
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
-           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
+           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
               <img src="<%= asset_url('baby-white.png') %>">
             <% end %>
           </div>
