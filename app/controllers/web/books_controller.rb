@@ -4,7 +4,7 @@ class Web::BooksController < Web::WebApplicationController
 
   def index
     url = "#{ENV["API_BASE_URL"]}/web_api/booths/#{params[:booth_id]}/books"
-    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    headers = {"Content-Type": "application/json"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("books").present? && response_body.dig("trending_books").present?
@@ -50,23 +50,14 @@ class Web::BooksController < Web::WebApplicationController
   end
 
   def show
-    @book = Book.where(id: params[:id]).first
-    operation = Operation.create(booth_id: @booth.id, book_id: @book.id)
-    
-    path = media_files_web_operation_url(id: operation.number)
-    @qr_code = RQRCode::QRCode.new(path)
-    @qr_png = @qr_code.as_png(
-      bit_depth: 1,
-      border_modules: 4,
-      color_mode: ChunkyPNG::COLOR_GRAYSCALE,
-      color: "black",
-      file: nil,
-      fill: "white",
-      module_px_size: 10,
-      resize_exactly_to: false,
-      resize_gte_to: false,
-      size: 140
-    )
+    url = "#{ENV["API_BASE_URL"]}/web_api/booths/#{params[:booth_id]}/books/#{params[:id]}"
+    headers = {"Content-Type": "application/json"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("book").dig("data").present?
+      @book = response_body["book"]["data"]["attributes"]
+      @qr_png_url = response_body["qr_png_link"]
+    end
   end
 
   def accessibility_mode

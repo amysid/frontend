@@ -7,11 +7,11 @@
         <div class="row">
           <div class="col-md-6">
             <div class="detail-info-R pr-30 pl-30">
-              <h2 class="title-detail text-right"><%= @book.arabic_title %></h2>
+              <h2 class="title-detail text-right"><%= @book["arabic_title"] %></h2>
               <div class="short-desc mb-30 text-right">
                 <h4><%= t('overview') %></h4>
                 <p class="font-lg mt-4">
-                  <%= @book.arabic_body %>
+                  <%= @book["arabic_body"] %>
                 </p>
               </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="image-grid-container-R common-clearfix">
               <div class="image-grid-col50">
                 <div class="image-grid-imageContainer">
-                  <% img_url = @book.book_files.first.book_cover_file.url %>
+                  <% img_url = @book.book_files.first.book_cover_file.url rescue nil %>
                   <img class="big-img" src="<%= img_url %>">
                 </div>
               </div>
@@ -37,21 +37,21 @@
               <div class="col-md-4">
                 <div class="time text-center">
                   <p><%= t('time') %></p>
-                  <h5><%= Time.at(@book.book_duration.to_f).utc.strftime("%H:%M:%S") %></h5>
+                  <h5><%= Time.at(@book["book_duration"].to_f).utc.strftime("%H:%M:%S") %></h5>
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="author-main text-center">
                   <p><%= t('author') %></p>
-                  <h5><%= @book.arabic_author_name %></h5>
+                  <h5><%= @book["arabic_author_name"] %></h5>
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="category text-center">
                   <p><%= t('category') %></p>
-                  <h5><%= @book.categories.pluck(:arabic_name).join(", ") %></h5>
+                  <h5><%= @book["display_categories"] %></h5>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@
                   <div class="bg-white qr-bgiio">
                     <div class="qr-image-grid-imageContainer">
                       <!-- <img src="website-assets/img/QR_code.png" /> -->
-                      <%= image_tag "data:image/png;base64,#{Base64.encode64(@qr_png.to_s).gsub("\n", "")}" %>
+                      <%= image_tag @qr_png_url %>
                     </div>
                   </div>
                 </div>
@@ -174,7 +174,7 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
                     <h1><%= t('play_book_preview') %></h1>
 
                     <div class="button-items">
-                      <% sort_audio_url = @book.book_files.first.short_audio_file.url %>
+                      <% sort_audio_url = @book.book_files.first.short_audio_file.url rescue nil %>
                       <audio id="music" preload="auto" autoplay="true">
                         <source src="<%= sort_audio_url %>">
                         <!-- <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg"> -->
@@ -272,30 +272,30 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-3">
-              <%= link_to web_booth_path(id: @booth.number), id: "stop-music" do %>
+              <%= link_to web_booth_path(id: @booth["number"]), id: "stop-music" do %>
                 <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
               <% end %>
             </div>
             <div class="col-md-9 text-right">
-              <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <%= link_to web_booth_books_path(booth_id: @booth["number"]), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('back-white.png') %>">
               <% end %>
 
               <% if params[:locale] == "en" || params[:locale] == nil %>
-                <%= link_to web_booth_book_path(booth_id: @booth.number, id: @book.id, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('arabic.png') %>">
                 <% end %>
               <% else %>
-                <%= link_to web_booth_book_path(booth_id: @booth.number, id: @book.id,locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"],locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('eng-white.png') %>">
                 <% end %>
               <% end %>
               
-              <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
+              <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
                 <img src="<%= asset_url('access-white.png') %>">
               <% end %>
               
-             <%= link_to  children_mode_web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
+             <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
                 <img src="<%= asset_url('baby-white.png') %>">
               <% end %>
             </div>
