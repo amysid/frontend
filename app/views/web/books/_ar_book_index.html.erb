@@ -39,7 +39,7 @@
             <h1 class="text-right"><%= t('categories') %></h1>
             <header id="secondary-nav" class="secondary-nav right" style="top: 0;">
               <ul class="vam nav arbic-text">
-                <% @categories.each do |category| %>
+                <% @categories.to_a.each do |category| %>
                   <% category = category["attributes"]  %>
                   <li class="nav-item">
                     <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: category["id"]), class: "nav-link mb-3 btn btn-search-cat-head", remote: true  do %>
@@ -61,7 +61,7 @@
             <h1 class="text-right"><%= t('trending_now')%></h1>
             <div class="frame arabic" id="basic">
               <ul class="clearfix">
-                <% @trending_books.each do |book|%>
+                <% @trending_books.to_a.each do |book|%>
                   <% book = book["attributes"] %>
                   <li>
                     <div id="Div4" class="single-product">
@@ -101,7 +101,7 @@
             <h1 class="text-right"><%= t('added_recently') %></h1>
             <div class="frame arabic-1" id="Div1">
               <ul class="clearfix">
-                <% @books.each do |book|%>
+                <% @books.to_a.each do |book|%>
                   <% book = book["attributes"] %>
                   <li>
                     <div id="Div32" class="single-product">
@@ -156,10 +156,10 @@
               <% end %>
             <% end %>
 
-            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class: "btn btn-light-grey btn-footer isDisabled" do %>
+            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class: "btn btn-light-grey btn-footer" do %>
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
-           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
+           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer", remote: true do %>
               <img src="<%= asset_url('baby-white.png') %>">
             <% end %>
           </div>

@@ -70,7 +70,7 @@
           <h1><%= t('trending_now')%></h1>
           <div class="frame basic" id="basic">
             <ul class="clearfix">
-              <% @trending_books.each do |book|%>
+              <% @trending_books.to_a.each do |book|%>
                 <% book = book["attributes"]%>
                 <li>
                   <div id="Div4" class="single-product">
@@ -107,7 +107,7 @@
           <h1><%= t('added_recently') %></h1>
           <div class="frame basic" id="Div1">
             <ul class="clearfix">
-              <% @books.each do |book|%>
+              <% @books.to_a.each do |book|%>
               <% book = book["attributes"]%>
                 <li>
                   <div id="Div32" class="single-product">
@@ -155,10 +155,10 @@
                 <img src="<%= asset_url('eng-white.png') %>">
               <% end %>
             <% end %>
-            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
+            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class:"btn btn-light-grey btn-footer" do %>
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
-           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
+           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('baby-white.png') %>">
             <% end %>
           </div>

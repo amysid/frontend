@@ -49,7 +49,7 @@
                     <div class="d-flex justify-content-between align-items-center">
 
                       <span class="discount-1"><%= book["language"].to_s.at(0) %></span>
-                      <span class="wishlist"><%= Time.at(book["book_duration"].to_f).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
+                      <span class="wishlist"><%= Time.at(book["book_duration"]).utc.strftime("%H:%M:%S") %> min <i class="fa fa-headphones pl-1" aria-hidden="true"></i></span>
                     </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
             <%= link_to web_booth_books_path(booth_id: @booth["number"]), class:"btn btn-light-grey btn-footer", remote: true do %>
               <img src="<%= asset_url('back-white.png') %>">
             <% end %>
-            <% false && if params[:locale] == "en" || params[:locale] == nil %>
+            <% if params[:locale] == "en" || params[:locale] == nil %>
               <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: @categories.first.id, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('arabic.png') %>">
               <% end %>
@@ -199,6 +199,7 @@
     //# sourceURL=pen.js
   </script>
 
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script>
     (function ($) {
       $(window).on("load", function () {

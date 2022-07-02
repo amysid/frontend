@@ -29,12 +29,12 @@
     <div class="css-1jx6fr9 bg-hh mb-5">
       <div class="css-1jx6fr9 icon text-center">
         <% url = nil %>
-        <% url = @categories.first.white_icon.url if @categories.first.white_icon.present? %>
-        <% url = @categories.first.icon.url if url.blank? && @categories.first.icon.present? %>
+        <%# url = @category.white_icon.url if @category.white_icon.present? %>
+        <%# url = @category.icon.url if url.blank? && @category.icon.present? %>
         <div>
           <img src="<%= url %>" class="w-17 mt-4"/>
         </div>
-        <h1><%= @categories.first.name %></h1>
+        <h1><%= @category["name"] %></h1>
       </div>
 
       <div class="">
@@ -74,11 +74,11 @@
         <div class="row justify-content-center align-items-center">
           <div class="col-md-12">
             <div class="search-tag">
-              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, type: "all", book: params[:book], category_id: params[:category_id]), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
+              <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], type: "all", book: params[:book], category_id: params[:category_id]), remote: true,class: "btn btn-search-cat mr-3 #{(params[:type] == 'all' or params[:type] == nil) ? 'active' : ''}" do  %>
                 <i class="fas fa-check"></i><%= t('all') %>
               <% end %>
-              <%= link_to t('book_summary'),category_search_web_booth_books_path(booth_id: @booth.number, type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
-              <%= link_to t('long_audiobooks'),category_search_web_booth_books_path(booth_id: @booth.number, type: "long", book: params[:book], category_id: params[:category_id]), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
+              <%= link_to t('book_summary'),category_search_web_booth_books_path(booth_id: @booth["number"], type: "short", book: params[:book], category_id: params[:category_id]), remote: true, class: "btn btn-search-cat mr-3 #{params['type'] == 'short' ? 'active' : ''}" %>
+              <%= link_to t('long_audiobooks'),category_search_web_booth_books_path(booth_id: @booth["number"], type: "long", book: params[:book], category_id: params[:category_id]), remote: true,  class: "btn btn-search-cat mr-3 #{params['type'] == 'long' ? 'active' : ''}" %> 
             </div>
           </div>
         </div>
@@ -92,26 +92,27 @@
             No Record Found
           <% else %>
           <% @books.each do |book| %>
+          <% book = book["attributes"] %>
           <div class="col-md-6 col-lg-3 col-xl-3 mb-4">
             <div id="Div4" class="single-product">
               <div class="part-1">
                 <span class="checkout-product-img">
-                  <% img_url = book.book_files.first.book_cover_file.url %>
-                  <%= link_to web_booth_book_path(booth_id: @booth.number, id: book.id), remote: true do %>
+                  <% img_url = book.book_files.first.book_cover_file.url rescue nil %>
+                  <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %>
                     <img src="<%= img_url %>" class="rounded" />
                   <% end %>
                 </span>
                 <div class="first">
                 <div class="d-flex justify-content-between align-items-center">
-                    <span class="discount-1"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book.book_duration.to_f).utc.strftime("%H:%M:%S") %></span>
-                    <span class="wishlist"><%= book.language.to_s.at(0) %></span>
+                    <span class="discount-1"><i class="fa fa-headphones" aria-hidden="true"></i><%= Time.at(book["book_duration"].to_f).utc.strftime("%H:%M:%S") %></span>
+                    <span class="wishlist"><%= book["language"].to_s.at(0) %></span>
                 </div>
                 </div>
               </div>
               <div class="part-2">
-                <h3 class="product-title"><%= book.title %></h3>
-                <h4 class="product-old-price mt-3 mb-4"><%= book.author_name %></h4>
-                <h6 class="author"><%= book.categories.pluck(:name).join(", ") %></</h6>
+                <h3 class="product-title"><%= book["title"] %></h3>
+                <h4 class="product-old-price mt-3 mb-4"><%= book["author_name"] %></h4>
+                <h6 class="author"><%= book["display_categories"] %></</h6>
               </div>
             </div>
           </div>
@@ -125,29 +126,29 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-3">
-            <%= link_to web_booth_path(id: @booth.number) do %>
+            <%= link_to web_booth_path(id: @booth["number"]) do %>
               <img class="img-fluid" src="<%= asset_url('footer-logo-white.png') %>">
             <% end %>
           </div>
           <div class="col-md-9 text-right">
-            <%= link_to web_booth_books_path(booth_id: @booth.number), class:"btn btn-light-grey btn-footer", remote: true do %>
+            <%= link_to web_booth_books_path(booth_id: @booth["number"]), class:"btn btn-light-grey btn-footer", remote: true do %>
               <img src="<%= asset_url('back-white.png') %>">
             <% end %>
             <% if params[:locale] == "en" || params[:locale] == nil %>
-              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: @categories.first.id, locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: @category["id"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('arabic.png') %>">
               <% end %>
             <% else %>
-              <%= link_to category_search_web_booth_books_path(booth_id: @booth.number, category_id: @categories.first.id), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: @category["id"]), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('eng-white.png') %>">
               <% end %>
             <% end %>
 
-            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth.number), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
+            <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
 
-           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth.number), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
+           <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
               <img src="<%= asset_url('baby-white.png') %>">
             <% end %>
           </div>  
