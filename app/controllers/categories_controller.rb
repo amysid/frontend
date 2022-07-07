@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    puts response_body
     if response_body.present? && response_body.dig("categories").present? && response_body.dig("categories").dig("data").present?
       @categories =  response_body["categories"]["data"]
     end
@@ -16,7 +17,7 @@ class CategoriesController < ApplicationController
 
   def create
     url = "#{ENV["API_BASE_URL"]}/api/categories"
-    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
+    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("category").dig("data").present?
