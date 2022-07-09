@@ -37,11 +37,11 @@
                   <td class="text-danger"><%= ( i + 1) %></td>
                   <td><%= category["name"] %></td>
                   <td><%= category["arabic_name"] %></td>
-                  <td><img src="<%= ENV["API_BASE_URL"] + "/" + category["icon_url"] if category["icon_url"].present? %>" class="cat-icon-img"></td>
+                  <td><img src="<%= category["icon_url"] if category["icon_url"].present? %>" class="cat-icon-img"></td>
                   <td><img src="<%= category["white_icon_url"] if category["white_icon_url"].present? %>" class="cat-icon-img"></td>
                   <td>
                     <div class="pl-2 pr-2">
-                      <%#= select_tag t('booth'), options_for_select(category.booths.pluck(:name, :id)), class: "custom-select custom-select-sm text-center"%>
+                      <%= select_tag t('booth'), options_for_select(category["booths"]), class: "custom-select custom-select-sm text-center"%>
                     </div>
                   </td>
                   <td><%= category["created_at"] %></td>

@@ -1,102 +1,4 @@
-<div class="content-wrapper">
-  <div class="content-heading">
-      <div class="ml-auto">
-          <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#"><%= t('home') %></a></li>
-                  <li class="breadcrumb-item"><a href="#"><%= t('library') %></a></li>
-              </ol>
-          </nav>
-      </div>
-  </div>
-  <!-- START cards box-->
-
-  <div class="row">
-    <div class="col-xl-12 col-md-6">
-
-      <!-- START card-->
-      <% if current_user["role"] != "Approver" %>
-        <button class="btn btn-labeled btn-secondary-blue btn-lg btn-rdius btn-rdius-13 font-bold" type="button" data-toggle="modal" data-target="#myModal"><%= t('add_book') %><span class="btn-label btn-label-right"><i class="fa fa-plus"></i></span></button>
-      <% end %>
-      <div class="table-responsive mt-3">
-        <table class="table table-bordered table-hover" id="table-ext-1">
-          <thead>
-            <tr>
-              <th class="text-danger">#</th>
-              <th class="text-danger"><%= t('book_title')%></th>
-              <th class="text-danger"><%= t('book_arabic_title')%></th>
-              <th class="text-danger"><%= t('book_arabic_author_name')%></th>
-              <th class="text-danger"><%= t('author_name') %></th>
-              <th class="text-danger"><%= t('category') %></th>
-              <th class="text-danger"><%= t('duration_of_the_book_in_minutes') %></th>
-              <th class="text-danger"><%= t('listening') %></th>
-              <th class="text-danger"><%= t('status') %></th>
-              <th class="text-danger"><%= t('language') %></th>
-              <th class="text-danger"><%= t('last_listening') %></th>
-              <th class="text-danger"><%= t('setting') %></th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <% if @books.blank? %>
-              <tr><%= t('no_record_present') %></tr>
-            <% else %>
-              <% @books.each_with_index do|book, i|  %>
-                <% book = book["attributes"]%>
-                <tr>
-                  <td class="text-danger"><%= ( i + 1)%></td>
-                  <td><%= book["title"] %></td>
-                  <td><%= book["arabic_title"] %></td>
-                  <td><%= book["arabic_author_name"] %></td>
-                  <td class="text-center"><%= book["author_name"] %>
-                  </td>
-                  <td>
-                    <div class="pl-2 pr-2">
-                      <%= select_tag t('category'), options_for_select(book["selected_categories"]), class: "custom-select custom-select-sm text-center"%>
-                    </div>
-                  </td>
-                  <td><%= Time.at(book["book_duration"].to_f).utc.strftime("%H:%M:%S") %></td>
-                  <td><%= book["total_time"] %></td>
-                  <td>
-                      <label><%= book["status"] %></label></td>
-                  <td><%= book["language"] %></td>
-                  <td><%= book["last_listening_at"] %></td>
-                  <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_book_path(id: book["id"]) ,remote: true%></td>
-                </tr>
-              <% end %>
-            <% end%>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card-footer">
-        <div class="d-flex">
-          <% if false %>
-          <div>
-            <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-          </div>
-          <% end %>
-          <div class="ml-auto">
-            <nav>
-              <ul class="pagination pagination-sm">
-                <% if false %>
-                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item active"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                <% end %>
-                <%#= will_paginate @books%>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Form with Nested Attribute -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-lgg">
     <div class="modal-content">
@@ -105,7 +7,7 @@
         <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
         <div class="mt-3">
-          <%= form_with scope: :book, html: {id: "book-form"} do |f| %>
+          <%= nested_form_for @book, html: {id: "book-form"} do |f| %>
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('book_title') %></label>
             <div class="col-md-10">
@@ -188,7 +90,7 @@
           </div>
 
           <h4 class="modal-title text-center mb-4" id="H1"><%= t('audio_book_files') %></h4>
-          <%#= f.fields_for :book_files do |bk| %>
+          <%= f.fields_for :book_files do |bk| %>
           <div class="form-group row">
             <label class="col-md-2 col-form-label pr-0"><%= t('book_cover') %></label>
             <div class="col-md-4">
@@ -201,11 +103,11 @@
                       <div class="input-group-append">
                         <a class="browse input-group-text btn btn-default bg-white file-bor-rad bor-R" id="basic-addon2"><i class="fas fa-paperclip"></i></a>
                       </div>
-                      <%= f.file_field :book_cover_file, class: "form-control bg-white", placeholder: "upload file" %>
+                      <%= bk.file_field :book_cover_file, class: "form-control bg-white", placeholder: "upload file" %>
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= f.file_field :book_cover_file,id: "book-cover-field", class: "", placeholder: "upload file" %>
+                    <%= bk.file_field :book_cover_file,id: "book-cover-field", class: "", placeholder: "upload file" %>
                     <div class="upload-preview" style="margin-top: 10px;">
                       <img style="width: 50%; height: 50%;"/>
                     </div>
@@ -225,11 +127,11 @@
                       <div class="input-group-append">
                         <a class="browse input-group-text btn btn-default bg-white file-bor-rad bor-R" id="A1"><i class="fas fa-paperclip"></i></a>
                       </div>
-                      <%= f.file_field :audio, class: "form-control bg-white", placeholder: "upload file" %>
+                      <%= bk.file_field :audio, class: "form-control bg-white", placeholder: "upload file" %>
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= f.file_field :audio, class: "", id: "book-audio-field", placeholder: "upload file" %>
+                    <%= bk.file_field :audio, class: "", id: "book-audio-field", placeholder: "upload file" %>
                     <div class="upload-audio-preview" style="margin-top: 10px;">
                       <audio  controls="controls" id="long_audio"></audio>
                     </div>
@@ -261,11 +163,11 @@
                       <div class="input-group-append">
                           <a class="browse input-group-text btn btn-default bg-white file-bor-rad bor-R" id="A3"><i class="fas fa-paperclip"></i></a>
                       </div>
-                      <%= f.file_field :short_audio_file, class: "form-control bg-white", placeholder: "upload file" %>
+                      <%= bk.file_field :short_audio_file, class: "form-control bg-white", placeholder: "upload file" %>
                       <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
                     </div>
                     <% end %>
-                    <%= f.file_field :short_audio_file, class: "", id: "book-short-audio-field", placeholder: "upload file" %>
+                    <%= bk.file_field :short_audio_file, class: "", id: "book-short-audio-field", placeholder: "upload file" %>
                     <div class="upload-short-audio-preview" style="margin-top: 10px;">
                       <audio  controls="controls" id="short_audio"></audio>
                     </div>
@@ -276,114 +178,10 @@
 
           </div>
           <% end %>
-          <%# end %>
+          <% end %>
         </div>
       </div>
 
     </div>
   </div>
 </div>
-
-<div id="edit-modal"></div>
-<div id="book-action"></div>
-<div id="detail-modal"></div>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#category-dropdown").select2()
-
-    var preview = $(".upload-preview img");
-    var audio_preview = $(".upload-audio-preview audio")
-    var short_audio_preview = $(".upload-short-audio-preview audio")
-
-
-    $("#book-cover-field").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
-       var reader = new FileReader();
-       reader.onload = function(e){
-           image_base64 = e.target.result;
-           preview.attr("src", image_base64);
-       };
-       reader.readAsDataURL(file);
-    });
-
-    $("#book-audio-field").change(function(event){
-      var audio_input = $(event.currentTarget);
-      var file = audio_input[0].files[0]
-      var reader = new FileReader();
-      reader.onload = function(e){
-        audio_base64 = e.target.result;
-        audio_preview.attr("src", audio_base64);
-      };
-      reader.readAsDataURL(file);
-      setTimeout(function() {
-        // duration in second
-        var duration = $("#long_audio")[0].duration;
-        duration = Number(duration)
-        var minute = Math.floor( duration % 3600 / 60);
-        var second = Math.floor(duration % 3600 % 60);
-        var time = Number(minute + "." + second);
-        $(".book-duration").val(time);
-      }, 2000);
-    });
-
-    $("#book-short-audio-field").change(function(event){
-      var audio_input = $(event.currentTarget);
-      var file = audio_input[0].files[0]
-      var reader = new FileReader();
-      reader.onload = function(e){
-        audio_base64 = e.target.result;
-        short_audio_preview.attr("src", audio_base64);
-      };
-      reader.readAsDataURL(file);
-    });
-
-    // $("#book-form").submit(function(e){
-    //   var duration = $("#long_audio")[0].duration;
-    //   duration = duration || 0
-    //   $(".book-duration").val(duration);
-    // });
-
-    $("#book-form").submit(function(event){
-      var duration = $("#long_audio")[0].duration;
-      duration = duration || 0
-      $(".book-duration").val(duration);
-      event.preventDefault()
-      var form_data = new FormData(this);
-      debugger
-      $.ajax({
-          url : '<%= "#{ENV["API_BASE_URL"]}/api/books" %>',
-          type : 'post',
-          data : form_data,
-          processData: false,
-          contentType: false,
-          headers: {
-            Authorization: "<%= "Bearer #{session[:token]}" %>"
-          },
-          success : function(data) {              
-           alert("data save")
-          },
-          error : function(request,error)
-          {
-           alert("their is some issue");
-          }
-        })
-    });
-
-  });
-
-
-  // function secondsToHms(d) {
-  //   d = Number(d);
-  //   var h = Math.floor(d / 3600);
-  //   var m = Math.floor(d % 3600 / 60);
-  //   var s = Math.floor(d % 3600 % 60);
-
-  //   var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
-  //   var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-  //   var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
-  //   return hDisplay + mDisplay + sDisplay; 
-  // }
-
-</script>
