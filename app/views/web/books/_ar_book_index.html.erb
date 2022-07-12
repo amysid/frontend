@@ -43,7 +43,7 @@
                   <% category = category["attributes"]  %>
                   <li class="nav-item">
                     <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: category["id"]), class: "nav-link mb-3 btn btn-search-cat-head", remote: true  do %>
-                          <% cat_url = category.icon.url rescue nil%>
+                          <% cat_url = category["icon_url"] rescue nil%>
                           <img src="<%= cat_url%>" /><%= category["arabic_name"]%>
                         <% end %>
                   </li>
@@ -68,7 +68,7 @@
                       <div class="part-1">
                         <span class="checkout-product-img">
                           <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %> 
-                            <% img_url = book.book_files.first.book_cover_file.url  rescue nil%>
+                            <% img_url = book["book_cover_file_url"]  rescue nil%>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>
@@ -108,7 +108,7 @@
                       <div class="part-1">
                         <span class="checkout-product-img">
                           <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %>  
-                          <% img_url = book.book_files.first.book_cover_file.url rescue nil %>
+                          <% img_url = book["book_cover_file_url"] rescue nil %>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>

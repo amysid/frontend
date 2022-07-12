@@ -6,25 +6,25 @@
         <button class="close close-L" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
         <div class="mt-3">
-          <%= nested_form_for @book, html: {id: "update-book-form"}, url: book_path, method: :put do |f| %>
+          <%= form_with scope: :book, html: {id: "book-update-form"} do |f| %>
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('book_title') %></label>
             <div class="col-md-10">
-              <%= f.text_field :title, class: "form-control text-center",placeholder: t('book_title') %>
+              <%= f.text_field :title, value: book["title"], class: "form-control text-center",placeholder: t('book_title') %>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('book_arabic_title') %></label>
             <div class="col-md-10">
-              <%= f.text_field :arabic_title, class: "form-control text-center",placeholder: t('book_arabic_title') %>
+              <%= f.text_field :arabic_title, value: book["arabic_title"], class: "form-control text-center",placeholder: t('book_arabic_title') %>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('book_arabic_author_name') %></label>
             <div class="col-md-10">
-              <%= f.text_field :arabic_author_name, class:"form-control text-center", placeholder: t('book_arabic_author_name') %>
+              <%= f.text_field :arabic_author_name, value: book["arabic_author_name"], class:"form-control text-center", placeholder: t('book_arabic_author_name') %>
               <%#= f.select :user_id, options_for_select(User.all.pluck(:full_name, :id)), { include_blank: true},class: "custom-select custom-select-sm" %>
             </div>
           </div>
@@ -32,7 +32,7 @@
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('author_name') %></label>
             <div class="col-md-10">
-              <%= f.text_field :author_name, class:"form-control text-center", placeholder: t('author_name') %>
+              <%= f.text_field :author_name, value: book["author_name"], class:"form-control text-center", placeholder: t('author_name') %>
               <%#= f.select :user_id, options_for_select(User.all.pluck(:full_name, :id)), { include_blank: true},class: "custom-select custom-select-sm" %>
             </div>
           </div>
@@ -42,7 +42,7 @@
             <div class="col-md-4">
               <div class="row">
                 <div class="col-lg-12">
-                  <%= f.text_field :book_duration, class: "form-control text-center update-book-duration", placeholder: t('book_duration'), readonly: true %>
+                  <%= f.text_field :book_duration, value: book["book_duration"], class: "form-control text-center update-book-duration", placeholder: t('book_duration'), readonly: true %>
                 </div>
               </div>
             </div>
@@ -76,48 +76,32 @@
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('about_the_book') %></label>
             <div class="col-md-10">
-              <%= f.text_area :body, class: "form-control text-center", placeholder: t('about_the_book') %>
+              <%= f.text_area :body, value: book["body"], class: "form-control text-center", placeholder: t('about_the_book') %>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('about_the_book_arabic') %></label>
             <div class="col-md-10">
-              <%= f.text_area :arabic_body, class: "form-control text-center", placeholder: t('about_the_book_arabic') %>
+              <%= f.text_area :arabic_body, value: book["arabic_body"], class: "form-control text-center", placeholder: t('about_the_book_arabic') %>
             </div>
           </div>
-          <% if false %>
           <!-- Note: Need to check this  -->
           <h4 class="modal-title text-center mb-4" id="H1"><%= t('audio_book_files') %></h4>
-          <%= f.fields_for :book_files do |bk| %>
           <div class="form-group row">
             <label class="col-md-2 col-form-label pr-0"><%= t('book_cover') %></label>
             <div class="col-md-4">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <% if false %>
-                    <input type="file" name="img[]" class="file">
-                    <div class="input-group mb-3">
-                      <div class="input-group-append">
-                        <a class="browse input-group-text btn btn-default bg-white file-bor-rad bor-R" id="basic-addon2"><i class="fas fa-paperclip"></i></a>
-                      </div>
-                      <%= bk.file_field :book_cover_file, class: "form-control bg-white", placeholder: "upload file" %>
-                      <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
-                    </div>
-                    <% end %>
-                    <%= bk.file_field :book_cover_file,id: "update-book-cover-field", class: "mb-1", placeholder: "upload file" %>
-                    <% bf = book.book_files.first if book.book_files.present? %>
+                    <%= f.file_field :book_cover_file,id: "update-book-cover-field", class: "mb-1", placeholder: "upload file" %>
                     <% src = nil %>
-                    <% if bf.book_cover_file.present? %>
-                      <% src = rails_blob_path(bf.book_cover_file , only_path: true) %>
+                    <% if book["book_cover_file_url"].present? %>
+                      <% src = book["book_cover_file_url"] %>
                     <% end %>
                     <div class="update-upload-preview" style="margin-top: 10px;">
                       <img style="width: 50%; height: 50%;" src=<%= src %>/>
                     </div>
-                    <!-- <div class="upload-preview" style="margin-top: 10px;">
-                      <img style="width: 50%; height: 50%;"/>
-                    </div> -->
                   </div>
                 </div>
               </div>
@@ -128,20 +112,10 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <% if false %>
-                    <input type="file" name="img[]" class="file">
-                    <div class="input-group mb-3">
-                      <div class="input-group-append">
-                        <a class="browse input-group-text btn btn-default bg-white file-bor-rad bor-R" id="A1"><i class="fas fa-paperclip"></i></a>
-                      </div>
-                      <%= bk.file_field :audio, class: "form-control bg-white", placeholder: "upload file" %>
-                      <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
-                    </div>
-                    <% end %>
-                    <%= bk.file_field :audio, class: "mb-2", placeholder: "upload file", id: "update-book-audio-field"%>
+                    <%= f.file_field :audio, class: "mb-2", placeholder: "upload file", id: "update-book-audio-field"%>
                     <% audio_src = nil %>
-                    <% if bf.audio.present? %>
-                      <% audio_src = rails_blob_path(bf.audio, only_path: true) %>
+                    <% if book["audio_url"].present? %>
+                      <% audio_src = book["audio_url"] %>
                     <% end %>
                     <div class="update-upload-audio-preview" style="margin-top: 10px;">
                       <audio  controls="controls" src="<%= audio_src %>" id="update_long_audio"></audio>
@@ -152,7 +126,6 @@
             </div>
 
           </div>
-          <% end %>
           <div class="form-group row">
             <label class="col-md-2 col-form-label"></label>
             <div class="col-md-4">
@@ -169,33 +142,19 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <% if false %>
-                    <input type="file" name="img[]" class="file">
-                    <div class="input-group mb-3">
-                      <div class="input-group-append">
-                          <a class="browse input-group-text btn btn-default bg-white file-bor-rad bor-R" id="A3"><i class="fas fa-paperclip"></i></a>
-                      </div>
-                      <%= bk.file_field :short_audio_file, class: "form-control bg-white", placeholder: "upload file" %>
-                      <!-- <input type="text" class="form-control bg-white" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1"> -->
-                    </div>
-                    <% end %>
-                    <% if false %>
-                    <%= bk.file_field :short_audio_file, class: "mb-2", placeholder: "upload file", id: "update-book-short-audio-field" %>
+                    <%= f.file_field :short_audio_file, class: "mb-2", placeholder: "upload file", id: "update-book-short-audio-field" %>
                     <% short_audio_src = nil %>
-                    <% if bf.short_audio_file.present? %>
-                      <% short_audio_src = rails_blob_path(bf.short_audio_file, only_path: true) %>
-                    <% end %>
+                    <% if book["short_audio_url"].present? %>
+                      <% short_audio_src = book["short_audio_url"] %>
                     <% end %>
                     <div class="update-upload-short-audio-preview" style="margin-top: 10px;">
-                      <audio  controls="controls" id="update_short_audio"></audio>
+                      <audio  controls="controls" src="<%= short_audio_src %>" id="update_short_audio"></audio>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
-          <% end %>
           <% end %>
         </div>
       </div>
@@ -255,10 +214,31 @@
       reader.readAsDataURL(file);
     });
 
-    $("#update-book-form").submit(function(e){
+    $("#book-update-form").submit(function(e){
       var duration = $("#update_long_audio")[0].duration;
       duration = duration || 0
       $(".update-book-duration").val(duration);
+      event.preventDefault()
+      var form_data = new FormData(this);
+      $.ajax({
+          url : '<%= "#{ENV["API_BASE_URL"]}/api/books/#{book["id"]}" %>',
+          type : 'put',
+          data : form_data,
+          processData: false,
+          contentType: false,
+          headers: {
+            Authorization: "<%= "Bearer #{session[:token]}" %>"
+          },
+          success : function(data) {              
+           alert("data save")
+           var url = "<%= books_url %>"
+           window.location.href = url
+          },
+          error : function(request,error)
+          {
+           alert("their is some issue");
+          }
+        })
     });
 
   });

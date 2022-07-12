@@ -41,7 +41,7 @@
             <div id="Div8" class="single-product">
               <div class="part-1">
                 <span class="checkout-product-img">
-                  <% img_url = @book.book_files.first.book_cover_file.url rescue nil %>
+                  <% img_url = @book["book_cover_file_url"] rescue nil %>
                   <a href="">
                     <img src="<%= img_url %>" class="rounded">
                   </a>
@@ -74,7 +74,7 @@
              <div class="player">
                 <div class="info mt-2">
                   <div class="button-items">
-                    <% audio_url = @book.book_files.first.audio.url rescue nil %>
+                    <% audio_url = @book["audio_url"] rescue nil %>
                     <audio id="music" preload="auto">
                       <source src="<%= audio_url %>" type="audio/mp3">
                     </audio>

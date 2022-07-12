@@ -60,34 +60,27 @@
         </div>
         <h4 class="mt-3 mb-3"><%= t('audio_book_files') %></h4>
         <!-- Note: This Need to change  -->
-        <% if false %>
+
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('book_cover')%></label>
-          <% @book.book_files.each do |bf| %>
             <div class="col-md-7 col-form-label text-black font-17">
-              <img src="<%= rails_blob_path(bf.book_cover_file , only_path: true) if bf.book_cover_file.present? %>" class="book-cover-img">
-            </div> 
-          <% end %>                          
+              <img src="<%= book["book_cover_file_url"] %>" class="book-cover-img">
+            </div>                           
         </div>
 
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('audio_file')%></label>
-          <% @book.book_files.each do |bf| %>
             <div class="col-md-7 col-form-label text-black font-17">
-              <audio  controls="controls" src="<%= rails_blob_path(bf.audio, only_path: true) if bf.audio.present? %>"></audio>
-            </div> 
-          <% end %>                          
+              <audio  controls="controls" src="<%= book["audio_url"] %>"></audio>
+            </div>                          
         </div>
 
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('short_audio')%></label>
-          <% @book.book_files.each do |bf| %>
             <div class="col-md-7 col-form-label text-black font-17">
-              <audio  controls="controls" src="<%= rails_blob_path(bf.short_audio_file, only_path: true) if bf.short_audio_file.present? %>"></audio>
-            </div> 
-          <% end %>                          
+              <audio  controls="controls" src="<%= book["short_audio_url"] %>"></audio>
+            </div>                      
         </div>
-        <% end %>
       </div>
     </div>
   </div>
