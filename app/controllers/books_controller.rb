@@ -5,8 +5,6 @@ class BooksController < ApplicationController
   before_action :fetch_categories, only: [:index, :edit]
 
   def index
-    @book = Book.new
-    @book.book_files.build
     url = "#{ENV["API_BASE_URL"]}/api/books"
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)

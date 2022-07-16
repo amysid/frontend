@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in?, except: [:create]
   before_action :set_user, except: [:index, :create]
   before_action :ensure_user_present?, except: [:index, :create]
+  
   def index
-    @user = User.new
     url = "#{ENV["API_BASE_URL"]}/api/users"
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)

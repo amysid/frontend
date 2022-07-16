@@ -6,7 +6,6 @@ class BoothsController < ApplicationController
   before_action :ensure_booth_present?, except: [:new, :create, :index]
 
   def index
-    @booth = Booth.new
     url = "#{ENV["API_BASE_URL"]}/api/booths"
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
