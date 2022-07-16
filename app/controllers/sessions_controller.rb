@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   before_action :logged_out?, only: [:new, :create]
  
   def new
-  	@user = User.new
   end
 
   def create
@@ -22,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+  	# @user = User.find(params[:id])
   end
 
   def destroy
