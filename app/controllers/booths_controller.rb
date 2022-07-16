@@ -1,6 +1,5 @@
 class BoothsController < ApplicationController
   before_action :logged_in?
-  before_action :ensure_user_and_category_present, only: [:create, :update]
   before_action :fetch_categories, only: [:index, :edit]
   before_action :set_booth, except: [:new, :create, :index]
   before_action :ensure_booth_present?, except: [:new, :create, :index]
@@ -63,13 +62,6 @@ class BoothsController < ApplicationController
     params.require(:booth).permit(:name, :city, :address, :phone_number, :latitude, :longitude, :communicate_with)
   end
 
-  def ensure_user_and_category_present
-    @user = User.find_by(id:params[:booth][:user_id])
-    @categories = Category.where(id: params[:booth][:category_id])
-    if @categories.blank?
-      redirect_to booths_path, alert: t("user_category_record_errors")
-    end
-  end
 
   def set_booth
     url = "#{ENV["API_BASE_URL"]}/api/booths/#{params[:id]}"
