@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xl-12 col-md-6">  
+    <div class="table-responsive mt-3">
+      <table class="table table-bordered table-hover" id="table-ext-1">
+        <thead>
+          <tr>
+            <th class="text-danger"><%= t('book_name')%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @books.blank? %>
+            <tr><%= t('no_record_present') %></tr>
+          <% else %>
+            <% @books.each do |book|%>
+              <% book = book["attributes"]%>
+              <tr>
+                <td><%= link_to "#{book["title"]}", web_play_book_for_blind_path(id: book["id"])  %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>  

@@ -1,5 +1,5 @@
 class Web::BooksController < Web::WebApplicationController
-  before_action :set_booth
+  before_action :set_booth , except: [:all_books, :play_book_for_blind]
   before_action :fetch_categories, only: :index
   before_action :set_category, only: :category_search
 
@@ -66,6 +66,28 @@ class Web::BooksController < Web::WebApplicationController
     if response_body.present? &&  response_body.dig("books").dig("data").present?
       @books = response_body["books"]["data"] rescue []
     end
+  end
+
+  def all_books
+    url = "#{ENV["API_BASE_URL"]}/web_api/all_books"
+    headers = {"Content-Type": "application/json"}
+    response = HTTParty.get(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("books").dig("data").present?
+      @books = response_body["books"]["data"] rescue []
+    end
+  end
+
+  def play_book_for_blind
+    id = params[:id]
+    url = "#{ENV["API_BASE_URL"]}/web_api/create_operation_for_blind"
+    headers = {headers: {"Content-Type": "application/json"},multipart: true, body: params.as_json}
+    response = HTTParty.get(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present?
+     operation_number = response_body["operation_number"]
+    end
+    redirect_to media_files_web_operation_path(id: operation_number)
   end
 
   def media_files

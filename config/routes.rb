@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     get 'login', to: "sessions#new"
 
     namespace :web  do
+      get "all_books", to: "books#all_books"
+      get "play_book_for_blind", to: "books#play_book_for_blind"
+      
       resources :booths, only: [:index, :show]  do
         resources :books, only: [:index, :show] do
           get :search, on: :collection
