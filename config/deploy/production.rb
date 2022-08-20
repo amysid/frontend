@@ -2,8 +2,8 @@ set :stage, :production
 # set :branch, :master
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
-role :app, %w(root@13.233.48.140)
-role :web, %w(root@13.233.48.140)
+role :app, %w(ec2-user@13.233.48.140)
+role :web, %w(ec2-user@13.233.48.140)
 
 set :rails_env, "production"
 set :puma_env, "production"
