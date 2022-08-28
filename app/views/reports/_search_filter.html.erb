@@ -32,13 +32,13 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id),selected: (params[:report][:category_id] rescue nil)), { include_blank: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
+              <%= f.select :category_id, options_for_select(@category_for_dropdown, selected: (params[:report][:category_id] rescue nil)), { include_blank: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
             </div>
           </div>
 
           <div class="col-md-3">
             <div class="form-group">
-              <%= f.select :booth_id, options_for_select(Booth.all.pluck(:name, :id),selected: (params[:report][:booth_id] rescue nil)), { include_blank: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
+              <%= f.select :booth_id, options_for_select( @booth_for_dropdown, selected: (params[:report][:booth_id] rescue nil)), { include_blank: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
             </div>
           </div>
 

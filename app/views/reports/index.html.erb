@@ -15,7 +15,7 @@
       <div class="card card-default" id="cardChart5">
         <div class="card-body">
           <h5>Top Booth</h5>
-          <%= column_chart @operations.group_by_hour(:created_at).count  %>
+          <%= column_chart @operations.group_by_hour(:created_at).count if @operations.present? rescue nil%>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="card card-default" id="cardChart5">
         <div class="card-body">
           <h5>Listening day </h5>
-          <%= column_chart @operations.group_by_day_of_week(:created_at, format: "%a").count %>
+          <%= column_chart @operations.group_by_day_of_week(:created_at, format: "%a").count if @operations.present? rescue nil%>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <div class="card card-default" id="cardChart5">
         <div class="card-body">
           <h5>Top Booth</h5>
-          <%= bar_chart @booth_details %>
+          <%= bar_chart @booth_details if @booth_details.present? %>
         </div>
       </div>
     </div>
@@ -59,17 +59,17 @@
               <tr> No Record Found </tr> 
             <% else %>
               <% @booths.each do |booth| %>
-                <% book_detail = book_detail_for(booth) %>
+                <% book_detail = booth["book_detail"] %>
                 <tr>
-                  <td><%= booth.name %></td>
-                  <td><%= booth.city %></td>
-                  <td><%= listening_count_for(booth) %></td>
-                  <td><%= book_detail["Arabic"] %></td>
-                  <td><%= book_detail["English"] %></td>
+                  <td><%= booth["name"] %></td>
+                  <td><%= booth["city"] %></td>
+                  <td><%= booth["listening_count"] %></td>
+                  <td><%= book_detail.to_h["Arabic"] %></td>
+                  <td><%= book_detail.to_h["English"] %></td>
                   <td><%= "adult" %></td>
                   <td><%= "child" %></td>
-                  <td><%= book_detail["Short"] %></td>
-                  <td><%= book_detail["Long"] %></td>
+                  <td><%= book_detail.to_h["Short"] %></td>
+                  <td><%= book_detail.to_h["Long"] %></td>
                 </tr>
               <% end %>
             <% end %>
@@ -100,16 +100,16 @@
               <tr> No Record Found </tr> 
             <% else %>
               <% @booths.each do |booth| %>
-                <% day_wise_info = day_wise_info_for(booth, @operations) %>
+                <% day_wise_info = booth["day_wise_info"] %>
                 <tr>
-                  <td><%= booth.name %></td>
-                  <td><%= day_wise_info["Sat"] %></td>
-                  <td><%= day_wise_info["Sun"] %></td>
-                  <td><%= day_wise_info["Mon"] %></td>
-                  <td><%= day_wise_info["Tue"] %></td>
-                  <td><%= day_wise_info["Wed"] %></td>
-                  <td><%= day_wise_info["Thr"] %></td>
-                  <td><%= day_wise_info["Fri"] %></td>
+                  <td><%= booth["name"] %></td>
+                  <td><%= day_wise_info.to_h["Sat"] %></td>
+                  <td><%= day_wise_info.to_h["Sun"] %></td>
+                  <td><%= day_wise_info.to_h["Mon"] %></td>
+                  <td><%= day_wise_info.to_h["Tue"] %></td>
+                  <td><%= day_wise_info.to_h["Wed"] %></td>
+                  <td><%= day_wise_info.to_h["Thr"] %></td>
+                  <td><%= day_wise_info.to_h["Fri"] %></td>
                 </tr>
               <% end %>
             <% end %>
