@@ -31,7 +31,7 @@
             <% end %>
             
         <li>
-            <%if request.url.split('/').include?("ar")%>     
+            <%if request.url.split('/').to_a.include?("ar")%>     
                 <div class="langbtn">
                     <%= link_to "/en/homes" do %>
                         <span>English</span>
