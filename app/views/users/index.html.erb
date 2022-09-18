@@ -115,7 +115,7 @@
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('authority_designation') %></label>
             <div class="col-md-10">
-              <%= f.select :role, options_for_select(User.roles.keys), { include_blank: true},class: "custom-select custom-select-sm" %>
+              <%= f.select :role, options_for_select(["Admin", "Approver", "operator"]), { include_blank: true},class: "custom-select custom-select-sm" %>
             </div>
           </div>
 <!-- 
