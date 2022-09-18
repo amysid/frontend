@@ -75,7 +75,7 @@
                 <div class="info mt-2">
                   <div class="button-items">
                     <% audio_url = @book["audio_url"] rescue nil %>
-                    <audio id="music" preload="auto">
+                    <audio id="music" preload="auto" autoplay="true">
                       <source src="<%= audio_url %>" type="audio/mp3">
                     </audio>
                     <div id="slider">
