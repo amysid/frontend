@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     if response_body.present? && response_body.dig("categories").present? && response_body.dig("categories").dig("data").present?
       @categories =  response_body["categories"]["data"]
     end
-    @category_options = @categories.map do |c|
+    @category_options = @categories.to_a.map do |c|
       next if c["attributes"].blank?
       [c["attributes"]["name"], c["attributes"]["id"]]
     end.compact 
