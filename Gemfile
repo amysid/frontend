@@ -65,6 +65,7 @@ gem 'nested_form'
 gem "chartkick"
 gem "groupdate"
 gem 'httparty'
+gem "figaro"
 
 
 
