@@ -19,6 +19,12 @@
               <%= f.text_field :arabic_name, value: @category["arabic_name"], class:"form-control text-center", placeholder: t('arabic_name') %>
             </div>                         
           </div>
+          <div class="form-group row">
+               <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('french_name')%></label>
+            <div class="col-md-9">
+              <%= f.text_field :french_name, value: @category["french_name"], class:"form-control text-center", placeholder: t('french_name') %>
+            </div>                         
+          </div>
 
           <div class="form-group row">
                <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('icon')%></label>

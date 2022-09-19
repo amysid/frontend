@@ -93,6 +93,7 @@ en:
   update_user: "Update User"
   update_book: "Update Book"
   arabic_name: "Arabic Name"
+  french_name: "French Name"
   icon: "Icon"
   booth_not_found: "Booth Not found!"
   category_names: "Category Names"
