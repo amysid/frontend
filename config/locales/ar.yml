@@ -96,6 +96,7 @@ ar:
   update_user: "AR Update User"
   update_book: "AR Update Book"
   arabic_name: "AR Arabic Name"
+  french_name: "AR French Name"
   icon: "AR Icon"
   booth_not_found: "AR Booth Not found!"
   category_names: "AR Category Names"
