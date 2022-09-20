@@ -20,6 +20,7 @@
               <th class="text-danger">#</th>
               <th class="text-danger"><%= t('category_name') %></th> 
               <th class="text-danger"><%= t('arabic_name') %></th>
+              <th class="text-danger"><%= t('french_name') %></th>
               <th class="text-danger"><%= t('icon') %></th>
               <th class="text-danger"><%= t('white_icon') %></th>  
               <th class="text-danger"><%= t('booth_location') %></th>
@@ -37,6 +38,7 @@
                   <td class="text-danger"><%= ( i + 1) %></td>
                   <td><%= category["name"] %></td>
                   <td><%= category["arabic_name"] %></td>
+                  <td><%= category["french_name"] %></td>
                   <td><img src="<%= category["icon_url"] if category["icon_url"].present? %>" class="cat-icon-img"></td>
                   <td><img src="<%= category["white_icon_url"] if category["white_icon_url"].present? %>" class="cat-icon-img"></td>
                   <td>
