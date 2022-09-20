@@ -54,8 +54,16 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.destroy
-    redirect_to books_path, notice: t("book_deleted_successfully")
+    url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.delete(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body["status_code"] == 200
+      message = t("book_deleted_successfully")
+      redirect_to books_path, notice: message
+    else
+      redirect_to books_path, notice: t("something_went_wrong")
+    end
   end
 
   private

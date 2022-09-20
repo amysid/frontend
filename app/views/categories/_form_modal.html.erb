@@ -99,6 +99,8 @@
           },
           success : function(data) {              
            alert("data save")
+           var url = "<%= categories_url %>"
+           window.location.href = url
           },
           error : function(request,error)
           {
