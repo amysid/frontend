@@ -52,7 +52,7 @@ class BooksController < ApplicationController
       redirect_to books_path
     end
   end
-
+#working
   def destroy
     url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}"
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
