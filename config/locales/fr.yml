@@ -1,0 +1,157 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+fr:
+  hello: "FR Hello world"
+  user_name: "FR Username"
+  password: "FR Password"
+  confirm_password: "FR Confirm Password"
+  update_password: "FR Update Password"
+  login: "FR login"
+  forgot_password: "FR Forgot password?"
+  dashboard: "FR Dashboard"
+  users: "FR users"
+  audio_books: "FR Audio Books"
+  booths: "FR Booths"
+  operations: "FR Operations"
+  category: "التصنيف"
+  user_not_present: "FR User not present!"
+  invitation_link: "FR Invitation Link"
+  logout_confirm_msg: "FR Are You sure you want to logout?"
+  add_user: "FR Add User"
+  name: "FR Name"
+  email: "FR Email"
+  phone_number: "FR Phone Number"
+  authority: "FR Authority"
+  status: "FR Status"
+  last_login: "FR Last Login"
+  setting: "FR Setting"
+  get_the_full: "استمع الى النسخة الصوتية الكاملة من هذا الكتاب في خطوتين"
+  scan: "امسح رمز الإستجابة السريع بإستخدام الكاميرا في هاتفك"
+  open_the_link: "إفتح الرابط في متصفح هاتفك"
+  no_record_present: "FR No Record Found!"
+  category_name: "FR Category Name"
+  booth_location: "FR Booth Location"
+  data_of_category_creation: "FR Date of Category Creation"
+  booth_name: "FR Booth Name"
+  city: "FR City"
+  address: "FR Address"
+  coordinates: "FR Coordinates"
+  listening: "FR Listening"
+  last_listening: "FR Last Listening"
+  adding_booth: "FR Adding Booth"
+  communicate_with: "FR Communicate With"
+  add_category: "FR Add Category"
+  category_created_successfully: "FR Category Created Successfully"
+  category_updated_successfully: "FR Category Updated Successfully"
+  add: "FR Add"
+  update: "FR Update"
+  user_category_record_errors: "FR Either User or Category record is not valid"
+  add_book: "FR Add Book"
+  book_title: "FR Book title"
+  author_name: "FR Author Name"
+  duration_of_the_book_in_minutes: "FR Duration of the book in minutes"
+  book_duration: "FR Book duration (in Minutes)"
+  about_the_book: "FR About the Book"
+  audio_book_files: "FR Audio Book Files"
+  book_cover: "FR Book Cover"
+  audio_file: "FR Audio File"
+  short_audio: "FR Short Audio"
+  category_not_valid: "FR Category Not Valid!"
+  book_created_successfully: "FR Book Created Successfully"
+  book_updated_successfully: "FR Book Updated Successfully"
+  authority_designation: "FR Authority/ Designation"
+  create_password: "FR Create Password"
+  category_destroy_message: "FR Category Destroy Successfully!"
+  update_booth: "FR Update Booth"
+  booth_destroy_message: "FR Booth Destroy Successfully!"
+  update_user: "FR Update User"
+  update_book: "FR Update Book"
+  french_name: "AR French Name"
+  icon: "FR Icon"
+  booth_not_found: "FR Booth Not found!"
+  category_names: "FR Category Names"
+  operation_number: "FR Operation Number"
+  listening_status: "FR Listening Status (In Minutes)"
+  listening_time: "FR Listening time"
+  ratings: "FR Ratings"
+  notes: "FR Notes"
+  booth: "FR Booth"
+  add_booth: "FR Add Booth"
+  booth_details: "FR Booth Details"
+  user: "FR User"
+  staff_management: "FR Staff Management"
+  user_details: "FR User Details"
+  home: "FR Home"
+  library: "FR Library"
+  adding_book: "FR Adding Book"
+  book_details: "FR Book Details"
+  category_details: "FR Category Details"
+  number: "FR Number"
+  action: "FR Action"
+  book_name: "FR Book Name"
+  enter_book_name: "أدخل إسم الكتاب"
+  qr_code: "FR Qr Code"
+  back: "FR Back"
+  categories: "Catégories"
+  trending_now: "الكتب الشائعة"
+  added_recently: "المضاف حديثًا"
+  overview: "Aperçu"
+  time: "الوقت"
+  author: "المؤلف"
+  play_book_preview: "إستمع الى المقدمة"
+  top_matches: "FR Top matches"
+  all: "الكل"
+  short_audiobooks: "FR Short audiobooks"
+  long_audiobook: "FR Long audiobook"
+  audio_type: "FR Audio Type"
+  book_deleted_successfully: "FR Book Delete Successfully!"
+  white_icon: "FR White Icon"
+  book_french_title: "AR French Title"
+  book_french_author_name: "AR French Author Name"
+  about_the_book_french: "AR About the Book in French"
+  book_summary: "كتب ملخصة"
+  audio_books: "الكتب الصوتية"
+  total_streaming_time: "إجمالي وقت السماع"
+  authors: "المؤلفين"
+  long_audiobooks: "كتب كاملة"
+
+
+
+
+
+
+
+
+
+
+
+

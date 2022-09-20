@@ -51,6 +51,9 @@
                         <div >
                         <%= link_to "Start", web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-primary btn-theme", remote: true %>
                         </div>
+                        <div >
+                        <%= link_to "Commencer", web_booth_books_path(booth_id: @booth["number"], locale: :fr), class: "btn btn-primary btn-theme", remote: true %>
+                        </div>
                     </div>
                 </div>
 
