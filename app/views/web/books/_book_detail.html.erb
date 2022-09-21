@@ -300,12 +300,25 @@ C76.5,308.025,179.775,204.75,306,204.75z" />
                 <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('arabic.png') %>">
                 <% end %>
-              <% else %>
-                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"]), class:"btn btn-light-grey btn-footer", remote: true do %>
+
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('khalid.jpg') %>">
+                <% end %>
+              <% elsif params[:locale] == "ar"%>
+                 <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('eng-white.png') %>">
                 <% end %>
-              <% end %>
-              
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('khalid.jpg') %>">
+                <% end %>
+              <% else %>
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('eng-white.png') %>">
+                <% end %>
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('arabic.png') %>">
+                <% end %>
+              <% end %>              
               <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
                 <img src="<%= asset_url('access-white.png') %>">
               <% end %>
