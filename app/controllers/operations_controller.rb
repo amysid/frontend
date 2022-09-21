@@ -8,6 +8,7 @@ class OperationsController < ApplicationController
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("operations").dig("data").present?
       @operations =  response_body["operations"]["data"]
+      @pagination_data =  response_body["operations"]["meta"]
     end
   end
 end

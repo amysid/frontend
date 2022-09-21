@@ -5,12 +5,13 @@ class CategoriesController < ApplicationController
 
   def index
     url = "#{ENV["API_BASE_URL"]}/api/categories"
-    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
-    response = HTTParty.get(url, headers: headers)
+    headers = {"Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.get(url, headers: headers, body: params.as_json)
     response_body = JSON.parse(response.body) if response.body.present?
-    puts response_body
+    
     if response_body.present? && response_body.dig("categories").present? && response_body.dig("categories").dig("data").present?
       @categories =  response_body["categories"]["data"]
+      @pagination_data =  response_body["categories"]["meta"]
     end
   end
 

@@ -11,6 +11,7 @@ class BoothsController < ApplicationController
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("booths").dig("data").present?
       @booths =  response_body["booths"]["data"]
+      @pagination_data =  response_body["booths"]["meta"]
     end
   end
 

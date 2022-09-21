@@ -54,31 +54,42 @@
             </table>
           </div>
 
-          <div class="card-footer">
-            <div class="d-flex">
-              <% if false %>
-              <div>
-                <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-              </div>
-              <% end %>
-              <div class="ml-auto">
-                <nav>
-                  <ul class="pagination pagination-sm">
-                    <% if false %>
-                    <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                    <% end %>
-                    <%#= will_paginate @booths%>
-                  </ul>
-                </nav>
-              </div>
+      <div class="card-footer">
+        <div class="d-flex">
+          <% if @pagination_data.present? %>
+<!--       <div>
+            <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+          </div> -->
+            <div class="ml-auto">
+              <nav>
+                <ul class="pagination pagination-sm">
+                  <% if (@pagination_data["page"]- 1) == 0 %>
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                  <% else %>
+                    <li class="page-item"><a class="page-link" href="<%= booths_path(page: @pagination_data["page"]- 1) %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                  <% end %>
+                  <% if ( @pagination_data["page"] - 1 ) != 0 %>
+                    <li class="page-item"><a class="page-link" href="<%= booths_path(page: @pagination_data["page"]- 1) %>" aria-label="Previous"><span aria-hidden="true"><%= (@pagination_data["page"] - 1) %></span></a></li>
+                  <% end %>
+
+                  <li class="page-item"><a class="page-link" href="#" %><%= @pagination_data["page"] %></a></li>
+
+                  <% if @pagination_data["total_pages"] >= ( @pagination_data["page"] + 1 )%>
+                    <li class="page-item"><a class="page-link" href="<%= booths_path(page: @pagination_data["page"] + 1) %>" aria-label="Previous"><span aria-hidden="true"><%= (@pagination_data["page"] + 1) %></span></a></li>
+                  <% end %>
+                  
+                  <% if @pagination_data["page"] == @pagination_data["total_pages"] %>
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                  <% else %>
+                    <li class="page-item"><a class="page-link" href="<%= booths_path(page: @pagination_data["page"] + 1 ) %>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                  <% end %>
+                
+                </ul>
+              </nav>
             </div>
-          </div>
+          <% end %>
+        </div>
+      </div>
         </div>
       </div>
       <!-- END cards box-->

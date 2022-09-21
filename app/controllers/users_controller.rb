@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("users").dig("data").present?
       @users =  response_body["users"]["data"]
+      @pagination_data =  response_body["users"]["meta"]
     end
       
     #per_page = params[:per_page] || 10
