@@ -35,10 +35,18 @@
                 <% if @booths.blank? %>
                   <tr><%= t('no_record_present') %></tr>
                 <% else %>
+
+                  <% pagination_count = 0 %>
+                  <% if @pagination_data.present? %>
+                    <% page_no = @pagination_data["page"] || 0 %>
+                    <% per_page = @pagination_data["page_size"] || 0%>
+                    <% pagination_count = per_page * (page_no - 1) %>
+                  <% end %>
+
                   <% @booths.each_with_index do |booth, i|%>
                     <% booth = booth["attributes"] %>
                     <tr>
-                      <td class="text-danger"><%= ( i + 1)%></td>
+                      <td class="text-danger"><%= ( pagination_count + i + 1)%></td>
                       <td><%= booth["name"] %></td>
                       <td><%= booth["city"] %></td>
                       <td><%= booth["address"] %></td>
