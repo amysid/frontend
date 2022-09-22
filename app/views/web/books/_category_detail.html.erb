@@ -140,14 +140,14 @@
               <% end %>
 
               <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: @category["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
-                <img src="<%= asset_url('khalid.jpg') %>">
+                <img src="<%= asset_url('Fr.png') %>">
               <% end %>
             <% elsif params[:locale] == "ar"%>
                <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: @category["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('eng-white.png') %>">
               <% end %>
               <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: @category["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
-                <img src="<%= asset_url('khalid.jpg') %>">
+                <img src="<%= asset_url('Fr.png') %>">
               <% end %>
             <% else %>
               <%= link_to category_search_web_booth_books_path(booth_id: @booth["number"], category_id: @category["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
