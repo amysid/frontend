@@ -17390,3 +17390,9 @@ cursor: pointer;
         width: 100%;
         padding: 20px 8px;
         bottom: 0;}
+
+    html
+    {
+        -ms-content-zooming: none;
+        touch-action: none;
+    }
