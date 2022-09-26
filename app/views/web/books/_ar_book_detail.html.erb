@@ -285,16 +285,19 @@ c-0.164,0.271-0.389,0.499-0.661,0.662L70.758,51.657z" />
                 <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('arabic.png') %>">
                 <% end %>
-
-                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
-                  <img src="<%= asset_url('Fr.png') %>">
+                <% if  @booth["number"] == "fr123ench12345fr123ench" %>
+                  <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                    <img src="<%= asset_url('Fr.png') %>">
+                  <% end %>
                 <% end %>
               <% elsif params[:locale] == "ar"%>
                  <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('eng-white.png') %>">
                 <% end %>
-                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
-                  <img src="<%= asset_url('Fr.png') %>">
+                <% if  @booth["number"] == "fr123ench12345fr123ench" %>
+                  <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                    <img src="<%= asset_url('Fr.png') %>">
+                  <% end %>
                 <% end %>
               <% else %>
                 <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
