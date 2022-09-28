@@ -119,7 +119,7 @@ ar:
   number: "AR Number"
   action: "AR Action"
   book_name: "AR Book Name"
-  enter_book_name: "أدخل إسم الكتاب"
+  enter_book_name: "أدخل اسم الكتاب"
   qr_code: "AR Qr Code"
   back: "AR Back"
   categories: "التصنيفات"
