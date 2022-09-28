@@ -282,3 +282,11 @@
   pointer-events: none;
 }
 </style>
+<script>
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+    if ($(".search-box").is(":focus")) {
+        document.activeElement.blur();
+    }
+}, false);
+</script>
