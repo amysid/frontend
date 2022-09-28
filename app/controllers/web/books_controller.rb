@@ -1,6 +1,6 @@
 class Web::BooksController < Web::WebApplicationController
   before_action :set_booth , except: [:all_books, :play_book_for_blind]
-  before_action :fetch_categories, only: :index
+  before_action :fetch_categories, only: [:index]
   before_action :set_category, only: :category_search
 
   def index
@@ -76,6 +76,7 @@ class Web::BooksController < Web::WebApplicationController
     if response_body.present? &&  response_body.dig("books").dig("data").present?
       @books = response_body["books"]["data"] rescue []
     end
+    render layout: false
   end
 
   def play_book_for_blind

@@ -13,7 +13,6 @@ class Web::OperationsController < Web::WebApplicationController
   end
 
   def save_feedback
-    byebug
     url = "#{ENV["API_BASE_URL"]}/web_api/operations/#{params[:id]}/save_feedback"
     headers = {"Content-Type": "application/json", body: params.as_json}
     response = HTTParty.put(url, headers: headers)
