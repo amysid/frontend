@@ -15,21 +15,6 @@
           </div>
         </div>
         <div class="row justify-content-center align-items-center">
-          <div class="col-md-12">
-            <div class="search-wrapper mt-5 mb-5">
-              <%= form_tag search_web_booth_books_path(booth_id: @booth["number"]), remote: true, class: "form-group has-search position-relat", method: :get  do %>
-                <span class="input-group-text close-icon-1">
-                  <%= button_tag type: :reset, class: "close-icon" do %>
-                  <i class="fa fa-times-circle" aria-hidden="true"></i>
-                  <% end %>
-                </span>
-                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box text-right" %>
-                <span class="input-group-text">
-                  <i class="fa fa-search"></i>
-                </span>
-              <% end %>
-            </div>
-          </div>
         </div>
       </div>
 
