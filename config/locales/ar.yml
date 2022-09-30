@@ -54,7 +54,7 @@ ar:
   status: "AR Status"
   last_login: "AR Last Login"
   setting: "AR Setting"
-  get_the_full: "استمع الى النسخة الصوتية الكاملة من هذا الكتاب في خطوتين"
+  get_the_full: "استمع إلى النسخة الصوتية الكاملة من هذا الكتاب في خطوتين"
   scan: "امسح رمز الاستجابة السريع باستخدام الكاميرا في هاتفك"
   open_the_link: "افتح الرابط في متصفح هاتفك"
   no_record_present: "AR No Record Found!"
