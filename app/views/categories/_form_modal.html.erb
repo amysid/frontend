@@ -92,7 +92,7 @@
   $("#category_form").submit(function(event){
       event.preventDefault()
       var form_data = new FormData(this);
-      debugger
+      
       $.ajax({
           url : '<%= "#{ENV["API_BASE_URL"]}/api/categories" %>',
           type : 'post',

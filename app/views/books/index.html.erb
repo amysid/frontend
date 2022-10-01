@@ -370,7 +370,6 @@
       $(".book-duration").val(duration);
       event.preventDefault()
       var form_data = new FormData(this);
-      debugger
       $.ajax({
           url : '<%= "#{ENV["API_BASE_URL"]}/api/books" %>',
           type : 'post',
