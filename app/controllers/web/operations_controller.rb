@@ -9,6 +9,7 @@ class Web::OperationsController < Web::WebApplicationController
     if response_body.present? &&  response_body.dig("book").present? && response_body.dig("operation").present?
       @book = response_body["book"]["data"]["attributes"]
       @operation = response_body["operation"]["data"]["attributes"]
+      @booth = response_body["booth"]["data"]["attributes"]
     end
   end
 
