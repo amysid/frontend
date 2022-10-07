@@ -26,8 +26,8 @@
           <div class="info mt-2">
             <div class="button-items">
               <% audio_url = @book["audio_url"] rescue nil %>
-              <audio id="music" preload="auto" autoplay="true">
-                <source src="<%= audio_url %>" type="audio/mp3">
+              <audio id="music" autoplay="true" preload="auto">
+                <source src="<%= audio_url %>">
               </audio>
               <div id="slider">
                 <div id="elapsed"></div>
@@ -115,8 +115,8 @@
                 <div class="info mt-2">
                   <div class="button-items">
                     <% audio_url = @book["audio_url"] rescue nil %>
-                    <audio id="music" preload="auto" autoplay="true">
-                      <source src="<%= audio_url %>" type="audio/mp3">
+                    <audio id="music" autoplay="true" preload="auto">
+                      <source src="<%= audio_url %>">
                     </audio>
                     <div id="slider">
                       <div id="elapsed"></div>
