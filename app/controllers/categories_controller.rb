@@ -17,7 +17,14 @@ class CategoriesController < ApplicationController
 
   def create
     url = "#{ENV["API_BASE_URL"]}/api/categories"
-    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params}
+    data = {}
+    data["category"] = {}
+    if params["category"].present?
+      data["category"] =  params["category"].except(:icon, :white_icon)
+      data["category"]["icon"] = File.open(params["category"]["icon"].tempfile.path) if params["category"]["icon"].present?
+      data["category"]["white_icon"] = File.open(params["category"]["white_icon"].tempfile.path) if params["category"]["white_icon"].present?
+    end
+    headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("category").dig("data").present?
@@ -36,7 +43,14 @@ class CategoriesController < ApplicationController
 
   def update
     url = "#{ENV["API_BASE_URL"]}/api/categories/#{params[:id]}"
-    headers = {headers: {"Content-Type": "multipart/form-data", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
+    data = {}
+    data["category"] = {}
+    if params["category"].present?
+      data["category"] =  params.require("category").permit(:name, :arabic_name, :french_name)
+      data["category"]["icon"] = File.open(params["category"]["icon"].tempfile.path) if  params["category"]["icon"].present?
+      data["category"]["white_icon"] = File.open(params["category"]["white_icon"].tempfile.path) if  params["category"]["white_icon"].present?
+    end
+    headers = {headers: {"Content-Type": "multipart/form-data", "Authorization": "Bearer #{session[:token]}"}, multipart: true, body: data}
     response = HTTParty.put(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("category").dig("data").present?
