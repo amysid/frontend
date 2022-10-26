@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     data = {}
     data["category"] = {}
     if params["category"].present?
-      data["category"] =  params["category"].except(:icon, :white_icon)
+      data["category"] = params.require("category").permit(:name, :arabic_name, :french_name)
       data["category"]["icon"] = File.open(params["category"]["icon"].tempfile.path) if params["category"]["icon"].present?
       data["category"]["white_icon"] = File.open(params["category"]["white_icon"].tempfile.path) if params["category"]["white_icon"].present?
     end

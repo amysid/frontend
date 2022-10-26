@@ -364,32 +364,32 @@
     //   $(".book-duration").val(duration);
     // });
 
-    $("#book-form").submit(function(event){
-      var duration = $("#long_audio")[0].duration;
-      duration = duration || 0
-      $(".book-duration").val(duration);
-      event.preventDefault()
-      var form_data = new FormData(this);
-      $.ajax({
-          url : '<%= "#{ENV["API_BASE_URL"]}/api/books" %>',
-          type : 'post',
-          data : form_data,
-          processData: false,
-          contentType: false,
-          headers: {
-            Authorization: "<%= "Bearer #{session[:token]}" %>"
-          },
-          success : function(data) {              
-           alert("data save")
-           var url = "<%= books_url %>"
-           window.location.href = url
-          },
-          error : function(request,error)
-          {
-           alert("their is some issue");
-          }
-        })
-    });
+    // $("#book-form").submit(function(event){
+    //   var duration = $("#long_audio")[0].duration;
+    //   duration = duration || 0
+    //   $(".book-duration").val(duration);
+    //   event.preventDefault()
+    //   var form_data = new FormData(this);
+    //   $.ajax({
+    //       url : '<%= "#{ENV["API_BASE_URL"]}/api/books" %>',
+    //       type : 'post',
+    //       data : form_data,
+    //       processData: false,
+    //       contentType: false,
+    //       headers: {
+    //         Authorization: "<%= "Bearer #{session[:token]}" %>"
+    //       },
+    //       success : function(data) {              
+    //        alert("data save")
+    //        var url = "<%= books_url %>"
+    //        window.location.href = url
+    //       },
+    //       error : function(request,error)
+    //       {
+    //        alert("their is some issue");
+    //       }
+    //     })
+    // });
 
   });
 
