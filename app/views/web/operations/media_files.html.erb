@@ -732,7 +732,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
        var current_time = music.currentTime
        var file_duration = music.duration
       $.ajax({
-          url : "<%= "#{ENV['API_BASE_URL']}/web_api/operations/#{@operation['number']}/update_listen_count" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/update_listen_count" %>",
           type : 'GET',
           data : {
             'current_time' : current_time,
@@ -804,7 +804,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
         var current_time = music.currentTime
         var file_duration = music.duration
         $.ajax({
-          url : "<%= "#{ENV['API_BASE_URL']}/web_api/operations/#{@operation['number']}/update_listen_count" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/update_listen_count" %>",
           type : 'GET',
           data : {
             'current_time' : current_time,
@@ -825,7 +825,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
     $("#rating_form").submit(function(event){
       event.preventDefault()
       $.ajax({
-          url : "<%= "#{ENV['API_BASE_URL']}/web_api/operations/#{@operation['number']}/save_feedback" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/save_feedback" %>",
           type : 'put',
           data : $('form').serialize(),
           success : function(data) {              
@@ -833,9 +833,9 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
            $("#close-btn").click();
            $(".rating-btn").html("");
           },
-          error : function(request,error)
+          error : function(request, error)
           {
-           alert("their is some issue");
+           alert("Something went wrong!");
           }
         })
     });

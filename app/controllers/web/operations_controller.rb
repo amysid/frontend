@@ -15,11 +15,25 @@ class Web::OperationsController < Web::WebApplicationController
 
   def save_feedback
     url = "#{ENV["API_BASE_URL"]}/web_api/operations/#{params[:id]}/save_feedback"
-    headers = {"Content-Type": "application/json", body: params.as_json}
-    response = HTTParty.put(url, headers: headers)
+    headers = {headers: {"Content-Type": "application/json"}, multipart: true, body: params.as_json}
+    response = HTTParty.put(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("message").present?
       render json: {message: "data save successfully"}
+    else
+      raise
+    end
+  end
+
+  def update_listen_count
+    url = "#{ENV["API_BASE_URL"]}/web_api/operations/#{params[:id]}/update_listen_count"
+    headers = {headers: {"Content-Type": "application/json"}, multipart: true, body: params.as_json}
+    response = HTTParty.get(url, headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body.dig("message").present?
+      render json: {message: "data save successfully"}
+    else
+      raise
     end
   end
 
