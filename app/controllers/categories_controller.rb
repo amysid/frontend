@@ -18,6 +18,7 @@ class CategoriesController < ApplicationController
 
   def create
       @store = Store.new({
+      type: "Category",
       name: params[:category][:name],
       icon: params[:category][:icon],
       white_icon: params[:category][:white_icon]
@@ -52,13 +53,13 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @store = Store.find_by(ref_id: params["id"].to_i)
-    @abc = @store.update({
+    @store = Store.find_by(type: "Category", ref_id: params["id"].to_i)
+    @store.update({
       name: params[:category][:name],
       icon: params[:category][:icon],
       white_icon: params[:category][:white_icon]
       })
-    @store = Store.find_by(ref_id: params["id"].to_i)
+    @store = Store.find_by(type: "Category", ref_id: params["id"].to_i)
     url = "#{ENV["API_BASE_URL"]}/api/categories/#{params[:id]}"
     data = {}
     data["category"] = {}
