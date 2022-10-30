@@ -18,7 +18,7 @@ class BooksController < ApplicationController
   
   def create
     @store = Store.new({
-      type: "Book",
+      model_type: "Book",
       name: params[:book][:title],
       book_cover_file: params[:book][:book_cover_file],
       audio: params[:book][:audio],
@@ -48,14 +48,14 @@ class BooksController < ApplicationController
   end
 
   def update
-    @store = Store.find_by(type: "Book", ref_id: params["id"].to_i)
+    @store = Store.find_by(model_type: "Book", ref_id: params["id"].to_i)
     @store = @store.update({
       name: params[:book][:title],
       book_cover_file: params[:book][:book_cover_file],
       audio: params[:book][:audio],
       short_audio_file: params[:book][:short_audio_file]
       })
-    @store = Store.find_by(type: "Book", ref_id: params["id"].to_i)
+    @store = Store.find_by(model_type: "Book", ref_id: params["id"].to_i)
     url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}"
     if params["book"].present?
       data = {}
