@@ -17,6 +17,9 @@ class BooksController < ApplicationController
   
   def create
     url = "#{ENV["API_BASE_URL"]}/api/books"
+    name = params[:book][:book_cover_file].original_filename
+    path = File.join("public", name)
+    File.open(path, "wb") { |f| f.write(params[:book][:book_cover_file].read) }
     if params["book"].present?
       data = {}
       data["book"] = {}
@@ -25,6 +28,7 @@ class BooksController < ApplicationController
       data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
       data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
       data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
+      data["book"]["book_cover_file_url"] = path
     end
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
