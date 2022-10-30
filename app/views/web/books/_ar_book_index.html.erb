@@ -53,7 +53,7 @@
                       <div class="part-1">
                         <span class="checkout-product-img">
                           <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %> 
-                            <% img_url = book["book_cover_file_url"]  rescue nil%>
+                            <% img_url = book["cover"]  rescue nil%>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>
@@ -93,7 +93,7 @@
                       <div class="part-1">
                         <span class="checkout-product-img">
                           <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %>  
-                          <% img_url = book["book_cover_file_url"] rescue nil %>
+                          <% img_url = book["cover"] rescue nil %>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>

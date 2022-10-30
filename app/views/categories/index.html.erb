@@ -39,8 +39,8 @@
                   <td><%= category["name"] %></td>
                   <td><%= category["arabic_name"] %></td>
                   <td><%= category["french_name"] %></td>
-                  <td><img src="<%= category["icon_url"] if category["icon_url"].present? %>" class="cat-icon-img"></td>
-                  <td><img src="<%= category["white_icon_url"] if category["white_icon_url"].present? %>" class="cat-icon-img"></td>
+                  <td><img src="<%= category["logo"] if category["logo"].present? %>" class="cat-icon-img"></td>
+                  <td><img src="<%= category["white_logo"] if category["white_logo"].present? %>" class="cat-icon-img"></td>
                   <td>
                     <div class="pl-2 pr-2">
                       <%= select_tag t('booth'), options_for_select(category["booths"]), class: "custom-select custom-select-sm text-center"%>

@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   before_action :set_book, except: [:new, :create, :index]
   before_action :ensure_book_present?, except: [:new, :create, :index]
   before_action :fetch_categories, only: [:index, :edit]
+  include Rails.application.routes.url_helpers
 
   def index
     url = "#{ENV["API_BASE_URL"]}/api/books"
@@ -16,34 +17,56 @@ class BooksController < ApplicationController
   end
   
   def create
+    @store = Store.new({
+      name: params[:book][:title],
+      book_cover_file: params[:book][:book_cover_file],
+      audio: params[:book][:audio],
+      short_audio_file: params[:book][:short_audio_file]
+      })
+      @store.save 
     url = "#{ENV["API_BASE_URL"]}/api/books"
     if params["book"].present?
       data = {}
       data["book"] = {}
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
-      data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
-      data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
-      data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
+      data["book"]["cover"] =  rails_blob_path(@store.book_cover_file, only_path: true) if params["book"]["book_cover_file"].present?
+      data["book"]["long"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
+      data["book"]["short"] =  rails_blob_path(@store.short_audio_file, only_path: true) if params["book"]["short_audio_file"].present?
+      # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
+      # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
+      # data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
     end
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    @store.update(ref_id: response_body["book"]["data"]["id"].to_i)
     if response_body.present? &&  response_body.dig("book").dig("data").present?
       redirect_to books_path
     end
   end
 
-  def update 
+  def update
+    @store = Store.find_by(ref_id: params["id"].to_i)
+    @store = @store.update({
+      name: params[:book][:title],
+      book_cover_file: params[:book][:book_cover_file],
+      audio: params[:book][:audio],
+      short_audio_file: params[:book][:short_audio_file]
+      })
+    @store = Store.find_by(ref_id: params["id"].to_i)
     url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}"
     if params["book"].present?
       data = {}
       data["book"] = {}
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
-      data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
-      data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
-      data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
+      data["book"]["cover"] =  rails_blob_path(@store.book_cover_file, only_path: true) if params["book"]["book_cover_file"].present?
+      data["book"]["long"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
+      data["book"]["short"] =  rails_blob_path(@store.short_audio_file, only_path: true) if params["book"]["short_audio_file"].present?
+      # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
+      # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
+      # data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
     end
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.put(url, headers)

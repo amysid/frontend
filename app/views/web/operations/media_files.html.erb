@@ -25,9 +25,9 @@
         <div class="player">
           <div class="info mt-2">
             <div class="button-items">
-              <% audio_url = @book["audio_url"] rescue nil %>
+              <% long = @book["long"] rescue nil %>
               <audio id="music" autoplay="true" preload="auto">
-                <source src="<%= audio_url %>">
+                <source src="<%= long %>">
               </audio>
               <div id="slider">
                 <div id="elapsed"></div>
@@ -81,7 +81,7 @@
             <div id="Div8" class="single-product">
               <div class="part-1">
                 <span class="checkout-product-img">
-                  <% img_url = @book["book_cover_file_url"] rescue nil %>
+                  <% img_url = @book["cover"] rescue nil %>
                   <a href="">
                     <img src="<%= img_url %>" class="rounded">
                   </a>
@@ -114,9 +114,9 @@
              <div class="player">
                 <div class="info mt-2">
                   <div class="button-items">
-                    <% audio_url = @book["audio_url"] rescue nil %>
+                    <% long = @book["long"] rescue nil %>
                     <audio id="music" autoplay="true" preload="auto">
-                      <source src="<%= audio_url %>">
+                      <source src="<%= long %>">
                     </audio>
                     <div id="slider">
                       <div id="elapsed"></div>

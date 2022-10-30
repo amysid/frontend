@@ -97,7 +97,7 @@
             <div id="Div4" class="single-product">
               <div class="part-1">
                 <span class="checkout-product-img">
-                  <% img_url = book["book_cover_file_url"] rescue nil %>
+                  <% img_url = book["cover"] rescue nil %>
                   <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %>
                     <img src="<%= img_url %>" class="rounded" />
                   <% end %>

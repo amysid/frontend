@@ -96,8 +96,8 @@
                   <div class="form-group">
                     <%= f.file_field :book_cover_file,id: "update-book-cover-field", class: "mb-1", placeholder: "upload file" %>
                     <% src = nil %>
-                    <% if book["book_cover_file_url"].present? %>
-                      <% src = book["book_cover_file_url"] %>
+                    <% if book["cover"].present? %>
+                      <% src = book["cover"] %>
                     <% end %>
                     <div class="update-upload-preview" style="margin-top: 10px;">
                       <img style="width: 50%; height: 50%;" src=<%= src %>/>
@@ -114,8 +114,8 @@
                   <div class="form-group">
                     <%= f.file_field :audio, class: "mb-2", placeholder: "upload file", id: "update-book-audio-field"%>
                     <% audio_src = nil %>
-                    <% if book["audio_url"].present? %>
-                      <% audio_src = book["audio_url"] %>
+                    <% if book["long"].present? %>
+                      <% audio_src = book["long"] %>
                     <% end %>
                     <div class="update-upload-audio-preview" style="margin-top: 10px;">
                       <audio  controls="controls" src="<%= audio_src %>" id="update_long_audio"></audio>
@@ -144,8 +144,8 @@
                   <div class="form-group">
                     <%= f.file_field :short_audio_file, class: "mb-2", placeholder: "upload file", id: "update-book-short-audio-field" %>
                     <% short_audio_src = nil %>
-                    <% if book["short_audio_url"].present? %>
-                      <% short_audio_src = book["short_audio_url"] %>
+                    <% if book["short"].present? %>
+                      <% short_audio_src = book["short"] %>
                     <% end %>
                     <div class="update-upload-short-audio-preview" style="margin-top: 10px;">
                       <audio  controls="controls" src="<%= short_audio_src %>" id="update_short_audio"></audio>

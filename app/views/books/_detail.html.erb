@@ -64,21 +64,21 @@
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('book_cover')%></label>
             <div class="col-md-7 col-form-label text-black font-17">
-              <img src="<%= book["book_cover_file_url"] %>" class="book-cover-img">
+              <img src="<%= book["cover"] %>" class="book-cover-img">
             </div>                           
         </div>
 
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('audio_file')%></label>
             <div class="col-md-7 col-form-label text-black font-17">
-              <audio  controls="controls" src="<%= book["audio_url"] %>"></audio>
+              <audio  controls="controls" src="<%= book["long"] %>"></audio>
             </div>                          
         </div>
 
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('short_audio')%></label>
             <div class="col-md-7 col-form-label text-black font-17">
-              <audio  controls="controls" src="<%= book["short_audio_url"] %>"></audio>
+              <audio  controls="controls" src="<%= book["short"] %>"></audio>
             </div>                      
         </div>
       </div>

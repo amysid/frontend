@@ -20,7 +20,7 @@
             <div class="image-grid-container common-clearfix">
               <div class="image-grid-col50">
                 <div class="image-grid-imageContainer">
-                  <% img_url = @book["book_cover_file_url"] rescue nil  %>
+                  <% img_url = @book["cover"] rescue nil  %>
                 <img class="big-img" src="<%= img_url %>">
                 </div>
               </div>
@@ -187,9 +187,9 @@
         <h1><%= t('play_book_preview') %></h1>
 
         <div class="button-items">
-          <% sort_audio_url = @book["short_audio_url"] rescue nil %>
+          <% sort_long = @book["short"] rescue nil %>
           <audio id="music" autoplay="true" preload="auto">
-            <source src="<%=  sort_audio_url %>">
+            <source src="<%=  sort_long %>">
            <!--  <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg"> -->
           </audio>
           <div id="slider">
