@@ -67,8 +67,14 @@
     var white_preview = $(".upload-white-preview img")
 
     $("#category-icon").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
+      var input = $(event.currentTarget);
+      var file = input[0].files[0];
+      var file_extention = $("#category-icon").val().split('.').pop().toLowerCase();
+      if($.inArray(file_extention, ['gif','png','jpg','jpeg']) == -1) {
+        alert('File has invalid extension only png, jpg, jpeg file is supported!');
+        $("#category-icon").val('');
+        return
+      }
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;
@@ -78,8 +84,14 @@
     });
 
     $("#category-white-icon").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
+      var input = $(event.currentTarget);
+      var file = input[0].files[0];
+      var file_extention = $("#category-white-icon").val().split('.').pop().toLowerCase();
+      if($.inArray(file_extention, ['gif','png','jpg','jpeg']) == -1) {
+        alert('File has invalid extension only png, jpg, jpeg file is supported!');
+        $("#category-white-icon").val('');
+        return
+      }
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;

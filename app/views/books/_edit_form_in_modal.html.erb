@@ -173,8 +173,14 @@
 
 
     $("#update-book-cover-field").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
+      var input = $(event.currentTarget);
+      var file = input[0].files[0];
+      var file_extention = $("#update-book-cover-field").val().split('.').pop().toLowerCase();
+      if($.inArray(file_extention, ['gif','png','jpg','jpeg']) == -1) {
+        alert('File has invalid extension only png, jpg, jpeg file is supported!');
+        $("#update-book-cover-field").val('');
+        return
+      }
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;
@@ -186,6 +192,12 @@
     $("#update-book-audio-field").change(function(event){
       var audio_input = $(event.currentTarget);
       var file = audio_input[0].files[0]
+      var file_extention = $("#update-book-audio-field").val().split('.').pop().toLowerCase();
+      if($.inArray(file_extention, ['mp3']) == -1) {
+        alert('File has invalid extension only mp3 file is supported!');
+        $("#update-book-audio-field").val('');
+        return
+      }
       var reader = new FileReader();
       reader.onload = function(e){
         audio_base64 = e.target.result;
@@ -206,6 +218,12 @@
     $("#update-book-short-audio-field").change(function(event){
       var audio_input = $(event.currentTarget);
       var file = audio_input[0].files[0]
+      var file_extention = $("#update-book-short-audio-field").val().split('.').pop().toLowerCase();
+      if($.inArray(file_extention, ['mp3']) == -1) {
+        alert('File has invalid extension only mp3 file is supported!');
+        $("#update-book-short-audio-field").val('');
+        return
+      }
       var reader = new FileReader();
       reader.onload = function(e){
         audio_base64 = e.target.result;
