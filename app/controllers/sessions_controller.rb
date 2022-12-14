@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:user] = nil
-    sessions[:token] = nil
+    session[:token] = nil
   	flash[:success] = t('logout_successfull')
     redirect_to root_path
   end
