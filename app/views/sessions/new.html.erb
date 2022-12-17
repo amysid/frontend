@@ -4,7 +4,8 @@
     <div class="card card-flat rounded-top-left rounded-bottom-right">
       <div class="card-header text-center pt-4 pb-1"><a href="#"><img class="block-center rounded" src="<%= asset_url('logo.jpg')%>" alt="Image"></a></div>
       <div class="card-body">
-        <h3 class="text-center py-2 login-text">Welcome to the audio library booth system</h3> <%= form_with url: sessions_path, class:"mb-3", id:"loginForm" do |f| %>
+        <h3 class="text-center py-2 login-text">Welcome to the audio library booth system</h3>
+          <%= form_with url: sessions_path, class:"mb-3", autocomplete: "off", id:"loginForm" do |f| %>
             <div class="form-group">
               <div class="input-group with-focus">
                 <%= f.text_field :email, class: "form-control bg-grey text-right", id: "exampleInputEmail1", placeholder: t("user_name"), autocomplete: "off", required: true %>                    
