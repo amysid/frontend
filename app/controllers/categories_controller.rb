@@ -119,7 +119,7 @@ class CategoriesController < ApplicationController
     status = true
     if params["category"]["icon"].present?
       icon_extention = params["category"]["icon"].original_filename.split(".").last
-      status = status && ['gif','png','jpg','jpeg'].include?(icon)
+      status = status && ['gif','png','jpg','jpeg'].include?(icon_extention)
     end
     if params["category"]["white_icon"].present?
       white_icon_extention = params["category"]["white_icon"].original_filename.split(".").last
