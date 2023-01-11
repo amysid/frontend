@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("users").dig("data").present?
       @users =  response_body["users"]["data"]
+      @pagination_data =  response_body["users"]["meta"]
     end
       
     #per_page = params[:per_page] || 10
@@ -61,12 +62,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
-    if @user.destroy
+    url = "#{ENV["API_BASE_URL"]}/api/users/#{params[:id]}"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.delete(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body["status_code"] == 200
       message = t("user_destroy_message")
-      redirect_to users_path, notice: message
+      redirect_to categories_path, notice: message
     else
-      redirect_to users_path, alert: @user.errors.full_messages
+      redirect_to categories_path, notice: t("something_went_wrong")
     end
   end
 

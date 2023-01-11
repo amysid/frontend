@@ -33,10 +33,19 @@
             <% if @users.blank? %>
               <tr><%= t('no_record_present')%></tr>
             <% else %>
+              
+              <% pagination_count = 0 %>
+              <% if @pagination_data.present? %>
+                <% page_no = @pagination_data["page"] || 0 %>
+                <% per_page = @pagination_data["page_size"] || 0%>
+                <% pagination_count = per_page * (page_no - 1) %>
+              <% end %>
+
+
               <% @users.each_with_index do |user, i|%>
               <% user = user["attributes"]%>
               <tr>
-                <td class="text-danger"><%= (i + 1) %></td>
+                <td class="text-danger"><%= (pagination_count + i + 1) %></td>
                 <td class="text-center"><%= user["full_name"] %></td>
                 <td><%= user["email"] %></td>
                 <td><%= user["mobile"] %></td>
@@ -61,19 +70,37 @@
 
       <div class="card-footer">
         <div class="d-flex">
-          <div>
-            <nav>
-              <ul class="pagination pagination-sm">
-                <li class="page-item">
-                <%#= will_paginate @users %>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <% if false %>
-          <div class="ml-auto">
+          <% if @pagination_data.present? %>
+<!--       <div>
             <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-          </div>
+          </div> --> 
+            <div class="ml-auto">
+              <nav>
+                <ul class="pagination pagination-sm">
+                  <% if (@pagination_data["page"]- 1) == 0 %>
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                  <% else %>
+                    <li class="page-item"><a class="page-link" href="<%= users_path(page: @pagination_data["page"]- 1) %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                  <% end %>
+                  <% if ( @pagination_data["page"] - 1 ) != 0 %>
+                    <li class="page-item"><a class="page-link" href="<%= users_path(page: @pagination_data["page"]- 1) %>" aria-label="Previous"><span aria-hidden="true"><%= (@pagination_data["page"] - 1) %></span></a></li>
+                  <% end %>
+
+                  <li class="page-item"><a class="page-link" href="#" %><%= @pagination_data["page"] %></a></li>
+
+                  <% if @pagination_data["total_pages"] >= ( @pagination_data["page"] + 1 )%>
+                    <li class="page-item"><a class="page-link" href="<%= users_path(page: @pagination_data["page"] + 1) %>" aria-label="Previous"><span aria-hidden="true"><%= (@pagination_data["page"] + 1) %></span></a></li>
+                  <% end %>
+                  
+                  <% if @pagination_data["page"] == @pagination_data["total_pages"] %>
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                  <% else %>
+                    <li class="page-item"><a class="page-link" href="<%= users_path(page: @pagination_data["page"] + 1 ) %>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                  <% end %>
+                
+                </ul>
+              </nav>
+            </div>
           <% end %>
         </div>
       </div>
@@ -115,7 +142,7 @@
           <div class="form-group row">
             <label for="example-text-input" class="col-md-2 col-form-label"><%= t('authority_designation') %></label>
             <div class="col-md-10">
-              <%= f.select :role, options_for_select(User.roles.keys), { include_blank: true},class: "custom-select custom-select-sm" %>
+              <%= f.select :role, options_for_select(["Admin", "Approver", "operator"]), { include_blank: true},class: "custom-select custom-select-sm" %>
             </div>
           </div>
 <!-- 

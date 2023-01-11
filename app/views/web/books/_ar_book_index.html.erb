@@ -15,21 +15,6 @@
           </div>
         </div>
         <div class="row justify-content-center align-items-center">
-          <div class="col-md-12">
-            <div class="search-wrapper mt-5 mb-5">
-              <%= form_tag search_web_booth_books_path(booth_id: @booth["number"]), remote: true, class: "form-group has-search position-relat", method: :get  do %>
-                <span class="input-group-text close-icon-1">
-                  <%= button_tag type: :reset, class: "close-icon" do %>
-                  <i class="fa fa-times-circle" aria-hidden="true"></i>
-                  <% end %>
-                </span>
-                <%= text_field_tag :book, params[:book], placeholder: t('enter_book_name') , autofocus: true, class: "form-control search-box text-right" %>
-                <span class="input-group-text">
-                  <i class="fa fa-search"></i>
-                </span>
-              <% end %>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -68,7 +53,7 @@
                       <div class="part-1">
                         <span class="checkout-product-img">
                           <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %> 
-                            <% img_url = book["book_cover_file_url"]  rescue nil%>
+                            <% img_url = book["cover"]  rescue nil%>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>
@@ -108,7 +93,7 @@
                       <div class="part-1">
                         <span class="checkout-product-img">
                           <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %>  
-                          <% img_url = book["book_cover_file_url"] rescue nil %>
+                          <% img_url = book["cover"] rescue nil %>
                             <img src="<%= img_url %>" class="rounded" />
                           <% end %>
                         </span>
@@ -150,12 +135,28 @@
               <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('arabic.png') %>">
               <% end %>
-            <% else %>
+              <% if  @booth["number"] == "fr123ench12345fr123ench" %>
+                <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('Fr.png') %>">
+                <% end %>
+              <% end %>
+            <% elsif  params[:locale] == "ar" %>
               <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('eng-white.png') %>">
               <% end %>
+              <% if  @booth["number"] == "fr123ench12345fr123ench" %>
+                <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('Fr.png') %>">
+                <% end %>
+              <% end %>
+            <%else%>
+            <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <img src="<%= asset_url('arabic.png') %>">
             <% end %>
-
+            <%= link_to web_booth_books_path(booth_id: @booth["number"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
+              <img src="<%= asset_url('eng-white.png') %>">
+            <% end %>
+            <% end %>
             <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class: "btn btn-light-grey btn-footer" do %>
               <img src="<%= asset_url('access-white.png') %>">
             <% end %>
@@ -266,3 +267,11 @@
   pointer-events: none;
 }
 </style>
+<script>
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+    if ($(".search-box").is(":focus")) {
+        document.activeElement.blur();
+    }
+}, false);
+</script>

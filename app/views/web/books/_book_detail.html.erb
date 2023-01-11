@@ -20,7 +20,7 @@
             <div class="image-grid-container common-clearfix">
               <div class="image-grid-col50">
                 <div class="image-grid-imageContainer">
-                  <% img_url = @book["book_cover_file_url"] rescue nil  %>
+                  <% img_url = @book["cover"] rescue nil  %>
                 <img class="big-img" src="<%= img_url %>">
                 </div>
               </div>
@@ -187,9 +187,9 @@
         <h1><%= t('play_book_preview') %></h1>
 
         <div class="button-items">
-          <% sort_audio_url = @book["short_audio_url"] rescue nil %>
+          <% sort_long = @book["short"] rescue nil %>
           <audio id="music" autoplay="true" preload="auto">
-            <source src="<%=  sort_audio_url %>">
+            <source src="<%=  sort_long %>">
            <!--  <source src="https://dl.dropbox.com/s/75jpngrgnavyu7f/The-Noisy-Freaks.ogg?dl=1" type="audio/ogg"> -->
           </audio>
           <div id="slider">
@@ -300,16 +300,32 @@ C76.5,308.025,179.775,204.75,306,204.75z" />
                 <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('arabic.png') %>">
                 <% end %>
-              <% else %>
-                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"]), class:"btn btn-light-grey btn-footer", remote: true do %>
+                <% if  @booth["number"] == "fr123ench12345fr123ench" %>
+                  <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                    <img src="<%= asset_url('Fr.png') %>">
+                  <% end %>
+                <% end %>
+              <% elsif params[:locale] == "ar"%>
+                 <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
                   <img src="<%= asset_url('eng-white.png') %>">
                 <% end %>
-              <% end %>
-              
-              <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class:"btn btn-light-grey btn-footer isDisabled" do %>
+                <% if  @booth["number"] == "fr123ench12345fr123ench" %>
+                  <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :fr), class:"btn btn-light-grey btn-footer", remote: true do %>
+                    <img src="<%= asset_url('Fr.png') %>">
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :en), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('eng-white.png') %>">
+                <% end %>
+                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: @book["id"], locale: :ar), class:"btn btn-light-grey btn-footer", remote: true do %>
+                  <img src="<%= asset_url('arabic.png') %>">
+                <% end %>
+              <% end %>              
+              <%= link_to accessibility_mode_web_booth_books_path(booth_id: @booth["number"]), remote: true, class:"btn btn-light-grey btn-footer" do %>
                 <img src="<%= asset_url('access-white.png') %>">
               <% end %>
-             <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer isDisabled", remote: true do %>
+             <%= link_to  children_mode_web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-light-grey btn-footer", remote: true do %>
                 <img src="<%= asset_url('baby-white.png') %>">
               <% end %>
             </div>

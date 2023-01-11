@@ -11,6 +11,7 @@ class BoothsController < ApplicationController
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("booths").dig("data").present?
       @booths =  response_body["booths"]["data"]
+      @pagination_data =  response_body["booths"]["meta"]
     end
   end
 
@@ -44,11 +45,15 @@ class BoothsController < ApplicationController
   end
 
   def destroy
-    if @booth.destroy
+    url = "#{ENV["API_BASE_URL"]}/api/booths/#{params[:id]}"
+    headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
+    response = HTTParty.delete(url, headers: headers)
+    response_body = JSON.parse(response.body) if response.body.present?
+    if response_body.present? &&  response_body["status_code"] == 200
       message = t("booth_destroy_message")
       redirect_to booths_path, notice: message
     else
-      redirect_to booths_path, alert: @booth.errors.full_messages
+      redirect_to booths_path, notice: t("something_went_wrong")
     end
   end
 

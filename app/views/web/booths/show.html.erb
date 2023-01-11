@@ -15,14 +15,18 @@
                         <%= @book_cover_urls.to_a.each_slice(2) do |url1, url2|%>
                         <div>
                             <div class="book-cov6h6">
-                                <a href="#">
-                                    <img src="<%= url1 %>"  />
-                                </a>
+                                <% if url1.present? %>
+                                    <%= link_to web_booth_book_path(booth_id: @booth["number"], id: url1["id"], locale: :ar), remote: true do %>
+                                        <img src="<%= url1["url"] %>">
+                                    <% end %>
+                                <% end %>
                             </div>
                             <div class="book-cov6h6">
-                                <a href="#">
-                                <img src="<%= url2 %>"  />
-                                </a>
+                                <% if url2.present? %>
+                                    <%= link_to web_booth_book_path(booth_id: @booth["number"], id: url2["id"], locale: :ar), remote: true do %>
+                                        <img src="<%= url2["url"] %>">
+                                    <% end %>
+                                <% end %>
                             </div>
                         </div>
                         <% end %>
@@ -42,16 +46,32 @@
                         <h1>مكتبة الكتب الصوتية</h1>
                         <h1 class="mt-5">Audiobooks Library</h1>
                     </div>
-
+                    <% if  @booth["number"] == "fr123ench12345fr123ench" %>
                     <div class="form-group button-sec">
                    
-                        <div class="mb-5">
-                        <%= link_to "ابدأ الخدمة", web_booth_books_path(booth_id: @booth["number"], locale: :ar), class: "btn btn-primary btn-theme", remote: true %>
-                        </div>
-                        <div >
-                        <%= link_to "Start", web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-primary btn-theme", remote: true %>
-                        </div>
+                    <div class="mb-5">
+                    <%= link_to "ابدأ", web_booth_books_path(booth_id: @booth["number"], locale: :ar), class: "btn btn-primary btn-theme start-btn", remote: true %>
+
+                    <%= link_to "Start", web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-primary btn-theme ml-3 start-btn", remote: true %>
+                    <%= link_to "Commencer", web_booth_books_path(booth_id: @booth["number"], locale: :fr), class: "btn btn-primary btn-theme ml-3", remote: true %>
                     </div>
+                   
+                   </div>
+                   <%else%>
+                    <div class="form-group button-sec-1">
+                   
+                        <div>
+                        <div class="mb-5">
+                        <%= link_to "ابدأ", web_booth_books_path(booth_id: @booth["number"], locale: :ar), class: "btn btn-primary btn-theme start-btn btn-startar", remote: true %>
+                        </div>
+                        <div>
+                        <%= link_to "Start", web_booth_books_path(booth_id: @booth["number"]), class: "btn btn-primary btn-theme start-btn btn-startar", remote: true %>
+                        </div>
+        
+                        </div>
+                       
+                    </div>
+                 <%end%>
                 </div>
 
             </div>
@@ -70,3 +90,19 @@
     </footer>
 </section>
 </div>
+
+<style type="text/css">
+    .start-btn {
+     width: 20%;
+    }
+    .btn-startar {
+    width: 45%;
+    font-size: 3.3em;
+    padding: 36px 20px;
+    border-radius: 24px;
+    }
+    .button-sec-1 {
+    margin-bottom: 2.5rem;
+    margin-top: 4.5em;
+    }
+</style>

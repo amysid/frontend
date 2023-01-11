@@ -18,7 +18,47 @@
 
 <%= javascript_pack_tag 'mobile' %>
 <%= stylesheet_pack_tag 'mobile' %>
+<% if @booth["name"] == "Blind" %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="book-player">
+        <div class="player">
+          <div class="info mt-2">
+            <div class="button-items">
+              <% long = @book["long"] rescue nil %>
+              <audio id="music" autoplay="true" preload="auto">
+                <source src="<%= long %>">
+              </audio>
+              <div id="slider">
+                <div id="elapsed"></div>
+              </div>
+              <p id="timer">0:00</p>
+              <div class="controls">
+                <svg id="play" viewBox="0 0 25 25" xml:space="preserve">
+                  <defs>
+                    <rect x="-49.5" y="-132.9" width="446.4" height="366.4" />
+                  </defs>
+                  <g>
+                    <circle fill="none" cx="12.5" cy="12.5" r="10.8" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.7,6.9V18c0,0,0.2,1.4,1.8,0l8.1-4.8c0,0,1.2-1.1-1-2L9.8,6.5 C9.8,6.5,9.1,6,8.7,6.9z" />
+                  </g>
+                </svg>
 
+
+                <svg id="pause" viewBox="0 0 25 25" xml:space="preserve">
+                  <g>
+                    <rect x="6" y="4.6" width="3.8" height="15.7" />
+                    <rect x="14" y="4.6" width="3.9" height="15.7" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
 <body translate="no">
   <div class="main-content" style="background-image: url(<%= asset_url('bg.jpg')%>); background-size: contain; background-repeat: no-repeat; background-color: #6f1946">
     <div class="container">
@@ -41,7 +81,7 @@
             <div id="Div8" class="single-product">
               <div class="part-1">
                 <span class="checkout-product-img">
-                  <% img_url = @book["book_cover_file_url"] rescue nil %>
+                  <% img_url = @book["cover"] rescue nil %>
                   <a href="">
                     <img src="<%= img_url %>" class="rounded">
                   </a>
@@ -74,9 +114,9 @@
              <div class="player">
                 <div class="info mt-2">
                   <div class="button-items">
-                    <% audio_url = @book["audio_url"] rescue nil %>
-                    <audio id="music" preload="auto">
-                      <source src="<%= audio_url %>" type="audio/mp3">
+                    <% long = @book["long"] rescue nil %>
+                    <audio id="music" autoplay="true" preload="auto">
+                      <source src="<%= long %>">
                     </audio>
                     <div id="slider">
                       <div id="elapsed"></div>
@@ -144,7 +184,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
 
                     </div>
                     <div class="audio-no">
-                       <label> <%= select_tag "play_speed", options_for_select([["0.25x", 0.25],["0.5x", 0.5], ["0.7x", 0.75], ["1x", 1], ["1.25x", 1.25],["1.50x", 1.50],["1.75x", 1.75], ["2x", 2]], :selected=>1), {:class =>"playbackrate browser-default custom-select"} %>
+                       <label> <%= select_tag "play_speed", options_for_select([["0.7x", 0.75], ["1x", 1], ["1.25x", 1.25],["1.50x", 1.50],["1.75x", 1.75], ["2x", 2]], :selected=>1), {:class =>"playbackrate browser-default custom-select"} %>
                        </label> 
 
                     </div>
@@ -643,6 +683,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
     </div>
   </div>
 </body>
+<% end %>
   <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
   <style>
      
@@ -691,7 +732,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
        var current_time = music.currentTime
        var file_duration = music.duration
       $.ajax({
-          url : "<%= "#{ENV['API_BASE_URL']}/web_api/operations/#{@operation['number']}/update_listen_count" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/update_listen_count" %>",
           type : 'GET',
           data : {
             'current_time' : current_time,
@@ -763,7 +804,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
         var current_time = music.currentTime
         var file_duration = music.duration
         $.ajax({
-          url : "<%= "#{ENV['API_BASE_URL']}/web_api/operations/#{@operation['number']}/update_listen_count" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/update_listen_count" %>",
           type : 'GET',
           data : {
             'current_time' : current_time,
@@ -784,7 +825,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
     $("#rating_form").submit(function(event){
       event.preventDefault()
       $.ajax({
-          url : "<%= "#{ENV['API_BASE_URL']}/web_api/operations/#{@operation['number']}/save_feedback" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/save_feedback" %>",
           type : 'put',
           data : $('form').serialize(),
           success : function(data) {              
@@ -792,12 +833,21 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
            $("#close-btn").click();
            $(".rating-btn").html("");
           },
-          error : function(request,error)
+          error : function(request, error)
           {
-           alert("their is some issue");
+           alert("Something went wrong!");
           }
         })
     });
+
+    $("#exampleFormControlTextarea1").change(function(){
+      var re = new RegExp("^[a-zA-Z0-9.@#! /|]+$");
+      var value = $("#exampleFormControlTextarea1").val()
+      if(!re.test(value)){
+        alert("Invalid Input, Special Charecter not Allowed!")
+        $("#exampleFormControlTextarea1").val('')
+      }
+    })
 
   </script>
 

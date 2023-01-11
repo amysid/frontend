@@ -2,7 +2,7 @@ Rails.application.routes.draw do
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'sessions#new'
-  scope "(:locale)", locale: /en|ar/ do 
+  scope "(:locale)", locale: /en|ar|fr/ do 
     resources :sessions
     resources :homes
     resources :books do 

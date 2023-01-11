@@ -1,13 +1,13 @@
 ﻿@charset "UTF-8";
 @font-face { font-family: 'Glyphicons Halflings'; src: url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'); }
 .glyphicon { position: relative; top: 1px; display: inline-block; font-family: 'Glyphicons Halflings'; font-style: normal; font-weight: 400; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-@font-face { font-family: 'Effra'; src: url(../fonts/Effra_W_Rg.woff) format('woff'); font-style: normal; }
-@font-face { font-family: 'Effra-md'; src: url(../fonts/Effra_W_Md.woff) format('woff'); font-style: normal; }
+@font-face { font-family: 'Effra'; src: url(../fonts/Effra_W_Rg.woff) format('woff'), url(../fonts/Effra_Rg3.ttf) format('truetype'); font-style: normal; }
+@font-face { font-family: 'Effra-md'; src: url(../fonts/Effra_W_Md.woff) format('woff'), url(../fonts/Effra_Rg3.ttf) format('truetype'); font-style: normal; }
 /** { letter-spacing: 0 !important; }*/
 h1, h2, h3, h4 { text-shadow: none; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Effra-md' !important; }
 html { direction: ltr; -ms-touch-action: manipulation; touch-action: manipulation; font-size: 16px; }
-body, html { height: 100%; }
+body, html { height: 100%;  font-family: 'Effra-md' !important;}
 .wrapper { position: relative; width: 100%; height: auto; min-height: 100%; overflow-x: hidden; }
     .wrapper .aside-container { position: absolute; width: 220px; top: 0; left: 0; bottom: 0; z-index: 116; backface-visibility: hidden; background-color: #fff; }
       .wrapper .aside-container-R { position: absolute; width: 220px; top: 0; right: 0; bottom: 0; z-index: 116; backface-visibility: hidden; background-color: #fff; }         

@@ -19,6 +19,12 @@
               <%= f.text_field :arabic_name, value: @category["arabic_name"], class:"form-control text-center", placeholder: t('arabic_name') %>
             </div>                         
           </div>
+          <div class="form-group row">
+               <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('french_name')%></label>
+            <div class="col-md-9">
+              <%= f.text_field :french_name, value: @category["french_name"], class:"form-control text-center", placeholder: t('french_name') %>
+            </div>                         
+          </div>
 
           <div class="form-group row">
                <label for="example-text-input" class="col-md-3 col-form-label text-center"><%= t('icon')%></label>
@@ -66,8 +72,14 @@
     var white_preview = $(".update-upload-white-preview img")
 
     $("#update-category-icon").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
+      var input = $(event.currentTarget);
+      var file = input[0].files[0];
+      var file_extention = $("#update-category-icon").val().split('.').pop().toLowerCase();
+      if($.inArray(file_extention, ['gif','png','jpg','jpeg']) == -1) {
+        alert('File has invalid extension only png, jpg, jpeg file is supported!');
+        $("#update-category-icon").val('');
+        return
+      }
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;
@@ -79,6 +91,12 @@
     $("#update-category-white-icon").change(function(event){
        var input = $(event.currentTarget);
        var file = input[0].files[0];
+       var file_extention = $("#update-category-white-icon").val().split('.').pop().toLowerCase();
+        if($.inArray(file_extention, ['gif','png','jpg','jpeg']) == -1) {
+          alert('File has invalid extension only png, jpg, jpeg file is supported!');
+          $("#update-category-white-icon").val('');
+          return
+        }
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;
@@ -88,29 +106,29 @@
     });
   });
 
-  $("#category_update_form").submit(function(event){
-      event.preventDefault()
-      var form_data = new FormData(this);
-      $.ajax({
-          url : '<%= "#{ENV["API_BASE_URL"]}/api/categories/#{@category["id"]}" %>',
-          type : 'put',
-          data : form_data,
-          processData: false,
-          contentType: false,
-          headers: {
-            Authorization: "<%= "Bearer #{session[:token]}" %>"
-          },
-          success : function(data) {              
-           alert("data save")
-           var url = "<%= categories_url %>"
-           window.location.href = url
-          },
-          error : function(request,error)
-          { 
-            var url = "<%= categories_url %>"
-            alert("Some thing went wrong")
-            window.location.href = url
-          }
-        })
-    });
+  // $("#category_update_form").submit(function(event){
+  //     event.preventDefault()
+  //     var form_data = new FormData(this);
+  //     $.ajax({
+  //         url : '<%= "#{ENV["API_BASE_URL"]}/api/categories/#{@category["id"]}" %>',
+  //         type : 'put',
+  //         data : form_data,
+  //         processData: false,
+  //         contentType: false,
+  //         headers: {
+  //           Authorization: "<%= "Bearer #{session[:token]}" %>"
+  //         },
+  //         success : function(data) {              
+  //          alert("data save")
+  //          var url = "<%= categories_url %>"
+  //          window.location.href = url
+  //         },
+  //         error : function(request,error)
+  //         { 
+  //           var url = "<%= categories_url %>"
+  //           alert("Some thing went wrong")
+  //           window.location.href = url
+  //         }
+  //       })
+  //   });
 </script>

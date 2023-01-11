@@ -11,7 +11,7 @@
 
 <script>
    var time = new Date().getTime();
-   $(document.body).bind("mousemove keypress", function(e) {
+   $(document.body).bind("mousemove touchmove scroll keypress", function(e) {
      time = new Date().getTime();
    });
 
@@ -21,26 +21,27 @@
       setTimeout(refresh, 10000);
       return
     }
-     if(new Date().getTime() - time >= 40000){
-      var modal = $("#myModal")[0]
-      modal.style.display = "block";
-      var timeLeft = 30;
-      var elem = document.getElementById('timer_div');
-      var timerId = setInterval(countdown, 1000);
+     if(new Date().getTime() - time >= 100000){
+      window.location.reload();
+      // var modal = $("#myModal")[0]
+      // modal.style.display = "block";
+      // var timeLeft = 30;
+      // var elem = document.getElementById('timer_div');
+      // var timerId = setInterval(countdown, 1000);
       
-      function countdown() {
-        if (timeLeft == -1) {
-          clearTimeout(timerId);
-          doSomething();
-        } else {
-          if($("#myModal")[0].style.display == 'none'){
-            clearTimeout(timerId);
-            elem.innerHTML == ""
-          }
-          elem.innerHTML = timeLeft + ' seconds remaining';
-          timeLeft--;
-        }
-      }
+      // function countdown() {
+      //   if (timeLeft == -1) {
+      //     clearTimeout(timerId);
+      //     doSomething();
+      //   } else {
+      //     if($("#myModal")[0].style.display == 'none'){
+      //       clearTimeout(timerId);
+      //       elem.innerHTML == ""
+      //     }
+      //     elem.innerHTML = timeLeft + ' seconds remaining';
+      //     timeLeft--;
+      //   }
+      // }
      }
      else{
        setTimeout(refresh, 10000);
@@ -51,7 +52,6 @@
 </script>
 
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
 
 /* The Modal (background) */
 .modal {

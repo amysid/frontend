@@ -7,7 +7,7 @@
         <div class="mt-3">
           <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_category_path(id:category["id"]) ,remote: true, class: "btn btn-secondary-blue modal-link-space"%>
           <%= link_to "<i class='fa fa-eye'></i>".html_safe, category_path(id:category["id"]) ,remote: true, class: "btn btn-secondary-blue modal-link-space"%>
-          <%= link_to "<i class='fa fa-trash'></i>".html_safe, category_path(id:category["id"]) ,method: "delete", remote: true, class: "btn btn-secondary-blue modal-link-space"%>
+          <%= link_to "<i class='fa fa-trash'></i>".html_safe, category_path(id: category["id"]) ,method: "delete", remote: true, class: "btn btn-secondary-blue modal-link-space"%>
         </div>
       </div>
 

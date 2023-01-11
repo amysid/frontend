@@ -5,18 +5,27 @@
   <style>
     .access-overlay { height: 1227px; }
   </style>
+  <%= javascript_include_tag "/h-scroll/jquery.mCustomScrollbar.concat.min.js"%>
 </head>
 <body>
-  <div class="main-wrapper" id="right-scroll">
+  <div class="main-wrapper p-0" id="right-scroll">
+  <div class="bg-overlay">
+  <img src="<%= asset_url('top-acce-bg.png') %>" class="w-100" style="height:280px;"/>
+  </div>
     <div class="_1R8mR">
       <div class="access-overlay">
       <div class="container">
         <div class="row justify-content-center align-items-center">
-          <div class="col-md-12 text-center">
-            <div class="avatar-logo">
-              <img src="<%= asset_url('logo-new.png') %>" />
-            </div>
-          </div>
+        <div class="login-box col-md-12 pt-5 mt-5">
+                <div class="theme-form login-form text-center pt-5 mt-5">
+                    <div>
+                        <div class="avatar-logo">
+                        <img src="<%= asset_url('logo-new.png') %>" />
+                        </div>
+                        <h1 class="mt-5 mb-0">مكتبة الكتب الصوتية</h1>
+                        <h1 class="mt-2">Audiobooks Library</h1>
+                    </div>
+                </div>
         </div>
       </div>
     </div>
@@ -39,7 +48,7 @@
               <div id="Div4" class="single-product">
                 <div class="part-1">
                   <span class="checkout-product-img">
-                    <% img_url = book["book_cover_file_url"] rescue nil %>
+                    <% img_url = book["cover"] rescue nil %>
                     <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %>
                       <img src="<%= img_url %>" class="rounded" />
                     <% end %>
@@ -69,10 +78,11 @@
           <% end %>
           <% end %>
         </div>
+
       </div>
     </div>
   </main>
-    <footer class="pt-0">
+    <footer>
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-3">
@@ -107,176 +117,45 @@
       </div>
     </footer>
   </div>
+<!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ -->
+<script>
+  (function ($){
+    $.mCustomScrollbar.defaults.scrollButtons.enable = true; //enable scrolling buttons by default
+    $.mCustomScrollbar.defaults.axis = "yx"; //enable 2 axis scrollbars by default
 
-
-
-  <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
-  <script src="https://darsa.in/sly/examples/js/vendor/plugins.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/Sly/1.6.1/sly.min.js'></script>
-  <script id="rendered-js">
-    jQuery(function ($) {
-      'use strict';
-
-      // -------------------------------------------------------------
-      //   Basic Navigation
-      // -------------------------------------------------------------
-      (function () {
-        var $frame = $('#basic');
-        var $slidee = $frame.children('ul').eq(0);
-        var $wrap = $frame.parent();
-        let _count = $('.arabic-1').find('ul li')?.length - 1 ?? 0 ;
-        console.log('_count :'+ _count);
-        // Call Sly on frame
-        $frame.sly({
-          horizontal: 1,
-          itemNav: 'basic',
-          smart: 1,
-          activateOn: 'click',
-          mouseDragging: 1,
-          touchDragging: 1,
-          releaseSwing: 1,
-          startAt: _count ,
-          scrollBar: $wrap.find('.scrollbar'),
-          scrollBy: 1,
-          pagesBar: $wrap.find('.pages'),
-          activatePageOn: 'click',
-          speed: 300,
-          elasticBounds: 1,
-          easing: 'easeOutExpo',
-          dragHandle: 1,
-          dynamicHandle: 1,
-          clickBar: 1,
-
-          // Buttons
-          forward: $wrap.find('.forward'),
-          backward: $wrap.find('.backward'),
-          prev: $wrap.find('.prev'),
-          next: $wrap.find('.next'),
-          prevPage: $wrap.find('.prevPage'),
-          nextPage: $wrap.find('.nextPage') });
-      })();
-
-      // -------------------------------------------------------------
-      //   Basic Navigation
-      // -------------------------------------------------------------
-      (function () {
-        var $frame = $('#Div1');
-        var $slidee = $frame.children('ul').eq(0);
-        var $wrap = $frame.parent();
-        let _count = $('.arabic').find('ul li')?.length - 1 ?? 0 ;
-        console.log('_count :'+ _count);
-        // Call Sly on frame
-        $frame.sly({
-          horizontal: 1,
-          itemNav: 'basic',
-          smart: 1,
-          activateOn: 'click',
-          mouseDragging: 1,
-          touchDragging: 1,
-          releaseSwing: 1,
-          startAt: _count ,
-          scrollBar: $wrap.find('.scrollbar'),
-          scrollBy: 1,
-          pagesBar: $wrap.find('.pages'),
-          activatePageOn: 'click',
-          speed: 300,
-          elasticBounds: 1,
-          easing: 'easeOutExpo',
-          dragHandle: 1,
-          dynamicHandle: 1,
-          clickBar: 1,
-
-          // Buttons
-          forward: $wrap.find('.forward'),
-          backward: $wrap.find('.backward'),
-          prev: $wrap.find('.prev'),
-          next: $wrap.find('.next'),
-          prevPage: $wrap.find('.prevPage'),
-          nextPage: $wrap.find('.nextPage') });
-      })();
-
-    });
-    //# sourceURL=pen.js
-  </script>
-
-  <script>
-    (function ($) {
-      $(window).on("load", function () {
-
-        $.mCustomScrollbar.defaults.scrollButtons.enable = true; //enable scrolling buttons by default
-        $.mCustomScrollbar.defaults.axis = "yx"; //enable 2 axis scrollbars by default
-
-        $("#content-l").mCustomScrollbar();
-
-        $("#content-d").mCustomScrollbar({ theme: "dark" });
-
-        $("#content-l2").mCustomScrollbar({ theme: "light-2" });
-
-        $("#content-d2").mCustomScrollbar({ theme: "dark-2" });
-
-        $("#content-l3").mCustomScrollbar({ theme: "light-3" });
-
-        $("#content-d3").mCustomScrollbar({ theme: "dark-3" });
-
-        $("#content-ltk").mCustomScrollbar({ theme: "light-thick" });
-
-        $("#content-dtk").mCustomScrollbar({ theme: "dark-thick" });
-
-        $("#content-ltn").mCustomScrollbar({ theme: "light-thin" });
-
-        $("#content-dtn").mCustomScrollbar({ theme: "dark-thin" });
-
-        $("#content-m").mCustomScrollbar({ theme: "minimal" });
-
-        $("#content-md").mCustomScrollbar({ theme: "minimal-dark" });
-
-        $("#content-i").mCustomScrollbar({ theme: "inset" });
-
-        $("#content-id").mCustomScrollbar({ theme: "inset-dark" });
-
-        $("#content-i2").mCustomScrollbar({ theme: "inset-2" });
-
-        $("#content-i2d").mCustomScrollbar({ theme: "inset-2-dark" });
-
-        $("#content-i3").mCustomScrollbar({ theme: "inset-3" });
-
-        $("#content-i3d").mCustomScrollbar({ theme: "inset-3-dark" });
-
-        $("#content-r").mCustomScrollbar({ theme: "rounded" });
-
-        $("#content-rd").mCustomScrollbar({ theme: "rounded-dark" });
-
-        $("#content-rds").mCustomScrollbar({ theme: "rounded-dots" });
-
-        $("#content-rdsd").mCustomScrollbar({ theme: "rounded-dots-dark" });
-
-        $("#content-3d").mCustomScrollbar({ theme: "3d" });
-
-        $("#content-3dd").mCustomScrollbar({ theme: "3d-dark" });
-
-        $("#content-3dt").mCustomScrollbar({ theme: "3d-thick" });
-
-        $("#content-3dtd").mCustomScrollbar({ theme: "3d-thick-dark" });
-
-        $(".all-themes-switch a").click(function (e) {
-          e.preventDefault();
-          var $this = $(this),
+    $("#content-l").mCustomScrollbar();
+    $("#content-rd").mCustomScrollbar({ theme: "rounded-dark" });
+    $(".all-themes-switch a").click(function (e) {
+      e.preventDefault();
+      var $this = $(this),
       rel = $this.attr("rel"),
       el = $(".content");
-          switch (rel) {
-            case "toggle-content":
-              el.toggleClass("expanded-content");
-              break;
-          }
-        });
+      switch (rel) {
+        case "toggle-content":
+        el.toggleClass("expanded-content");
+        break;
+      }
+    });
+  })(jQuery);
+</script>
 
-      });
-    })(jQuery);
-  </script>
+ 
 </body>
 </html>
 <style>
-.isDisabled {
-  pointer-events: none;
-}
+  .isDisabled {
+    pointer-events: none;
+  }
+  .access-overlay { height:935px;position:relative; }
+  .bg-overlay {
+    #  background-image: url("/assets/images/img1.jpeg") !important;
+   
+  }
+  .single-product .part-1 {
+    position: relative;
+  }
+  .single-product {
+    width:200px;
+  }
 </style>
