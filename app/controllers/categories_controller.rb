@@ -38,8 +38,8 @@ class CategoriesController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
-    @store.update(ref_id: response_body["category"]["data"]["id"].to_i)
     if response_body.present? &&  response_body.dig("category").dig("data").present?
+      @store.update(ref_id: response_body["category"]["data"]["id"].to_i)
       redirect_to categories_path
     end
   end
