@@ -69,7 +69,5 @@ gem "chartkick"
 gem "groupdate"
 gem 'httparty'
 gem "figaro"
-gem 'MagicNumber', '~> 0.0.1'
-
 
 
