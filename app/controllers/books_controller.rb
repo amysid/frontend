@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   before_action :ensure_book_present?, except: [:new, :create, :index]
   before_action :fetch_categories, only: [:index, :edit]
   before_action :validate_files, only: [:create, :update]
+  before_action :validate_files_using_magic_number, only: [:create, :update]
   include Rails.application.routes.url_helpers
 
   def index
@@ -164,5 +165,20 @@ class BooksController < ApplicationController
     end
     return true if status
     redirect_to books_path, notice: t("File are not valid!")
+  end
+
+  def validate_files_using_magic_number
+    status = true
+    if params["book"]["book_cover_file"].present?
+      status = status && MagicNumber.is_real?(params["book"]["book_cover_file"].tempfile.path)
+    end
+    if params["book"]["audio"].present?
+      status = status && MagicNumber.is_real?(params["book"]["audio"].tempfile.path)
+    end
+    if params["book"]["short_audio_file"].present?
+      status = status && MagicNumber.is_real?(params["book"]["short_audio_file"].tempfile.path) 
+    end
+    return true if status
+    redirect_to books_path, notice: t("File are not valid!") 
   end
 end
