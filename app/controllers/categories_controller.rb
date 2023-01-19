@@ -123,7 +123,7 @@ class CategoriesController < ApplicationController
     end
     if params["category"]["white_icon"].present?
       white_icon_extention = params["category"]["white_icon"].original_filename.split(".").last
-      status = status && ["mp3"].include?(white_icon_extention)
+      status = status && ['gif','png','jpg','jpeg'].include?(white_icon_extention)
     end
     return true if status
     redirect_to categories_path, notice: t("File are not valid!")
