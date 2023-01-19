@@ -140,6 +140,6 @@ class CategoriesController < ApplicationController
     end
     return true if status
 
-    redirect_to books_path, notice: t("dsds File are not valid!") 
+    redirect_to categories_path, notice: t("dsds File are not valid!") 
   end
 end
