@@ -217,20 +217,21 @@ class MagicNumber
     def self.get_signature(ext)
       return SIGNATURES[ext]
     end
-  
-  
+
       # @see https://en.wikipedia.org/wiki/List_of_file_signatures
       # @since 0.0.1
       # @param [String] file_path Path to analyzable file
       # @return [boolean] wether the file content is in accordance with the extension 
     def self.is_real?(file_path)
+      signature = MagicNumber.get_signature(file_path.split(".").last.downcase)
+      return false if signature.blank?
+
+      minimum_length = signature['length_begin'].first
       file = File.new(file_path, 'r')
-      signature = MagicNumber.get_signature(file_path.split(".").last.downcase)   
-  
-      real = MagicNumber.check_begin_sign(file, signature) && MagicNumber.check_end_sign(file, signature)
-  
-      file.close
+      return false if file.stat.size < minimum_length
       
+      real = MagicNumber.check_begin_sign(file, signature) && MagicNumber.check_end_sign(file, signature)
+      file.close
       return real
     end
   
@@ -257,8 +258,6 @@ class MagicNumber
         return true
       end
     end
-  
-  
   
     def self.read_beginning_bytes(file, length)
       file.rewind
