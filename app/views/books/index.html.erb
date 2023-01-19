@@ -376,52 +376,6 @@
       reader.readAsDataURL(file);
     });
 
-    // $("#book-form").submit(function(e){
-    //   var duration = $("#long_audio")[0].duration;
-    //   duration = duration || 0
-    //   $(".book-duration").val(duration);
-    // });
-
-    // $("#book-form").submit(function(event){
-    //   var duration = $("#long_audio")[0].duration;
-    //   duration = duration || 0
-    //   $(".book-duration").val(duration);
-    //   event.preventDefault()
-    //   var form_data = new FormData(this);
-    //   $.ajax({
-    //       url : '<%= "#{ENV["API_BASE_URL"]}/api/books" %>',
-    //       type : 'post',
-    //       data : form_data,
-    //       processData: false,
-    //       contentType: false,
-    //       headers: {
-    //         Authorization: "<%= "Bearer #{session[:token]}" %>"
-    //       },
-    //       success : function(data) {              
-    //        alert("data save")
-    //        var url = "<%= books_url %>"
-    //        window.location.href = url
-    //       },
-    //       error : function(request,error)
-    //       {
-    //        alert("their is some issue");
-    //       }
-    //     })
-    // });
-
   });
-
-
-  // function secondsToHms(d) {
-  //   d = Number(d);
-  //   var h = Math.floor(d / 3600);
-  //   var m = Math.floor(d % 3600 / 60);
-  //   var s = Math.floor(d % 3600 % 60);
-
-  //   var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
-  //   var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-  //   var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
-  //   return hDisplay + mDisplay + sDisplay; 
-  // }
 
 </script>
