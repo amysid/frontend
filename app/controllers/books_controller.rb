@@ -18,24 +18,47 @@ class BooksController < ApplicationController
     end
   end
   
+  # def create
+  #   @store = Store.new({
+  #     model_type: "Book",
+  #     name: params[:book][:title],
+  #     book_cover_file: params[:book][:book_cover_file],
+  #     audio: params[:book][:audio],
+  #     short_audio_file: params[:book][:short_audio_file]
+  #     })
+  #     @store.save 
+  #   url = "#{ENV["API_BASE_URL"]}/api/books"
+  #   if params["book"].present?
+  #     data = {}
+  #     data["book"] = {}
+  #     data["book"] = book_params
+  #     data["book"]["category_ids"] = params["book"]["category_ids"]
+  #     data["book"]["cover"] =  rails_blob_path(@store.book_cover_file, only_path: true) if params["book"]["book_cover_file"].present?
+  #     data["book"]["long"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
+  #     data["book"]["short"] =  rails_blob_path(@store.short_audio_file, only_path: true) if params["book"]["short_audio_file"].present?
+  #     # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
+  #     # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
+  #     # data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
+  #   end
+  #   headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
+  #   response = HTTParty.post(url, headers)
+  #   response_body = JSON.parse(response.body) if response.body.present?
+  #   @store.update(ref_id: response_body["book"]["data"]["id"].to_i)
+  #   if response_body.present? &&  response_body.dig("book").dig("data").present?
+  #     redirect_to books_path
+  #   end
+  # end
+
   def create
-    @store = Store.new({
-      model_type: "Book",
-      name: params[:book][:title],
-      book_cover_file: params[:book][:book_cover_file],
-      audio: params[:book][:audio],
-      short_audio_file: params[:book][:short_audio_file]
-      })
-      @store.save 
     url = "#{ENV["API_BASE_URL"]}/api/books"
     if params["book"].present?
       data = {}
       data["book"] = {}
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
-      data["book"]["cover"] =  rails_blob_path(@store.book_cover_file, only_path: true) if params["book"]["book_cover_file"].present?
-      data["book"]["long"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
-      data["book"]["short"] =  rails_blob_path(@store.short_audio_file, only_path: true) if params["book"]["short_audio_file"].present?
+      data["book"]["cover"] =  upload_file_path_for(params["book"]["book_cover_file"])  if params["book"]["book_cover_file"].present?
+      data["book"]["long"] = upload_file_path_for(params["book"]["audio"])  if params["book"]["audio"].present?
+      data["book"]["short"] = upload_file_path_for(params["book"]["short_audio_file"]) if params["book"]["short_audio_file"].present?
       # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
       # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
       # data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
@@ -43,30 +66,21 @@ class BooksController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
-    @store.update(ref_id: response_body["book"]["data"]["id"].to_i)
     if response_body.present? &&  response_body.dig("book").dig("data").present?
       redirect_to books_path
     end
   end
 
   def update
-    @store = Store.find_by(model_type: "Book", ref_id: params["id"].to_i)
-    @store = @store.update({
-      name: params[:book][:title],
-      book_cover_file: params[:book][:book_cover_file],
-      audio: params[:book][:audio],
-      short_audio_file: params[:book][:short_audio_file]
-      })
-    @store = Store.find_by(model_type: "Book", ref_id: params["id"].to_i)
     url = "#{ENV["API_BASE_URL"]}/api/books/#{params[:id]}"
     if params["book"].present?
       data = {}
       data["book"] = {}
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
-      data["book"]["cover"] =  rails_blob_path(@store.book_cover_file, only_path: true) if params["book"]["book_cover_file"].present?
-      data["book"]["long"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
-      data["book"]["short"] =  rails_blob_path(@store.short_audio_file, only_path: true) if params["book"]["short_audio_file"].present?
+      data["book"]["cover"] =  upload_file_path_for(params["book"]["book_cover_file"])  if params["book"]["book_cover_file"].present?
+      data["book"]["long"] = upload_file_path_for(params["book"]["audio"])  if params["book"]["audio"].present?
+      data["book"]["short"] = upload_file_path_for(params["book"]["short_audio_file"]) if params["book"]["short_audio_file"].present?
       # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
       # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
       # data["book"]["short_audio_file"] =  File.open(params["book"]["short_audio_file"].tempfile.path) if params["book"]["short_audio_file"].present?
@@ -180,5 +194,22 @@ class BooksController < ApplicationController
     end
     return true if status
     redirect_to books_path, notice: t("MN File are not valid!") 
+  end
+
+  def upload_file_path_for(file, folder_name="storage/book")
+    return if file.blank?
+    dir = Rails.root.join(folder_name)
+    Dir.mkdir(dir) unless Dir.exist?(dir)
+    begin
+      path = dir.join(file.original_filename)
+      File.open(path, 'wb') do |f|
+        f.write(file.read)
+      end
+      byebug
+      return path
+      return rails_blob_path(File.open(path), only_path: true)
+    rescue
+      return nil
+    end
   end
 end

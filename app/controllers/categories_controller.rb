@@ -18,28 +18,47 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # def create
+  #     @store = Store.new({
+  #     model_type: "Category",
+  #     name: params[:category][:name],
+  #     icon: params[:category][:icon],
+  #     white_icon: params[:category][:white_icon]
+  #     })
+  #   @store.save
+  #   url = "#{ENV["API_BASE_URL"]}/api/categories"
+  #   data = {}
+  #   data["category"] = {}
+  #   if params["category"].present?
+  #     data["category"] = params.require("category").permit(:name, :arabic_name, :french_name)
+  #     data["category"]["dark"] = rails_blob_path(@store.icon, only_path: true) if params["category"]["icon"].present?
+  #     data["category"]["white"] = rails_blob_path(@store.white_icon, only_path: true) if params["category"]["white_icon"].present?
+  #     data["category"]["icon"] = File.open(params["category"]["icon"].tempfile.path) if params["category"]["icon"].present?
+  #     data["category"]["white_icon"] = File.open(params["category"]["white_icon"].tempfile.path) if params["category"]["white_icon"].present?
+  #   end
+  #   headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
+  #   response = HTTParty.post(url, headers)
+  #   response_body = JSON.parse(response.body) if response.body.present?
+  #   @store.update(ref_id: response_body["category"]["data"]["id"].to_i)
+  #   if response_body.present? &&  response_body.dig("category").dig("data").present?
+  #     redirect_to categories_path
+  #   end
+  # end
+
   def create
-      @store = Store.new({
-      model_type: "Category",
-      name: params[:category][:name],
-      icon: params[:category][:icon],
-      white_icon: params[:category][:white_icon]
-      })
-    @store.save
     url = "#{ENV["API_BASE_URL"]}/api/categories"
     data = {}
     data["category"] = {}
     if params["category"].present?
       data["category"] = params.require("category").permit(:name, :arabic_name, :french_name)
-      data["category"]["dark"] = rails_blob_path(@store.icon, only_path: true) if params["category"]["icon"].present?
-      data["category"]["white"] = rails_blob_path(@store.white_icon, only_path: true) if params["category"]["white_icon"].present?
+      data["category"]["dark"] = upload_file_path_for(params["category"]["icon"]) if params["category"]["icon"].present?
+      data["category"]["white"] = upload_file_path_for(params["category"]["white_icon"]) if params["category"]["white_icon"].present?
       data["category"]["icon"] = File.open(params["category"]["icon"].tempfile.path) if params["category"]["icon"].present?
       data["category"]["white_icon"] = File.open(params["category"]["white_icon"].tempfile.path) if params["category"]["white_icon"].present?
     end
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
-    @store.update(ref_id: response_body["category"]["data"]["id"].to_i)
     if response_body.present? &&  response_body.dig("category").dig("data").present?
       redirect_to categories_path
     end
@@ -55,20 +74,13 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @store = Store.find_by(model_type: "Category", ref_id: params["id"].to_i)
-    @store.update({
-      name: params[:category][:name],
-      icon: params[:category][:icon],
-      white_icon: params[:category][:white_icon]
-      })
-    @store = Store.find_by(model_type: "Category", ref_id: params["id"].to_i)
     url = "#{ENV["API_BASE_URL"]}/api/categories/#{params[:id]}"
     data = {}
     data["category"] = {}
     if params["category"].present?
       data["category"] =  params.require("category").permit(:name, :arabic_name, :french_name)
-      data["category"]["dark"] = rails_blob_path(@store.icon, only_path: true) if  params["category"]["icon"].present?
-      data["category"]["white"] = rails_blob_path(@store.white_icon, only_path: true) if  params["category"]["white_icon"].present?
+      data["category"]["dark"] = upload_file_path_for(params["category"]["icon"]) if  params["category"]["icon"].present?
+      data["category"]["white"] = upload_file_path_for(params["category"]["white_icon"]) if  params["category"]["white_icon"].present?
       data["category"]["icon"] = File.open(params["category"]["icon"].tempfile.path) if  params["category"]["icon"].present?
       data["category"]["white_icon"] = File.open(params["category"]["white_icon"].tempfile.path) if  params["category"]["white_icon"].present?
     end
@@ -141,5 +153,22 @@ class CategoriesController < ApplicationController
     return true if status
 
     redirect_to categories_path, notice: t("dsds File are not valid!") 
+  end
+
+  def upload_file_path_for(file, folder_name="assets/images/category/")
+    return if file.blank?
+    dir = Rails.root.join(folder_name)
+    byebug
+    Dir.mkdir(dir) unless Dir.exist?(dir)
+    begin
+      filename = file.original_filename
+      path = dir.join(file.original_filename)
+      File.open(path, 'wb') do |f|
+        f.write(file.read)
+      end
+      return folder_name + filename
+    rescue
+      return nil
+    end
   end
 end
