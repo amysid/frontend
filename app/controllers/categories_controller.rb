@@ -136,7 +136,7 @@ class CategoriesController < ApplicationController
     end
     if params["category"]["white_icon"].present?
       white_icon_extention = params["category"]["white_icon"].original_filename.split(".").last
-      status = status && ["mp3"].include?(white_icon_extention)
+      status = status && ['gif','png','jpg','jpeg'].include?(white_icon_extention)
     end
     return true if status
     redirect_to categories_path, notice: t("File are not valid!")
@@ -155,17 +155,16 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, notice: t("dsds File are not valid!") 
   end
 
-  def upload_file_path_for(file, folder_name="public/category/")
+  def upload_file_path_for(file, folder_name="public/assets/category")
     return if file.blank?
     dir = Rails.root.join(folder_name)
     Dir.mkdir(dir) unless Dir.exist?(dir)
     begin
-      filename = file.original_filename
       path = dir.join(file.original_filename)
       File.open(path, 'wb') do |f|
         f.write(file.read)
       end
-      return folder_name + filename
+      return "/assets/category/" + file.original_filename 
     rescue
       return nil
     end

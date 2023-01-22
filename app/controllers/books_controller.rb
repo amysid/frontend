@@ -196,7 +196,7 @@ class BooksController < ApplicationController
     redirect_to books_path, notice: t("MN File are not valid!") 
   end
 
-  def upload_file_path_for(file, folder_name="storage/book")
+  def upload_file_path_for(file, folder_name="public/assets/book")
     return if file.blank?
     dir = Rails.root.join(folder_name)
     Dir.mkdir(dir) unless Dir.exist?(dir)
@@ -205,11 +205,10 @@ class BooksController < ApplicationController
       File.open(path, 'wb') do |f|
         f.write(file.read)
       end
-      byebug
-      return path
-      return rails_blob_path(File.open(path), only_path: true)
+      return "/assets/book/" + file.original_filename
     rescue
       return nil
     end
   end
 end
+
