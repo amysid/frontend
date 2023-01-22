@@ -155,10 +155,9 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, notice: t("dsds File are not valid!") 
   end
 
-  def upload_file_path_for(file, folder_name="assets/images/category/")
+  def upload_file_path_for(file, folder_name="public/category/")
     return if file.blank?
     dir = Rails.root.join(folder_name)
-    byebug
     Dir.mkdir(dir) unless Dir.exist?(dir)
     begin
       filename = file.original_filename
