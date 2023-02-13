@@ -15,10 +15,12 @@ module AudioLibrary
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    
+    config.assets.prefix = '/audio/assets'
+    config.active_storage.routes_prefix = '/audio/rails/active_storage'
+    config.action_controller.allow_forgery_protection = false    
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :en # (note that `en` is already the default!)
-
+    #config.relative_url_root = "/audio"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
