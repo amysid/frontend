@@ -840,6 +840,15 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
         })
     });
 
+    $("#exampleFormControlTextarea1").change(function(){
+      var re = new RegExp("^[a-zA-Z0-9.@#! /|]+$");
+      var value = $("#exampleFormControlTextarea1").val()
+      if(!re.test(value)){
+        alert("Invalid Input, Special Charecter not Allowed!")
+        $("#exampleFormControlTextarea1").val('')
+      }
+    })
+
   </script>
 
 

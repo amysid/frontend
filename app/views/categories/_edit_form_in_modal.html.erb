@@ -72,8 +72,14 @@
     var white_preview = $(".update-upload-white-preview img")
 
     $("#update-category-icon").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
+      var input = $(event.currentTarget);
+      var file = input[0].files[0];
+      var file_extention = $("#update-category-icon").val().split('.').pop().toLowerCase();
+      if($.inArray(file_extention, ['gif','png','jpg','jpeg']) == -1) {
+        alert('File has invalid extension only png, jpg, jpeg file is supported!');
+        $("#update-category-icon").val('');
+        return
+      }
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;
@@ -85,6 +91,12 @@
     $("#update-category-white-icon").change(function(event){
        var input = $(event.currentTarget);
        var file = input[0].files[0];
+       var file_extention = $("#update-category-white-icon").val().split('.').pop().toLowerCase();
+        if($.inArray(file_extention, ['gif','png','jpg','jpeg']) == -1) {
+          alert('File has invalid extension only png, jpg, jpeg file is supported!');
+          $("#update-category-white-icon").val('');
+          return
+        }
        var reader = new FileReader();
        reader.onload = function(e){
            image_base64 = e.target.result;

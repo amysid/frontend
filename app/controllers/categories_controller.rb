@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   before_action :logged_in?
   before_action :set_category, except: [:index, :create]
   before_action :ensure_category_present?, except: [:index, :create]
+  before_action :validate_files, only: [:create, :update]
+  before_action :validate_files_using_magic_number, only: [:create, :update]
   include Rails.application.routes.url_helpers
 
   def index
@@ -112,5 +114,32 @@ class CategoriesController < ApplicationController
       message = t('category_not_present')
       redirect_to categories_path, alert: message
     end
+  end
+
+  def validate_files
+    status = true
+    if params["category"]["icon"].present?
+      icon_extention = params["category"]["icon"].original_filename.split(".").last
+      status = status && ['png','jpg','jpeg'].include?(icon_extention)
+    end
+    if params["category"]["white_icon"].present?
+      white_icon_extention = params["category"]["white_icon"].original_filename.split(".").last
+      status = status && ['png','jpg','jpeg'].include?(white_icon_extention)
+    end
+    return true if status
+    redirect_to categories_path, notice: t("File are not valid!")
+  end
+
+  def validate_files_using_magic_number
+    status = true
+    if params["category"]["icon"].present?
+      status = status && MagicNumber.is_real?(params["category"]["icon"].tempfile.path)
+    end
+    if params["category"]["white_icon"].present?
+      status = status && MagicNumber.is_real?(params["category"]["white_icon"].tempfile.path)
+    end
+    return true if status
+
+    redirect_to books_path, notice: t("MN File are not valid!") 
   end
 end

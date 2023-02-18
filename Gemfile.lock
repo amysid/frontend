@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    MagicNumber (0.0.1)
     actioncable (6.1.7)
       actionpack (= 6.1.7)
       activesupport (= 6.1.7)
@@ -291,6 +292,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  MagicNumber (~> 0.0.1)
   activestorage
   aws-sdk-rails
   aws-sdk-s3

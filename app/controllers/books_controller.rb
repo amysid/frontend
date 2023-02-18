@@ -3,6 +3,8 @@ class BooksController < ApplicationController
   before_action :set_book, except: [:new, :create, :index]
   before_action :ensure_book_present?, except: [:new, :create, :index]
   before_action :fetch_categories, only: [:index, :edit]
+  before_action :validate_files, only: [:create, :update]
+  before_action :validate_files_using_magic_number, only: [:create, :update]
   include Rails.application.routes.url_helpers
 
   def index
@@ -145,5 +147,38 @@ class BooksController < ApplicationController
     category_ids_for_remove = existing_category_id - @categories.pluck(:id)
     @book.category_ids -= category_ids_for_remove
     @new_categories = @categories.where.not(id: existing_category_id)
+  end
+
+  def validate_files
+    status = true
+    if params["book"]["book_cover_file"].present?
+      book_cover_extention = params["book"]["book_cover_file"].original_filename.split(".").last
+      status = status && ['gif','png','jpg','jpeg'].include?(book_cover_extention)
+    end
+    if params["book"]["audio"].present?
+      audio_extention = params["book"]["audio"].original_filename.split(".").last
+      status = status && ["mp3"].include?(audio_extention)
+    end
+    if params["book"]["short_audio_file"].present?
+      audio_extention = params["book"]["short_audio_file"].original_filename.split(".").last
+      status = status && ["mp3"].include?(audio_extention)
+    end
+    return true if status
+    redirect_to books_path, notice: t("File are not valid!")
+  end
+
+  def validate_files_using_magic_number
+    status = true
+    if params["book"]["book_cover_file"].present?
+      status = status && MagicNumber.is_real?(params["book"]["book_cover_file"].tempfile.path)
+    end
+    if params["book"]["audio"].present?
+      status = status && MagicNumber.is_real?(params["book"]["audio"].tempfile.path)
+    end
+    if params["book"]["short_audio_file"].present?
+      status = status && MagicNumber.is_real?(params["book"]["short_audio_file"].tempfile.path) 
+    end
+    return true if status
+    redirect_to books_path, notice: t("MN File are not valid!") 
   end
 end

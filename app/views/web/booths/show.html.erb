@@ -15,13 +15,17 @@
                         <%= @book_cover_urls.to_a.each_slice(2) do |url1, url2|%>
                         <div>
                             <div class="book-cov6h6">
-                                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: url1["id"], locale: :ar), remote: true do %>
-                                    <img src="<%= url1["url"] %>">
+                                <% if url1.present? %>
+                                    <%= link_to web_booth_book_path(booth_id: @booth["number"], id: url1["id"], locale: :ar), remote: true do %>
+                                        <img src="<%= url1["url"] %>">
+                                    <% end %>
                                 <% end %>
                             </div>
                             <div class="book-cov6h6">
-                                <%= link_to web_booth_book_path(booth_id: @booth["number"], id: url2["id"], locale: :ar), remote: true do %>
-                                    <img src="<%= url2["url"] %>">
+                                <% if url2.present? %>
+                                    <%= link_to web_booth_book_path(booth_id: @booth["number"], id: url2["id"], locale: :ar), remote: true do %>
+                                        <img src="<%= url2["url"] %>">
+                                    <% end %>
                                 <% end %>
                             </div>
                         </div>
