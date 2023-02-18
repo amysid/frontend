@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    MagicNumber (0.0.1)
     actioncable (6.1.4.4)
       actionpack (= 6.1.4.4)
       activesupport (= 6.1.4.4)
@@ -260,6 +261,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.4)
     thor (1.2.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -297,6 +299,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  MagicNumber (~> 0.0.1)
+  activestorage
   aws-sdk-rails
   aws-sdk-s3
   bcrypt (~> 3.1.7)
@@ -323,6 +327,7 @@ DEPENDENCIES
   sassc (~> 2.1.0)
   selenium-webdriver
   spring
+  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

@@ -1,0 +1,82 @@
+{
+  "application.css": "/audio/packs/css/application-7cc7d556.css",
+  "application.js": "/audio/packs/js/application-9d8d843d2f40bb984e70.js",
+  "application.js.map": "/audio/packs/js/application-9d8d843d2f40bb984e70.js.map",
+  "entrypoints": {
+    "application": {
+      "css": [
+        "/audio/packs/css/application-7cc7d556.css"
+      ],
+      "js": [
+        "/audio/packs/js/application-9d8d843d2f40bb984e70.js"
+      ],
+      "js.map": [
+        "/audio/packs/js/application-9d8d843d2f40bb984e70.js.map"
+      ]
+    },
+    "hello_react": {
+      "js": [
+        "/audio/packs/js/hello_react-ebab0adf5e9eeb8374f9.js"
+      ],
+      "js.map": [
+        "/audio/packs/js/hello_react-ebab0adf5e9eeb8374f9.js.map"
+      ]
+    },
+    "mobile": {
+      "css": [
+        "/audio/packs/css/mobile-d147c052.css"
+      ],
+      "js": [
+        "/audio/packs/js/mobile-c5337fa3dd269212c068.js"
+      ],
+      "js.map": [
+        "/audio/packs/js/mobile-c5337fa3dd269212c068.js.map"
+      ]
+    },
+    "web_application": {
+      "css": [
+        "/audio/packs/css/web_application-f961f2d6.css"
+      ],
+      "js": [
+        "/audio/packs/js/web_application-ef6e9180a15e5b0d9533.js"
+      ],
+      "js.map": [
+        "/audio/packs/js/web_application-ef6e9180a15e5b0d9533.js.map"
+      ]
+    }
+  },
+  "hello_react.js": "/audio/packs/js/hello_react-ebab0adf5e9eeb8374f9.js",
+  "hello_react.js.map": "/audio/packs/js/hello_react-ebab0adf5e9eeb8374f9.js.map",
+  "media/css/login-bg.png": "/audio/packs/media/css/login-bg-4ea91677781066bc16b1733038bd7b4e.png",
+  "media/fonts/Effra_Rg3.ttf": "/audio/packs/media/fonts/Effra_Rg3-16903bd59c24db0af49c90747db12950.ttf",
+  "media/fonts/Effra_W_Md.woff": "/audio/packs/media/fonts/Effra_W_Md-5f2c3be783983fde3f262088a969744a.woff",
+  "media/fonts/Effra_W_Rg.woff": "/audio/packs/media/fonts/Effra_W_Rg-cf2988790123b10dda34ddb8e31c7dc1.woff",
+  "media/fonts/glyphicons-halflings-regular.woff2": "/audio/packs/media/fonts/glyphicons-halflings-regular-be810be3a3e14c682a257d6eff341fe4.woff2",
+  "media/vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": "/audio/packs/media/vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400-68c5af1f48e2bfca1e57ae1c556a5c72.woff2",
+  "media/vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": "/audio/packs/media/vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900-ada6e6df937f7e5e8b790dfea07109b7.woff2",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400-89a52ae1d02b86d6143987c865471c24.eot",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400-216edb96b562c79adc09e2d3c63db7c0.svg",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400-9e138496e8f1719c6ebf0abe50563635.ttf",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400-329a95a9172fdb2cccb4f9347ed55233.woff",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400-0c6f12b9eaa2ad444a6be2f133aa1cec.eot",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400-75ec6f4859d31ffaece86ef1fb6bfea6.svg",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400-c9c57c0f1f4eb34dbf575201caf2061f.ttf",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400-fcaa6c135683a3fa1b505fa30b01c8e9.woff",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400-68c5af1f48e2bfca1e57ae1c556a5c72.woff2",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900-dfaa060a451d978c25655eb19bd949e9.eot",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900-18df003f90a7f1313b98b23384ec4f1b.svg",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900-32267f3b4db33a7c85ee31d9b317c9e4.ttf",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900-22aa6d4357cf74671bc40dbb9bc36d79.woff",
+  "media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": "/audio/packs/media/web_vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900-4055b0575d40bfb3c7e89c7d6b5e959d.woff2",
+  "media/website-assets/css/access-scroll/mCSB_buttons-up.png": "/audio/packs/media/website-assets/css/access-scroll/mCSB_buttons-up-e791c245b006b4eec1daca56a6169308.png",
+  "media/website-assets/fonts/Effra_W_Md.woff": "/audio/packs/media/website-assets/fonts/Effra_W_Md-5f2c3be783983fde3f262088a969744a.woff",
+  "media/website-assets/fonts/Effra_W_Rg.woff": "/audio/packs/media/website-assets/fonts/Effra_W_Rg-cf2988790123b10dda34ddb8e31c7dc1.woff",
+  "media/website-assets/img/bg.png": "/audio/packs/media/website-assets/img/bg-f353c7584af0bc7a58d09b4cd17ffc63.png",
+  "media/website-assets/img/footer-top.png": "/audio/packs/media/website-assets/img/footer-top-8906b3792674f35bea1667bd48c8c72f.png",
+  "mobile.css": "/audio/packs/css/mobile-d147c052.css",
+  "mobile.js": "/audio/packs/js/mobile-c5337fa3dd269212c068.js",
+  "mobile.js.map": "/audio/packs/js/mobile-c5337fa3dd269212c068.js.map",
+  "web_application.css": "/audio/packs/css/web_application-f961f2d6.css",
+  "web_application.js": "/audio/packs/js/web_application-ef6e9180a15e5b0d9533.js",
+  "web_application.js.map": "/audio/packs/js/web_application-ef6e9180a15e5b0d9533.js.map"
+}
