@@ -25,13 +25,13 @@
       <li>
         <%if request.url.split('/').to_a.include?("ar")%>     
           <div class="langbtn">
-            <%= link_to "/en/homes" do %>
+            <%= link_to "/audio/en/homes" do %>
             <span>English</span>
             <% end %>
           </div>  
         <%else%> 
           <div class="langbtn">
-            <%= link_to "/ar/homes" do %>
+            <%= link_to "/audio/ar/homes" do %>
               <span>Arabic</span>
             <% end %>
           </div> 
