@@ -5,8 +5,8 @@ class Web::BooksController < Web::WebApplicationController
 
   def index
     url = "#{ENV["API_BASE_URL"]}/web_api/booths/#{params[:booth_id]}/books"
-    headers = {"Content-Type": "application/json"}
-    response = HTTParty.get(url, headers: headers)
+    headers = {headers: {"Content-Type": "application/json"}, multipart: true, body: params.as_json}
+    response = HTTParty.get(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("books").present? && response_body.dig("trending_books").present?
       @books = response_body["books"]["data"] rescue []
@@ -39,8 +39,8 @@ class Web::BooksController < Web::WebApplicationController
 
   def show
     url = "#{ENV["API_BASE_URL"]}/web_api/booths/#{params[:booth_id]}/books/#{params[:id]}"
-    headers = {"Content-Type": "application/json"}
-    response = HTTParty.get(url, headers: headers)
+    headers = {headers: {"Content-Type": "application/json"}, multipart: true, body: params.as_json}
+    response = HTTParty.get(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
     if response_body.present? &&  response_body.dig("book").dig("data").present?
       @book = response_body["book"]["data"]["attributes"]
