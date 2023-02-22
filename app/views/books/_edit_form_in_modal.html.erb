@@ -43,7 +43,8 @@
               <div class="row">
                 <% book_duration = Time.at(book["book_duration"]).utc.strftime("%H:%M:%S") %>
                 <div class="col-lg-12">
-                  <%= f.text_field :book_duration, value: book_duration, class: "form-control text-center update-book-duration", placeholder: t('book_duration'), readonly: true %>
+                  <input name="only_show", class= "form-control text-center update-book-duration-show" readonly="true">
+                  <%= f.text_field :book_duration, value: book_duration, class: "form-control text-center update-book-duration", placeholder: t('book_duration'), readonly: true, hidden: true %>
                 </div>
               </div>
             </div>
@@ -209,10 +210,13 @@
         // duration in second
         var duration = $("#update_long_audio")[0].duration;
         duration = Number(duration)
-        var minute = Math.floor( duration % 3600 / 60);
-        var second = Math.floor(duration % 3600 % 60);
-        var time = Number(minute + "." + second);
-        $(".update-book-duration").val(time);
+        var hours = Math.floor( duration / 3600);
+        var total_seconds = duration % 3600;
+        var minute = Math.floor(total_seconds / 60);
+        var second = Math.floor(total_seconds % 60);
+        $(".update-book-duration").val(duration);
+        debugger
+        $(".update-book-duration-show").val(hours + ":" + minute + ":" + second);
       }, 2000);
     });
 

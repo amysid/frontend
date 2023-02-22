@@ -705,18 +705,25 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
      music.addEventListener("timeupdate", timeUpdate, false);
 
      function timeUpdate() {
-       var playPercent = timelineWidth * (music.currentTime / duration);
-       playhead.style.width = playPercent + "px";
+      var playPercent = timelineWidth * (music.currentTime / duration);
+      playhead.style.width = playPercent + "px";
 
-      var total_minutes = Math.floor(music.duration / 60);
-      var total_seconds = Math.floor(music.duration % 60);
+      total_seconds = music.duration
+      var total_hours = Math.floor( total_seconds / 3600);
+      var total_seconds = total_seconds % 3600;
+      var total_minutes = Math.floor(total_seconds / 60);
+      var total_seconds = Math.floor(total_seconds % 60);
 
-      var minutes = Math.floor(music.currentTime / 60);
-      var seconds = Math.floor(music.currentTime % 60);
-      if (seconds < 10) {
-        seconds = '0' + String(seconds);
+      current_total_seconds = music.currentTime;
+      var current_total_hours = Math.floor( current_total_seconds / 3600);
+      var current_total_seconds = current_total_seconds % 3600;
+      var current_total_minutes = Math.floor(current_total_seconds / 60);
+      var current_total_seconds = Math.floor(current_total_seconds % 60);
+
+      if (current_total_seconds < 10) {
+        current_total_seconds = '0' + String(current_total_seconds);
       }
-      timer.innerHTML = minutes + ':' + seconds + "/" + total_minutes + ":" + total_seconds;
+      timer.innerHTML = current_total_hours + ":" + current_total_minutes + ':' + current_total_seconds + "/" + total_hours+ ":"+ total_minutes + ":" + total_seconds;
      }
 
      playButton.onclick = function () {
