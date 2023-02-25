@@ -11,6 +11,8 @@ class CategoriesController < ApplicationController
     headers = {"Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers, body: params.as_json)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     
     if response_body.present? && response_body.dig("categories").present? && response_body.dig("categories").dig("data").present?
       @categories =  response_body["categories"]["data"]
@@ -39,6 +41,8 @@ class CategoriesController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     @store.update(ref_id: response_body["category"]["data"]["id"].to_i)
     if response_body.present? &&  response_body.dig("category").dig("data").present?
       redirect_to categories_path
@@ -75,6 +79,8 @@ class CategoriesController < ApplicationController
     headers = {headers: {"Content-Type": "multipart/form-data", "Authorization": "Bearer #{session[:token]}"}, multipart: true, body: data}
     response = HTTParty.put(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("category").dig("data").present?
       redirect_to categories_path
     end
@@ -85,6 +91,8 @@ class CategoriesController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.delete(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body["status_code"] == 200
       message = t("category_destroy_message")
       redirect_to categories_path, notice: message
@@ -104,6 +112,8 @@ class CategoriesController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("category").dig("data").present?
       @category = response_body["category"]["data"]["attributes"]
     end

@@ -8,6 +8,8 @@ class ReportsController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
     response = HTTParty.get(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("data").present?
       @booths = response_body["data"]["booths"]
       @operations = response_body["data"]["operations"]
@@ -20,6 +22,8 @@ class ReportsController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     puts response_body
     if response_body.present? && response_body.dig("categories").present? && response_body.dig("categories").dig("data").present?
       @category_data =  response_body["categories"]["data"]
@@ -39,6 +43,8 @@ class ReportsController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("booths").dig("data").present?
       @booth_data =  response_body["booths"]["data"]
     end

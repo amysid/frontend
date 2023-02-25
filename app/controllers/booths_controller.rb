@@ -9,6 +9,8 @@ class BoothsController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("booths").dig("data").present?
       @booths =  response_body["booths"]["data"]
       @pagination_data =  response_body["booths"]["meta"]
@@ -20,6 +22,8 @@ class BoothsController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("booth").dig("data").present?
       redirect_to booths_path
     end
@@ -39,6 +43,8 @@ class BoothsController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
     response = HTTParty.put(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("booth").dig("data").present?
       redirect_to booths_path
     end
@@ -49,6 +55,8 @@ class BoothsController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.delete(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body["status_code"] == 200
       message = t("booth_destroy_message")
       redirect_to booths_path, notice: message
@@ -73,6 +81,8 @@ class BoothsController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("booth").dig("data").present?
       @booth = response_body["booth"]["data"]["attributes"]
     end

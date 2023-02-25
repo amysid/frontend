@@ -6,6 +6,8 @@ class HomesController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("data").present?
       @data =  response_body["data"]
     end

@@ -6,6 +6,8 @@ class OperationsController < ApplicationController
     headers = { "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, body: params.as_json, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("operations").dig("data").present?
       @operations =  response_body["operations"]["data"]
       @pagination_data =  response_body["operations"]["meta"]

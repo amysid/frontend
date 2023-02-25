@@ -148,6 +148,8 @@ ar:
   rate_your_experience: "قيم تجربتك"
   close: "إغلاق"
   save_changes: "ارسال"
+  token_invalid_message: "Either User is invalid or session expire!"
+
 
 
 

@@ -12,6 +12,8 @@ class BooksController < ApplicationController
     headers = {"Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, body: params.as_json, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("books").dig("data").present?
       @books =  response_body["books"]["data"]
       @pagination_data =  response_body["books"]["meta"]
@@ -43,6 +45,8 @@ class BooksController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.post(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     @store.update(ref_id: response_body["book"]["data"]["id"].to_i)
     if response_body.present? &&  response_body.dig("book").dig("data").present?
       redirect_to books_path
@@ -74,6 +78,8 @@ class BooksController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: data}
     response = HTTParty.put(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("book").dig("data").present?
       redirect_to books_path
     end
@@ -93,6 +99,8 @@ class BooksController < ApplicationController
     headers = {headers: {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"},multipart: true, body: params.as_json}
     response = HTTParty.get(url, headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("book").dig("data").present?
       redirect_to books_path
     end
@@ -103,6 +111,8 @@ class BooksController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.delete(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body["status_code"] == 200
       message = t("book_deleted_successfully")
       redirect_to books_path, notice: message
@@ -124,6 +134,8 @@ class BooksController < ApplicationController
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? &&  response_body.dig("book").dig("data").present?
       @book = response_body["book"]["data"]["attributes"]
     end

@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
     headers = {"Content-Type": "application/json", "Authorization": "Bearer #{session[:token]}"}
     response = HTTParty.get(url, headers: headers)
     response_body = JSON.parse(response.body) if response.body.present?
+    return render_token_invalid_error if response_body.present? && response_body["status_code"] == 301
+
     if response_body.present? && response_body.dig("categories").present? && response_body.dig("categories").dig("data").present?
       @categories =  response_body["categories"]["data"]
     end
@@ -19,6 +21,13 @@ class ApplicationController < ActionController::Base
       next if c["attributes"].blank?
       [c["attributes"]["name"], c["attributes"]["id"]]
     end.compact 
+  end
+
+  def render_token_invalid_error
+    session[:user] = nil
+    session[:token] = nil
+    message =  t("token_invalid_message")
+    return redirect_to root_path, notice: message
   end
 
   helper ApplicationHelper
