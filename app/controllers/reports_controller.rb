@@ -14,6 +14,8 @@ class ReportsController < ApplicationController
       @booths = response_body["data"]["booths"]
       @operations = response_body["data"]["operations"]
       @booth_details = response_body["data"]["booth_details"]
+      @operation_group_by_hour = response_body["data"]["operation_group_by_hour"]
+      @opreation_group_by_day = response_body["data"]["opreation_group_by_day"]
     end
   end
 

@@ -15,7 +15,7 @@
       <div class="card card-default" id="cardChart5">
         <div class="card-body">
           <h5>Top Booth</h5>
-          <%= column_chart @operations.group_by_hour(:created_at).count if @operations.present? rescue nil%>
+          <%= column_chart @operation_group_by_hour if  @operation_group_by_hour.present? rescue nil%>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="card card-default" id="cardChart5">
         <div class="card-body">
           <h5>Listening day </h5>
-          <%= column_chart @operations.group_by_day_of_week(:created_at, format: "%a").count if @operations.present? rescue nil%>
+          <%= column_chart @opreation_group_by_day if @opreation_group_by_day.present? rescue nil%>
         </div>
       </div>
     </div>
