@@ -150,6 +150,7 @@ ar:
   save_changes: "ارسال"
   token_invalid_message: "Either User is invalid or session expire!"
   reset: "Reset"
+  Report: "Report"
 
 
 

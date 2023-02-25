@@ -151,3 +151,4 @@ en:
   save_changes: "Save changes"
   token_invalid_message: "Either User is invalid or session expire!"
   reset: "Reset"
+  report: "Report"
