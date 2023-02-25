@@ -19,7 +19,13 @@
 <%= javascript_pack_tag 'mobile' %>
 <%= stylesheet_pack_tag 'mobile' %>
 <% if @booth["name"] == "Blind" %>
-  <div class="row">
+<style>
+ .center_screen {
+    margin-top: 50%;
+    margin-bottom: 50%;
+  }
+</style>
+  <div class="row center_screen">
     <div class="col-md-12">
       <div class="book-player">
         <div class="player">
