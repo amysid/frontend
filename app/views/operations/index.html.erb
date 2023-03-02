@@ -84,7 +84,7 @@
                   <td><%= operation["title"] %></td>
                   <td><%= operation["city"] %></td>
                   <td><%= operation["listening_status"] %></td>
-                  <td><%= operation["listening_time"] %></td>
+                  <td><%= Time.parse(operation["listening_time"]).strftime('%Y-%m-%d %l:%M %p') rescue nil %></td>
                   <td><%= operation["rating"] %></td>
                   <td><%= operation["note"] %></td>
                 </tr>

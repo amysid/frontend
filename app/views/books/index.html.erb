@@ -77,7 +77,7 @@
                   <td>
                       <label><%= book["status"] %></label></td>
                   <td><%= book["language"] %></td>
-                  <td><%= book["last_listening_at"] %></td>
+                  <td><%= Time.parse(book["last_listening_at"]).strftime('%Y-%m-%d %l:%M %p') rescue nil %></td>
                   <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_book_path(id: book["id"]) ,remote: true%></td>
                 </tr>
               <% end %>

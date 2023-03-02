@@ -46,7 +46,7 @@
                       <%= select_tag t('booth'), options_for_select(category["booths"]), class: "custom-select custom-select-sm text-center"%>
                     </div>
                   </td>
-                  <td><%= category["created_at"] %></td>
+                  <td><%= Time.parse(category["created_at"]).strftime('%Y-%m-%d %l:%M %p') rescue nil %></td>
                   <td>
                     <%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_category_path(id:category["id"]) ,remote: true%>
                   </td>

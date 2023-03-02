@@ -59,7 +59,7 @@
                     <label class="badge badge-danger">Blocked</label>
                   <% end %>
                 </td>
-                <td><%= user["last_login_at"] %></td>
+                <td><%= Time.parse(user["last_login_at"]).strftime('%Y-%m-%d %l:%M %p') rescue nil %></td>
                 <td><%= link_to "<i class='fa fa-cog fa-2x text-danger'></i>".html_safe, setting_user_path(id: user["id"]) ,remote: true%></td>
               </tr>
               <% end %>
