@@ -20,13 +20,13 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
-              <%= f.select :language, options_for_select([["English", "English"],["Arabic", "Arabic"]], selected: (params[:report][:language] rescue nil)), { promat: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
+              <%= f.select :language, options_for_select([["All", "All"], ["English", "English"],["Arabic", "Arabic"]], selected: (params[:report][:language] rescue nil)), { promat: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
             </div>
           </div>
 
           <div class="col-md-3">
             <div class="form-group">
-              <%= f.select :duration, options_for_select([["Long", "Long"],["Short", "Short"]],selected: (params[:report][:duration] rescue nil)), { promat: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
+              <%= f.select :duration, options_for_select([["All", "All"], ["Long", "Long"],["Short", "Short"]],selected: (params[:report][:duration] rescue nil)), { promat: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
             </div>
           </div>
 
@@ -41,7 +41,41 @@
               <%= f.select :booth_id, options_for_select( @booth_for_dropdown, selected: (params[:report][:booth_id] rescue nil)), { promat: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
             </div>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <label>Select Book</label>
+          </div>
+          <div class="col-md-3">
+            <label>Start Date</label>
+          </div>
+          <div class="col-md-3">
+            <label>End Date</label>
+          </div>
+        </div>
 
+        <div class="row">
+           <div class="col-md-3">
+            <div class="form-group">
+              <%= f.select :book_id, options_for_select( @book_for_dropdown, selected: (params[:report][:book_id] rescue nil)), { promat: true},{class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <% start_date = params[:report].present? ?  params[:report][:start_date] : "" %>
+              <%= f.date_field :start_date, value: start_date, class:"custom-select custom-select-sm col-md-12" %>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <% end_date = params[:report].present? ?  params[:report][:end_date] : "" %>
+              <%= f.date_field :end_date, value: end_date, class:"custom-select custom-select-sm col-md-12" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
           <div class="col-md-2">
             <div class="form-group">
               <%= f.submit :search, class: "btn btn-success" %>
