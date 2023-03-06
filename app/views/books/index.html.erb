@@ -14,16 +14,7 @@
   <!-- START cards box-->
 
   <div class="row">
-    <div class="col-md-6 pull-right">
-        <%= form_with scope: :book, url: books_path, method: :get do |f| %>
-          <div class="form-group col-md-4">
-            <div class="row">
-            <% value = params[:book][:search] if params[:book].present? && params[:book][:search] %>
-            <%= f.text_field :search, placeholder: "Enter Book Title/Author for search", value: value, class: "form-control" %>
-            </div>
-          </div>            
-        <% end %>
-      </div>
+  
     <div class="col-xl-12 col-md-6">
       <!-- START card-->
       <% if current_user["role"] != "Approver" %>
