@@ -30,7 +30,7 @@
                <!--  <i class="fa fa-calendar"></i>&nbsp;
                 <span></span><b class="caret"></b> -->
                 <div class="pull-left">
-                <%= f.select :search, options_for_select([["Only Comment", "Only Comment"],["Only Rate", "Only Rate"],["Rate With Comment", "Rate With Comment"]], selected: (params[:operation][:search] rescue nil)),{}, {class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
+                <%= f.select :search, options_for_select([["All", "All"],["Only Comment", "Only Comment"],["Only Rate", "Only Rate"],["Rate With Comment", "Rate With Comment"]], selected: (params[:operation][:search] rescue nil)),{}, {class:"custom-select custom-select-sm col-md-12", id: "update-category-dropdown"} %>
               </div>
             </div>
           </div>
