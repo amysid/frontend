@@ -76,8 +76,8 @@ class ReportsController < ApplicationController
       @book_data =  response_body["books"]["data"]
     end
     @book_for_dropdown = [["All", "All"]]
-    if @booth_data.present?
-       @book_for_dropdown += @booth_data.map do |book|
+    if @book_data.present?
+       @book_for_dropdown += @book_data.map do |book|
         book = book["attributes"]
         [book["name"], book["id"]]
       end
