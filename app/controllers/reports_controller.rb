@@ -79,7 +79,7 @@ class ReportsController < ApplicationController
     if @book_data.present?
        @book_for_dropdown += @book_data.map do |book|
         book = book["attributes"]
-        [book["name"], book["id"]]
+        [book["title"], book["id"]]
       end
     end
   end
