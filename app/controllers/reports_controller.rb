@@ -17,6 +17,10 @@ class ReportsController < ApplicationController
       @booth_details = response_body["data"]["booth_details"]
       @operation_group_by_hour = response_body["data"]["operation_group_by_hour"]
       @opreation_group_by_day = response_body["data"]["opreation_group_by_day"]
+      @total_listening_time = response_body["data"]["total_listening_time"]
+      @total_listening_number = response_body["data"]["total_listening_number"]
+      @avarage_rate = response_body["data"]["avarage_rate"]
+      @total_comments = response_body["data"]["total_comments"]
     end
   end
 

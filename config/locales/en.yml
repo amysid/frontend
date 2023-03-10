@@ -152,3 +152,7 @@ en:
   token_invalid_message: "Either User is invalid or session expire!"
   reset: "Reset"
   report: "Report"
+  total_comments: "Total Comments"
+  avarage_rate: "Avarage Rate"
+  total_listening_time: "Total Listening Time"
+  total_listening_number: "Total Listening Number"

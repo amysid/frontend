@@ -151,6 +151,10 @@ ar:
   token_invalid_message: "Either User is invalid or session expire!"
   reset: "Reset"
   Report: "Report"
+  total_comments: "AR Total Comments"
+  avarage_rate: "AR Avarage Rate"
+  total_listening_time: "AR Total Listening Time"
+  total_listening_number: "AR Total Listening Number"
 
 
 
