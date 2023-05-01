@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 # mount ActiveStorage::Engine, at: "/audio" 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  scope :audio do
+  scope :audiobooksl do
 #  mount ActiveStorage::Engine, at: '/audio'
   root 'sessions#new'
   scope "(:locale)", locale: /en|ar|fr/ do 

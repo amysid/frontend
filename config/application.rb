@@ -16,8 +16,8 @@ module AudioLibrary
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.action_controller.allow_forgery_protection = false
-    config.assets.prefix = '/audio/assets'
-    config.active_storage.routes_prefix = '/audio/rails/active_storage'    
+    config.assets.prefix = '/audiobooksl/assets'
+    config.active_storage.routes_prefix = '/audiobooksl/rails/active_storage'    
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :en # (note that `en` is already the default!)
 
