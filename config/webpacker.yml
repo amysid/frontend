@@ -4,9 +4,8 @@ default: &default
   source_path: app/javascript
   source_entry_path: packs
   public_root_path: public
-  public_output_path: audiobooksl/packs
+  public_output_path: audio/packs
   cache_path: tmp/cache/webpacker
-  check_yarn_integrity: false
   webpack_compile_output: true
 
   # Additional paths webpack should lookup modules
@@ -34,7 +33,6 @@ default: &default
     - .woff2
 
   extensions:
-    - .jsx
     - .mjs
     - .js
     - .sass

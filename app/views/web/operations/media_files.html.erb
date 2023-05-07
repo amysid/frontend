@@ -14,6 +14,8 @@
   <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
   <title></title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 
 <%= javascript_pack_tag 'mobile' %>
@@ -31,7 +33,7 @@
         <div class="player">
           <div class="info mt-2">
             <div class="button-items">
-              <% long = @book["long"] rescue nil %>
+              <% long = @book["longg"] rescue nil %>
               <audio id="music" autoplay="true" preload="auto">
                 <source src="<%= long %>">
               </audio>
@@ -120,7 +122,7 @@
              <div class="player">
                 <div class="info mt-2">
                   <div class="button-items">
-                    <% long = @book["long"] rescue nil %>
+                    <% long = @book["longg"] rescue nil %>
                     <audio id="music" autoplay="true" preload="auto">
                       <source src="<%= long %>">
                     </audio>
@@ -705,7 +707,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
      var timeline = document.getElementById("slider");
      var timer = document.getElementById("timer");
      var duration;
-     pauseButton.style.visibility = "hidden";
+     playButton.style.visibility = "hidden";
 
      var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
      music.addEventListener("timeupdate", timeUpdate, false);
@@ -745,7 +747,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
        var current_time = music.currentTime
        var file_duration = music.duration
       $.ajax({
-          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/update_listen_count" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/audio/web/operations/#{@operation['number']}/update_listen_count" %>",
           type : 'GET',
           data : {
             'current_time' : current_time,
@@ -817,7 +819,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
         var current_time = music.currentTime
         var file_duration = music.duration
         $.ajax({
-          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/update_listen_count" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/audio/web/operations/#{@operation['number']}/update_listen_count" %>",
           type : 'GET',
           data : {
             'current_time' : current_time,
@@ -838,7 +840,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
     $("#rating_form").submit(function(event){
       event.preventDefault()
       $.ajax({
-          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/web/operations/#{@operation['number']}/save_feedback" %>",
+          url : "<%= "#{ENV['FRONTEND_BASE_URL']}/audio/web/operations/#{@operation['number']}/save_feedback" %>",
           type : 'put',
           data : $('form').serialize(),
           success : function(data) {              
@@ -854,7 +856,9 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
     });
 
     $("#exampleFormControlTextarea1").change(function(){
-      var re = new RegExp("^[a-zA-Z0-9.@#! /|]+$");
+      //var re = new RegExp("^[a-zA-Z0-9.@#! /|]+$");
+      var re = new RegExp("^[a-zA-Z0-9.@#! /|\u0600-\u06FF]+$");
+//      var re = new RegExp("^[a-zA-Z0-9.@#! /|]+$");
       var value = $("#exampleFormControlTextarea1").val()
       if(!re.test(value)){
         alert("Invalid Input, Special Charecter not Allowed!")

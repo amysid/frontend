@@ -30,7 +30,10 @@
 /public/audio
 /public/audio/*
 .byebug_history
-
+/public/audio
+/public/audio/*
+/public/assets_org
+/public/assets_org/*
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 

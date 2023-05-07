@@ -9,6 +9,38 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
   <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
   <title></title>
+  <style>
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 16px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+</style>
 </head>
 
 <body>
@@ -56,11 +88,11 @@
       <div class="pjKQH">
         <div class="_2r0fh">
           <h1><%= t('trending_now')%></h1>
-          <div class="frame basic" id="basic">
-            <ul class="clearfix">
+          <div class="frame basic swiper" id="basic1">
+            <ul class="clearfix swiper-wrapper">
               <% @trending_books.to_a.each do |book|%>
                 <% book = book["attributes"]%>
-                <li>
+                <li class="swiper-slide">
                   <div id="Div4" class="single-product">
                     <div class="part-1">
                       <span class="checkout-product-img">
@@ -93,11 +125,11 @@
       <div class="pjKQH">
         <div class="_2r0fh">
           <h1><%= t('added_recently') %></h1>
-          <div class="frame basic" id="Div1">
-            <ul class="clearfix">
+          <div class="frame basic swiper" id="Div11">
+            <ul class="clearfix swiper-wrapper">
               <% @books.to_a.each do |book|%>
               <% book = book["attributes"]%>
-                <li>
+                <li class="swiper-slide">
                   <div id="Div32" class="single-product">
                     <div class="part-1">
                       <span class="checkout-product-img">
@@ -185,6 +217,9 @@
     //   Basic Navigation
     // -------------------------------------------------------------
     (function () {
+     const swiperBasic= new Swiper('.swiper', {
+         loop: false,slidesPerView: 5
+        });
       var $frame = $('.basic');
       var $slidee = $frame.children('ul').eq(0);
       var $wrap = $frame.parent();

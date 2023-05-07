@@ -63,8 +63,17 @@
   "media/website-assets/fonts/Effra_W_Rg.woff": "/audio/packs/media/website-assets/fonts/Effra_W_Rg-cf2988790123b10dda34ddb8e31c7dc1.woff",
   "media/website-assets/img/bg.png": "/audio/packs/media/website-assets/img/bg-f353c7584af0bc7a58d09b4cd17ffc63.png",
   "media/website-assets/img/footer-top.png": "/audio/packs/media/website-assets/img/footer-top-8906b3792674f35bea1667bd48c8c72f.png",
+<<<<<<< HEAD
   "mobile.js": "/audio/packs/js/mobile-e9d78ea9454fded769a1.js",
   "mobile.js.map": "/audio/packs/js/mobile-e9d78ea9454fded769a1.js.map",
   "web_application.js": "/audio/packs/js/web_application-e88b2d9b1d7d9dadce56.js",
   "web_application.js.map": "/audio/packs/js/web_application-e88b2d9b1d7d9dadce56.js.map"
+=======
+  "mobile.css": "/audio/packs/css/mobile-d147c052.css",
+  "mobile.js": "/audio/packs/js/mobile-0593c406b78ddd27c590.js",
+  "mobile.js.map": "/audio/packs/js/mobile-0593c406b78ddd27c590.js.map",
+  "web_application.css": "/audio/packs/css/web_application-7c240bce.css",
+  "web_application.js": "/audio/packs/js/web_application-fe662f4550c2b96f8fa8.js",
+  "web_application.js.map": "/audio/packs/js/web_application-fe662f4550c2b96f8fa8.js.map"
+>>>>>>> mocfront
 }

@@ -106,29 +106,4 @@
     });
   });
 
-  // $("#category_update_form").submit(function(event){
-  //     event.preventDefault()
-  //     var form_data = new FormData(this);
-  //     $.ajax({
-  //         url : '<%= "#{ENV["API_BASE_URL"]}/api/categories/#{@category["id"]}" %>',
-  //         type : 'put',
-  //         data : form_data,
-  //         processData: false,
-  //         contentType: false,
-  //         headers: {
-  //           Authorization: "<%= "Bearer #{session[:token]}" %>"
-  //         },
-  //         success : function(data) {              
-  //          alert("data save")
-  //          var url = "<%= categories_url %>"
-  //          window.location.href = url
-  //         },
-  //         error : function(request,error)
-  //         { 
-  //           var url = "<%= categories_url %>"
-  //           alert("Some thing went wrong")
-  //           window.location.href = url
-  //         }
-  //       })
-  //   });
 </script>

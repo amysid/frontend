@@ -1,7 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title></title>
+	<title></title>
+<style>
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 16px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+</style>
 </head>
 <body>
   <div class="main-wrapper" id="right-scroll">
@@ -44,12 +76,13 @@
         <div class="pjKQH-Right">
           <div class="_2r0fh">      
             <h1 class="text-right"><%= t('trending_now')%></h1>
-            <div class="frame arabic" id="basic">
-              <ul class="clearfix">
+            <div class="frame arabic swiper" id="basic" dir="rtl">
+              <ul class="clearfix swiper-wrapper">
                 <% @trending_books.to_a.each do |book|%>
                   <% book = book["attributes"] %>
-                  <li>
-                    <div id="Div4" class="single-product">
+		  
+                  <li class="swiper-slide" style="width:100px">
+                   <div id="Div4" class="single-product">
                       <div class="part-1">
                         <span class="checkout-product-img">
                           <%= link_to web_booth_book_path(booth_id: @booth["number"], id: book["id"]), remote: true do %> 
@@ -84,11 +117,11 @@
        <div class="pjKQH-Right">
          <div class="_2r0fh">       
             <h1 class="text-right"><%= t('added_recently') %></h1>
-            <div class="frame arabic-1" id="Div1">
-              <ul class="clearfix">
+            <div class="frame arabic-1 swiper" id="Div11" dir="rtl">
+              <ul class="clearfix swiper-wrapper">
                 <% @books.to_a.each do |book|%>
                   <% book = book["attributes"] %>
-                  <li>
+                  <li class="swiper-slide">
                     <div id="Div32" class="single-product">
                       <div class="part-1">
                         <span class="checkout-product-img">
@@ -179,80 +212,10 @@
       //   Basic Navigation
       // -------------------------------------------------------------
       (function () {
-        var $frame = $('#basic');
-        var $slidee = $frame.children('ul').eq(0);
-        var $wrap = $frame.parent();
-        let _count = $('.arabic-1').find('ul li')?.length - 1 ?? 0 ;
-        console.log('_count :'+ _count);
-        // Call Sly on frame
-        $frame.sly({
-          horizontal: 1,
-          itemNav: 'basic',
-          smart: 1,
-          activateOn: 'click',
-          mouseDragging: 1,
-          touchDragging: 1,
-          releaseSwing: 1,
-          startAt: _count ,
-          scrollBar: $wrap.find('.scrollbar'),
-          scrollBy: 1,
-          pagesBar: $wrap.find('.pages'),
-          activatePageOn: 'click',
-          speed: 300,
-          elasticBounds: 1,
-          easing: 'easeOutExpo',
-          dragHandle: 1,
-          dynamicHandle: 1,
-          clickBar: 1,
-
-          // Buttons
-          forward: $wrap.find('.forward'),
-          backward: $wrap.find('.backward'),
-          prev: $wrap.find('.prev'),
-          next: $wrap.find('.next'),
-          prevPage: $wrap.find('.prevPage'),
-          nextPage: $wrap.find('.nextPage') });
+        const swiperBasic= new Swiper('.swiper', {
+         loop: false,slidesPerView: 5
+        });
       })();
-
-      // -------------------------------------------------------------
-      //   Basic Navigation
-      // -------------------------------------------------------------
-      (function () {
-        var $frame = $('#Div1');
-        var $slidee = $frame.children('ul').eq(0);
-        var $wrap = $frame.parent();
-        let _count = $('.arabic').find('ul li')?.length - 1 ?? 0 ;
-        console.log('_count :'+ _count);
-        // Call Sly on frame
-        $frame.sly({
-          horizontal: 1,
-          itemNav: 'basic',
-          smart: 1,
-          activateOn: 'click',
-          mouseDragging: 1,
-          touchDragging: 1,
-          releaseSwing: 1,
-          startAt: _count ,
-          scrollBar: $wrap.find('.scrollbar'),
-          scrollBy: 1,
-          pagesBar: $wrap.find('.pages'),
-          activatePageOn: 'click',
-          speed: 300,
-          elasticBounds: 1,
-          easing: 'easeOutExpo',
-          dragHandle: 1,
-          dynamicHandle: 1,
-          clickBar: 1,
-
-          // Buttons
-          forward: $wrap.find('.forward'),
-          backward: $wrap.find('.backward'),
-          prev: $wrap.find('.prev'),
-          next: $wrap.find('.next'),
-          prevPage: $wrap.find('.prevPage'),
-          nextPage: $wrap.find('.nextPage') });
-      })();
-
     });
     //# sourceURL=pen.js
   </script>

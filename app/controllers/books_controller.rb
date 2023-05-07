@@ -36,7 +36,7 @@ class BooksController < ApplicationController
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
       data["book"]["cover"] =  rails_blob_path(@store.book_cover_file, only_path: true) if params["book"]["book_cover_file"].present?
-      data["book"]["long"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
+      data["book"]["longg"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
       data["book"]["short"] =  rails_blob_path(@store.short_audio_file, only_path: true) if params["book"]["short_audio_file"].present?
       # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
       # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
@@ -69,7 +69,7 @@ class BooksController < ApplicationController
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
       data["book"]["cover"] =  rails_blob_path(@store.book_cover_file, only_path: true) if params["book"]["book_cover_file"].present?
-      data["book"]["long"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
+      data["book"]["longg"] =  rails_blob_path(@store.audio, only_path: true) if params["book"]["audio"].present?
       data["book"]["short"] =  rails_blob_path(@store.short_audio_file, only_path: true) if params["book"]["short_audio_file"].present?
       # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
       # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?

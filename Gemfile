@@ -31,7 +31,7 @@ gem "jquery-mousewheel-rails"
 gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'mysql2', '~> 0.5.2'
 gem "activestorage"
-gem 'MagicNumber', '~> 0.0.1'
+#gem 'MagicNumber', '~> 0.0.1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
