@@ -27,6 +27,8 @@
 !/storage/.keep
 
 /public/assets
+/public/assets/books
+/public/assets/categories
 /public/audio
 /public/audio/*
 .byebug_history
@@ -34,6 +36,8 @@
 /public/audio/*
 /public/assets_org
 /public/assets_org/*
+/public/audiobooksl
+/public/audiobooksl/*
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
