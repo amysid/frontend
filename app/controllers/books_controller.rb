@@ -59,7 +59,7 @@ class BooksController < ApplicationController
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
       data["book"]["cover"] =  upload_file_path_for(params["book"]["book_cover_file"])  if params["book"]["book_cover_file"].present?
-      data["book"]["long"] = upload_file_path_for(params["book"]["audio"])  if params["book"]["audio"].present?
+      data["book"]["longg"] = upload_file_path_for(params["book"]["audio"])  if params["book"]["audio"].present?
       data["book"]["short"] = upload_file_path_for(params["book"]["short_audio_file"]) if params["book"]["short_audio_file"].present?
       # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
       # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?
@@ -81,7 +81,7 @@ class BooksController < ApplicationController
       data["book"] = book_params
       data["book"]["category_ids"] = params["book"]["category_ids"]
       data["book"]["cover"] =  upload_file_path_for(params["book"]["book_cover_file"])  if params["book"]["book_cover_file"].present?
-      data["book"]["long"] = upload_file_path_for(params["book"]["audio"])  if params["book"]["audio"].present?
+      data["book"]["longg"] = upload_file_path_for(params["book"]["audio"])  if params["book"]["audio"].present?
       data["book"]["short"] = upload_file_path_for(params["book"]["short_audio_file"]) if params["book"]["short_audio_file"].present?
       # data["book"]["book_cover_file"] =  File.open(params["book"]["book_cover_file"].tempfile.path) if params["book"]["book_cover_file"].present?
       # data["book"]["audio"] =  File.open(params["book"]["audio"].tempfile.path) if params["book"]["audio"].present?

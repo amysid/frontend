@@ -116,8 +116,8 @@
                   <div class="form-group">
                     <%= f.file_field :audio, class: "mb-2", placeholder: "upload file", id: "update-book-audio-field"%>
                     <% audio_src = nil %>
-                    <% if book["long"].present? %>
-                      <% audio_src = book["long"] %>
+                    <% if book["longg"].present? %>
+                      <% audio_src = book["longg"] %>
                     <% end %>
                     <div class="update-upload-audio-preview" style="margin-top: 10px;">
                       <audio  controls="controls" src="<%= audio_src %>" id="update_long_audio"></audio>
