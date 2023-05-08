@@ -144,7 +144,11 @@
                           <span class="wishlist"><%= book["language"].to_s.at(0) %></span>
                       </div>
                       </div>
-                    </div>            
+                    </div> 
+                     <div class="part-2">
+                      <h3 class="product-title"><%= book["title"] %></h3>
+                      <h4 class="product-old-price mt-3 mb-4"><%= book["author_name"] %></h4>
+                    </div>           
                   </div>
                 </li>
               <% end %>
