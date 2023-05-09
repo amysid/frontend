@@ -163,7 +163,7 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, notice: t("dsds File are not valid!") 
   end
 
-  def upload_file_path_for(file, folder_name="public/assets/categories")
+  def upload_file_path_for(file, folder_name="public/audiobooksl/categories")
     return if file.blank?
     dir = Rails.root.join(folder_name)
     Dir.mkdir(dir) unless Dir.exist?(dir)
@@ -172,7 +172,7 @@ class CategoriesController < ApplicationController
       File.open(path, 'wb') do |f|
         f.write(file.read)
       end
-      return "/assets/categories/" + file.original_filename 
+      return "/audiobooksl/categories/" + file.original_filename 
     rescue
       return nil
     end

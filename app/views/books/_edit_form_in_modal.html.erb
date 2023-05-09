@@ -41,7 +41,7 @@
             <label class="col-md-2 col-form-label pr-0"><%= t('book_duration') %></label>
             <div class="col-md-4">
               <div class="row">
-                <% book_duration = Time.at(book["book_duration"]).utc.strftime("%H:%M:%S") %>
+                <% book_duration = Time.at(book["book_duration"].to_i).utc.strftime("%H:%M:%S") %>
                 <div class="col-lg-12">
                   <input name="only_show", class= "form-control text-center update-book-duration-show" value= "<%= book_duration %>" readonly="true">
                   <%= f.text_field :book_duration, value: book_duration, class: "form-control text-center update-book-duration", placeholder: t('book_duration'), readonly: true, hidden: true %>

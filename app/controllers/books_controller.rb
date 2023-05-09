@@ -206,7 +206,7 @@ class BooksController < ApplicationController
     redirect_to books_path, notice: t("MN File are not valid!") 
   end
 
-  def upload_file_path_for(file, folder_name="public/assets/books")
+  def upload_file_path_for(file, folder_name="public/audiobooksl/books")
     return if file.blank?
     dir = Rails.root.join(folder_name)
     Dir.mkdir(dir) unless Dir.exist?(dir)
@@ -215,7 +215,7 @@ class BooksController < ApplicationController
       File.open(path, 'wb') do |f|
         f.write(file.read)
       end
-      return "/assets/books/" + file.original_filename
+      return "/audiobooksl/books/" + file.original_filename
     rescue
       return nil
     end

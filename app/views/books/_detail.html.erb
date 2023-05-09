@@ -37,7 +37,7 @@
         <div class="row">
           <label for="example-text-input" class="col-md-4 col-form-label text-center"><%= t('duration_of_the_book_in_minutes')%></label>
           <div class="col-md-7 col-form-label text-black font-17">
-             <% book_duration = Time.at(book["book_duration"] || 0).utc.strftime("%H:%M:%S") %>
+             <% book_duration = Time.at(book["book_duration"].to_i || 0).utc.strftime("%H:%M:%S") %>
             <%= book_duration %>
           </div>                           
         </div>
