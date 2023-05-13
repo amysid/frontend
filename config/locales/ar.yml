@@ -124,7 +124,7 @@ ar:
   back: "AR Back"
   categories: "التصنيفات"
   trending_now: "الكتب الشائعة"
-  added_recently: "المضاف حديثًا"
+  added_recently: "جميع الكتب"
   overview: "نظرة عامة"
   time: "الوقت"
   author: "المؤلف"
@@ -155,7 +155,11 @@ ar:
   avarage_rate: "AR Avarage Rate"
   total_listening_time: "AR Total Listening Time"
   total_listening_number: "AR Total Listening Number"
-
+  awesome: "ممتاز"
+  good: "جيد"
+  bad: "سيء"
+  very_bad: "سيئ جدا"
+  normal: "طبيعي"
 
 
 

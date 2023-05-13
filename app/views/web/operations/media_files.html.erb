@@ -126,6 +126,7 @@
                     <audio id="music" autoplay="true" preload="auto">
                       <source src="<%= long %>">
                     </audio>
+                    
                     <div id="slider">
                       <div id="elapsed"></div>
                     </div>
@@ -242,7 +243,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
                   <svg class="rating-1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="825.5px"
                     height="227px" viewBox="0 310.5 825.5 227" enable-background="new 0 310.5 825.5 227" xml:space="preserve">
                     <g id="G1">
-                      <text transform="matrix(1 0 0 1 235.7578 470.2861)" font-family="'MyriadPro-Bold'" font-size="146.1346">Very Bad</text>
+                      <text transform="matrix(1 0 0 1 235.7578 470.2861)" font-family="'MyriadPro-Bold'" font-size="146.1346"><%= t('very_bad')%></text>
                     </g>
                     <g id="Layer_2" display="none">
                       <path display="inline" fill="#F1CB30" d="M113.933,327.826c-53.031,0-96.174,43.144-96.174,96.174
@@ -308,7 +309,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
                   <svg class="rating-2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="825.5px"
                     height="227px" viewBox="0 310.5 825.5 227" enable-background="new 0 310.5 825.5 227" xml:space="preserve">
                     <g id="G2">
-                      <text transform="matrix(1 0 0 1 377.7197 484.8799)" font-family="'MyriadPro-Bold'" font-size="170.7589">Bad</text>
+                      <text transform="matrix(1 0 0 1 377.7197 484.8799)" font-family="'MyriadPro-Bold'" font-size="170.7589"><%= t('bad')%></text>
                     </g>
                     <g id="G3" display="none">
                       <path display="inline" fill="#F1CB30" d="M113.933,327.826c-53.031,0-96.174,43.144-96.174,96.174
@@ -395,7 +396,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
                   <svg class="rating-3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="825.5px"
                     height="227px" viewBox="0 310.5 825.5 227" enable-background="new 0 310.5 825.5 227" xml:space="preserve">
                     <g id="G12">
-                      <text transform="matrix(1 0 0 1 234.9277 483.0889)" font-family="'MyriadPro-Bold'" font-size="175.1393">Normal</text>
+                      <text transform="matrix(1 0 0 1 234.9277 483.0889)" font-family="'MyriadPro-Bold'" font-size="175.1393"><%= t('normal')%></text>
                     </g>
                     <g id="G13">
                       <path fill="#F1CB30" d="M113.094,327.33c-54.391,0-98.642,44.25-98.642,98.642c0,54.391,44.25,98.641,98.642,98.641
@@ -482,7 +483,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
                     height="227px" viewBox="0 310.5 825.5 227" enable-background="new 0 310.5 825.5 227" xml:space="preserve">
                     <g id="G6">
                       <g>
-                        <text transform="matrix(1 0 0 1 309.9277 498.9316)" font-family="'MyriadPro-Bold'" font-size="188.2328">Good</text>
+                        <text transform="matrix(1 0 0 1 309.9277 498.9316)" font-family="'MyriadPro-Bold'" font-size="188.2328"><%= t('good')%></text>
                       </g>
                     </g>
                     <g id="G7" display="none">
@@ -570,7 +571,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
                     viewBox="0 310.5 825.5 227" enable-background="new 0 310.5 825.5 227" xml:space="preserve">
                     <g id="Layer_1">
                       <g>
-                        <text transform="matrix(1 0 0 1 224.9277 467.9316)" font-family="'MyriadPro-Bold'" font-size="131">Awesome! </text>
+                        <text transform="matrix(1 0 0 1 224.9277 467.9316)" font-family="'MyriadPro-Bold'" font-size="131"><%= t('awesome')%> </text>
                       </g>
                     </g>
                     <g id="G5" display="none">
@@ -707,7 +708,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
      var timeline = document.getElementById("slider");
      var timer = document.getElementById("timer");
      var duration;
-     playButton.style.visibility = "hidden";
+     pauseButton.style.visibility = "hidden";
 
      var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
      music.addEventListener("timeupdate", timeUpdate, false);
@@ -739,7 +740,7 @@ c126.225,0,229.5-103.275,229.5-229.5C535.5,308.025,432.225,204.75,306,204.75z" /
        playButton.style.visibility = "hidden";
        pause.style.visibility = "visible";
      };
-
+ 
      pauseButton.onclick = function () {
        music.pause();
        playButton.style.visibility = "visible";
